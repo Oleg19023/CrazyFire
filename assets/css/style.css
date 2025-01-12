@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.dark-theme {
+    background-color: #000000;
+    color: #fff;
+}
+
+body.dark-theme .card {
+    background-color: #333; /* Темный фон карточек */
+    color: #fff; /* Белый текст */
+    border: 1px solid #444; /* Темная граница */
+}
+
+
+body, .navbar, header, .nav-link, .navbar-brand i {
+    transition: all 0.8s ease;
+}
+
+.navbar-collapse {
+    transition: all 0.5s ease;
+}
+
+header {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.180);
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+}
+
+/* Навигационные ссылки (светлая тема) */
+.nav-link {
+    color: #000; /* Основной цвет ссылок */
+    font-weight: bold; /* Толщина шрифта */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+/* Светлая тема (по умолчанию) */
+.nav-link:hover {
+    color: #9ec9fa !important; /* Цвет при наведении в светлой теме */
+}
+
+.nav-link.active {
+    color: #3292ff !important; /* Цвет активной ссылки в светлой теме */
+}
+
+
+/* Темная тема */
+body.dark-theme .nav-link:hover {
+    color: #9ec9fa !important; /* Цвет при наведении в темной теме */
+}
+
+body.dark-theme .nav-link.active {
+    color: #3292ff !important; /* Цвет активной ссылки в темной теме */
+}
+
+/* Навигационные ссылки (темная тема) */
+body.dark-theme .nav-link {
+    color: #fff !important; /* Основной цвет ссылок в темной теме */
+}
+
+.dark-theme-header {
+    background-color: #000000;
+    color: white;
+    border-bottom-color: #333;
+}
+  
+  /* Темная тема для кнопки поиска */
+  body.dark-theme #searchButton {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+  
+  body.dark-theme #themeToggle {
+    background-color: rgb(255, 255, 255);
+    color: black;
+  }
+
+
+#searchInput {
+    transition: all 0.3s ease; /* Плавный переход при показе/скрытии */
+}
+
+  /* Стили для кнопки переключения темы */
+#themeToggle {
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход */
+}
+
+/* Подсветка кнопки в темной теме */
+body.dark-theme #themeToggle:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Подсветка фона при наведении */
+    color: white; /* Цвет текста при наведении */
+    border: black; /* Убираем обводку при наведении */
+}
+
+  /* Отступ между кнопками */
+#searchToggle {
+    margin-left: 10px;
+  }
+
+  
+  /* Стили для темной темы */
+  body.dark-theme .btn-outline-secondary {
+    background-color: white;
+    color: black;
+  }
+  
+  body.dark-theme #searchToggle {
+    background-color: white;
+    color: black;
+  }
+  
+  body.dark-theme #themeToggle {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Переходы при смене темы */
+  .btn-outline-secondary, .btn-outline-secondary:hover {
+    transition: all 0.5s ease;
+  }
+
+  /* Стили для активной кнопки поиска */
+#searchToggle.active {
+  background-color: #007bff; /* Синий фон при активном состоянии */
+  color: white;              /* Белый текст */
+  border-color: #007bff;     /* Синяя граница */
+}
+
+/* Стили для темной темы, когда кнопка активна */
+body.dark-theme #searchToggle.active {
+  background-color: #ffae00; /* Оранжевый фон в темной теме */
+  color: black;              /* Черный текст */
+  border-color: #ffae00;     /* Оранжевая граница */
+}
+  
+.dark-theme-text {
+    color: white;
+}
+.dark-theme-icon {
+    color: white;
+}
+
+.dark-theme-button {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+p {
+    font-size: 15px;
+}
+
+.text {
+    font-size: 25px;
+    color: black;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-center {
+    width: 100%;
+}
+
+
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+table th, table td {
+    padding: 10px;
+}
+
+.links {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px 0;
+}
+  
+.links a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+  
+.links a:hover {
+    color: #0077ff;
+}
+
+.links a.active {
+    color: #0077ff;
+}
+
+.links a.active:hover {
+    color: #0093e2;
+}
+  
+footer {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали по центру */
+    justify-content: center; /* Выравнивание по горизонтали по центру */
+}
+
+.footer-admin-button a {
+    font-size: 15px; /* Размер иконки */
+}
+
+.footer-admin-button a:hover {
+    background-color: #007bff; /* Цвет фона при наведении */
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+main {
+    padding: 20px;
+    justify-content: center;
+}
+
+p {
+    font-size: 23px;
+}
+
+button {
+    margin-bottom: 9px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 576px) {
+    .card {
+        flex: 1 1 100%; /* 1 карточка в ряду */
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .card {
+        flex: 1 1 45%; /* 2 карточки в ряду */
+    }
+}
+
+@media (min-width: 769px) {
+    .card {
+        flex: 1 1 30%; /* 3 карточки в ряду */
+    }
+}

@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+label {
+    font-weight: bold;
+}
+input, button, select {
+    margin: 10px 0;
+    padding: 8px;
+}
+#streamList {
+    margin-top: 10px;
+}

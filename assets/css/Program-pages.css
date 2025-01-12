@@ -1,0 +1,84 @@
+.programs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.program-card {
+    background-color: #f8f9fa; /* Цвет для светлой темы */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.program-image {
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.program-title {
+    font-size: 20px;
+    color: #333; /* Цвет текста для светлой темы */
+    margin-bottom: 10px;
+}
+
+.program-description {
+    font-size: 14px;
+    color: #555; /* Цвет текста для светлой темы */
+    margin-bottom: 15px;
+}
+
+.program-button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #007bff; /* Цвет для светлой темы */
+    color: #fff; /* Цвет текста для кнопки светлой темы */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.program-button:hover {
+    background-color: #0056b3;
+}
+
+.dark-theme .program-card {
+    background-color: #343a40; /* Цвет для темной темы */
+    color: #f8f9fa; /* Цвет текста для темной темы */
+    border: hidden;
+}
+
+.dark-theme .program-title {
+    color: #f8f9fa; /* Белый цвет текста заголовка в темной теме */
+}
+
+.dark-theme .program-description {
+    color: #d1d1d1; /* Цвет текста описания в темной теме (можно настроить) */
+}
+
+.dark-theme .program-button {
+    background-color: #007bff; /* Цвет для кнопки в темной теме */
+    color: #fff; /* Цвет текста для кнопки в темной теме */
+}
+
+.dark-theme .program-button:hover {
+    background-color: #0056b3; /* Цвет кнопки при наведении в темной теме */
+}
+
+
+
