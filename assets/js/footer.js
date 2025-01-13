@@ -25,12 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <div>
                 <div class="footer-bottom">
                     <div class="footer-admin-button">
-                        <a href="./admin-admin.html" class="btn btn-secondary">
+                        <a href="/AdminSettings.html" class="btn btn-secondary">
                             <i class="fas fa-cogs"></i>
                         </a>
                     </div>
                     <h6 class="m-3">
-                        Update v1.0 | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        Update v1.5 | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>

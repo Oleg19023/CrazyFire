@@ -7,54 +7,69 @@ const searchInput = document.getElementById('searchInput');
 
 if (searchToggle && searchInput) {
     // Слушаем нажатие на кнопку поиска
-    searchToggle.addEventListener('click', function() {
+    searchToggle.addEventListener('click', function () {
         if (!searchVisible) {
-            searchInput.style.display = 'block';  // Показываем поле
-            searchInput.focus();  // Ставим фокус на поле
-            searchToggle.classList.add('active');  // Добавляем класс активности к кнопке
+            searchInput.style.display = 'block'; // Показываем поле
+            searchInput.focus(); // Ставим фокус на поле
+            searchToggle.classList.add('active'); // Добавляем класс активности к кнопке
         } else {
-            searchInput.style.display = 'none';  // Скрываем поле
-            searchToggle.classList.remove('active');  // Убираем класс активности с кнопки
+            searchInput.style.display = 'none'; // Скрываем поле
+            searchToggle.classList.remove('active'); // Убираем класс активности с кнопки
+            searchInput.value = ''; // Очищаем поле ввода
+            triggerSearch(); // Перезапускаем поиск, чтобы показать все карточки
         }
-        searchVisible = !searchVisible;  // Меняем состояние
+        searchVisible = !searchVisible; // Меняем состояние
     });
 }
 
-// Фильтрация блюд при вводе в поле поиска
+// Фильтрация карточек при вводе в поле поиска
 if (searchInput) {
-    searchInput.addEventListener('input', function() {
-        let filter = this.value.toLowerCase().trim(); // Получаем значение поиска и удаляем лишние пробелы
-        let cards = document.querySelectorAll('.card'); // Получаем все карточки блюд
-        let foundAny = false; // Переменная для отслеживания наличия совпадений
+    searchInput.addEventListener('input', triggerSearch);
+}
 
-        cards.forEach(function(card) {
-            // Проверяем, является ли карточка кнопкой добавления
-            const isAddNewDishCard = card.querySelector('.fa-plus') !== null;
-            if (isAddNewDishCard) {
-                // Всегда отображаем карточку добавления нового блюда
-                card.style.display = '';
-            } else {
-                let title = card.querySelector('.card-title').textContent.toLowerCase(); // Получаем название блюда
-                const isVisible = title.includes(filter);
-                card.style.display = isVisible ? '' : 'none'; // Показываем или скрываем карточку
-                foundAny = foundAny || isVisible; // Устанавливаем флаг, что нашли хотя бы одну карточку
-            }
-        });
+function triggerSearch() {
+    let filter = searchInput.value.toLowerCase().trim(); // Получаем значение поиска и удаляем лишние пробелы
+    let cards = document.querySelectorAll('.program-card'); // Получаем все карточки
+    let foundAny = false; // Переменная для отслеживания наличия совпадений
 
-        // Если ничего не найдено, отображаем сообщение
-        const cardContainer = document.querySelector('.row.g-3');
-        let messageElement = document.getElementById('no-results'); // Получаем элемент для сообщения
+    cards.forEach(function (card) {
+        const title = card.querySelector('.program-title').textContent.toLowerCase(); // Получаем текст заголовка
+        const description = card.querySelector('.program-description').textContent.toLowerCase(); // Получаем текст описания
 
-        if (!messageElement) {
-            // Создаем элемент для сообщения, если его нет
-            messageElement = document.createElement('p');
-            messageElement.id = 'no-results'; // Устанавливаем id для этого элемента
-            messageElement.textContent = 'Ничего не найдено.'; // Текст сообщения
-            messageElement.style.display = 'none'; // Скрываем по умолчанию
-            cardContainer.appendChild(messageElement); // Добавляем элемент в контейнер карточек
+        // Определяем приоритет видимости
+        const isTitleMatch = title.includes(filter);
+        const isDescriptionMatch = description.includes(filter);
+        const isVisible = isTitleMatch || isDescriptionMatch; // Карточка видна, если совпадение есть в названии или описании
+
+        // Отображаем карточку
+        card.style.display = isVisible ? '' : 'none';
+
+        // Поднимаем карточки с совпадением в названии
+        if (isTitleMatch) {
+            card.style.order = '0'; // Приоритетное отображение
+        } else if (isDescriptionMatch) {
+            card.style.order = '1'; // Второстепенное отображение
         }
 
-        // Показываем или скрываем сообщение в зависимости от результатов поиска
-        messageElement.style.display = foundAny ? 'none' : 'block';
+        foundAny = foundAny || isVisible; // Устанавливаем флаг, если нашли совпадение
     });
+
+    // Проверяем контейнер для сообщения "Ничего не найдено"
+    const cardContainer = document.querySelector('.programs-container'); // Убедитесь, что это правильный контейнер
+    let messageElement = document.getElementById('no-results'); // Получаем элемент для сообщения
+
+    if (!messageElement) {
+        // Создаем элемент для сообщения, если его нет
+        messageElement = document.createElement('p');
+        messageElement.id = 'no-results'; // Устанавливаем id для этого элемента
+        messageElement.textContent = 'Ничего не найдено.'; // Текст сообщения
+        messageElement.style.color = 'red';
+        messageElement.style.textAlign = 'center';
+        messageElement.style.marginTop = '20px';
+        messageElement.style.display = 'none'; // Скрываем по умолчанию
+        cardContainer.appendChild(messageElement); // Добавляем элемент в контейнер карточек
+    }
+
+    // Показываем или скрываем сообщение в зависимости от результатов поиска
+    messageElement.style.display = foundAny ? 'none' : 'block';
 }

@@ -1,0 +1,65 @@
+        
+        body {
+            color: #e0e0e0; /* Светлый текст */
+        }
+        
+        .container {
+            margin: 0 auto; /* Центрирование контейнера */
+            padding: 20px; /* Отступы внутри контейнера */
+            background-color: #1e1e1e; /* Фон контейнера */
+            border-radius: 8px; /* Скругление углов */
+        }
+        
+        h1 {
+            font-size: 2.5rem; /* Размер заголовка */
+            color: #ffffff; /* Цвет заголовка */
+            margin-bottom: 20px; /* Отступ снизу */
+            text-align: center; /* Центрирование заголовка */
+        }
+        
+        h2 {
+            font-size: 1.8rem; /* Размер подзаголовка */
+            color: #ffffff; /* Цвет подзаголовка */
+            margin-top: 30px; /* Отступ сверху */
+            margin-bottom: 10px; /* Отступ снизу */
+        }
+        
+        p {
+            font-size: 1rem; /* Размер текста */
+            color: #e0e0e0; /* Цвет текста */
+            line-height: 1.6; /* Межстрочный интервал */
+            margin-bottom: 15px; /* Отступ снизу */
+        }
+        
+        ul {
+            margin-left: 20px; /* Отступ слева для списка */
+        }
+        
+        li {
+            margin-bottom: 5px; /* Отступ снизу для элементов списка */
+        }
+        
+        a {
+            color: #bb86fc; /* Цвет ссылок */
+            text-decoration: none; /* Убрать подчеркивание */
+        }
+        
+        a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении */
+        }   
+        
+        footer {
+            background-color: #1e1e1e; /* Темный фон футера */
+            color: #e0e0e0; /* Светлый цвет текста футера */
+            padding: 15px 0; /* Отступы внутри футера */
+            text-align: center; /* Центрирование текста футера */
+        }
+
+        footer a {
+            color: #bb86fc; /* Цвет ссылок в футере */
+            text-decoration: none; /* Убрать подчеркивание */
+        }
+
+        footer a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении на ссылки футера */
+        }

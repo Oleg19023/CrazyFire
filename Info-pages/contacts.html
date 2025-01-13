@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/4kLogo2.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -14,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="fa-solid fa-microchip fa-xl"></i></a>
+                <a class="navbar-brand" href="#"><img src="/assets/images/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -60,15 +62,60 @@
         </nav>
     </header>
 
-    <main>
-
-    </main>
+    <main class="container mt-4" style="max-width: 800px; display: block;">
+		<h2>Напишите нам</h2>
+		<form id="contactForm">
+			<!-- Поле для ввода email -->
+			<div class="mb-3">
+				<label for="email" class="form-label">Електронная почта</label>
+				<input type="email" class="form-control" id="email" value="crazyfirecompany@gmail.com">
+			</div>
+			<!-- Поле для выбора типа сообщения -->
+			<div class="mb-3">
+				<label for="messageType" class="form-label">Тип сообщения</label>
+				<select class="form-select" id="messageType">
+					<option value="Отзыв" selected>Отзыв</option>
+					<option value="Вопрос">Вопрос</option>
+					<option value="Другое">Другое</option>
+				</select>
+			</div>
+			<!-- Поле для ввода заголовка -->
+			<div class="mb-3">
+				<label for="subject" class="form-label">Заголовок</label>
+				<input type="text" class="form-control" id="subject" value="Відгук">
+			</div>
+			<!-- Поле для текста сообщения -->
+			<div class="mb-3">
+				<label for="messageText" class="form-label">Ваше сообщения</label>
+				<textarea class="form-control" id="messageText" rows="5"></textarea>
+			</div>
+			<!-- Поле для ввода имени -->
+			<div class="mb-3">
+				<label for="name" class="form-label">Ваше имя</label>
+				<input type="text" class="form-control" id="name">
+			</div>
+			<!-- Меню выбора оценки -->
+			<div class="mb-3" id="ratingContainer">
+				<label for="rating" class="form-label">Оцените наш сервис</label>
+				<select class="form-select" id="rating">
+					<option value="1">1 звезда</option>
+					<option value="2">2 звезды</option>
+					<option value="3">3 звезды</option>
+					<option value="4">4 звезды</option>
+					<option value="5">5 звезд</option>
+				</select>
+			</div>
+			<!-- Кнопка отправки -->
+			<button type="button" id="submitButton" class="btn btn-primary">Отправить</button>
+		</form>
+	</main>	
     
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>
     <script src="/assets/js/menu.js"></script>
     <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/contacts.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

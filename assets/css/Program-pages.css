@@ -16,6 +16,8 @@
     text-align: center;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.8s ease;
+    border: hidden;
 }
 
 .program-card:hover {
@@ -58,7 +60,7 @@
 }
 
 .dark-theme .program-card {
-    background-color: #343a40; /* Цвет для темной темы */
+    background-color: #43484f; /* Цвет для темной темы */ 
     color: #f8f9fa; /* Цвет текста для темной темы */
     border: hidden;
 }
