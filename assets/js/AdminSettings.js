@@ -5,7 +5,7 @@ script.src = "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.m
 document.head.appendChild(script);
 
 // Зашифрованные логин и пароль
-const encryptedData = "U2FsdGVkX18tBuumxleBR+6lmaHg4Daw7DjvKALyIM31LvW4IkDVbP5bpNhEI0gv6RtQ1T0NVD7hvM6xCQTdYw=="; // Замените на ваши зашифрованные данные
+const encryptedData = "U2FsdGVkX1+8MB40D13R3Uku8B32IBwQ2TVk+8sgFszQhytlFdZWFtmQQZf9TegZUdJ7V5zcwNcQ4b2v5c/ozQ=="; // Замените на ваши зашифрованные данные
 const encryptionKey = "strongSecretKey"; // Секретный ключ для шифрования
 
 // Функция расшифровки
@@ -38,7 +38,7 @@ function init() {
         if (username === storedUsername && password === storedPassword) {
             // Меняем сообщение о доступе
             const accessStatus = document.getElementById('accessStatus');
-            accessStatus.textContent = 'Доступ дозволено!';
+            accessStatus.textContent = 'Доступ разблокирован!';
             accessStatus.classList.remove('text-red');
             accessStatus.classList.add('text-green');
 
@@ -63,7 +63,7 @@ function init() {
 
         // Показываем кнопку входа и форму входа
         document.getElementById('showLoginForm').style.display = 'block';
-        document.getElementById('accessStatus').textContent = 'Доступ заблоковано!';
+        document.getElementById('accessStatus').textContent = 'Доступ заблокирован!';
         document.getElementById('accessStatus').classList.remove('text-green');
         document.getElementById('accessStatus').classList.add('text-red');
 
@@ -74,19 +74,15 @@ function init() {
 
 function initAdminActions() {
     document.getElementById('backupDatabase').addEventListener('click', () => {
-        alert('Резервне копіювання бази даних виконано!');
+        alert('Резервное копирование базы данных выполнено!');
     });
 
     document.getElementById('restoreDatabase').addEventListener('click', () => {
-        alert('Відновлення бази даних завершено.');
+        alert('Восстановление базы данных завершено.');
     });
 
     document.getElementById('clearCache').addEventListener('click', () => {
-        alert('Кеш успішно очищено.');
-    });
-
-    document.getElementById('sendNotifications').addEventListener('click', () => {
-        alert('Повідомлення надіслано всім користувачам.');
+        alert('Кэш успешно очищен.');
     });
 
     document.getElementById('saveSettings').addEventListener('click', (event) => {
@@ -101,29 +97,29 @@ function initAdminActions() {
         const siteLogo = document.getElementById('siteLogo').files[0];
 
         // Симуляция сохранения настроек
-        alert(`Налаштування збережено:
-            Назва сайту: ${siteTitle}
-            Мова: ${language}
-            Відображення повідомлень: ${notificationsEnabled ? 'Увімкнено' : 'Вимкнено'}
-            Контактна пошта: ${contactEmail}
-            Контактний телефон: ${contactPhone}
-            Логотип: ${siteLogo ? siteLogo.name : 'Не обрано'}`);
+        alert(`Настройки сохранены:
+            Название сайта: ${siteTitle}
+            Язык: ${language}
+            Отображение сообщений: ${notificationsEnabled ? 'Включено' : 'Выключено'}
+            Контактная почта: ${contactEmail}
+            Контактный телефон: ${contactPhone}
+            Логотип: ${siteLogo ? siteLogo.name : 'Не выбрано'}`);
     });
 
     // Добавление функций для новых пунктов меню:
     document.getElementById('manageCategories').addEventListener('click', () => {
-        alert('Відкрито керування категоріями.');
+        alert('Открыто управление категориями.');
     });
 
     document.getElementById('manageReviews').addEventListener('click', () => {
-        alert('Відкрито керування відгуками.');
+        alert('Открыто управление отзывами.');
     });
 
     document.getElementById('manageNews').addEventListener('click', () => {
-        alert('Додайте новину.');
+        alert('Добавить новость.');
     });
 
     document.getElementById('viewReports').addEventListener('click', () => {
-        alert('Перегляд звітів');
+        alert('Просмотр отчетов');
     });
 }
