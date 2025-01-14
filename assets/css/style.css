@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+#tsparticles {
+    position: absolute;
+    z-index: -1;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -214,16 +219,32 @@ table th, table td {
 }
   
 footer {
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
     padding: 15px 0; /* Отступы внутри футера */
-    text-align: center; /* Центрирование текста футера */
+}
+
+.footer-logo {
+    width: 40px;
+    padding-right: 5px;
+}
+
+.footer-text {
+    text-align: center;
+    max-width: 900px; /* Установите максимальную ширину */
+    word-wrap: break-word; /* Для переноса слов на следующую строку */
+    overflow-wrap: break-word; /* Современный эквивалент */
+    white-space: normal; /* Убедитесь, что текст переносится */
+    margin: auto; /* Центрирование текста по горизонтали */
+}
+
+.footer-links {
+    display: flex; /* Используем Flexbox для выравнивания ссылок */
+    justify-content: center; /* Центрируем ссылки по горизонтали */
 }
 
 footer a {
     color: #0077ff; /* Цвет ссылок в футере */
     text-decoration: none; /* Убрать подчеркивание */
+    margin: 0 2px; /* Отступ между ссылками */
 }
 
 footer a:hover {
@@ -255,10 +276,6 @@ main {
     justify-content: center;
 }
 
-p {
-    font-size: 23px;
-}
-
 button {
     margin-bottom: 9px;
     padding: 8px 16px;
@@ -266,10 +283,35 @@ button {
     cursor: pointer;
 }
 
+.update-button {
+    color: rgb(72, 162, 247);
+}
+
+/* Темная тема */
+body.dark-theme a.navbar-brand {
+    color: #f8f9fa; /* Светлый текст */
+    transition: color 0.8s ease; /* Плавный переход цвета */
+    text-decoration: none;
+}
+
+/* Светлая тема */
+body.light-theme a.navbar-brand {
+    color: #000000; /* Тёмный текст */
+    transition: color 0.8s ease; /* Плавный переход цвета */
+}
+
+
 
 @media (max-width: 576px) {
     .card {
         flex: 1 1 100%; /* 1 карточка в ряду */
+    }
+    .footer-text {
+        max-width: 350px; /* Установите максимальную ширину */
+        word-wrap: break-word; /* Для переноса слов на следующую строку */
+        overflow-wrap: break-word; /* Современный эквивалент */
+        white-space: normal; /* Убедитесь, что текст переносится */
+        margin: auto; /* Центрирование текста по горизонтали */
     }
 }
 

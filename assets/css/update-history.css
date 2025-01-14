@@ -1,0 +1,92 @@
+.container {
+    margin-top: 20px;
+}
+
+h2 {
+    text-align: center; /* Центрирование заголовка */
+}
+
+.update-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.update-item {
+    background-color: #ffffff; /* Белый фон для элементов обновлений */
+    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход цвета */
+    padding: 15px; /* Добавляем немного отступов для карточек */
+    border-radius: 5px; /* Закругленные углы для карточек */
+    margin-bottom: 10px; /* Отступ между карточками */
+    border: 1px solid #dee2e6; /* Рамка для элементов обновлений */
+}
+
+.update-item:hover {
+    background-color: #edf0f3; /* Светло-серый фон при наведении */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.update-info {
+    border-bottom: 1px solid #dee2e6; /* Разделитель между информацией и описанием */
+    padding-bottom: 10px;
+}
+
+.update-description {
+    margin-top: 10px;
+}
+
+/* Цвета для добавленного, исправленного и удаленного */
+.text-success {
+    color: green;
+}
+
+.text-warning {
+    color: orange;
+}
+
+.text-danger {
+    color: red;
+}
+
+body.light-theme {
+    transition: background-color 0.8s ease, color 0.8s ease; /* Плавный переход цвета для светлой темы */
+}
+
+/* Темная тема */
+body.dark-theme {
+    color: #f8f9fa;
+}
+
+body.dark-theme .update-item {
+    background-color: #43484f; /* Цвет фона карточки в темной теме */
+    color: #f8f9fa; /* Светлый текст для карточек в темной теме */
+    border: none; /* Убираем рамку для карточек в темной теме */
+    transition: background-color 0.8s ease, color 0.8s ease; /* Плавный переход цвета */
+}
+
+body.dark-theme .update-item:hover {
+    background-color: #495057; /* Темно-серый фон при наведении в темной теме */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgb(129, 129, 129);
+    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход цвета */
+
+}
+
+h1 {
+    font-size: 2.5rem; /* Размер заголовка */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-align: center; /* Центрирование заголовка */
+}
+
+h2 {
+    font-size: 1.8rem; /* Размер подзаголовка */
+    margin-top: 30px; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+p {
+    font-size: 1rem; /* Размер текста */
+    line-height: 1.6; /* Межстрочный интервал */
+    margin-bottom: 15px; /* Отступ снизу */
+}
+

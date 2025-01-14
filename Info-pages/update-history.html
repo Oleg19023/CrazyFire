@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <link rel="shortcut icon" href="/assets/images/4kLogo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/update-history.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
+                            <ul class="dropdown-menu" aria-labelledby="programDropdown">
+
+                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Базовые платформы</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Program-pages.html">Программы</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
+
+                            </ul>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">Проекты</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#"></a>
+                            </li>
+
+                        </li>
+                    </ul>                     
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="themeToggle" class="btn btn-outline-secondary">
+                        <i id="themeIcon" class="fas fa-moon"></i>
+                    </button>
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none";>
+                        <i id="parallaxIcon" class="fas fa-play"></i>
+                    </button>  
+    
+                    <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <h2 class="text-center">Последние обновления сайта</h2>
+            <div class="update-list">
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.6</strong><br>
+                        <span>Дата: 14.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> Страница обновлений сайта(Данная страница), улучшен режим темной темы</p>
+                        <p><strong class="text-warning">Исправлено:</strong> Обновлен heder, переводы футера и форм заполнения, шрифты</p>
+                        <p><strong class="text-danger">Удалено:</strong></p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.5.1</strong><br>
+                        <span>Дата: 13.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-warning">Исправлено:</strong> Исправления меню заголовков (для мобильных устройств), исправления перевода, некоторые исправления нижнего колонтитула</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.5</strong><br>
+                        <span>Дата: 13.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> New Pages: About, Contacts, Privacy, AdminSettings</p>
+                        <p><strong class="text-warning">Исправлено:</strong> Некоторые исправления темы</p>
+                        <p><strong class="text-danger">Удалено:</strong> Убрана кнопка поиска на главной странице</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.4</strong><br>
+                        <span>Дата: 11.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> Footer, Firebase files. Firebase install module. Сайт на хостинге 🎉</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.3</strong><br>
+                        <span>Дата: 11.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> Тема, поиск(beta)</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.2</strong><br>
+                        <span>Дата: 11.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> Базовые платформы, программы </p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.1</strong><br>
+                        <span>Дата: 11.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="text-success">Добавлено:</strong> Главная страница, ресурсы</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 1.0</strong><br>
+                        <span>Дата: 10.01.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong class="">Начало</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+       
+    
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+</body>
+</html>

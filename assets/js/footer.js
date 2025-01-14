@@ -9,18 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Обновляем только нужные элементы в футере
         document.getElementById("footerYear").textContent = currentDate.getFullYear();
-        document.getElementById("footerDate").textContent = `Date: ${formattedDate}`;
-        document.getElementById("footerTime").textContent = `Time: ${formattedTime}`;
+        document.getElementById("footerDate").textContent = `Дата: ${formattedDate}`;
+        document.getElementById("footerTime").textContent = `Время: ${formattedTime}`;
     }
 
     // Изначально создаем футер с нужными элементами
     const footerHTML = `
         <footer id="footer" style="display: none;">
-            <p>© <span id="footerYear"></span> CrazyFire & AppHaven project. Все права защищены.</p>    
+            <p class="footer-text"><img src="/assets/images/4kLogo2.png" alt="logo" class="footer-logo">© <span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b> Заставка CrazyFire, Логотип CrazyFire, являются товарными знаками или зарегистрированными товарными знаками CrazyFire в Украине и остальных странах.</p>  
             <div class="footer-links">
-                <a href="/Info-pages/about.html">Про нас</a>
-                <a href="/Info-pages/contacts.html">Контакты(Beta)</a>
-                <a href="/Info-pages/privacy.html">Конфиденциальность(Beta)</a>
+                <a href="/Info-pages/about.html">| Про нас |</a>
+                <a href="/Info-pages/contacts.html">Контакты |</a>
+                <a href="/Info-pages/privacy.html">Конфиденциальность |</a>
             </div>
             <div>
                 <div class="footer-bottom">
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                     <h6 class="m-3">
-                        Update v1.5.1 | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v1.6</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>
