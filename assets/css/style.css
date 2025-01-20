@@ -300,6 +300,13 @@ body.light-theme a.navbar-brand {
     transition: color 0.8s ease; /* Плавный переход цвета */
 }
 
+/* Общие стили для dropdown */
+.dropdown-menu-custom {
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(0) !important;
+}
+
 
 
 @media (max-width: 576px) {
@@ -313,6 +320,17 @@ body.light-theme a.navbar-brand {
         white-space: normal; /* Убедитесь, что текст переносится */
         margin: auto; /* Центрирование текста по горизонтали */
     }
+    h2 {
+        font-size: 2rem !important; 
+    }
+    #searchToggle {
+        margin-left: 0px;
+    }
+    .dropdown-menu-custom {
+        right: auto !important;
+        left: 0 !important;
+    }
+
 }
 
 @media (min-width: 577px) and (max-width: 768px) {

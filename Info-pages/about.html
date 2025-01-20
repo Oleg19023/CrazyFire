@@ -52,12 +52,27 @@
                     </ul>                     
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
-                    <button id="themeToggle" class="btn btn-outline-secondary">
+                    <button id="themeToggle" class="btn btn-outline-secondary" style="margin-right: 5px;">
                         <i id="themeIcon" class="fas fa-moon"></i>
                     </button>
-                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none";>
+                    
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
                         <i id="parallaxIcon" class="fas fa-play"></i>
-                    </button>  
+                    </button>           
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -81,6 +96,7 @@
 								<h5 class="card-title">Oleh</h5>
                                 <div>
                                     <p1>Руководитель, главный разработчик сайта</p1>
+                                    <a href="https://github.com/Oleg19023">✨GitHub</a>
                                 </div>
 								</div>
 							</div>

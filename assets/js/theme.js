@@ -98,3 +98,9 @@ if (themeToggle) {
         localStorage.setItem('theme', currentTheme);
     });
 }
+
+
+  // Цвет фона
+  document.getElementById('colorPicker').addEventListener('input', function() {
+    document.body.style.backgroundColor = this.value;
+  });
