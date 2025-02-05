@@ -5,8 +5,8 @@ script.src = "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.m
 document.head.appendChild(script);
 
 // Зашифрованные логин и пароль
-const encryptedData = "U2FsdGVkX1+8MB40D13R3Uku8B32IBwQ2TVk+8sgFszQhytlFdZWFtmQQZf9TegZUdJ7V5zcwNcQ4b2v5c/ozQ=="; // Замените на ваши зашифрованные данные
-const encryptionKey = "strongSecretKey"; // Секретный ключ для шифрования
+const encryptedData = "U2FsdGVkX1+8MB40D13R3Uku8B32IBwQ2TVk+8sgFszQhytlFdZWFtmQQZf9TegZUdJ7V5zcwNcQ4b2v5c/ozQ==";
+const encryptionKey = "strongSecretKey";
 
 // Функция расшифровки
 function decryptData(encrypted, key) {

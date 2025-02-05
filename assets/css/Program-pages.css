@@ -9,6 +9,7 @@
 
 .program-card {
     background-color: #f8f9fa; /* Цвет для светлой темы */
+    width: calc(25% - 20px); /* 25% ширины минус отступы */
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -82,5 +83,15 @@
     background-color: #0056b3; /* Цвет кнопки при наведении в темной теме */
 }
 
+@media (max-width: 1300px) {
+    .program-card {
+        width: 50%;
+    }
+}
 
+@media (max-width: 768px) {
+   .program-card {
+        width: 100%;
+    }
+}
 

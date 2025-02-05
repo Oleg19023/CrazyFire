@@ -35,24 +35,32 @@ function triggerSearch() {
     cards.forEach(function (card) {
         const title = card.querySelector('.program-title').textContent.toLowerCase(); // Получаем текст заголовка
         const description = card.querySelector('.program-description').textContent.toLowerCase(); // Получаем текст описания
+        const tegsElement = card.querySelector('.program-tegs'); // Получаем элемент с тегами
+        const tegs = tegsElement ? tegsElement.textContent.toLowerCase() : ''; // Получаем текст тегов, если элемент существует
 
-        // Определяем приоритет видимости
-        const isTitleMatch = title.includes(filter);
-        const isDescriptionMatch = description.includes(filter);
-        const isVisible = isTitleMatch || isDescriptionMatch; // Карточка видна, если совпадение есть в названии или описании
+        // Определяем видимость карточки
+        const isVisible = title.includes(filter) || description.includes(filter) || tegs.includes(filter);
 
-        // Отображаем карточку
+        // Отображаем или скрываем карточку
         card.style.display = isVisible ? '' : 'none';
 
         // Поднимаем карточки с совпадением в названии
-        if (isTitleMatch) {
+        if (title.includes(filter)) {
             card.style.order = '0'; // Приоритетное отображение
-        } else if (isDescriptionMatch) {
+        } else if (description.includes(filter)) {
             card.style.order = '1'; // Второстепенное отображение
+        } else {
+            card.style.order = '2'; // Низший приоритет для совпадений в тегах
         }
 
         foundAny = foundAny || isVisible; // Устанавливаем флаг, если нашли совпадение
     });
+
+    // Если ни одна карточка не найдена, можно добавить логику для отображения сообщения пользователю
+    if (!foundAny) {
+        // Например, показать сообщение "Ничего не найдено"
+    }
+
 
     // Проверяем контейнер для сообщения "Ничего не найдено"
     const cardContainer = document.querySelector('.programs-container'); // Убедитесь, что это правильный контейнер

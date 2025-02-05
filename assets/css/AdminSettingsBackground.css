@@ -1,0 +1,49 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#matrix-container {
+    position: fixed; /* Фиксированное положение на весь экран */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Отключает блокировку кликов */
+    z-index: -1; /* Перемещает эффект в фон */
+}
+
+#c {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#matrix-text {
+    position: relative;
+    z-index: 1; /* Контент будет поверх эффекта */
+    pointer-events: auto; /* Включаем взаимодействие с элементами */
+    color: white; /* Убедись, что текст контрастный */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#matrix-text {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+}

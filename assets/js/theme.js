@@ -64,6 +64,12 @@ function applyTheme(theme) {
 
     // Обновление стилей карточек
     cardBodies.forEach(cardBody => cardBody.classList.toggle('card-body-theme', theme === 'dark'));
+
+    let matrixContainer = document.getElementById('matrix-container');
+    if (matrixContainer) {
+    matrixContainer.style.display = theme === 'dark' ? 'block' : 'none';
+    }
+
 }
 
 // Проверка темы и состояния параллакса при загрузке страницы
