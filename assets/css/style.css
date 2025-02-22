@@ -2,6 +2,10 @@ body {
     margin: 0;
 }
 
+.container {
+    padding-top: 50px;
+}
+
 #tsparticles {
     position: absolute;
     z-index: -1;
@@ -36,6 +40,19 @@ header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.180);
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.171);
+}
+
+header {
+    position: fixed; /* Фиксированное положение */
+    top: 0; /* Привязываем к верхней части окна */
+    width: 100%; /* Ширина на весь экран */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171); /* Нижняя граница */
+    z-index: 1000; /* Чтобы хедер был над другими элементами */
+    background-color: #ffffff; /* Цвет фона, если нужно */
+}
+
+.ul {
+    margin-left: 10px;
 }
 
 .admin-container {
@@ -306,6 +323,56 @@ body.light-theme a.navbar-brand {
     right: 0 !important;
     transform: translateX(0) !important;
 }
+
+
+
+
+
+
+
+/* Для Webkit-браузеров (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a; /* Цвет фона полосы прокрутки */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333; /* Цвет бегунка */
+    border-radius: 10px; /* Скругление углов бегунка */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Цвет бегунка при наведении */
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin; /* Узкая полоса прокрутки */
+    scrollbar-color: #333 #1a1a1a; /* Цвет бегунка и фона */
+}
+
+/* Для IE и Edge (функционал ограничен) */
+html {
+    scrollbar-base-color: #1a1a1a; /* Цвет фона полосы прокрутки */
+    scrollbar-track-color: #1a1a1a; /* Цвет области прокрутки */
+    scrollbar-face-color: #333; /* Цвет бегунка */
+}
+
+/* Эффект плавности при скроллинге */
+html {
+    scroll-behavior: smooth; /* Плавная прокрутка при переходах */
+}
+
+
+
+
+
+
+
+
 
 
 

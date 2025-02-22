@@ -1,0 +1,94 @@
+#message {
+    background: #fff;
+    height: 600px;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Используем Flexbox для центрирования */
+    flex-direction: column; /* Располагаем элементы вертикально */
+    justify-content: center; /* Центрируем по вертикали */
+    align-items: center; /* Центрируем по горизонтали */
+    transition: background-color 0.8s, color 0.8s;
+}
+
+#message h2 {
+    font-size: 48px;
+    color: #ff0000;
+    margin-bottom: 20px;
+}
+
+#message h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#message p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 1000px; /* Максимальная ширина параграфа */
+}
+
+.button-container {
+    display: flex; /* Используем Flexbox для кнопок */
+    gap: 10px; /* Расстояние между кнопками */
+}
+
+#message a {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#message a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Стили для тёмной темы */
+body.dark-theme #message {
+    background: #333;
+}
+
+body.dark-theme #message h2 {
+    color: #ff0000;
+}
+
+body.dark-theme #message h1 {
+    color: #fff;
+}
+
+body.dark-theme #message p {
+    color: #ccc;
+}
+
+body.dark-theme #message a {
+    color: #8cd9d6;
+    border-color: #8cd9d6;
+}
+
+body.dark-theme #message a:hover {
+    background-color: #8cd9d6;
+    color: #333;
+}
+
+@media (max-width: 576px) {
+    #message {
+        height: 900px;
+    }
+    #message a {
+        font-size: 13px;
+        color: #007bff;
+        text-decoration: none;
+        border: 1px solid #007bff;
+        padding: 1px 1px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+}

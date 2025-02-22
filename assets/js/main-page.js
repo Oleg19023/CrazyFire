@@ -1,17 +1,12 @@
 document.getElementById('startButton').addEventListener('click', function() {
     const header = document.getElementById('header');
-    header.style.display = 'block'; // Показать заголовок
-    requestAnimationFrame(() => {
-        header.classList.add('show'); // Добавляем класс для плавного появления
-    });
-});
 
-document.getElementById('startButton').addEventListener('click', function() {
-    const header = document.getElementById('footer');
-    header.style.display = 'block'; // Показать заголовок
-    requestAnimationFrame(() => {
-        header.classList.add('show'); // Добавляем класс для плавного появления
-    });
+    if (!header.classList.contains('show')) {
+        header.style.display = 'block'; // Показываем
+        requestAnimationFrame(() => {
+            header.classList.add('show'); // Добавляем анимацию
+        });
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'Надеюсь, у вас все отлично!',
         'Всегда рады вам!',
         'Снова вместе!',
-        'Спасибо, что зашли!'
+        'Спасибо, что зашли!',
+        'Как приятно вас видеть!',
+        'Добрый день!',
+        'Доброго времени суток!',
+        'Отличного настроения вам!',
     ];    
 
     const videos = [

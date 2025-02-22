@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
-    <link rel="shortcut icon" href="/assets/images/4kLogo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -20,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html"><img src="/assets/images/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,31 +33,104 @@
                             <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
-                                <li><a class="dropdown-item" href="#">Базовые платформы (Активно)</a></li>
+                                <li><a class="dropdown-item" href="#">Базовые приложения (Активно)</a></li>
                                 <li><a class="dropdown-item" href="/Program-pages/Program-pages.html">Программы</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
 
                             </ul>
 
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Проекты</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Новости(beta)</a>
+                            <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                                <li><a class="dropdown-item" href="#">Мировые новости</a></li>
+                                <li><a class="dropdown-item" href="#">Игровые новости</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Магазин(beta)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/Program-pages/Projects-pages.html">Проекты</a>
+                        </li>
 
                         </li>
                     </ul>                     
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
-                    <button id="themeToggle" class="btn btn-outline-secondary" style="margin-right: 5px;">
-                        <i id="themeIcon" class="fas fa-moon"></i>
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fas fa-play"></i>
                     </button>
                     
+                                        
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
                     <div class="dropdown" style="display: inline-block; margin-right: 5px;">
                         <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog"></i>
@@ -69,10 +144,6 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
-                        <i id="parallaxIcon" class="fas fa-play"></i>
-                    </button>          
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -84,7 +155,7 @@
 
     <main>
         <div class="programs-container">
-            <!-- Пример карточки сайтов -->
+            <!-- Карточки платформ -->
             <!--Steam-->
             <div class="program-card">
                 <img src="/assets/images/Platforms-pages/Steam_logo.png" alt="Program Image" class="program-image">
@@ -139,6 +210,33 @@
                 <a href="https://battle.net/" class="program-button">Перейти</a>
                 <a href="https://download.battle.net/ru-ru/?platform=windows" class="program-button">Установить</a>
             </div>
+            <!--Origin-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/EA_logo.png" alt="Origin" class="program-image">
+                <h3 class="program-title">EA Origin</h3>
+                <p class="program-tegs">Теги: #Origin #EA #Игры</p>
+                <p class="program-description">EA Origin app — цифровая платформа от Electronic Arts для покупки и загрузки игр, а также управления библиотекой игр.</p>
+                <a href="https://www.origin.com/" class="program-button">Перейти</a>
+                <a href="https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EADesktopInstaller.exe" class="program-button">Установить</a>
+            </div>
+            <!--GOG Galaxy-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/GOG_Galaxy_logo.png" alt="GOG Galaxy" class="program-image">
+                <h3 class="program-title">GOG Galaxy</h3>
+                <p class="program-tegs">Теги: #GOG #Игры #ЦифроваяДистрибуция</p>
+                <p class="program-description">GOG Galaxy — платформа для дистрибуции игр от GOG, предлагающая без DRM и удобный интерфейс для управления играми.</p>
+                <a href="https://www.gog.com/galaxy" class="program-button">Перейти</a>
+                <a href="https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe?payload=W0497EqRJtCs3aB77J1Abw_zBWwPlJwSS2J0AyQD8Z8Uqn_TrVEsA7y-m0QBNs9Qk6_l9K_V9f8kW1PmZVQ6cTzu3qD8vv_nkMxuf2lX6SYlfXGzTfMgTD5ZIoJJBvX2MYcUH2nsg-JUOcoXuTsuOTrUPa3zLPxksIcYZ5RpBCrbruy7evug6pk2XRmdaLeKscWnAXOkdXiiOgRTHNZmk0iz378IdJx2FKyCMT8xUf4Vn8jhwchXat8CxtZm9_W8AA254fCaCYbsRNVZKievdY25FMZgu6HWjgShWcAx5t8viXtxORSEqVjKp0ndpzgyi1cGvyUfR_NhEKd7lSmkKpLgOAhwAxjcvdWdg2GXh0UlsztoUjWTXcosqEYjA2YeFcOFF7O62zDPPhqK1p1d_-bJ0QZuKcmP1wn-2hz9JDH4PWti2K-ebX6ae4bmzyNuSNttByIIbCWk0BZ-bnJfFpr0EIlOTu6TroGWZwojzOJDoGFDU48KbVzf1rugxZaDE4QuZO5Z_mSW5-jKPSIynX6vw588OikSNXmCzLy4gVLe6YvkJeBHSH2obYNqXI_McAHGDsxcP49E5zQNjxTu3KQNkeDUaxNC7Z4-WQCeVm8PZ94YMWmr5ZrswQFCWFeA7peDJfk_XyFtl-IqlLv-VX0m5-p0oBBcJPIxEKF6pCWTWo_49oYjmDm61WI_BvTVZbC84qxpBAc_TXh1gLqykpON24pVqYhXc-HVtBy-DEdibC9HGgKtd9D9-h2FODt6zUeq" class="program-button">Установить</a>
+            </div>
+            <!--NVIDIA GeForce NOW-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/NVIDIA_GeForce_NOW_logo.png" alt="NVIDIA GeForce NOW" class="program-image">
+                <h3 class="program-title">NVIDIA GeForce NOW</h3>
+                <p class="program-tegs">Теги: #GeForceNOW #ОблачныйГейминг</p>
+                <p class="program-description">GeForce NOW — облачный сервис для потокового гейминга от NVIDIA, позволяющий играть в игры на любом устройстве.</p>
+                <a href="https://play.geforcenow.com/mall/#/loginwall" class="program-button">Перейти</a>
+                <a href="https://download.nvidia.com/gfnpc/GeForceNOW-release.exe" class="program-button">Установить</a>
+            </div>
             <!--Google Chrome-->
             <div class="program-card">
                 <img src="/assets/images/Platforms-pages/Chrome_logo.png" alt="Chrome" class="program-image">
@@ -166,9 +264,293 @@
                 <a href="https://www.opera.com/gx" class="program-button">Перейти</a>
                 <a href="https://www.opera.com/ru/computer/thanks?ni=eapgx&os=windows" class="program-button">Установить</a>
             </div>
+            <!--Yandex-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Yandex_logo.png" alt="Yandex" class="program-image">
+                <h3 class="program-title">Yandex</h3>
+                <p class="program-tegs">Теги: #Yandex #Поиск</p>
+                <p class="program-description">Yandex — российская поисковая система с множеством дополнительных сервисов.</p>
+                <a href="https://www.yandex.ru/" class="program-button">Перейти</a>
+                <a href="https://browser.yandex.com/download?os=win&bitness=64&statpromo=true&darktheme=1&banerid=6500000000&portal_testids=1114347%2F-1&signature=K84%2FbhFEz8b%2FJzZYNLU8U65avdaBkSCI785qrDBuoZDdiqyBfeKJ4%2BMSGpWD22svKRQ7IIz5dwEXomNwmEtPBQ%3D%3D" class="program-button">Установить</a>
+            </div>
+            <!--Tor Browser-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Tor_Browser_logo.png" alt="Tor Browser" class="program-image">
+                <h3 class="program-title">Tor Browser</h3>
+                <p class="program-tegs">Теги: #TorBrowser #Безопасность</p>
+                <p class="program-description">Tor Browser — браузер для анонимного серфинга в интернете.</p>
+                <a href="https://www.torproject.org/" class="program-button">Перейти</a>
+                <a href="https://www.torproject.org/dist/torbrowser/14.0.6/tor-browser-windows-x86_64-portable-14.0.6.exe" class="program-button">Установить</a>
+            </div>
+            <!--Viber-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Viber_logo.png" alt="Viber" class="program-image">
+                <h3 class="program-title">Viber</h3>
+                <p class="program-tegs">Теги: #Viber #Мессенджер</p>
+                <p class="program-description">Viber — бесплатный мессенджер для обмена сообщениями и звонков с уникальными стикерами и функциями групповых чатов.</p>
+                <a href="https://www.viber.com" class="program-button">Перейти</a>
+                <a href="https://download.cdn.viber.com/desktop/windows/ViberSetup.exe" class="program-button">Установить</a>
+            </div>
+            <!--Whatsapp-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/WhatsApp_logo.png" alt="WhatsApp" class="program-image">
+                <h3 class="program-title">WhatsApp</h3>
+                <p class="program-tegs">Теги: #WhatsApp #Мессенджер</p>
+                <p class="program-description">WhatsApp — популярный мессенджер для обмена сообщениями, голосовых и видеозвонков с высокой степенью безопасности.</p>
+                <a href="https://www.whatsapp.com" class="program-button">Перейти</a>
+                <a href="https://get.microsoft.com/installer/download/9NKSQGP7F2NH?cid=website_cta_psi" class="program-button">Установить</a>
+            </div>
+            <!--Telegram-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Telegram_logo.png" alt="Telegram" class="program-image">
+                <h3 class="program-title">Telegram</h3>
+                <p class="program-tegs">Теги: #Telegram #Мессенджер</p>
+                <p class="program-description">Telegram — мессенджер с акцентом на скорость и безопасность, позволяющий отправлять сообщения и обмениваться файлами.</p>
+                <a href="https://telegram.org" class="program-button">Перейти</a>
+                <a href="https://telegram.org/dl/desktop/win64" class="program-button">Установить</a>
+            </div>
+            <!--Skype-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Skype_logo.png" alt="Skype" class="program-image">
+                <h3 class="program-title">Skype</h3>
+                <p class="program-tegs">Теги: #Skype #Видеозвонки</p>
+                <p class="program-description">Skype — приложение для видеозвонков и голосовой связи, позволяющее общаться с людьми по всему миру.</p>
+                <a href="https://www.skype.com" class="program-button">Перейти</a>
+                <a href="ms-windows-store://pdp/?productid=9WZDNCRFJ364&cid=scom-web-store" class="program-button">Установить</a>
+            </div>
+            <!--Zoom-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Zoom_logo.png" alt="Zoom" class="program-image">
+                <h3 class="program-title">Zoom</h3>
+                <p class="program-tegs">Теги: #Zoom #Видеоконференции</p>
+                <p class="program-description">Zoom — платформа для видеоконференций, позволяющая проводить онлайн-встречи и вебинары.</p>
+                <a href="https://zoom.us/" class="program-button">Перейти</a>
+                <a href="https://zoom.us/client/6.3.10.59437/ZoomInstallerFull.exe?archType=x64" class="program-button">Установить</a>
+            </div>
+            <!--Adobe Creative Cloud-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Adobe_Creative_Cloud_logo.png" alt="Adobe Creative Cloud" class="program-image">
+                <h3 class="program-title">Adobe Creative Cloud</h3>
+                <p class="program-tegs">Теги: #Adobe #КреативныеИнструменты</p>
+                <p class="program-description">Adobe Creative Cloud — набор приложений и сервисов для креативщиков, включая Photoshop, Illustrator и Premiere Pro.</p>
+                <a href="https://www.adobe.com/creativecloud.html" class="program-button">Перейти</a>
+                <a href="https://creativecloud.adobe.com/apps/download/creative-cloud?locale=ru#" class="program-button">Установить</a>
+            </div>
+            <!--TikTok-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/TikTok_logo.png" alt="TikTok" class="program-image">
+                <h3 class="program-title">TikTok</h3>
+                <p class="program-tegs">Теги: #TikTok #СоциальныеСети</p>
+                <p class="program-description">TikTok — платформа для создания и обмена короткими видеороликами.</p>
+                <a href="https://www.tiktok.com/" class="program-button">Перейти</a>
+                <a href="https://www.tiktok.com/download" class="program-button">Установить</a>
+            </div>
+            <!--Spotify-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Spotify_logo.png" alt="Spotify" class="program-image">
+                <h3 class="program-title">Spotify</h3>
+                <p class="program-tegs">Теги: #Spotify #Музыка</p>
+                <p class="program-description">Spotify — стриминговый сервис для прослушивания музыки, предлагающий миллионы треков и плейлистов.</p>
+                <a href="https://www.spotify.com/" class="program-button">Перейти</a>
+                <a href="https://download.scdn.co/SpotifySetup.exe" class="program-button">Установить</a>
+            </div>
+            <!--Blender-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Blender_logo.png" alt="Blender" class="program-image">
+                <h3 class="program-title">Blender</h3>
+                <p class="program-tegs">Теги: #Blender #3DМоделирование</p>
+                <p class="program-description">Blender — бесплатная программа для 3D-моделирования, анимации и рендеринга. (Доступно в стим)</p>
+                <a href="https://www.blender.org/" class="program-button">Перейти</a>
+                <a href="https://www.blender.org/download/release/Blender4.3/blender-4.3.2-windows-x64.msi/" class="program-button">Установить</a>
+            </div>
+            <!--Figma-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Figma_logo.png" alt="Figma" class="program-image">
+                <h3 class="program-title">Figma</h3>
+                <p class="program-tegs">Теги: #Figma #Дизайн</p>
+                <p class="program-description">Figma — онлайн-инструмент для дизайна интерфейсов и прототипирования.</p>
+                <a href="https://www.figma.com/" class="program-button">Перейти</a>
+                <a href="https://www.figma.com/download/desktop/win" class="program-button">Установить</a>
+            </div>
+            <!--Canva-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Canva_logo.png" alt="Canva" class="program-image">
+                <h3 class="program-title">Canva</h3>
+                <p class="program-tegs">Теги: #Canva #ГрафическийДизайн</p>
+                <p class="program-description">Canva — онлайн-платформа для создания графического дизайна с готовыми шаблонами.</p>
+                <a href="https://www.canva.com/" class="program-button">Перейти</a>
+                <a href="https://www.canva.com/download/windows/canva-desktop/" class="program-button">Установить</a>
+            </div>
+            <!--GitHub Desktop-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/GitHub_Desktop_logo.png" alt="GitHub Desktop" class="program-image">
+                <h3 class="program-title">GitHub Desktop</h3>
+                <p class="program-tegs">Теги: #GitHubDesktop #Разработка</p>
+                <p class="program-description">GitHub Desktop — приложение для управления репозиториями на GitHub с удобным интерфейсом.</p>
+                <a href="https://desktop.github.com/" class="program-button">Перейти</a>
+                <a href="https://central.github.com/deployments/desktop/desktop/latest/win32" class="program-button">Установить</a>
+            </div>
+            <!--Visual Studio Code-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/VS_Code_logo.png" alt="Visual Studio Code" class="program-image">
+                <h3 class="program-title">Visual Studio Code</h3>
+                <p class="program-tegs">Теги: #VSCode #РедакторКода</p>
+                <p class="program-description">Visual Studio Code — легкий редактор кода с поддержкой множества языков программирования.</p>
+                <a href="https://code.visualstudio.com/" class="program-button">Перейти</a>
+                <a href="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" class="program-button">Установить</a>
+            </div>
+            <!--Visual Studio-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Visual_Studio_logo.png" alt="Visual Studio (2022)" class="program-image">
+                <h3 class="program-title">Visual Studio</h3>
+                <p class="program-tegs">Теги: #VisualStudio #Разработка</p>
+                <p class="program-description">Visual Studio — интегрированная среда разработки от Microsoft для создания приложений.</p>
+                <a href="https://visualstudio.microsoft.com/vs/older-downloads/" class="program-button">Перейти</a>
+                <a href="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:81a055f332dc4174a2b0ab71253b1ad0" class="program-button">Установить</a>
+            </div>
+            <!--AnyDesk-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/AnyDesk_logo.png" alt="AnyDesk" class="program-image">
+                <h3 class="program-title">AnyDesk</h3>
+                <p class="program-tegs">Теги: #AnyDesk #УдаленныйДоступ</p>
+                <p class="program-description">AnyDesk — программа для удаленного доступа и управления компьютерами.</p>
+                <a href="https://anydesk.com/en" class="program-button">Перейти</a>
+                <a href="https://anydesk.com/en/downloads/thank-you?dv=win_exe" class="program-button">Установить</a>
+            </div>
+            <!--Parsec-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Parsec_logo.png" alt="Parsec" class="program-image">
+                <h3 class="program-title">Parsec</h3>
+                <p class="program-tegs">Теги: #Parsec #УдаленныйДоступ</p>
+                <p class="program-description">Parsec — приложение для удаленного доступа с низкой задержкой и высокой производительностью.</p>
+                <a href="https://parsec.app/" class="program-button">Перейти</a>
+                <a href="https://builds.parsec.app/package/parsec-windows.exe" class="program-button">Установить</a>
+            </div>
+            <!--OBS Studio-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/OBS_Studio_logo.png" alt="OBS Studio" class="program-image">
+                <h3 class="program-title">OBS Studio</h3>
+                <p class="program-tegs">Теги: #OBSStudio #Трансляция</p>
+                <p class="program-description">OBS Studio — программа для записи видео и потоковой передачи с множеством функций.</p>
+                <a href="https://obsproject.com/" class="program-button">Перейти</a>
+                <a href="https://cdn-fastly.obsproject.com/downloads/OBS-Studio-31.0.1-Windows-Installer.exe" class="program-button">Установить</a>
+            </div>
+            <!--Netflix-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Netflix_logo.png" alt="Netflix" class="program-image">
+                <h3 class="program-title">Netflix</h3>
+                <p class="program-tegs">Теги: #Netflix #Стриминг</p>
+                <p class="program-description">Netflix — платформа для потокового просмотра фильмов и сериалов.</p>
+                <a href="https://www.netflix.com/" class="program-button">Перейти</a>
+            </div>
+            <!--HDrezka-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/HDrezka_logo.png" alt="HDrezka" class="program-image">
+                <h3 class="program-title">HDrezka</h3>
+                <p class="program-tegs">Теги: #HDrezka #Стриминг</p>
+                <p class="program-description">HDrezka — онлайн-кинотеатр для просмотра фильмов и сериалов в высоком качестве.</p>
+                <a href="https://hdrezka.ag/" class="program-button">Перейти</a>
+            </div>
+            <!--FL Studio-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/FL_Studio_logo.png" alt="FL Studio" class="program-image">
+                <h3 class="program-title">FL Studio</h3>
+                <p class="program-tegs">Теги: #FLStudio #Музыка</p>
+                <p class="program-description">FL Studio — программа для создания музыки с поддержкой работы с MIDI и аудио.</p>
+                <a href="https://www.image-line.com/" class="program-button">Перейти</a>
+                <a href="https://support.image-line.com/redirect/flstudio_win_installer" class="program-button">Установить</a>
+            </div>
+            <!--VLC media player-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/VLC_logo.png" alt="VLC media player" class="program-image">
+                <h3 class="program-title">VLC media player</h3>
+                <p class="program-tegs">Теги: #VLC #Мультимедиа</p>
+                <p class="program-description">VLC media player — универсальный медиаплеер с поддержкой множества форматов.</p>
+                <a href="https://www.videolan.org/" class="program-button">Перейти</a>
+                <a href="https://ftp.sh.cvut.cz/videolan/vlc/3.0.21/win64/vlc-3.0.21-win64.exe" class="program-button">Установить</a>
+            </div>
+            <!--RAR-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/WinRAR_logo.png" alt="RAR" class="program-image">
+                <h3 class="program-title">RAR</h3>
+                <p class="program-tegs">Теги: #RAR #Архиватор</p>
+                <p class="program-description">RAR — популярный архиватор для сжатия и разархивирования файлов, обеспечивающий высокую степень сжатия.</p>
+                <a href="https://www.rarlab.com/" class="program-button">Перейти</a>
+                <a href="https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-710ru.exe" class="program-button">Установить</a>
+            </div>
+            <!--7zip-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/7zip_logo.png" alt="7zip" class="program-image">
+                <h3 class="program-title">7zip</h3>
+                <p class="program-tegs">Теги: #7zip #Архиватор</p>
+                <p class="program-description">7zip — бесплатный и мощный архиватор, поддерживающий множество форматов и обеспечивающий высокую степень сжатия.</p>
+                <a href="https://www.7-zip.org/" class="program-button">Перейти</a>
+                <a href="https://www.7-zip.org/a/7z2409-x64.exe" class="program-button">Установить</a>
+            </div>
+            <!--AIDA64-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/AIDA64_logo.png" alt="AIDA64" class="program-image">
+                <h3 class="program-title">AIDA64</h3>
+                <p class="program-tegs">Теги: #AIDA64 #СистемнаяИнформация</p>
+                <p class="program-description">AIDA64 — программа для получения подробной информации о системе и ее компонентах.</p>
+                <a href="https://www.aida64.com/" class="program-button">Перейти</a>
+                <a href="https://download2.aida64.com/aida64extreme760.exe" class="program-button">Установить</a>
+            </div>
+            <!--HW Monitor-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/HW_Monitor_logo.png" alt="HW Monitor" class="program-image">
+                <h3 class="program-title">HW Monitor</h3>
+                <p class="program-tegs">Теги: #HWMonitor #Мониторинг</p>
+                <p class="program-description">HW Monitor — утилита для мониторинга аппаратного обеспечения и температуры.</p>
+                <a href="https://www.cpuid.com/softwares/hwmonitor.html" class="program-button">Перейти</a>
+                <a href="https://download.cpuid.com/hwmonitor/hwmonitor_1.56.exe" class="program-button">Установить</a>
+            </div>
+            <!--MSI Afterburner-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/MSI_Afterburner_logo.png" alt="MSI Afterburner" class="program-image">
+                <h3 class="program-title">MSI Afterburner</h3>
+                <p class="program-tegs">Теги: #MSIAfterburner #Оверклокинг</p>
+                <p class="program-description">MSI Afterburner — утилита для оверклокинга видеокарт и мониторинга их состояния.</p>
+                <a href="https://www.msi.com/page/afterburner" class="program-button">Перейти</a>
+                <a href="https://download.msi.com/uti_exe/vga/MSIAfterburnerSetup.zip?__token__=exp=1740326653~acl=/*~hmac=49727dd641c30523cb751dc33d9aa73e19dc1533e6dbfe3f5f5fb63e645468e7" class="program-button">Установить</a>
+            </div>
+            <!--FurMark-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/FurMark_logo.png" alt="FurMark" class="program-image">
+                <h3 class="program-title">FurMark</h3>
+                <p class="program-tegs">Теги: #FurMark #Тестирование</p>
+                <p class="program-description">FurMark — утилита для стресс-тестирования видеокарт с высокой нагрузкой.</p>
+                <a href="https://geeks3d.com/furmark/" class="program-button">Перейти</a>
+            </div>
+            <!--CCleaner-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/CCleaner_logo.png" alt="CCleaner" class="program-image">
+                <h3 class="program-title">CCleaner</h3>
+                <p class="program-tegs">Теги: #CCleaner #Оптимизация</p>
+                <p class="program-description">CCleaner — утилита для очистки системы от ненужных файлов и оптимизации.</p>
+                <a href="https://www.ccleaner.com/" class="program-button">Перейти</a>
+                <a href="https://bits.avcdn.net/productfamily_CCLEANER/insttype_FREE/platform_WIN_PIR/installertype_ONLINE/build_RELEASE/cookie_mmm_ccl_008_999_a9b_m" class="program-button">Установить</a>
+            </div>
+            <!--LogMein Hamachi-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/LogMein_Hamachi_logo.png" alt="LogMein Hamachi" class="program-image">
+                <h3 class="program-title">LogMein Hamachi</h3>
+                <p class="program-tegs">Теги: #Hamachi #VPN</p>
+                <p class="program-description">LogMein Hamachi — программа для создания виртуальных частных сетей (VPN).</p>
+                <a href="https://www.vpn.net/" class="program-button">Перейти</a>
+            </div>
+            <!--Radmin VPN-->
+            <div class="program-card">
+                <img src="/assets/images/Platforms-pages/Radmin_VPN_logo.png" alt="Radmin VPN" class="program-image">
+                <h3 class="program-title">Radmin VPN</h3>
+                <p class="program-tegs">Теги: #RadminVPN #VPN</p>
+                <p class="program-description">Radmin VPN — бесплатное приложение для создания виртуальных частных сетей.</p>
+                <a href="https://www.radmin-vpn.com/" class="program-button">Перейти</a>
+                <a href="https://download.radmin-vpn.com/download/files/Radmin_VPN_1.4.4642.1.exe" class="program-button">Установить</a>
+            </div>
 
             <!--Name-->
-            <!-- <div class="program-card"style="display: none;">
+            <!-- <div class="program-card">
                 <img src="/assets/images/Platforms-pages" alt="Program Image" class="program-image">
                 <h3 class="program-title">None</h3>
                 <p class="program-tegs">Теги: #</p>
@@ -186,6 +568,7 @@
     <script src="/assets/js/menu.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

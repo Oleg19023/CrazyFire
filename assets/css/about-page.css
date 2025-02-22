@@ -1,0 +1,9 @@
+.banner-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.about-text {
+    padding: 20px;
+}
+

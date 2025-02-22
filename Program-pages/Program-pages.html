@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
-    <link rel="shortcut icon" href="/assets/images/4kLogo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -20,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html"><img src="/assets/images/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,31 +33,103 @@
                             <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
-                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Базовые платформы</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Базовые приложения</a></li>
                                 <li><a class="dropdown-item" href="#">Программы (Активно)</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
 
                             </ul>
 
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Проекты</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Новости(beta)</a>
+                            <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                                <li><a class="dropdown-item" href="#">Мировые новости</a></li>
+                                <li><a class="dropdown-item" href="#">Игровые новости</a></li>
+                            </ul>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Магазин(beta)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/Program-pages/Projects-pages.html">Проекты</a>
+                        </li>
 
                         </li>
                     </ul>                     
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
-                    <button id="themeToggle" class="btn btn-outline-secondary" style="margin-right: 5px;">
-                        <i id="themeIcon" class="fas fa-moon"></i>
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fas fa-play"></i>
                     </button>
                     
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
                     <div class="dropdown" style="display: inline-block; margin-right: 5px;">
                         <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-cog"></i>
@@ -69,10 +143,6 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
-                        <i id="parallaxIcon" class="fas fa-play"></i>
-                    </button>            
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -84,27 +154,84 @@
 
     <main>
         <div class="programs-container">
-            <!-- Пример карточки программы -->
+            <!-- Рандомайзер -->
             <div class="program-card">
-                <img src="/assets/images/Icons/gift-solid.svg" alt="Program Image" class="program-image">
+                <i class="fa-solid fa-dice program-icon"></i>
+                <h3 class="program-title">Рандомайзер</h3>
+                <p class="program-description">🎲 Генерирует случайные числа, буквы, символы, пароли, цитаты, и многое другое.</p>
+                <a href="/Program-pages/Pages/Randomizer-pages.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Полезные вычисления -->
+            <div class="program-card">
+                <i class="fa-solid fa-calculator program-icon"></i>
+                <h3 class="program-title">Полезные вычисления</h3>
+                <p class="program-description">📐 Эта программа предоставляет удобные инструменты для выполнения различных расчетов.</p>
+                <a href="/Program-pages/Pages/Useful-calculations.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Курс валют НБУ -->
+            <div class="program-card">
+                <i class="fa-solid fa-money-bill-transfer program-icon"></i>
+                <h3 class="program-title">Курс валют НБУ</h3>
+                <p class="program-description">💱 Курс валют НБУ — це офіційний обмінний курс іноземних валют до гривні, встановлений Національним банком України.</p>
+                <a href="/Program-pages/Pages/NBUexchangeRate.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Список -->
+            <div class="program-card">
+                <i class="fa-solid fa-list program-icon"></i>
+                <h3 class="program-title">Список</h3>
+                <p class="program-description">Создайте и управляйте своими задачами с помощью нашего удобного списка.</p>
+                <a href="/Program-pages/Pages/List-pages.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Тонгенератор -->
+            <div class="program-card">
+                <i class="fa-solid fa-tower-broadcast program-icon"></i>
+                <h3 class="program-title">Тонгенератор</h3>
+                <p class="program-description">🔊 Генерирует звуковые тоны с заданной частотой. Управляйте частотой вручную или с помощью ползунка для создания уникальных звуков.</p>
+                <a href="/Program-pages/Pages/Tone-Generator-pages.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Auto Twitch Drops -->
+            <div class="program-card"> 
+                <i class="fa-solid fa-gift program-icon"></i>
                 <h3 class="program-title">Auto Twitch Drops</h3>
                 <p class="program-description">Собирает твич дропсы, самостоятельно переходя на следующий стрим по окончанию времени, без участия человека</p>
                 <a href="/Program-pages/Pages/AutoTwitchDrops.html" class="program-button">Перейти</a>
             </div>
-    
+            <!-- Морзе -->
             <div class="program-card">
-                <img src="/assets/images/Icons/repeat-solid.svg" alt="Program Image" class="program-image">
+                <i class="fa-solid fa-signal program-icon"></i>
+                <h3 class="program-title">Азбука морзе</h3>
+                <p class="program-description">📡 Программа для расшифровки и зашифровки азбуки Морзе. Позволяет преобразовывать сигналы точек и тире в текст и наоборот.</p>
+                <a href="/Program-pages/Pages/Morse.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Фонетический алфавит -->
+            <div class="program-card">
+                <i class="fa-solid fa-comment-dots program-icon"></i>
+                <h3 class="program-title">Фонетический алфавит</h3>
+                <p class="program-description">💬 Фонетический алфавит — система, позволяющая легко расшифровывать буквенно-цифровые комбинации.</p>
+                <a href="/Program-pages/Pages/Phonetic-alphabet.html" class="program-button">Перейти</a>
+            </div>
+            <!-- Random Video Switcher -->
+            <div class="program-card">
+                <i class="fa-solid fa-repeat program-icon"></i>
                 <h3 class="program-title">Random Video Switcher</h3>
-                <p class="program-description">Описание</p>
+                <p class="program-description">🔄 Автоматически переключает случайные видео
+                    Этот инструмент помогает переключаться между случайными видео</p>
                 <a href="/Program-pages/Pages/RandomVideoSwitcher.html" class="program-button">Перейти</a>
             </div>
-    
+            <!-- Paint -->
             <div class="program-card">
-                <img src="" alt="Program Image" class="program-image">
-                <h3 class="program-title">Программа 3</h3>
-                <p class="program-description">Описание</p>
-                <a href="/program3.html" class="program-button">Перейти</a>
+                <i class="fa-solid fa-palette program-icon"></i>
+                <h3 class="program-title">Paint (beta)</h3>
+                <p class="program-description">🎨 Рисуйте и создавайте произведения искусства прямо в браузере! Используйте различные инструменты и цвета для создания уникальных картин.</p>
+                <a href="/Program-pages/Pages/Paint-pages.html" class="program-button">Перейти</a>
             </div>
+
+            <!-- <div class="program-card">
+                <i class="fa-solid fa-question program-icon"></i>
+                <h3 class="program-title">Цифры в слова</h3>
+                <p class="program-description">Описание</p>
+                <a href="/program3.html" class="program-button">Перейти(Недоступно)</a>
+            </div> -->
 
         </div>
     </main>
@@ -114,6 +241,7 @@
     <script src="/assets/js/menu.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

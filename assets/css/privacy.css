@@ -6,6 +6,7 @@
         .container {
             margin: 0 auto; /* Центрирование контейнера */
             padding: 20px; /* Отступы внутри контейнера */
+            padding-top: 90px;
             background-color: #1e1e1e; /* Фон контейнера */
             border-radius: 8px; /* Скругление углов */
         }
@@ -28,14 +29,6 @@
             color: #e0e0e0; /* Цвет текста */
             line-height: 1.6; /* Межстрочный интервал */
             margin-bottom: 15px; /* Отступ снизу */
-        }
-        
-        ul {
-            margin-left: 20px; /* Отступ слева для списка */
-        }
-        
-        li {
-            margin-bottom: 5px; /* Отступ снизу для элементов списка */
         }
         
         a {

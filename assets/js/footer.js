@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Изначально создаем футер с нужными элементами
     const footerHTML = `
         <footer id="footer" style="display: none;">
-            <p class="footer-text"><img src="/assets/images/4kLogo2.png" alt="logo" class="footer-logo">© <span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b> Заставка CrazyFire, Логотип CrazyFire, являются товарными знаками или зарегистрированными товарными знаками CrazyFire в Украине и остальных странах.</p>  
+            <p class="footer-text"><img src="/assets/images/Site-logos/4kLogo2.png" alt="logo" class="footer-logo">© <span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b> Заставка CrazyFire, Логотип CrazyFire, являются товарными знаками или зарегистрированными товарными знаками CrazyFire в Украине и остальных странах.</p>  
             <div class="footer-links">
                 <a href="/Info-pages/about.html">| Про нас |</a>
                 <a href="/Info-pages/contacts.html">Контакты |</a>
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                     <h6 class="m-3">
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v1.7</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.0</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>
@@ -65,3 +65,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 ///////// <-Footer-JS-> ////////////
+
+

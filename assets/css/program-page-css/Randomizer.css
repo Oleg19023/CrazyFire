@@ -1,0 +1,271 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top: 10px;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    flex: 1;
+}
+
+.sidebar {
+    width: 200px;
+    margin-top: 30px;
+    padding: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+    transition: background 0.3s;
+}
+
+.dark-theme .sidebar {
+    background: #1e1e1e;
+    box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.dark-theme .sidebar a {
+    color: #bbb;
+}
+
+.sidebar a:hover {
+    background: #ddd;
+}
+
+.dark-theme .sidebar a:hover {
+    background: #333;
+}
+
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+.generator {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    transition: background 0.3s, border 0.3s;
+}
+
+.dark-theme .generator {
+    background: #1e1e1e;
+    border: 1px solid #444;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="number"], select {
+    padding: 5px;
+    margin: 5px 0;
+    width: 100%;
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dark-theme input[type="number"],
+.dark-theme select {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.dark-theme button {
+    background: #2196f3;
+}
+
+.dark-theme button:hover {
+    background: #1976d2;
+}
+
+#numberResult {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-word;
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.dark-theme #numberResult {
+    background: #333;
+    color: #fff;
+}
+
+#numberResult span {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: #007bff;
+    color: white;
+}
+
+.dark-theme #numberResult span {
+    background: #2196f3;
+}
+
+/* Стили для контейнера с паролями */
+#passwordResult {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    word-wrap: break-word;
+    background: #f1f1f1;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dark-theme #passwordResult {
+    background: #333;
+    color: #fff;
+}
+
+/* Основной стиль пароля */
+.password-box {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: #007bff;
+    color: white;
+    font-size: 30px; /* Стандартный размер */
+    word-break: break-word;
+    text-align: center;
+}
+
+/* Длинные пароли (20+ символов) */
+.long-password {
+    font-size: 24px;
+}
+
+/* Очень длинные пароли (30+ символов) */
+.very-long-password {
+    font-size: 20px;
+}
+
+#quote-container {
+    text-align: center;
+    margin-top: 100px;
+  }
+
+  #quote {
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  #author {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  #new-quote {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  #new-quote:hover {
+    background-color: white;
+    color: blue;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);}
+
+    #coinContainer {
+        display: flex;
+        justify-content: center;
+    }
+    
+    #coinImage {
+        transition: transform 1s ease-in-out; /* Анимация вращения */
+    }
+    
+    
+
+/* Адаптивность для телефонов */
+@media (max-width: 768px) {
+    .password-box {
+        font-size: 24px; /* Уменьшаем размер на мобильных */
+    }
+    .long-password {
+        font-size: 20px;
+    }
+    .very-long-password {
+        font-size: 16px;
+    }
+}
+
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        text-align: center;
+        box-shadow: none;
+        padding: 10px 0;
+    }
+    .sidebar a {
+        display: inline-block;
+        margin: 5px;
+        padding: 8px 15px;
+    }
+}

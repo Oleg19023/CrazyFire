@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/Randomizer.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
+                        <button class="button">
+                            <svg class="svgIcon" viewBox="0 0 384 512">
+                                <path
+                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+                                ></path>
+                            </svg>
+                        </button>
+                    </a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+
+                    </ul>                     
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fas fa-play"></i>
+                    </button>
+                    
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>  
+
+    <main class="container">
+        <div class="sidebar">
+            <h2>Генераторы</h2>
+            <a href="#" id="randomNumber">Генератор случайных чисел</a>
+            <a href="#" id="randomLetters">Генератор паролей</a>
+            <a href="#" id="randomQuote">Генератор цитат</a>
+            <a href="#" id="steamKey">Генератор ключей Steam</a>
+            <a href="#" id="random">???</a>
+            <h2>Жребии</h2>
+            <a href="#" id="coinFlip">Орел или Решка</a>
+        </div>
+        <div class="main">
+            <!-- Генератор случайных чисел -->
+            <div class="generator" id="randomNumberGenerator">
+                <h1>Генератор случайных чисел</h1>
+                <label for="min">Минимальное значение (от 1 до 999999999):</label>
+                <input type="number" id="min" value="1" min="1" max="999999999">
+                <label for="max">Максимальное значение (от 1 до 999999999):</label>
+                <input type="number" id="max" value="100" min="1" max="999999999">
+                <label for="count">Количество случайных чисел (до 1000):</label>
+                <input type="number" id="count" value="1" min="1" max="1000">
+                <label>
+                    <input type="checkbox" id="noRepeats"> Без повторов
+                </label>
+                <label>
+                    <input type="checkbox" id="sortOrder"> Сортировать по порядку
+                </label>
+                <label>
+                    <input type="checkbox" id="excludeNumbers"> Исключить числа
+                </label>
+                <div id="excludeInput" style="display: none;">
+                    <label for="excludedValues">Введите числа через запятую:</label>
+                    <input type="text" id="excludedValues" placeholder="Например: 5,10,15">
+                </div>
+                <button id="generateNumber">Сгенерировать</button>
+                <div id="numberResult"></div>
+            </div>
+            <!-- Генератор паролей -->
+            <div class="generator" id="randomLettersGenerator" style="display: none;">
+                <h1>Генератор паролей</h1>
+                <label for="passwordLength">Длина пароля:</label>
+                <input type="number" id="passwordLength" value="8" min="1">
+                
+                <label for="passwordCount">Количество паролей:</label>
+                <input type="number" id="passwordCount" value="1" min="1">
+                
+                <label>
+                    <input type="checkbox" id="uppercase" checked> Заглавные буквы
+                </label>
+                <label>
+                    <input type="checkbox" id="lowercase" checked> Строчные буквы
+                </label>
+                <label>
+                    <input type="checkbox" id="numbers" checked> Цифры
+                </label>
+                <label>
+                    <input type="checkbox" id="spaces"> Пробелы
+                </label>
+                <label>
+                    <input type="checkbox" id="separators"> Разделители (-_)
+                </label>
+                <label>
+                    <input type="checkbox" id="special"> Специальные символы
+                </label>
+                <button id="generatePassword">Сгенерировать пароль</button>
+                <div id="passwordResult"></div>
+            </div>
+            <!-- Генератор цитат -->
+            <div class="generator" id="randomQuoteGenerator" style="display: none;">
+                <h1>Генератор цитат</h1>
+                <p id="quote">"Тут будет цитата..."</p>
+                <p id="author">— Автор</p>
+                <button id="new-quote">Генерировать цитату</button>
+            </div>
+            <!-- Орел или решка -->
+            <div class="generator" id="coinFlipGenerator" style="display: none;">
+                <h1>Подкинуть монетку</h1>
+                <button id="flipCoin">Бросить монетку</button>
+                <div id="coinContainer">
+                    <img id="coinImage" src="/assets/images/Program-pages/Orel_or_reshka/heads.png" alt="Монета">
+                </div>
+                <p id="coinResult"></p>
+            </div>    
+            <!-- Генератор ключей Steam -->
+            <div class="generator" id="steamKeyGenerator" style="display: none;">
+                <h1>Генератор ключей Steam</h1>
+                <label for="keyCount">Количество ключей:</label>
+                <input type="number" id="keyCount" value="1" min="1" max="10000">
+                <button id="generateSteamKeys">Сгенерировать ключи</button>
+                <div id="steamKeyResult"></div> <!-- Здесь будут отображаться ключи -->
+            </div>                                           
+        </div>
+    </main>    
+    
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+
+    <script src="/assets/js/program-page-js/Randomizer.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+</body>
+</html>

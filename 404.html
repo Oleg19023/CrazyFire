@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
-    <link rel="shortcut icon" href="/assets/images/4kLogo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/404.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -21,7 +24,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.html"><img src="/assets/images/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,140 +35,120 @@
                             <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
-                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Базовые платформы</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Базовые приложения</a></li>
                                 <li><a class="dropdown-item" href="/Program-pages/Program-pages.html">Программы</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
+                                <li><a class="dropdown-item" href="/404.html">None</a></li>
 
                             </ul>
 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Новости(beta)</a>
+                                <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                                    <li><a class="dropdown-item" href="#">Мировые новости</a></li>
+                                    <li><a class="dropdown-item" href="#">Игровые новости</a></li>
+                                </ul>
+                            </li>
+                        
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Проекты</a>
+                                <a class="nav-link" aria-current="page" href="#">Магазин(beta)</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#"></a>
+                                <a class="nav-link" aria-current="page" href="/Program-pages/Projects-pages.html">Проекты</a>
                             </li>
 
                         </li>
                     </ul>                     
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
-                    <button id="themeToggle" class="btn btn-outline-secondary" style="margin-right: 5px;">
-                        <i id="themeIcon" class="fas fa-moon"></i>
-                    </button>
-                    
-                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
-                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-cog"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
-                            <li>
-                                <div class="px-3 py-2">
-                                    <b class="b2">Выберите цвет:</b>
-                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
-                        <i id="parallaxIcon" class="fas fa-play"></i>
-                    </button>          
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                      <input id="input" type="checkbox" checked="darkTheme" />
+                      <div class="slider round">
+                          <div class="sun-moon">
+                              <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                  
+                              <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                              <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                  <circle cx="50" cy="50" r="50"></circle>
+                              </svg>
+                          </div>
+                          <div class="stars">
+                              <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                  <path
+                                      d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                  </path>
+                              </svg>
+                              <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                  <path
+                                      d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                  </path>
+                              </svg>
+                              <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                  <path
+                                      d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                  </path>
+                              </svg>
+                              <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                  <path
+                                      d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                  </path>
+                              </svg>
+                          </div>
+                      </div>
+                  </label>
+
                 </div>
             </div>
         </nav>
     </header>
 
     <div id="message">
-      <h2>404</h2>
-      <h1>Страница не найдена</h1>
-      <p>Извините, запрашиваемая вами страница не найдена. Проверьте правильность введенного URL и попробуйте снова.</p>
-      <a href="/index.html">Вернуться на главную страницу</a>
+        <h2>404</h2>
+        <h1>Страница не найдена</h1>
+        <p>Извините, но запрашиваемая вами страница не найдена. Возможно, она была удалена, переименована или никогда не существовала. Пожалуйста, проверьте правильность введенного URL-адреса на наличие ошибок, таких как опечатки или неверные символы. Если вы уверены, что страница должна существовать, попробуйте обновить страницу или вернуться на главную, чтобы найти нужную информацию. Мы приносим извинения за неудобства и надеемся, что вы сможете найти то, что искали.</p>
+        <div class="button-container">
+            <a href="/index.html">Вернуться на главную страницу</a>
+            <a href="#">Помощь(Beta)</a>
+            <a href="#">Служба поддержки(Beta)</a>
+        </div>
     </div>
-
-    <style>
-    #message {
-      background: #fff;
-      height: 600px;
-      padding: 40px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: flex; /* Используем Flexbox для центрирования */
-      flex-direction: column; /* Располагаем элементы вертикально */
-      justify-content: center; /* Центрируем по вертикали */
-      align-items: center; /* Центрируем по горизонтали */
-      transition: background-color 0.8s, color 0.8s;
-    }
-
-    #message h2 {
-      font-size: 48px;
-      color: #ff0000;
-      margin-bottom: 20px;
-    }
-
-    #message h1 {
-      font-size: 36px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    #message p {
-      font-size: 16px;
-      color: #666;
-      margin-bottom: 30px;
-    }
-
-    #message a {
-      font-size: 16px;
-      color: #007bff;
-      text-decoration: none;
-      border: 1px solid #007bff;
-      padding: 10px 20px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    #message a:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
-
-    /* Стили для тёмной темы */
-    body.dark-theme #message {
-      background: #333;
-    }
-
-    body.dark-theme #message h2 {
-      color: #ff0000;
-    }
-
-    body.dark-theme #message h1 {
-      color: #fff;
-    }
-
-    body.dark-theme #message p {
-      color: #ccc;
-    }
-
-    body.dark-theme #message a {
-      color: #8cd9d6;
-      border-color: #8cd9d6;
-    }
-
-    body.dark-theme #message a:hover {
-      background-color: #8cd9d6;
-      color: #333;
-    }
-    </style>
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/menu.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

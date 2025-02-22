@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
+                        <button class="button">
+                            <svg class="svgIcon" viewBox="0 0 384 512">
+                                <path
+                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+                                ></path>
+                            </svg>
+                        </button>
+                    </a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+
+                    </ul>                     
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fas fa-play"></i>
+                    </button>
+                    
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>  
+    
+    <main>
+        <div class="left-block">
+          <div class="colors">
+            <button type="button" value="#0000ff"></button>
+            <button type="button" value="#009fff"></button>
+            <button type="button" value="#0fffff"></button>
+            <button type="button" value="#bfffff"></button>
+            <button type="button" value="#000000"></button>
+            <button type="button" value="#333333"></button>
+            <button type="button" value="#666666"></button>
+            <button type="button" value="#999999"></button>
+            <button type="button" value="#ffcc66"></button>
+            <button type="button" value="#ffcc00"></button>
+            <button type="button" value="#ffff00"></button>
+            <button type="button" value="#ffff99"></button>
+            <button type="button" value="#003300"></button>
+            <button type="button" value="#555000"></button>
+            <button type="button" value="#00ff00"></button>
+            <button type="button" value="#99ff99"></button>
+            <button type="button" value="#f00000"></button>
+            <button type="button" value="#ff6600"></button>
+            <button type="button" value="#ff9933"></button>
+            <button type="button" value="#f5deb3"></button>
+            <button type="button" value="#330000"></button>
+            <button type="button" value="#663300"></button>
+            <button type="button" value="#cc6600"></button>
+            <button type="button" value="#deb887"></button>
+            <button type="button" value="#aa0fff"></button>
+            <button type="button" value="#cc66cc"></button>
+            <button type="button" value="#ff66ff"></button>
+            <button type="button" value="#ff99ff"></button>
+            <button type="button" value="#e8c4e8"></button>
+            <button type="button" value="#ffffff"></button>
+          </div>
+          <div class="brushes">
+            <button type="button" value="1"></button>
+            <button type="button" value="2"></button>
+            <button type="button" value="3"></button>
+            <button type="button" value="4"></button>
+            <button type="button" value="5"></button>
+          </div>
+          <div class="buttons">
+            <button id="clear" type="button">Clear</button>
+            <button id="save" type="button">Save</button>
+          </div>
+        </div>
+        <div class="right-block">
+          <canvas id="paint-canvas" width="640" height="800"></canvas>
+        </div>
+      </main>
+
+    <style>
+        
+    * {
+    box-sizing: border-box;
+    }
+
+    body{
+        margin-top: 120px;
+    }
+
+    main {
+    width: 800px;
+    border: 1px solid #e0e0e0;
+    margin: 0 auto;
+    display: flex;
+    flex-grow: 1;
+    }
+
+    .left-block {
+    width: 160px;
+    border-right: 1px solid #e0e0e0;
+    }
+
+    .colors {
+    background-color: #ece8e8;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    }
+
+    .colors button {
+    display: inline-block;
+    border: 1px solid #00000026;
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px
+    }
+
+    .colors button:nth-of-type(1) {
+    background-color: #0000ff;
+    }
+
+    .colors button:nth-of-type(2) {
+    background-color: #009fff;
+    }
+
+    .colors button:nth-of-type(3) {
+    background-color: #0fffff;
+    }
+
+    .colors button:nth-of-type(4) {
+    background-color: #bfffff;
+    }
+
+    .colors button:nth-of-type(5) {
+    background-color: #000000;
+    }
+
+    .colors button:nth-of-type(6) {
+    background-color: #333333;
+    }
+
+    .colors button:nth-of-type(7) {
+    background-color: #666666;
+    }
+
+    .colors button:nth-of-type(8) {
+    background-color: #999999;
+    }
+
+    .colors button:nth-of-type(9) {
+    background-color: #ffcc66;
+    }
+
+    .colors button:nth-of-type(10) {
+    background-color: #ffcc00;
+    }
+
+    .colors button:nth-of-type(11) {
+    background-color: #ffff00;
+    }
+
+    .colors button:nth-of-type(12) {
+    background-color: #ffff99;
+    }
+
+    .colors button:nth-of-type(13) {
+    background-color: #003300;
+    }
+
+    .colors button:nth-of-type(14) {
+    background-color: #555000;
+    }
+
+    .colors button:nth-of-type(15) {
+    background-color: #00ff00;
+    }
+
+    .colors button:nth-of-type(16) {
+    background-color: #99ff99;
+    }
+
+    .colors button:nth-of-type(17) {
+    background-color: #f00000;
+    }
+
+    .colors button:nth-of-type(18) {
+    background-color: #ff6600;
+    }
+
+    .colors button:nth-of-type(19) {
+    background-color: #ff9933;
+    }
+
+    .colors button:nth-of-type(20) {
+    background-color: #f5deb3;
+    }
+
+    .colors button:nth-of-type(21) {
+    background-color: #330000;
+    }
+
+    .colors button:nth-of-type(22) {
+    background-color: #663300;
+    }
+
+    .colors button:nth-of-type(23) {
+    background-color: #cc6600;
+    }
+
+    .colors button:nth-of-type(24) {
+    background-color: #deb887;
+    }
+
+    .colors button:nth-of-type(25) {
+    background-color: #aa0fff;
+    }
+
+    .colors button:nth-of-type(26) {
+    background-color: #cc66cc;
+    }
+
+    .colors button:nth-of-type(27) {
+    background-color: #ff66ff;
+    }
+
+    .colors button:nth-of-type(28) {
+    background-color: #ff99ff;
+    }
+
+    .colors button:nth-of-type(29) {
+    background-color: #e8c4e8;
+    }
+
+    .colors button:nth-of-type(30) {
+    background-color: #ffffff;
+    }
+
+    .brushes {
+    background-color: purple;
+    padding-top: 5px
+    }
+
+    .brushes button {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    background-color: #ece8e8;
+    margin-bottom: 5px;
+    padding: 5px;
+    height: 30px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    }
+
+    .brushes button:after {
+    height: 1px;
+    display: block;
+    background: #808080;
+    content: '';
+    }
+
+    .brushes button:nth-of-type(1):after {
+    height: 1px;
+    }
+
+    .brushes button:nth-of-type(2):after {
+    height: 2px;
+    }
+
+    .brushes button:nth-of-type(3):after {
+    height: 3px;
+    }
+
+    .brushes button:nth-of-type(4):after {
+    height: 4px;
+    }
+
+    .brushes button:nth-of-type(5):after {
+    height: 5px;
+    }
+
+    .buttons {
+    height: 80px;
+    padding-top: 10px;
+    }
+
+    .buttons button {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    background-color: #ece8e8;
+    margin-bottom: 5px;
+    padding: 5px;
+    height: 30px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    }
+
+    .right-block {
+    width: 640px;
+    }
+
+    #paint-canvas {
+    cursor:crosshair;
+    }
+
+    </style>
+    
+
+    <script>
+    window.onload = function () {
+
+    // Definitions
+    var canvas = document.getElementById("paint-canvas");
+    var context = canvas.getContext("2d");
+    var boundings = canvas.getBoundingClientRect();
+
+    // Specifications
+    var mouseX = 0;
+    var mouseY = 0;
+    context.strokeStyle = 'black'; // initial brush color
+    context.lineWidth = 1; // initial brush width
+    var isDrawing = false;
+
+
+    // Handle Colors
+    var colors = document.getElementsByClassName('colors')[0];
+
+    colors.addEventListener('click', function(event) {
+    context.strokeStyle = event.target.value || 'black';
+    });
+
+    // Handle Brushes
+    var brushes = document.getElementsByClassName('brushes')[0];
+
+    brushes.addEventListener('click', function(event) {
+    context.lineWidth = event.target.value || 1;
+    });
+
+    // Mouse Down Event
+    canvas.addEventListener('mousedown', function(event) {
+    setMouseCoordinates(event);
+    isDrawing = true;
+
+    // Start Drawing
+    context.beginPath();
+    context.moveTo(mouseX, mouseY);
+    });
+
+    // Mouse Move Event
+    canvas.addEventListener('mousemove', function(event) {
+    setMouseCoordinates(event);
+
+    if(isDrawing){
+        context.lineTo(mouseX, mouseY);
+        context.stroke();
+    }
+    });
+
+    // Mouse Up Event
+    canvas.addEventListener('mouseup', function(event) {
+    setMouseCoordinates(event);
+    isDrawing = false;
+    });
+
+    // Handle Mouse Coordinates
+    function setMouseCoordinates(event) {
+    mouseX = event.clientX - boundings.left;
+    mouseY = event.clientY - boundings.top;
+    }
+
+    // Handle Clear Button
+    var clearButton = document.getElementById('clear');
+
+    clearButton.addEventListener('click', function() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // Handle Save Button
+    var saveButton = document.getElementById('save');
+
+    saveButton.addEventListener('click', function() {
+    var imageName = prompt('Please enter image name');
+    var canvasDataURL = canvas.toDataURL();
+    var a = document.createElement('a');
+    a.href = canvasDataURL;
+    a.download = imageName || 'drawing';
+    a.click();
+    });
+    };
+
+    </script>
+    
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+</body>
+</html>
