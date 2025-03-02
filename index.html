@@ -18,6 +18,15 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
 <body>    
     <header id="header" style="display: none;">
         <nav class="navbar navbar-expand-lg">
@@ -126,7 +135,6 @@
                             </div>
                         </div>
                     </label>
-
                 </div>
             </div>
         </nav>
@@ -152,6 +160,10 @@
   
         </section>
     </main>
+
+    <div class="px-3 py-2" style="display: none;">Fix error<b class="b2"></b>
+    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control" style="display: none;">
+    </div>
 
     <script src="./assets/js/main-page.js"></script>
     <script src="./assets/js/theme.js"></script>
