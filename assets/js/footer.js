@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                     <h6 class="m-3">
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.0</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.1</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>
@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("footer").style.display = "block";
     }
 });
+
+
 
 
 ///////// <-Footer-JS-> ////////////
