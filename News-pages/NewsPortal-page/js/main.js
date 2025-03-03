@@ -158,179 +158,135 @@
             }
         }
     });
+    // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b86ec97f0d174ec5a4fcfd10bf43c17f`; // API KEY
+    // const url = `https://gnews.io/api/v4/search?q=example&apikey=718082ede25572b07cd3b7c0f7ec7534`; // API KEY
     
 })(jQuery);
 
-// Media API Main News
-const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b86ec97f0d174ec5a4fcfd10bf43c17f`; // API KEY
+
+// const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b86ec97f0d174ec5a4fcfd10bf43c17f`; // API KEY OLD
+
+// // Универсальная функция для заполнения новостей
+// function fillNews(selector, data, maxItems) {
+//     const newsItems = document.querySelectorAll(selector);
+//     data.slice(0, maxItems).forEach((newsItem, index) => {
+//         const newsDiv = newsItems[index];
+
+//         if (!newsDiv) return;
+
+//         const img = newsDiv.querySelector('img');
+//         if (img) img.src = newsItem.urlToImage || 'img/default.png';
+
+//         const badge = newsDiv.querySelector('.badge');
+//         if (badge) {
+//             badge.href = newsItem.url;
+//             badge.textContent = newsItem.source?.name || 'Unknown';
+//         }
+
+//         const date = newsDiv.querySelector('.text-body, .text-white');
+//         if (date) {
+//             date.href = newsItem.url;
+//             date.textContent = newsItem.publishedAt
+//                 ? new Date(newsItem.publishedAt).toLocaleDateString()
+//                 : 'No date';
+//         }
+
+//         const title = newsDiv.querySelector('.h2, .h4, .h6, .small');
+//         if (title) {
+//             title.href = newsItem.url;
+//             title.textContent = newsItem.title || 'No title';
+//         }
+
+//         const description = newsDiv.querySelector('p');
+//         if (description) {
+//             description.textContent = newsItem.description || 'No description';
+//         }
+//     });
+// }
+
+// // Запрос к API
+// fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//         if (!data.articles) throw new Error("No articles found");
+
+//         fillNews('.main-carousel .position-relative', data.articles, 5);
+//         fillNews('.row.mx-0 .position-relative', data.articles, 5);
+//         fillNews('.news-carousel .position-relative', data.articles, 5);
+//         fillNews('.position-relative.mb-3', data.articles, 5);
+//         fillNews('.row.news-lg.mx-0.mb-3', data.articles, 5);
+//         fillNews('.d-flex.align-items-center.bg-white.mb-3', data.articles, 5);
+//         fillNews('.col-lg-3.col-md-6.mb-5 .mb-3', data.articles, 5);
+//     })
+//     .catch(error => console.error('Error:', error));
+
+
+
+
+
+// Новый URL API
+const url = `https://gnews.io/api/v4/search?q=example&apikey=718082ede25572b07cd3b7c0f7ec7534`;
+
+function fillNews(selector, data, maxItems) {
+    console.log('Fetched data:', data);
+    const newsItems = document.querySelectorAll(selector);
+
+    data.slice(0, maxItems).forEach((newsItem, index) => {
+        const newsDiv = newsItems[index];
+
+        if (!newsDiv) return;
+
+        const img = newsDiv.querySelector('img');
+        if (img) {
+            img.src = newsItem.image || 'img/default.png';
+            console.log('Image src set to:', img.src);
+        }
+
+        const badge = newsDiv.querySelector('.badge');
+        if (badge) {
+            badge.href = newsItem.url;
+            badge.textContent = newsItem.source?.name || 'Unknown';
+        }
+
+        const date = newsDiv.querySelector('.text-body, .text-white');
+        if (date) {
+            date.href = newsItem.url;
+            date.textContent = newsItem.publishedAt
+                ? new Date(newsItem.publishedAt).toLocaleDateString()
+                : 'No date';
+        }
+
+        const title = newsDiv.querySelector('.h6'); // Убедитесь, что этот класс правильный
+        if (title) {
+            title.href = newsItem.url;
+            title.textContent = newsItem.title || 'No title';
+        }
+
+        const description = newsDiv.querySelector('p');
+        if (description) {
+            description.textContent = newsItem.description || 'No description';
+        }
+    });
+}
+
+// Запрос к API
 fetch(url)
     .then(response => response.json())
     .then(data => {
-        const carouselItems = document.querySelectorAll('.main-carousel .position-relative');
-        data.articles.forEach((newsItem, index) => {
-            if (index < carouselItems.length) {
-                const carouselItem = carouselItems[index];
-                const img = carouselItem.querySelector('img');
-                img.src = newsItem.urlToImage ? newsItem.urlToImage : 'img/default.png';
-                const badge = carouselItem.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = carouselItem.querySelector('.text-white');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = carouselItem.querySelector('.h2');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-            }
-        });
+        console.log(data.articles); // Выводим новости в консоль для проверки
+        if (!data.articles) throw new Error("No articles found");
+
+        fillNews('.main-carousel .position-relative', data.articles, 5);
+        fillNews('.row.mx-0 .position-relative', data.articles, 5);
+        fillNews('.news-carousel .position-relative', data.articles, 5);
+        fillNews('.position-relative.mb-3', data.articles, 5);
+        fillNews('.row.news-lg.mx-0.mb-3', data.articles, 5);
+        fillNews('.d-flex.align-items-center.bg-white.mb-3', data.articles, 5);
+        fillNews('.col-lg-3.col-md-6.mb-5 .mb-3', data.articles, 5);
     })
     .catch(error => console.error('Error:', error));
 
-// Media API Main News №2
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsItems = document.querySelectorAll('.row.mx-0 .position-relative');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsItems.length) {
-                const newsItemDiv = newsItems[index];
-                const img = newsItemDiv.querySelector('img');
-                img.src = newsItem.urlToImage ? newsItem.urlToImage : 'img/default.png';
-                const badge = newsItemDiv.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = newsItemDiv.querySelector('.text-white');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = newsItemDiv.querySelector('.h6');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
 
-// Media API FEATURED NEWS
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsCarouselItems = document.querySelectorAll('.news-carousel .position-relative');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsCarouselItems.length) {
-                const carouselItem = newsCarouselItems[index];
-                const img = carouselItem.querySelector('img');
-                img.src = newsItem.urlToImage ? newsItem.urlToImage : 'img/default.png';
-                const badge = carouselItem.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = carouselItem.querySelector('.text-white');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = carouselItem.querySelector('.h6');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
-
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsItems = document.querySelectorAll('.position-relative.mb-3');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsItems.length) {
-                const newsItemDiv = newsItems[index];
-                const img = newsItemDiv.querySelector('img');
-                img.src = newsItem.urlToImage ? newsItem.urlToImage : 'img/default.png';
-                const badge = newsItemDiv.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = newsItemDiv.querySelector('.text-body');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = newsItemDiv.querySelector('.h4');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
-
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsItems = document.querySelectorAll('.row.news-lg.mx-0.mb-3');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsItems.length) {
-                const newsItemDiv = newsItems[index];
-                const img = newsItemDiv.querySelector('img');
-                img.src = newsItem.urlToImage ? newsItem.urlToImage : 'img/default.png';
-                const badge = newsItemDiv.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = newsItemDiv.querySelector('.text-body');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = newsItemDiv.querySelector('.h4');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-                const description = newsItemDiv.querySelector('p');
-                description.textContent = newsItem.description;
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
-
-// Media API TRANDING NEWS
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsItems = document.querySelectorAll('.d-flex.align-items-center.bg-white.mb-3');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsItems.length) {
-                const newsItemDiv = newsItems[index];
-                const badge = newsItemDiv.querySelector('.badge');
-                badge.href = newsItem.url;
-                badge.textContent = newsItem.source.name;
-                const date = newsItemDiv.querySelector('.text-body');
-                date.href = newsItem.url;
-                date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                const title = newsItemDiv.querySelector('.h6');
-                title.href = newsItem.url;
-                title.textContent = newsItem.title;
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
-
-// Media API
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const newsItems = document.querySelectorAll('.col-lg-3.col-md-6.mb-5 .mb-3 ');
-        data.articles.forEach((newsItem, index) => {
-            if (index < newsItems.length) {
-                const newsItemDiv = newsItems[index];
-                const badge = newsItemDiv.querySelector('.badge');
-                if (badge) {
-                    badge.href = newsItem.url;
-                    badge.textContent = newsItem.source.name;
-                }
-                const date = newsItemDiv.querySelector('.text-body');
-                if (date) {
-                    date.href = newsItem.url;
-                    date.textContent = new Date(newsItem.publishedAt).toLocaleDateString();
-                }
-                const title = newsItemDiv.querySelector('.small');
-                if (title) {
-                    title.href = newsItem.url;
-                    title.textContent = newsItem.title;
-                }
-            }
-        });
-    })
-    .catch(error => console.error('Error:', error));
 
 
 
