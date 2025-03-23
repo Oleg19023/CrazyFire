@@ -11,9 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
-    <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -37,38 +37,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="/Program-pages/Games-pages.html" class="buttonLink">
+                        <button class="button">
+                            <svg class="svgIcon" viewBox="0 0 384 512">
+                                <path
+                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+                                ></path>
+                            </svg>
+                        </button>
+                    </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
-                            <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
-                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Приложения</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/Program-pages.html">Программы</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/Games-pages.html">Игры</a></li>
-                                <li><a class="dropdown-item" href="/Program-pages/Music-pages.html">Музыка</a></li>
-
-                            </ul>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Новости</a>
-                                <ul class="dropdown-menu" aria-labelledby="newsDropdown">
-                                    <li><a class="dropdown-item" href="/News-pages/NewsPortal-page/index.html">Мировые новости</a></li>
-                                    <li><a class="dropdown-item" href="#">Coming soon...</a></li>
-                                </ul>
-                            </li>
-                    
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Магазин</a>
-                            <ul class="dropdown-menu" aria-labelledby="newsDropdown">
-                                <li><a class="dropdown-item" href="https://funpay.com/users/12379589/">Funpay</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/Program-pages/Projects-pages.html">Проекты</a>
-                        </li>
-
-                        </li>
                     </ul>                     
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
@@ -164,87 +144,303 @@
             </div>
         </nav>
     </header>
-
     <main>
-        <div class="container"><h1>Наши проекты:</h1></div>
-        <div class="programs-container">
-            <div class="program-card project-card">
-                <img src="/assets/images/Projects/Кулінарний щоденник.png" alt="Описание изображения" class="project-image">
-                <div class="program-content">
-                    <h3 class="program-title project-title">Кулінарний щоденник</h3>
-                    <p class="program-description project-description">Кулінарний щоденник — це унікальний проект, призначений для всіх, хто любить готувати та хоче зберігати свої рецепти в одному місці. Програма дозволяє створювати та зберігати улюблені рецепти, ділитися ними з друзями та отримувати нові ідеї для приготування страв. З легкістю плануйте свої меню на тиждень, додавайте нотатки про особливості приготування і ведіть облік продуктів.
-                    </p></p>
-                    <a href="https://culinary-diary-site.web.app" class="program-button">Перейти</a>
-                </div>
+        <div class="container">
+            <h1 id="header"></h1>
+            <table id="field" class="field">
+                <tr><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td></tr>
+            </table>
+            <br>
+            <div>
+                <button id="start-button" class="button-tic-tac" onclick="startGame()">Начать/Рестарт</button>
             </div>
-            <!-- <div class="program-card project-card">
-                <img src="/assets/images/Projects" alt="Описание изображения" class="project-image">
-                <div class="program-content">
-                    <h3 class="program-title"></h3>
-                    <p class="program-description"></p>
-                    <a href="/Program-pages/Pages/AutoTwitchDrops.html" class="program-button">Перейти</a>
-                </div>
-            </div> -->
+            <h3 id="h3-settings-tic-tac">Настройки Ai:</h3>
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="easy-ai-toggle">
+                    <span class="slider-tic"></span>
+                </label>
+                <span class="toggle-label">Обычный</span>
+                <label class="toggle-switch" style="margin-left: 20px;">
+                    <input type="checkbox" id="hard-ai-toggle">
+                    <span class="slider-tic"></span>
+                </label>
+                <span class="toggle-label">Невозможный</span>
+            </div>
         </div>
     </main>
-
     <style>
-    h1 {
-        text-align: center;
-        font-size: 3em;
-        margin-top: 20px;
+        #field td {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .button-tic-tac {
+            background-color: #2B2B2B;
+            font-size: 18px;
+            color: white;
+            border: 2px solid #4F5151;
+            border-radius: 5%;
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: #e9e9e9;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .toggle-label {
+            font-size: 18px;
+            margin-left: 10px;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider-tic {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 25px;
+        }
+        .slider-tic:before {
+            position: absolute;
+            content: "";
+            height: 17px;
+            width: 17px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider-tic {
+            background-color: #4CAF50;
+        }
+        input:checked + .slider-tic:before {
+            transform: translateX(25px);
+        }
+
+        #h3-settings-tic-tac {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            #field td {
+                width: 100px;
+                height: 100px;
+                padding: 0;
+            }
+            h1 {
+                font-size: 30px;
+            }
+            .container {
+                margin-top: 20px;
+            }
+            table {
+                width: 100%;
+            }
+            .toggle-container {
+            }
+            .toggle-switch {
+
+            }
+            .toggle-label {
+                font-size: 15px;
+            }
+        }
+
+    </style>  
+    <script>
+let counter = 0;
+let easyAiMode = false;
+let hardAiMode = false;
+
+const cells = document.querySelectorAll('#field td');
+const header = document.getElementById('header');
+const easyAiToggle = document.getElementById('easy-ai-toggle');
+const hardAiToggle = document.getElementById('hard-ai-toggle');
+
+easyAiToggle.addEventListener('change', () => {
+    if (easyAiToggle.checked) {
+        hardAiToggle.checked = false;
+        hardAiMode = false;
     }
-    .programs-container {
-        padding-top: 0;
-        display: flex ; 
-        justify-content: center;
-        align-items: center;
+    easyAiMode = easyAiToggle.checked;
+    startGame();
+});
+
+hardAiToggle.addEventListener('change', () => {
+    if (hardAiToggle.checked) {
+        easyAiToggle.checked = false;
+        easyAiMode = false;
     }
+    hardAiMode = hardAiToggle.checked;
+    startGame();
+});
+
+function getBoard() {
+    return Array.from(cells, cell => cell.innerHTML.includes('close') ? 'X' : cell.innerHTML.includes('circle') ? 'O' : '');
+}
+
+function isVictory(board, player) {
+    const combos = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+    return combos.some(combo =>
+        board[combo[0]] === player &&
+        board[combo[1]] === player &&
+        board[combo[2]] === player
+    );
+}
+
+function minimax(board, depth, isMaximizing) {
+    if (isVictory(board, 'O')) return 10 - depth;
+    if (isVictory(board, 'X')) return depth - 10;
+    if (!board.includes('')) return 0;
+
+    let bestScore = isMaximizing ? -Infinity : Infinity;
+    board.forEach((cell, i) => {
+        if (!cell) {
+            board[i] = isMaximizing ? 'O' : 'X';
+            let score = minimax(board, depth + 1, !isMaximizing);
+            board[i] = '';
+            bestScore = isMaximizing ? Math.max(bestScore, score) : Math.min(bestScore, score);
+        }
+    });
+    return bestScore;
+}
+
+function bestHardAIMove() {
+    let board = getBoard();
+    let bestMove = null;
+    let bestScore = -Infinity;
+
+    board.forEach((cell, i) => {
+        if (!cell) {
+            board[i] = 'O';
+            let score = minimax(board, 0, false);
+            board[i] = '';
+            if (score > bestScore) {
+                bestScore = score;
+                bestMove = cells[i];
+            }
+        }
+    });
+
+    if (bestMove) {
+        bestMove.innerHTML = '<img src="/assets/images/Games-pages/Tic-tac-toe/circle.png" width=100>';
+        counter++;
+        checkWinner();
+    }
+}
+
+function bestEasyAIMove() {
+    let availableCells = Array.from(cells).filter(cell => cell.innerHTML === '');
+    if (availableCells.length > 0) {
+        let randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
+        randomCell.innerHTML = '<img src="/assets/images/Games-pages/Tic-tac-toe/circle.png" width=100>';
+        counter++;
+        checkWinner();
+    }
+}
+
+function checkWinner() {
+    let board = getBoard();
+    if (isVictory(board, 'X')) {
+        header.innerText = 'X победитель!';
+        disableCells();
+        return true;
+    } else if (isVictory(board, 'O')) {
+        header.innerText = 'O победитель!';
+        disableCells();
+        return true;
+    } else if (!board.includes('')) {
+        header.innerText = 'Ничья!';
+        disableCells();
+        return true;
+    }
+    return false;
+}
+
+function disableCells() {
+    cells.forEach(cell => cell.removeEventListener('click', tap));
+}
+
+function tap(event) {
+    if (event.target.innerHTML === '' && !checkWinner()) {
+        let playerSymbol = counter % 2 === 0 ? 'X' : 'O';
+        let imgSrc = playerSymbol === 'X' 
+            ? "/assets/images/Games-pages/Tic-tac-toe/close.png" 
+            : "/assets/images/Games-pages/Tic-tac-toe/circle.png";
+        
+        event.target.innerHTML = `<img src="${imgSrc}" width=100>`;
+        counter++;
+
+        if (!checkWinner() && playerSymbol === 'X') {
+            if (easyAiMode) {
+                setTimeout(bestEasyAIMove, 300);
+            } else if (hardAiMode) {
+                setTimeout(bestHardAIMove, 300);
+            }
+        }
+    }
+}
+
+function startGame() {
+    header.innerText = 'Крестики-нолики';
+    counter = 0;
+    cells.forEach(cell => {
+        cell.innerHTML = '';
+        cell.addEventListener('click', tap);
+    });
+}
+
+startGame();
+
+    </script>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
+    <style>.back-to-top {position: fixed;bottom: 20px;right: 20px;z-index: 9999;display: none;}</style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/scroll-top-button.js"></script>
+    <!-- Back to Top End -->    
     
-    .project-card {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden; /* Скрытие переполнения */
-        width: 590px; /* Ширина карточки */
-        max-width: 1000px; /* Максимальная ширина карточки */
-    }
-    
-    .project-image {
-        width: 100%;
-        height: auto;
-    }
-    
-    .project-content {
-        padding: 20px;
-    }
-    
-    .project-title {
-        font-size: 2em; /* Увеличенный размер заголовка */
-        margin: 10px;
-    }
-    
-    .project-description {
-        font-size: 1em; /* Увеличенный размер описания */
-        color: #555;
-        margin-bottom: 20px;
-    }
-    
-    .program-button {
-        display: inline-block;
-        padding: 15px 20px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1.2em; /* Увеличенный размер кнопки */
-        transition: background-color 0.3s;
-    }
-    
-    .program-button:hover {
-        background-color: #0056b3;
-    }
-    </style>
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>
@@ -253,14 +449,6 @@
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
-    <style>.back-to-top {position: fixed;bottom: 20px;right: 20px;z-index: 9999;display: none;}</style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="/assets/js/scroll-top-button.js"></script>
-    <!-- Back to Top End -->
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>
 </html>

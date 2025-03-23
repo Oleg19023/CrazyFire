@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Обновляем только нужные элементы в футере
         document.getElementById("footerYear").textContent = currentDate.getFullYear();
-        document.getElementById("footerDate").textContent = `Дата: ${formattedDate}`;
-        document.getElementById("footerTime").textContent = `Время: ${formattedTime}`;
+        document.getElementById("footerDate").textContent = `${formattedDate}`;
+        document.getElementById("footerTime").textContent = `${formattedTime}`;
     }
 
     // Изначально создаем футер с нужными элементами
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                     <h6 class="m-3">
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.2</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.3(dev)</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>
