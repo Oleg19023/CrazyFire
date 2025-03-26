@@ -74,6 +74,7 @@ function triggerSearch() {
         messageElement.style.color = 'red';
         messageElement.style.textAlign = 'center';
         messageElement.style.marginTop = '20px';
+        messageElement.style.fontSize = '40px';
         messageElement.style.display = 'none'; // Скрываем по умолчанию
         cardContainer.appendChild(messageElement); // Добавляем элемент в контейнер карточек
     }
