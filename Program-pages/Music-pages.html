@@ -660,7 +660,7 @@
             height: 5px;
             background: var(--spotify-gray);
             border-radius: 3px;
-            margin: 10px auto;
+            margin: 20px auto;
             cursor: pointer;
             }
 
@@ -1503,11 +1503,6 @@ document.addEventListener('touchend', (e) => {
     // Если быстрый свайп снизу вверх (min 100px за max 300ms)
     if (diffY > 100 && timeDiff < 300 && startY > window.innerHeight - 100) {
     showMobilePlaylist();
-    }
-    
-    // Если свайп вниз в открытом плейлисте
-    if (diffY < -50 && playlistContainer.classList.contains('show')) {
-    hideMobilePlaylist();
     }
 }, { passive: true });
 
