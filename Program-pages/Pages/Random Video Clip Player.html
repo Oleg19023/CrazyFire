@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <link rel="shortcut icon" href="/assets/images/Site-logos/4kLogo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.png" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
+                        <button class="button">
+                            <svg class="svgIcon" viewBox="0 0 384 512">
+                                <path
+                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+                                ></path>
+                            </svg>
+                        </button>
+                    </a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+
+                    </ul>                     
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fas fa-play"></i>
+                    </button>
+                    
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>  
+    <main>
+        <div class="container">
+            <h1>Random Media Player</h1>
+    
+    <div class="file-input">
+        <div class="file-input-buttons">
+            <button id="folderBtn">Select Folder</button>
+            <button id="filesBtn">Select Files</button>
+            <div class="hotkey-item">
+                <span>Supported files:</span>
+                <span class="hotkey">MP4, JPG, PNG, GIF</span>
+            </div>
+        </div>
+        <div class="drop-zone" id="dropZone">
+            <p>Drag and drop media files or folders here</p>
+        </div>
+        <input type="file" id="folderInput" webkitdirectory directory multiple style="display: none;">
+        <input type="file" id="filesInput" multiple accept="video/*,image/*" style="display: none;">
+        <p id="filesInfo">No files selected</p>
+    </div>
+    
+    <div class="player-container">
+        <div class="video-wrapper">
+            <div id="mediaContainer">
+                <video id="videoPlayer"></video>
+                <img id="imageDisplay" alt="Displayed image">
+                <span class="media-type-indicator" id="mediaTypeIndicator"></span>
+                <button class="fullscreen-btn" id="fullscreenBtn">⛶</button>
+            </div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="controls">
+            <button id="playBtn">Play</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="prevBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+            <button id="loopBtn">🔁 Loop: OFF</button>
+            <div class="volume-control">
+                <span>🔊</span>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+            </div>
+        </div>
+        <div class="settings">
+            <div class="settings-group">
+                <label>
+                    Display duration (seconds):
+                    <input type="number" id="clipDuration" min="1" max="600" value="5">
+                </label>
+            </div>
+            <div class="settings-group">
+                <label>
+                    Fade effect:
+                    <button id="fadeEffectBtn">Enable Fade</button>
+                </label>
+            </div>
+            <div class="settings-group" id="metronomeContainer">
+                <label>
+                    Metronome:
+                    <button id="metronomeBtn">OFF</button>
+                </label>
+                <div class="metronome-controls">
+                    <input type="range" id="metronomeSpeed" min="40" max="300" value="120">
+                    <span id="metronomeBpm">120 BPM</span>
+                </div>
+            </div>
+        </div>
+        <div class="hotkeys-info">
+            <div class="hotkey-item">
+                <span>Play/Pause:</span>
+                <span class="hotkey">Space</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Previous:</span>
+                <span class="hotkey">←</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Next:</span>
+                <span class="hotkey">→</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Loop:</span>
+                <span class="hotkey">L</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Volume:</span>
+                <span class="hotkey">↑/↓</span> (adjust) or <span class="hotkey">0</span> (mute)
+            </div>
+            <div class="hotkey-item">
+                <span>Metronome:</span>
+                <span class="hotkey">M</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Fullscreen:</span>
+                <span class="hotkey">F</span> or <span class="hotkey">F11</span>
+            </div>
+            <div class="hotkey-item">
+                <span>Exit fullscreen:</span>
+                <span class="hotkey">Esc</span>
+            </div>
+        </div>
+        <div class="status" id="status">No media loaded</div>
+    </div>
+    
+    <div class="fullscreen-hotkeys" id="fullscreenHotkeys">
+        <div class="fullscreen-hotkey-item">
+            <span>Play/Pause:</span>
+            <span class="fullscreen-hotkey">Space</span>
+        </div>
+        <div class="fullscreen-hotkey-item">
+            <span>Previous:</span>
+            <span class="fullscreen-hotkey">←</span>
+        </div>
+        <div class="fullscreen-hotkey-item">
+            <span>Next:</span>
+            <span class="fullscreen-hotkey">→</span>
+        </div>
+        <div class="fullscreen-hotkey-item">
+            <span>Exit:</span>
+            <span class="fullscreen-hotkey">Esc</span>
+        </div>
+    </div>
+        </div>
+    </main>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
+    <style>.back-to-top {position: fixed;bottom: 20px;right: 20px;z-index: 9999;display: none;}</style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/scroll-top-button.js"></script>
+    <!-- Back to Top End -->    
+    
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+    <style>
+
+        .container {
+            padding-top: 80px;
+        }
+    
+        .dark-theme .player-container,
+        .dark-theme .settings,
+        .dark-theme .hotkeys-info,
+        .dark-theme {
+            background-color: #333;
+        }
+
+        .dark-theme .player-container {
+            box-shadow: 0 2px 10px rgb(58, 58, 58);
+        }
+
+        .dark-theme .hotkey {
+            background-color: #555;
+        }
+
+        .dark-theme .status {
+            color: white;
+        }
+
+
+
+        .player-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        #mediaContainer {
+            width: 100%;
+            background-color: black;
+            border-radius: 4px;
+            display: block;
+            transition: opacity 0.5s ease-in-out;
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+        
+        #videoPlayer {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        #imageDisplay {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+        
+        #videoPlayer::-webkit-media-controls {
+            display: none !important;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .file-input {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .file-input-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .drop-zone.highlight {
+            border-color: #4CAF50;
+            background-color: #f0fff0;
+        }
+        
+        .status {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        
+        .settings {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .settings-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .settings label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+        
+        .settings input {
+            width: 80px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .video-wrapper {
+            position: relative;
+        }
+        
+        .fade-effect {
+            opacity: 0;
+        }
+        
+        .hotkeys-info {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .hotkey-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .hotkey {
+            background-color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        .fullscreen-hotkeys {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .fullscreen-hotkeys.show {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .fullscreen-hotkey-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .fullscreen-hotkey {
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        #metronomeSpeed {
+            width: 100px;
+            margin-top: 5px;
+        }
+
+        #metronomeBpm {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        .metronome-controls {
+            display: none;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .metronome-active .metronome-controls {
+            display: flex;
+        }
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+        }
+
+        #volumeSlider {
+            width: 80px;
+        }
+        @keyframes rewindFlash {
+            0% { background-color: #4CAF50; }
+            50% { background-color: #8BC34A; }
+            100% { background-color: #4CAF50; }
+        }
+        .progress-bar.rewinding {
+            animation: rewindFlash 0.3s;
+        }
+        
+        .media-type-indicator {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 10;
+        }
+    </style>
+    <script>
+        let isLoopEnabled = false;
+        const loopBtn = document.getElementById('loopBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const metronomeBtn = document.getElementById('metronomeBtn');
+        const metronomeSpeed = document.getElementById('metronomeSpeed');
+        const metronomeBpm = document.getElementById('metronomeBpm');
+        let metronomeFilter;
+        let metronomeOn = false;
+        let metronomeInterval;
+        let metronomeAudioCtx;
+        let metronomeGain;
+        let metronomeTime = 0;
+        const folderBtn = document.getElementById('folderBtn');
+        const filesBtn = document.getElementById('filesBtn');
+        const folderInput = document.getElementById('folderInput');
+        const filesInput = document.getElementById('filesInput');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const imageDisplay = document.getElementById('imageDisplay');
+        const mediaTypeIndicator = document.getElementById('mediaTypeIndicator');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const statusEl = document.getElementById('status');
+        const progressBar = document.getElementById('progressBar');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const clipDurationInput = document.getElementById('clipDuration');
+        const fadeEffectBtn = document.getElementById('fadeEffectBtn');
+        const filesInfo = document.getElementById('filesInfo');
+        const fullscreenHotkeys = document.getElementById('fullscreenHotkeys');
+        const dropZone = document.getElementById('dropZone');
+        const mediaContainer = document.getElementById('mediaContainer');
+        
+        let mediaFiles = [];
+        let currentMediaIndex = 0;
+        let clipInterval;
+        let displayTimer;
+        let isPlaying = false;
+        let clipDuration = 5;
+        let fadeEffectEnabled = false;
+        let isTransitioning = false;
+        let isFullscreen = false;
+        let hotkeysTimeout;
+        let history = [];
+        const MAX_HISTORY = 20;
+        let currentHistoryIndex = -1;
+        let currentStartTime = 0;
+        let currentEndTime = 0;
+        
+        const supportedVideoFormats = ['.mp4', '.webm', '.ogg', '.mov', '.avi', '.mkv'];
+        const supportedImageFormats = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+        
+        videoPlayer.controls = false;
+        
+        folderBtn.addEventListener('click', () => {
+            folderInput.click();
+        });
+        
+        filesBtn.addEventListener('click', () => {
+            filesInput.click();
+        });
+        
+        folderInput.addEventListener('change', (event) => {
+            const files = Array.from(event.target.files);
+            processFiles(files, true);
+        });
+        
+        filesInput.addEventListener('change', (event) => {
+            const files = Array.from(event.target.files);
+            processFiles(files, false);
+        });
+        
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('highlight');
+        });
+        
+        ['dragleave', 'dragend'].forEach(type => {
+            dropZone.addEventListener(type, () => {
+                dropZone.classList.remove('highlight');
+            });
+        });
+        
+        dropZone.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('highlight');
+            
+            const items = e.dataTransfer.items;
+            const files = [];
+            let folderProcessed = false;
+            
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if (item.kind === 'file') {
+                    const entry = item.webkitGetAsEntry ? item.webkitGetAsEntry() : null;
+                    
+                    if (entry) {
+                        if (entry.isFile) {
+                            const file = await getFileFromEntry(entry);
+                            if (file) files.push(file);
+                        } else if (entry.isDirectory && !folderProcessed) {
+                            folderProcessed = true;
+                            const dirFiles = await readDirectory(entry);
+                            files.push(...dirFiles);
+                        }
+                    } else {
+                        const file = item.getAsFile();
+                        if (file) files.push(file);
+                    }
+                }
+            }
+            
+            if (files.length > 0) {
+                processFiles(files, folderProcessed);
+            }
+        });
+        
+        async function getFileFromEntry(entry) {
+            return new Promise(resolve => {
+                entry.file(file => resolve(file));
+            });
+        }
+        
+        async function readDirectory(directoryEntry) {
+            const files = [];
+            const reader = directoryEntry.createReader();
+            
+            const readEntries = async () => {
+                const entries = await new Promise(resolve => {
+                    reader.readEntries(resolve);
+                });
+                
+                for (const entry of entries) {
+                    if (entry.isFile) {
+                        const file = await getFileFromEntry(entry);
+                        if (file) {
+                            const extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+                            if (supportedVideoFormats.includes(extension) || supportedImageFormats.includes(extension)) {
+                                files.push(file);
+                            }
+                        }
+                    } else if (entry.isDirectory) {
+                        await readDirectory(entry);
+                    }
+                }
+            };
+            
+            await readEntries();
+            return files;
+        }
+        
+        function processFiles(files, fromFolder) {
+            mediaFiles = files.filter(file => {
+                const extension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+                return supportedVideoFormats.includes(extension) || supportedImageFormats.includes(extension);
+            });
+            
+            if (mediaFiles.length > 0) {
+                filesInfo.textContent = fromFolder 
+                    ? `Loaded folder with ${mediaFiles.length} media files` 
+                    : `Loaded ${mediaFiles.length} media files`;
+                statusEl.textContent = `Loaded ${mediaFiles.length} media files`;
+                history = [];
+                currentHistoryIndex = -1;
+                loadRandomMedia();
+            } else {
+                filesInfo.textContent = 'No supported media files found';
+                statusEl.textContent = 'No supported media files found';
+            }
+        }
+        
+        clipDurationInput.addEventListener('change', () => {
+            clipDuration = parseInt(clipDurationInput.value) || 5;
+            if (clipDuration < 1) clipDuration = 1;
+            if (clipDuration > 600) clipDuration = 600;
+            clipDurationInput.value = clipDuration;
+            
+            if (isPlaying) {
+                startDisplayTimer();
+            }
+        });
+        
+        fadeEffectBtn.addEventListener('click', () => {
+            fadeEffectEnabled = !fadeEffectEnabled;
+            fadeEffectBtn.textContent = fadeEffectEnabled ? 'Disable Fade' : 'Enable Fade';
+        });
+        
+        function addToHistory(mediaIndex, startTime = 0, endTime = 0) {
+            const mediaFile = mediaFiles[mediaIndex];
+            const extension = mediaFile.name.substring(mediaFile.name.lastIndexOf('.')).toLowerCase();
+            const isVideo = supportedVideoFormats.includes(extension);
+            
+            const historyItem = {
+                index: mediaIndex,
+                startTime: isVideo ? startTime : 0,
+                endTime: isVideo ? endTime : 0
+            };
+            
+            if (history.length > 0) {
+                const last = history[history.length-1];
+                if (last.index === mediaIndex && 
+                    Math.abs(last.startTime - startTime) < 1 &&
+                    Math.abs(last.endTime - endTime) < 1) {
+                    return;
+                }
+            }
+            
+            if (currentHistoryIndex < history.length - 1) {
+                history = history.slice(0, currentHistoryIndex + 1);
+            }
+            
+            history.push(historyItem);
+            currentHistoryIndex = history.length - 1;
+            
+            if (history.length > MAX_HISTORY) {
+                history.shift();
+                currentHistoryIndex--;
+            }
+        }
+
+        function loadPreviousMedia() {
+            if (history.length < 2 || currentHistoryIndex < 1) return;
+            
+            currentHistoryIndex--;
+            const prev = history[currentHistoryIndex];
+            loadSpecificMedia(prev.index, prev.startTime, prev.endTime, true);
+        }
+
+        function loadRandomMedia() {
+            if (mediaFiles.length === 0) return;
+            
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            let newMediaIndex;
+            do {
+                newMediaIndex = Math.floor(Math.random() * mediaFiles.length);
+            } while (mediaFiles.length > 1 && newMediaIndex === currentMediaIndex);
+            
+            currentMediaIndex = newMediaIndex;
+            
+            if (fadeEffectEnabled) {
+                mediaContainer.classList.add('fade-effect');
+                
+                setTimeout(() => {
+                    performMediaLoad();
+                    setTimeout(() => {
+                        mediaContainer.classList.remove('fade-effect');
+                        isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                performMediaLoad();
+                isTransitioning = false;
+            }
+        }
+
+        function loadSpecificMedia(mediaIndex, startTime = 0, endTime = 0, fromHistory = false) {
+            if (mediaFiles.length === 0) return;
+            
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentMediaIndex = mediaIndex;
+            currentStartTime = startTime;
+            currentEndTime = endTime;
+            
+            if (fadeEffectEnabled) {
+                mediaContainer.classList.add('fade-effect');
+                
+                setTimeout(() => {
+                    performMediaLoad(fromHistory);
+                    setTimeout(() => {
+                        mediaContainer.classList.remove('fade-effect');
+                        isTransitioning = false;
+                    }, 50);
+                }, 500);
+            } else {
+                performMediaLoad(fromHistory);
+                isTransitioning = false;
+            }
+        }
+
+        function performMediaLoad(fromHistory = false) {
+            const mediaFile = mediaFiles[currentMediaIndex];
+            const extension = mediaFile.name.substring(mediaFile.name.lastIndexOf('.')).toLowerCase();
+            const isVideo = supportedVideoFormats.includes(extension);
+            
+            videoPlayer.style.display = 'none';
+            imageDisplay.style.display = 'none';
+            
+            if (isVideo) {
+                const videoUrl = URL.createObjectURL(mediaFile);
+                videoPlayer.src = videoUrl;
+                videoPlayer.style.display = 'block';
+                mediaTypeIndicator.textContent = 'VIDEO';
+                
+                videoPlayer.onloadedmetadata = () => {
+                    if (!fromHistory) {
+                        const maxStartTime = Math.max(0, videoPlayer.duration - clipDuration);
+                        currentStartTime = Math.random() * maxStartTime;
+                        currentEndTime = currentStartTime + clipDuration;
+                    }
+                    
+                    videoPlayer.currentTime = currentStartTime;
+                    
+                    statusEl.textContent = `Playing: ${mediaFile.name} (${formatTime(currentStartTime)} - ${formatTime(currentEndTime)})`;
+                    
+                    if (!fromHistory) {
+                        addToHistory(currentMediaIndex, currentStartTime, currentEndTime);
+                    }
+                    
+                    if (isPlaying) {
+                        videoPlayer.play().catch(e => console.log('Autoplay prevented:', e));
+                        startDisplayTimer();
+                    }
+                };
+                
+                videoPlayer.ontimeupdate = () => {
+                    if (videoPlayer.currentTime >= currentEndTime) {
+                        if (isLoopEnabled) {
+                            videoPlayer.currentTime = currentStartTime;
+                            videoPlayer.play();
+                            progressBar.classList.add('rewinding');
+                            setTimeout(() => progressBar.classList.remove('rewinding'), 300);
+                        } else {
+                            loadRandomMedia();
+                        }
+                    }
+                };
+                
+                videoPlayer.onerror = () => {
+                    console.error('Error loading video:', mediaFile.name);
+                    isTransitioning = false;
+                    loadRandomMedia();
+                };
+            } else {
+                const imageUrl = URL.createObjectURL(mediaFile);
+                imageDisplay.src = imageUrl;
+                imageDisplay.style.display = 'block';
+                mediaTypeIndicator.textContent = 'PHOTO';
+                
+                imageDisplay.onload = () => {
+                    statusEl.textContent = `Showing: ${mediaFile.name} (${clipDuration}s)`;
+                    
+                    if (!fromHistory) {
+                        addToHistory(currentMediaIndex);
+                    }
+                    
+                    if (isPlaying) {
+                        startDisplayTimer();
+                    }
+                };
+                
+                imageDisplay.onerror = () => {
+                    console.error('Error loading image:', mediaFile.name);
+                    isTransitioning = false;
+                    loadRandomMedia();
+                };
+            }
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function startDisplayTimer() {
+            clearInterval(displayTimer);
+            clearInterval(clipInterval);
+            
+            let startTime = Date.now();
+            let elapsed = 0;
+            
+            if (videoPlayer.style.display === 'block') {
+                startTime = Date.now() - (videoPlayer.currentTime - currentStartTime) * 1000;
+            }
+            
+            clipInterval = setInterval(() => {
+                elapsed = (Date.now() - startTime) / 1000;
+                const progress = (elapsed / clipDuration) * 100;
+                progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+                
+                if (elapsed >= clipDuration) {
+                    if (isLoopEnabled) {
+                        startTime = Date.now();
+                        progressBar.classList.add('rewinding');
+                        setTimeout(() => progressBar.classList.remove('rewinding'), 300);
+                        
+                        if (videoPlayer.style.display === 'block') {
+                            videoPlayer.currentTime = currentStartTime;
+                            videoPlayer.play();
+                        }
+                    } else {
+                        loadRandomMedia();
+                    }
+                }
+            }, 100);
+        }
+
+        function togglePlayPause() {
+            if (mediaFiles.length === 0) return;
+            
+            if (isPlaying) {
+                isPlaying = false;
+                if (videoPlayer.style.display === 'block') {
+                    videoPlayer.pause();
+                }
+                clearInterval(displayTimer);
+                clearInterval(clipInterval);
+                statusEl.textContent = `Paused: ${mediaFiles[currentMediaIndex].name}`;
+            } else {
+                isPlaying = true;
+                if (videoPlayer.style.display === 'block' && videoPlayer.readyState > 0) {
+                    videoPlayer.play().catch(e => console.log('Play error:', e));
+                }
+                startDisplayTimer();
+                statusEl.textContent = mediaFiles[currentMediaIndex].name.includes('.') 
+                    ? `Playing: ${mediaFiles[currentMediaIndex].name}` 
+                    : `Showing: ${mediaFiles[currentMediaIndex].name}`;
+            }
+        }
+        
+        playBtn.addEventListener('click', togglePlayPause);
+        
+        pauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                togglePlayPause();
+            }
+        });
+        
+        prevBtn.addEventListener('click', loadPreviousMedia);
+        
+        nextBtn.addEventListener('click', () => {
+            if (mediaFiles.length === 0) return;
+            loadRandomMedia();
+        });
+        
+        function toggleFullscreen() {
+            if (!isFullscreen) {
+                if (mediaContainer.requestFullscreen) {
+                    mediaContainer.requestFullscreen();
+                } else if (mediaContainer.webkitRequestFullscreen) {
+                    mediaContainer.webkitRequestFullscreen();
+                } else if (mediaContainer.msRequestFullscreen) {
+                    mediaContainer.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+        
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('msfullscreenchange', handleFullscreenChange);
+        
+        function handleFullscreenChange() {
+            isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+            
+            if (isFullscreen) {
+                showFullscreenHotkeys();
+            } else {
+                hideFullscreenHotkeys();
+            }
+        }
+        
+        function showFullscreenHotkeys() {
+            fullscreenHotkeys.classList.add('show');
+            clearTimeout(hotkeysTimeout);
+            hotkeysTimeout = setTimeout(hideFullscreenHotkeys, 3000);
+        }
+        
+        function hideFullscreenHotkeys() {
+            fullscreenHotkeys.classList.remove('show');
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (document.activeElement.tagName === 'INPUT') return;
+            
+            switch (e.key) {
+                case ' ':
+                    e.preventDefault();
+                    togglePlayPause();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    loadPreviousMedia();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    if (mediaFiles.length > 0) {
+                        loadRandomMedia();
+                    }
+                    break;
+                case 'f':
+                case 'F':
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                case 'Escape':
+                    if (isFullscreen) {
+                        e.preventDefault();
+                        toggleFullscreen();
+                    }
+                    break;
+                case 'm':
+                case 'M':
+                    e.preventDefault();
+                    toggleMetronome();
+                    break;
+                case 'l':
+                case 'L':
+                    e.preventDefault();
+                    loopBtn.click();
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    volumeSlider.value = Math.min(1, volumeSlider.valueAsNumber + 0.1);
+                    videoPlayer.volume = volumeSlider.value;
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    volumeSlider.value = Math.max(0, volumeSlider.valueAsNumber - 0.1);
+                    videoPlayer.volume = volumeSlider.value;
+                    break;
+                case '0':
+                    e.preventDefault();
+                    videoPlayer.muted = !videoPlayer.muted;
+                    volumeSlider.value = videoPlayer.muted ? 0 : videoPlayer.volume;
+                    break;
+            }
+            
+            if (isFullscreen) {
+                showFullscreenHotkeys();
+            }
+        });
+
+        function initMetronome() {
+            metronomeAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            
+            metronomeGain = metronomeAudioCtx.createGain();
+            metronomeGain.gain.value = 0.6;
+            
+            metronomeFilter = metronomeAudioCtx.createBiquadFilter();
+            metronomeFilter.type = "lowpass";
+            metronomeFilter.frequency.value = 1500;
+            
+            metronomeFilter.connect(metronomeGain);
+            metronomeGain.connect(metronomeAudioCtx.destination);
+        }
+
+        function playMetronomeTick() {
+            const oscillator = metronomeAudioCtx.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.value = 400;
+            
+            const env = metronomeAudioCtx.createGain();
+            env.gain.value = 0;
+            env.gain.setValueAtTime(0.9, metronomeTime);
+            env.gain.exponentialRampToValueAtTime(0.001, metronomeTime + 0.1);
+            
+            oscillator.connect(env);
+            env.connect(metronomeFilter);
+            
+            oscillator.start(metronomeTime);
+            oscillator.stop(metronomeTime + 0.15);
+            
+            metronomeTime += 60 / parseInt(metronomeSpeed.value);
+        }
+
+        function toggleMetronome() {
+            metronomeOn = !metronomeOn;
+            metronomeBtn.textContent = metronomeOn ? 'ON' : 'OFF';
+            
+            const container = document.getElementById('metronomeContainer');
+            if (metronomeOn) {
+                container.classList.add('metronome-active');
+                if (!metronomeAudioCtx) {
+                    initMetronome();
+                }
+                metronomeTime = metronomeAudioCtx.currentTime;
+                playMetronomeTick();
+                const interval = 60000 / parseInt(metronomeSpeed.value);
+                metronomeInterval = setInterval(playMetronomeTick, interval);
+            } else {
+                container.classList.remove('metronome-active');
+                clearInterval(metronomeInterval);
+            }
+        }
+
+        function changeMetronomeSpeed(change) {
+            const newValue = parseInt(metronomeSpeed.value) + change;
+            if (newValue >= 40 && newValue <= 240) {
+                metronomeSpeed.value = newValue;
+                metronomeBpm.textContent = `${newValue} BPM`;
+                
+                if (metronomeOn) {
+                    clearInterval(metronomeInterval);
+                    
+                    const now = metronomeAudioCtx.currentTime;
+                    const elapsed = now - (metronomeTime - 60/metronomeSpeed.value);
+                    const newInterval = 60000 / newValue;
+                    const nextTick = now + (newInterval - (elapsed % newInterval)) / 1000;
+                    
+                    metronomeTime = nextTick;
+                    playMetronomeTick();
+                    metronomeInterval = setInterval(playMetronomeTick, newInterval);
+                }
+            }
+        }
+            
+        metronomeBtn.addEventListener('click', toggleMetronome);
+
+        metronomeSpeed.addEventListener('input', () => {
+            metronomeBpm.textContent = `${metronomeSpeed.value} BPM`;
+            if (metronomeOn) {
+                const newValue = parseInt(metronomeSpeed.value);
+                const newInterval = 60000 / newValue;
+                
+                clearInterval(metronomeInterval);
+                
+                const now = metronomeAudioCtx.currentTime;
+                const elapsed = now - (metronomeTime - 60/metronomeSpeed.value);
+                const nextTick = now + (newInterval - (elapsed % newInterval)) / 1000;
+                
+                metronomeTime = nextTick;
+                playMetronomeTick();
+                metronomeInterval = setInterval(playMetronomeTick, newInterval);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (metronomeOn && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                e.preventDefault();
+                changeMetronomeSpeed(e.key === 'ArrowUp' ? 5 : -5);
+            }
+        });
+
+        loopBtn.addEventListener('click', () => {
+            isLoopEnabled = !isLoopEnabled;
+            loopBtn.textContent = `🔁 Loop: ${isLoopEnabled ? 'ON' : 'OFF'}`;
+            statusEl.textContent = isLoopEnabled 
+                ? 'Loop enabled - current media will repeat' 
+                : 'Loop disabled';
+        });
+
+        volumeSlider.addEventListener('input', () => {
+            videoPlayer.volume = volumeSlider.value;
+        });
+    </script>
+</body>
+</html>
