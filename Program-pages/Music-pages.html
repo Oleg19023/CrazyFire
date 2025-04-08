@@ -203,7 +203,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            margin-bottom: 30px;
         }
     
         .player-title {
@@ -258,7 +257,7 @@
         }
     
         .progress-container {
-            margin: 30px 0;
+            margin: 0px;
         }
     
         .progress-bar {
@@ -307,7 +306,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 30px 0;
         }
     
         .main-controls {
@@ -465,8 +463,8 @@
     
         .playlist-input-container {
             position: absolute;
-            top: 100%;
             right: 0;
+            top: 100%;
             background: var(--spotify-black);
             padding: 15px;
             border-radius: 8px;
@@ -476,7 +474,9 @@
         }
     
         .playlist-input-container.visible {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
     
         .playlist-input {
@@ -570,7 +570,7 @@
         }
 
         /* Мобильная адаптация */
-        @media (max-width: 768px) {
+        @media (max-width: 991.5px) {
             .fullscreen-player {
                 padding: 10px;
             }
@@ -582,14 +582,14 @@
             }
             
             .album-cover {
-                width: 280px;
-                height: 280px;
                 margin: 0 auto;
             }
             
             .player-controls {
                 width: 100%;
                 padding: 0 15px;
+                justify-content: flex-start;
+                margin-top: 20px;
             }
             
             .track-name {
@@ -608,7 +608,6 @@
             
             .controls {
                 flex-direction: column-reverse;
-                gap: 20px;
             }
             
             .main-controls {
@@ -723,13 +722,8 @@
 
         .play-btn {
             position: absolute;
-            top: 50%;
             left: 50%;
-            transform: translate(-50%, -60%);
-            width: 100%; /* Занимает 80% ширины обложки */
-            height: 100%; /* Занимает 80% высоты обложки */
-            max-width: 230px; /* Максимальный размер */
-            max-height: 230px;
+            transform: translate(-50%, 0%);
             background: rgba(0, 0, 0, 0);
             border: none;
             opacity: 0.9; /* Всегда видима */
@@ -742,8 +736,19 @@
             color: white;
         }
 
-        .playlist-loader {
-            padding-right: 70px;
+        .player-header {
+            justify-content: center;
+        }
+
+        .playlist-input-container {
+            position: relative;
+            top: 100%;
+            background: var(--spotify-black);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 10;
+            display: none;
         }
 
     }
