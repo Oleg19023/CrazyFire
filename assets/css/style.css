@@ -26,11 +26,6 @@ body.dark-theme .card {
     border: 1px solid #444; /* Темная граница */
 }
 
-
-body, .navbar, header, .nav-link, .navbar-brand i {
-    transition: all 0.8s ease;
-}
-
 .navbar-collapse {
     transition: all 0.5s ease;
 }
@@ -307,14 +302,12 @@ button {
 /* Темная тема */
 body.dark-theme a.navbar-brand {
     color: #f8f9fa; /* Светлый текст */
-    transition: color 0.8s ease; /* Плавный переход цвета */
     text-decoration: none;
 }
 
 /* Светлая тема */
 body.light-theme a.navbar-brand {
     color: #000000; /* Тёмный текст */
-    transition: color 0.8s ease; /* Плавный переход цвета */
 }
 
 /* Общие стили для dropdown */

@@ -209,7 +209,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Светлый фон с прозрачностью */
+    background-color: rgba(0, 0, 0, 0.7); /* Тёмный с прозрачностью 70% */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,4 +221,29 @@
 #preloader.hidden {
     opacity: 0;
     pointer-events: none;
+}
+
+/* Начальные стили - контент невидим */
+body, .navbar, header {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* После загрузки темы - контент становится видимым */
+.theme-loaded body, .theme-loaded .navbar, .theme-loaded header {
+  opacity: 1;
+}
+
+/* Анимации отключены по умолчанию */
+body, .navbar, header, .nav-link, i {
+  transition: none;
+}
+
+/* После полной загрузки включаем анимации */
+.animations-ready body,
+.animations-ready .navbar,
+.animations-ready header,
+.animations-ready .nav-link,
+.animations-ready i {
+  transition: all 0.8s ease;
 }

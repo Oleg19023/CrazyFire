@@ -153,9 +153,11 @@
             <a href="#" id="randomLetters">Генератор паролей</a>
             <a href="#" id="randomQuote">Генератор цитат</a>
             <a href="#" id="steamKey">Генератор ключей Steam</a>
+            <a href="#" id="randomPhoto">Генератор случайных фото</a>
             <a href="#" id="random">???</a>
             <h2>Жребии</h2>
             <a href="#" id="coinFlip">Орел или Решка</a>
+            <a href="#" id="wheelOfFortune">Колесо Фортуны</a>
         </div>
         <div class="main">
             <!-- Генератор случайных чисел -->
@@ -236,7 +238,83 @@
                 <input type="number" id="keyCount" value="1" min="1" max="10000">
                 <button id="generateSteamKeys">Сгенерировать ключи</button>
                 <div id="steamKeyResult"></div> <!-- Здесь будут отображаться ключи -->
-            </div>                                           
+            </div>
+            <!-- Генератор случайных фото -->
+            <div class="generator" id="randomPhotoGenerator" style="display: none;">
+                <h1>Генератор случайных фото</h1>
+                <div class="photo-container">
+                    <img id="randomImage" src="" alt="Случайное фото" style="max-width: 100%; max-height: 500px; display: none;">
+                    <div id="loading" style="display: none;">Загрузка...</div>
+                </div>
+                <div class="photo-controls">
+                    <button id="getRandomPhoto" class="btn btn-primary">Новое фото</button>
+                    <button id="downloadPhoto" class="btn btn-success" disabled>Скачать фото</button>
+                    <button id="prevPhoto" class="btn btn-secondary" disabled>Предыдущее фото</button>
+                </div>
+                <div id="photoInfo" style="margin-top: 10px;"></div>
+            </div>
+            <!-- Колесо Фортуны -->
+            <div class="generator" id="wheelOfFortuneGenerator" style="display: none;">
+                <h1>Колесо Фортуны</h1>
+                
+                <div class="wheel-container">
+                    <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                    <div class="wheel-center" id="spinButton">Крутить!</div>
+                </div>
+                
+                <div class="wheel-controls">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="wheelItems">Введите варианты (по одному в строке):</label>
+                                
+<textarea id="wheelItems" class="form-control" rows="6">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="wheelMode">Режим:</label>
+                                <select id="wheelMode" class="form-control">
+                                    <option value="normal">Обычный</option>
+                                    <option value="elimination">Выбывание</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Цвета секторов:</label>
+                                <input type="text" id="wheelColors" class="form-control mb-2" value="#FF6384,#36A2EB,#FFCE56,#4BC0C0,#9966FF,#FF9F40,#8AC24A,#FF5722,#607D8B,#9C27B0">
+                                <small>HEX цвета через запятую</small>
+                                <div id="colorPickers" class="d-flex flex-wrap gap-2 mt-2"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="spinTime">Время вращения (сек, макс 180):</label>
+                                <input type="number" id="spinTime" class="form-control" value="5" min="1" max="180">
+                            </div>
+                        </div>
+                
+                <div class="wheel-results">
+                    <h3>Результаты:</h3>
+                    <div id="wheelHistory"></div>
+                    <button id="clearHistory" class="btn btn-danger">Очистить историю</button>
+                    <button id="downloadHistory" class="btn btn-success">Скачать TXT</button>
+                </div>
+                
+                <audio id="wheelSound" src="https://www.soundjay.com/misc/sounds/spinner-1.mp3" preload="auto"></audio>
+                <audio id="winSound" src="https://www.soundjay.com/human/sounds/applause-8.mp3" preload="auto"></audio>
+            </div>                                    
         </div>
     </main>  
     

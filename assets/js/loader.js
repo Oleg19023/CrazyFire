@@ -13,10 +13,40 @@
     // Вставляем в body
     document.body.insertAdjacentElement("afterbegin", preloader);
 
-    // Когда страница загружена — скрываем прелоадер
-    window.addEventListener("load", function () {
+// Функция для скрытия прелоадера (с возможностью переопределения)
+function hidePreloader(delay = 300) { // 300ms — значение по умолчанию
+    setTimeout(() => {
         preloader.classList.add("hidden");
-        setTimeout(() => {
-            preloader.remove(); // Полностью удаляем из DOM
-        }, 500);
-    });
+        setTimeout(() => preloader.remove(), 500);
+    }, delay);
+}
+
+// Стандартный обработчик (сработает, если нет переопределения)
+window.addEventListener("load", () => {
+    // Если hidePreloader уже вызван (например, из другого скрипта), ничего не делаем
+    if (!window._preloaderOverridden) {
+        hidePreloader(); // Используем задержку по умолчанию (300ms)
+    }
+});
+
+// Помечаем, что hidePreloader был вызван извне
+window._preloaderOverridden = false;
+
+// "Публичная" версия функции для переопределения
+window.setPreloaderDelay = function(delay) {
+    window._preloaderOverridden = true;
+    hidePreloader(delay);
+};
+
+// Плавное появление контента (оставляем как есть)
+window.addEventListener('DOMContentLoaded', () => {
+    document.documentElement.classList.add('theme-loaded');
+    document.body.style.opacity = '1';
+    setTimeout(() => {
+        document.documentElement.classList.add('animations-ready');
+    }, 100);
+});
+
+/* Пример использования:
+<script>window._preloaderOverridden = true;window.addEventListener("load", () => hidePreloader(1000));</script> 
+*/

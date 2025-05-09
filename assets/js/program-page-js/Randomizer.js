@@ -276,3 +276,437 @@ function generateSteamKeys(count) {
 }
 
 
+
+
+
+
+
+
+// Генератор случайных фото
+document.getElementById('randomPhoto').addEventListener('click', function() {
+    showGenerator('randomPhotoGenerator');
+});
+
+let currentPhotoUrl = '';
+let previousPhotoUrl = '';
+let currentPhotoId = '';
+
+document.getElementById('getRandomPhoto').addEventListener('click', function() {
+    getRandomPhoto();
+});
+
+document.getElementById('downloadPhoto').addEventListener('click', function() {
+    if(currentPhotoUrl) {
+        const a = document.createElement('a');
+        a.href = currentPhotoUrl;
+        a.download = `random-photo-${currentPhotoId}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+});
+
+document.getElementById('prevPhoto').addEventListener('click', function() {
+    if(previousPhotoUrl) {
+        // Сохраняем текущее фото во временную переменную
+        const tempUrl = currentPhotoUrl;
+        const tempId = currentPhotoId;
+        
+        // Устанавливаем предыдущее фото
+        document.getElementById('randomImage').src = previousPhotoUrl;
+        currentPhotoUrl = previousPhotoUrl;
+        currentPhotoId = previousPhotoId;
+        
+        // Обновляем предыдущее фото
+        previousPhotoUrl = tempUrl;
+        previousPhotoId = tempId;
+        
+        // Обновляем кнопки
+        document.getElementById('downloadPhoto').disabled = false;
+        document.getElementById('prevPhoto').disabled = !previousPhotoUrl;
+        
+        // Показываем информацию о фото
+        document.getElementById('photoInfo').textContent = `ID фото: ${currentPhotoId}`;
+    }
+});
+
+function getRandomPhoto() {
+    const loadingElement = document.getElementById('loading');
+    const imageElement = document.getElementById('randomImage');
+    
+    // Показываем индикатор загрузки
+    loadingElement.style.display = 'block';
+    imageElement.style.display = 'none';
+    
+    // Сохраняем текущее фото как предыдущее
+    if(currentPhotoUrl) {
+        previousPhotoUrl = currentPhotoUrl;
+        previousPhotoId = currentPhotoId;
+    }
+    
+    // Генерируем случайный ID для фото (можно использовать другие API)
+    currentPhotoId = Math.floor(Math.random() * 1000);
+    currentPhotoUrl = `https://picsum.photos/id/${currentPhotoId}/800/600`;
+    
+    // Загружаем новое фото
+    imageElement.onload = function() {
+        loadingElement.style.display = 'none';
+        imageElement.style.display = 'block';
+        document.getElementById('downloadPhoto').disabled = false;
+        document.getElementById('prevPhoto').disabled = !previousPhotoUrl;
+        document.getElementById('photoInfo').textContent = `ID фото: ${currentPhotoId}`;
+    };
+    
+    imageElement.onerror = function() {
+        // Если фото не загрузилось, пробуем снова
+        getRandomPhoto();
+    };
+    
+    imageElement.src = currentPhotoUrl;
+}
+
+// Функция для показа выбранного генератора
+function showGenerator(generatorId) {
+    // Скрываем все генераторы
+    document.querySelectorAll('.generator').forEach(el => {
+        el.style.display = 'none';
+    });
+    
+    // Показываем выбранный генератор
+    document.getElementById(generatorId).style.display = 'block';
+    
+    // Если это генератор фото, загружаем первое фото
+    if(generatorId === 'randomPhotoGenerator' && !currentPhotoUrl) {
+        getRandomPhoto();
+    }
+}
+
+
+
+
+
+
+
+
+// КОЛЕСО ФОРТУНЫ // 
+
+// Колесо Фортуны - Финальная версия
+document.getElementById('wheelOfFortune').addEventListener('click', function() {
+    showGenerator('wheelOfFortuneGenerator');
+    initWheel();
+});
+
+let wheel;
+let isSpinning = false;
+let currentItems = [];
+let eliminatedItems = [];
+let wheelColors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#8AC24A', '#FF5722', '#607D8B', '#9C27B0'];
+let currentRotation = 0;
+
+function initWheel() {
+    const canvas = document.getElementById('wheelCanvas');
+    const size = Math.min(window.innerWidth * 0.8, 500);
+    canvas.width = size;
+    canvas.height = size;
+    
+    const ctx = canvas.getContext('2d');
+    wheel = { canvas, ctx };
+    
+    updateWheelItems();
+    
+    // Автоматическое обновление при изменении текста
+    const wheelItemsTextarea = document.getElementById('wheelItems');
+    wheelItemsTextarea.addEventListener('input', function() {
+        if (!isSpinning) {
+            updateWheelItems();
+        }
+    });
+    
+    // Блокировка textarea во время вращения
+    wheelItemsTextarea.addEventListener('keydown', function(e) {
+        if (isSpinning) {
+            e.preventDefault();
+        }
+    });
+    
+    document.getElementById('spinButton').addEventListener('click', spinWheel);
+    document.getElementById('clearHistory').addEventListener('click', clearHistory);
+    
+    // Обработка изменения времени прокрутки
+    document.getElementById('spinTime').addEventListener('change', function() {
+        const value = parseInt(this.value);
+        if (value > 180) this.value = 180;
+        if (value < 1) this.value = 1;
+    });
+    
+    // Обработка клавиши пробела
+    document.addEventListener('keydown', function(e) {
+        if (e.code === 'Space' && !isSpinning && 
+            document.getElementById('wheelOfFortuneGenerator').style.display !== 'none') {
+            spinWheel();
+            e.preventDefault();
+        }
+    });
+    
+    // Обработка ресайза
+    window.addEventListener('resize', function() {
+        const size = Math.min(window.innerWidth * 0.8, 500);
+        canvas.width = size;
+        canvas.height = size;
+        drawWheel();
+    });
+}
+
+function updateWheelItems() {
+    const text = document.getElementById('wheelItems').value;
+    currentItems = text.split('\n').filter(item => item.trim() !== '');
+    localStorage.setItem('wheelItems', text);
+    
+    const colorsText = document.getElementById('wheelColors').value;
+    wheelColors = colorsText.split(',').map(c => c.trim()).filter(c => c !== '');
+    localStorage.setItem('wheelColors', colorsText);
+    
+    drawWheel();
+}
+
+function drawWheel() {
+    const { ctx, canvas } = wheel;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = Math.min(centerX, centerY) - 30;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 1. Сначала рисуем колесо
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(currentRotation * Math.PI / 180);
+    ctx.translate(-centerX, -centerY);
+    
+    if (currentItems.length === 0) {
+        ctx.font = '20px Arial';
+        ctx.fillStyle = '#333';
+        ctx.textAlign = 'center';
+        ctx.fillText('Добавьте варианты', centerX, centerY);
+        ctx.restore();
+        return;
+    }
+    
+    const arc = (2 * Math.PI) / currentItems.length;
+    
+    currentItems.forEach((item, i) => {
+        const angle = i * arc;
+        const color = wheelColors[i % wheelColors.length];
+        
+        // Сектор
+        ctx.beginPath();
+        ctx.fillStyle = color;
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, angle, angle + arc);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Текст
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(angle + arc / 2);
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold ' + Math.max(12, radius/10) + 'px Arial';
+        ctx.fillText(item, radius / 2, 5);
+        ctx.restore();
+    });
+    
+    // Центр колеса
+    ctx.beginPath();
+    ctx.fillStyle = '#fff';
+    ctx.arc(centerX, centerY, 30, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.strokeStyle = '#ddd';
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    
+    ctx.restore();
+    
+    // 2. Затем рисуем стрелку ПОВЕРХ колеса (справа)
+    drawArrow(ctx, canvas.width - 20, centerY);
+}
+
+function drawArrow(ctx, x, y) {
+    // Яркая стрелка справа (указывает влево)
+    ctx.beginPath();
+    ctx.moveTo(x, y - 20);     // Верхняя точка
+    ctx.lineTo(x, y + 20);     // Нижняя точка
+    ctx.lineTo(x - 30, y);     // Центральная точка (острие)
+    ctx.closePath();
+    
+    // Стиль стрелки
+    ctx.fillStyle = '#FF0000'; // Красный цвет
+    ctx.fill();
+    ctx.strokeStyle = '#FFF';  // Белая обводка
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
+function spinWheel() {
+    if (isSpinning || currentItems.length === 0) return;
+    
+    isSpinning = true;
+    const spinButton = document.getElementById('spinButton');
+    const wheelItemsTextarea = document.getElementById('wheelItems');
+    
+    spinButton.textContent = '...';
+    spinButton.style.pointerEvents = 'none';
+    wheelItemsTextarea.readOnly = true;
+    
+    const spinTime = parseInt(document.getElementById('spinTime').value) * 1000;
+    const mode = document.getElementById('wheelMode').value;
+    
+    // Всегда вращаем вправо (по часовой)
+    const targetRotation = currentRotation + 360 * 5 + Math.floor(Math.random() * 360);
+    
+    let startTime = null;
+    let startRotation = currentRotation;
+    
+    function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / spinTime, 1);
+        
+        const easeProgress = easeOutCubic(progress);
+        currentRotation = startRotation + easeProgress * (targetRotation - startRotation);
+        
+        drawWheel();
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            finishSpin();
+        }
+    }
+    
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+    
+    function finishSpin() {
+        // Правильный расчет для стрелки сверху (0°)
+        // При вращении по часовой стрелке (угол увеличивается)
+        const normalizedAngle = currentRotation % 360;
+        const sectorAngle = 360 / currentItems.length;
+        
+        // Формула для определения индекса под стрелкой:
+        const selectedIndex = (currentItems.length - Math.floor(normalizedAngle / sectorAngle) - 1) % currentItems.length;
+        const selectedItem = currentItems[selectedIndex];
+        
+        // Отладка (можно удалить после проверки)
+        console.log(`Угол: ${normalizedAngle}°, Сектор: ${sectorAngle}°, Индекс: ${selectedIndex}, Выбран: ${selectedItem}`);
+        
+        if (mode === 'elimination') {
+            eliminatedItems.push(selectedItem);
+            currentItems = currentItems.filter(item => !eliminatedItems.includes(item));
+            document.getElementById('wheelItems').value = currentItems.join('\n');
+        }
+        
+        addToHistory(selectedItem, mode === 'elimination' && currentItems.length > 0);
+        
+        isSpinning = false;
+        spinButton.textContent = 'Крутить!';
+        spinButton.style.pointerEvents = 'auto';
+        wheelItemsTextarea.readOnly = false;
+        
+        if (mode === 'elimination') {
+            drawWheel();
+        }
+    }
+    
+    requestAnimationFrame(animate);
+}
+
+function addToHistory(item, isElimination) {
+    const historyElement = document.getElementById('wheelHistory');
+    const resultItem = document.createElement('div');
+    resultItem.className = `result-item ${isElimination ? 'eliminated' : ''}`;
+    
+    const date = new Date();
+    const timeString = date.toLocaleTimeString();
+    
+    resultItem.innerHTML = `
+        <span>${item}</span>
+        <small>${timeString}</small>
+    `;
+    
+    historyElement.insertBefore(resultItem, historyElement.firstChild);
+    localStorage.setItem('wheelHistory', historyElement.innerHTML);
+}
+
+function clearHistory() {
+    document.getElementById('wheelHistory').innerHTML = '';
+    eliminatedItems = [];
+    localStorage.removeItem('wheelHistory');
+}
+
+function showGenerator(generatorId) {
+    document.querySelectorAll('.generator').forEach(el => {
+        el.style.display = 'none';
+    });
+    document.getElementById(generatorId).style.display = 'block';
+}
+
+// Скачивание истории
+document.getElementById('downloadHistory').addEventListener('click', function() {
+    const historyItems = document.querySelectorAll('#wheelHistory .result-item');
+    let txtContent = '<CRAZYFIRE> Результаты Колеса Фортуны\n\n';
+    
+    historyItems.forEach(item => {
+        txtContent += `${item.querySelector('span').textContent} - ${item.querySelector('small').textContent}\n`;
+    });
+    
+    const blob = new Blob([txtContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `wheel_results_${new Date().toLocaleDateString()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
+
+// Создание цветовых пикеров
+function updateColorPickers() {
+    const container = document.getElementById('colorPickers');
+    container.innerHTML = '';
+    const colors = document.getElementById('wheelColors').value.split(',');
+    
+    colors.forEach((color, i) => {
+        const picker = document.createElement('input');
+        picker.type = 'color';
+        picker.value = color.trim();
+        picker.className = 'form-control form-control-color';
+        picker.style.width = '40px';
+        picker.addEventListener('input', function() {
+            const colors = document.getElementById('wheelColors').value.split(',');
+            colors[i] = this.value;
+            document.getElementById('wheelColors').value = colors.join(',');
+            updateWheelItems();
+        });
+        container.appendChild(picker);
+    });
+}
+
+// Вызовите эту функцию в initWheel после добавления обработчиков событий
+updateColorPickers();
+
+
+// Загрузка сохраненных данных
+if (localStorage.getItem('wheelItems')) {
+    document.getElementById('wheelItems').value = localStorage.getItem('wheelItems');
+}
+if (localStorage.getItem('wheelColors')) {
+    document.getElementById('wheelColors').value = localStorage.getItem('wheelColors');
+    updateColorPickers();
+}
+if (localStorage.getItem('wheelHistory')) {
+    document.getElementById('wheelHistory').innerHTML = localStorage.getItem('wheelHistory');
+}

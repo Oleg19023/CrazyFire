@@ -235,8 +235,118 @@ button:hover {
     #coinImage {
         transition: transform 1s ease-in-out; /* Анимация вращения */
     }
+
+
+
+
+
+    .wheel-container {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        margin: 0 auto 30px;
+    }
     
+    #wheelCanvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    }
     
+    .wheel-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        z-index: 10;
+        user-select: none;
+        color: black;
+    }
+    
+    .wheel-center:hover {
+        background: #f0f0f0;
+    }
+    
+    .wheel-controls {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    .dark-theme .wheel-controls {
+        background: #333;
+        color: #fff;
+    }
+    
+    .wheel-results {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .dark-theme .wheel-results {
+        background: #333;
+        color: #fff;
+    }
+    
+    #wheelHistory {
+        min-height: 100px;
+        max-height: 300px;
+        overflow-y: auto;
+        margin-bottom: 15px;
+        padding: 10px;
+        background: white;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+
+    .dark-theme #wheelHistory {
+        background: #838383;
+        border: none;
+    }
+    
+    .result-item {
+        padding: 8px 12px;
+        margin-bottom: 5px;
+        background: #e9ecef;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dark-theme  .result-item {
+        background: #333;
+        color: #fff;
+    }
+    
+    .eliminated {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    #clearHistory {
+        background: red;
+    }
+
+    .form-control-color {
+        height: 40px;
+        padding: 2px;
+        cursor: pointer;
+    }
+
+
 
 /* Адаптивность для телефонов */
 @media (max-width: 768px) {
@@ -267,5 +377,10 @@ button:hover {
         display: inline-block;
         margin: 5px;
         padding: 8px 15px;
+    }
+
+    .wheel-container {
+        width: 300px;
+        height: 300px;
     }
 }

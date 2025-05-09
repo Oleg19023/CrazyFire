@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                     </div>
                     <h6 class="m-3">
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.5b</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.5dev</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
                     </h6>
                 </div>
             </div>
