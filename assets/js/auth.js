@@ -145,46 +145,58 @@ function initAuth() {
     });
   }
 
-    // Email/пароль аутентификация
-    function setupEmailAuth() {
-      if (elements.loginForm) {
-        elements.loginForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const email = getElement("login_email_field").value;
-          const password = getElement("login_password_field").value;
+  // Email/пароль аутентификация
+  function setupEmailAuth() {
+    if (elements.loginForm) {
+      elements.loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = getElement("login_email_field").value;
+        const password = getElement("login_password_field").value;
 
-          auth.signInWithEmailAndPassword(email, password)
-            .then(() => {
-              if (elements.loginModal) elements.loginModal.style.display = "none";
-            })
-            .catch(error => {
-              alert("Ошибка входа: " + error.message);
-            });
-        });
-      }
-
-      if (elements.registerForm) {
-        elements.registerForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const email = getElement("register_email_field").value;
-          const password = getElement("register_password_field").value;
-          const confirmPassword = getElement("confirm_password_field").value;
-
-          if (password !== confirmPassword) {
-            alert("Пароли не совпадают!");
-            return;
-          }
-
-          auth.createUserWithEmailAndPassword(email, password)
-            .then(() => {
-              if (elements.registerModal) elements.registerModal.style.display = "none";
-            })
-            .catch(error => {
-              alert("Ошибка регистрации: " + error.message);
-            });
-        });
-      }
+        auth.signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            // Проверяем верификацию email перед входом
+            if (!userCredential.user.emailVerified) {
+              auth.signOut();
+              alert('Пожалуйста, подтвердите ваш email. Проверьте вашу почту.');
+              return;
+            }
+            if (elements.loginModal) elements.loginModal.style.display = "none";
+          })
+          .catch(error => {
+            alert("Ошибка входа: " + error.message);
+          });
+      });
     }
+
+    if (elements.registerForm) {
+      elements.registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = getElement("register_email_field").value;
+        const password = getElement("register_password_field").value;
+        const confirmPassword = getElement("confirm_password_field").value;
+
+        if (password !== confirmPassword) {
+          alert("Пароли не совпадают!");
+          return;
+        }
+
+        auth.createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            // Отправляем письмо подтверждения
+            return userCredential.user.sendEmailVerification();
+          })
+          .then(() => {
+            alert('Письмо с подтверждением отправлено на ваш email. Пожалуйста, проверьте почту и подтвердите адрес перед входом.');
+            if (elements.registerModal) elements.registerModal.style.display = "none";
+            return auth.signOut(); // Выходим до подтверждения email
+          })
+          .catch(error => {
+            alert("Ошибка регистрации: " + error.message);
+          });
+      });
+    }
+  }
     
 
     // Выход из системы
