@@ -1,0 +1,824 @@
+/* From Uiverse.io by zanina-yassine - Modified for Registration */
+.form_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 50px 40px 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+    0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+    0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  font-family: "Inter", sans-serif;
+}
+
+
+.logo_container .logo{
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(248, 248, 248, 0) 50%, #F8F8F888 100%);
+  border: 1px solid #F7F7F8;
+  filter: drop-shadow(0px 0.5px 0.5px #EFEFEF) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  border-radius: 11px;
+}
+
+#loginBtn {
+  margin-left: 10px;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.profile-container {
+  position: relative;
+  margin-left: 15px;
+}
+
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #555;
+}
+
+.profile-dropdown-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.profile-dropdown-btn:hover {
+  color: #0d6efd;
+}
+
+.profile-name {
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  min-width: 180px;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+
+.dropdown-menu {
+  transform-origin: top right;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Блок баланса */
+.balance-container {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+.balance-amount {
+  font-weight: 600;
+  color: black;
+  margin-right: 5px;
+}
+
+.balance-logo {
+  height: 18px;
+  width: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+.title_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212121;
+}
+
+.subtitle {
+  font-size: 0.725rem;
+  max-width: 80%;
+  text-align: center;
+  line-height: 1.1rem;
+  color: #8B8E98
+}
+
+.input_container {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.icon-auth {
+  width: 20px;
+  position: absolute;
+  z-index: 99;
+  left: 12px;
+  bottom: 9px;
+}
+
+.input_label {
+  font-size: 0.75rem;
+  color: #8B8E98;
+  font-weight: 600;
+}
+
+.input_field {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 40px;
+  border-radius: 7px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.input_field:focus {
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 2px #242424;
+  background-color: transparent;
+}
+
+.sign-in_btn {
+  width: 100%;
+  height: 40px;
+  border: 0;
+  background: #115DFC;
+  border-radius: 7px;
+  outline: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sign-in_ggl {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 7px;
+  outline: none;
+  color: #242424;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  cursor: pointer;
+}
+
+.sign-in_apl {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #212121;
+  border-radius: 7px;
+  outline: none;
+  color: #ffffff;
+  border: 1px solid #e5e5e5;
+  filter: drop-shadow(0px 1px 0px #efefef)
+    drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+  cursor: pointer;
+}
+
+.separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  color: #8B8E98;
+}
+
+.separator .line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: #8f8f8f;
+}
+
+.note {
+  font-size: 1rem;
+  color: #8B8E98;
+}
+
+
+
+/* Стили для модальных окон */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  animation: fadeIn 0.5s;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 5% auto;
+  margin-top: 5%;
+  border-radius: 11px;
+  box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+              0px 59px 36px rgba(0, 0, 0, 0.05),
+              0px 26px 26px rgba(0, 0, 0, 0.09),
+              0px 7px 15px rgba(0, 0, 0, 0.1),
+              0px 0px 0px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  animation: slideIn 0.5s;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  animation: fadeIn 0.5s;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Социальные кнопки */
+.social-buttons {
+  display: grid;
+  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.button-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  width: 100%;
+}
+
+.google-auth {
+  background: #fff;
+  color: #757575;
+  border: 1px solid #e0e0e0;
+}
+
+.google-auth:hover {
+  background: #f5f5f5;
+}
+
+.github-auth {
+  background: #24292e;
+  color: white;
+}
+
+.github-auth:hover {
+  background: #1a1e22;
+}
+
+/* Стили для контейнера с паролем */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Стили для поля ввода пароля */
+.input_field[type="password"],
+.input_field[type="text"] {
+  padding-right: 40px; /* Оставляем место для кнопки */
+  width: 100%;
+}
+
+/* Стили для кнопки переключения видимости */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  margin-top: 4.5%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+/* Стили для иконки глаза */
+.eye-icon {
+  fill: currentColor;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 10% auto;
+    width: 95%;
+    margin-top: 20%;
+  }
+  .form_container {
+    gap: 0px;
+  }
+  .toggle-password {
+  margin-top: 11%;
+  }
+  .social-buttons {
+  grid-template-columns: 1fr;
+  }
+}
+
+
+/* Темная тема */
+body.dark-theme .form_container {
+  background-color: rgb(0, 0, 0);
+  border-radius: 9px;
+}
+
+body.dark-theme .input_field:focus {
+  background-color: rgb(255, 255, 255);
+}
+
+body.dark-theme .logo {
+  border: black;
+  filter: none;
+}
+
+body.dark-theme .title {
+  color: white;
+}
+
+body.dark-theme .balance-amount {
+  color: white;
+}
+
+
+
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #555;
+}
+
+.profile-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.profile-link:hover {
+  color: #0d6efd;
+}
+
+.profile-name {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  #logoutBtn {
+    margin-left: 0 !important;
+  }
+}
+
+
+
+
+
+
+/* GOOGLE */ 
+.button.google-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(50, 50, 80, 0.25);
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: rgb(50, 50, 80);
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.google-auth svg {
+  height: 24px;
+  width: 24px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.google-auth:hover {
+  transform: scale(1.02);
+  background-color: rgb(90, 90, 120);
+  box-shadow: 0 2px 4px rgba(90, 90, 120, 0.1);
+}
+
+.button.google-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 40, 0.3);
+}
+
+.button.google-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.google-auth {
+    max-width: 100%;
+  }
+}
+
+
+/* DISCORD */ 
+.button.discord-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(86, 98, 246, 0.25);
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: #5662f6;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.discord-auth svg {
+  height: 24px;
+  width: 24px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.discord-auth:hover {
+  transform: scale(1.02);
+  background-color: rgb(119, 133, 204);
+  box-shadow: 0 2px 4px rgba(119, 133, 204, 0.1);
+}
+
+.button.discord-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.button.discord-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.discord-auth {
+    max-width: 100%;
+  }
+}
+
+/* GITHUB */ 
+.button.github-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(24, 23, 23, 0.25);
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: rgb(24, 23, 23);
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.github-auth svg {
+  height: 24px;
+  width: 24px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.github-auth:hover {
+  transform: scale(1.02);
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button.github-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.button.github-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.github-auth {
+    max-width: 100%;
+  }
+}
+
+
+/* APPLE */ 
+.button.apple-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: #000;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.apple-auth svg {
+  height: 24px;
+  width: 24px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.apple-auth:hover {
+  transform: scale(1.02);
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button.apple-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.button.apple-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.apple-auth {
+    max-width: 100%;
+  }
+}
+
+
+
+/* FACEBOOK */ 
+.button.facebook-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid #0A66C2;
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: #0A66C2;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.facebook-auth svg {
+  height: 24px;
+  width: 24px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.facebook-auth:hover {
+  transform: scale(1.02);
+  background-color: rgb(29, 56, 194);
+  box-shadow: 0 2px 4px rgba(119, 133, 204, 0.1);
+}
+
+.button.facebook-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.button.facebook-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.facebook-auth {
+    max-width: 100%;
+  }
+}
+
+
+
+/* X (twitter) */ 
+.button.x-auth {
+  max-width: 320px;
+  display: flex;
+  padding: 0.5rem 1.4rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: #000;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+.button.x-auth svg {
+  height: 16px;
+  width: 16px;
+  fill: #fff;
+  margin-right: 0.5rem;
+}
+
+.button.x-auth:hover {
+  transform: scale(1.02);
+  background-color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button.x-auth:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.button.x-auth:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.x-auth {
+    max-width: 100%;
+  }
+}
+
+
