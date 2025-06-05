@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="/assets/css/update-history.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS -->
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -82,7 +86,7 @@
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
-                        <i id="parallaxIcon" class="fas fa-play"></i>
+                        <i id="parallaxIcon" class="fa-solid fa-wand-magic"></i>
                     </button>
                     
                     <label class="switch" style="display: inline-block; margin-right: 10px;">
@@ -512,7 +516,20 @@
             <h2 class="text-center">Последние обновления сайта</h2>
             <div class="update-list">
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 2.6dev</strong><br>
+                        <span>Дата: 5.06.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <p><strong><h4>🛠 В процессе разработки ...</h4></strong></p>
+                        <p><h6>✨ Плавные анимации и SEO-прокачка!</h6></p>
+                        <p><strong class="text-success">Добавлено:</strong> Теперь можно проигрывать треки в одиночном режиме, независимо от того, плейлист это или просто видео. Подключена библиотека AOS для плавных анимаций карточек программ, приложений и игр, а также расширена область их отображения. Добавлена индексация через robots.txt и sitemap.xml, настроена оптимальная индексация сайта в Google.</p>
+                        <p><strong class="text-warning">Исправлено:</strong> Кнопка включения параллакса получила новый стиль — волшебная палочка.</p>
+                    </div>
+                </div>
+
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.5</strong><br>
                         <span>Дата: 18.05.2025</span>
@@ -524,7 +541,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.4</strong><br>
                         <span>Дата: 8.04.2025</span>
@@ -536,7 +553,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.3</strong><br>
                         <span>Дата: 25.03.2025</span>
@@ -548,7 +565,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.2</strong><br>
                         <span>Дата: 2.03.2025</span>
@@ -559,7 +576,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.1</strong><br>
                         <span>Дата: 2.03.2025</span>
@@ -573,7 +590,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 2.0</strong><br>
                         <span>Дата: 22.02.2025</span>
@@ -586,7 +603,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.9</strong><br>
                         <span>Дата: 12.02.2025</span>
@@ -599,7 +616,7 @@
                 </div>
                 
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.8</strong><br>
                         <span>Дата: 9.02.2025</span>
@@ -611,7 +628,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.7</strong><br>
                         <span>Дата: 5.02.2025</span>
@@ -623,7 +640,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.6</strong><br>
                         <span>Дата: 14.01.2025</span>
@@ -634,19 +651,19 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.5</strong><br>
                         <span>Дата: 13.01.2025</span>
                     </div>
-                    <div class="update-description">
+                    <div class="update-description" data-aos="fade-down">
                         <p><strong class="text-success">Добавлено:</strong> New Pages: About, Contacts, Privacy, AdminSettings</p>
                         <p><strong class="text-warning">Исправлено:</strong> Некоторые исправления темы. Исправления меню заголовков (для мобильных устройств), исправления перевода, некоторые исправления нижнего колонтитула</p>
                         <p><strong class="text-danger">Удалено:</strong> Убрана кнопка поиска на главной странице</p>
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.4</strong><br>
                         <span>Дата: 11.01.2025</span>
@@ -656,7 +673,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.3</strong><br>
                         <span>Дата: 11.01.2025</span>
@@ -666,7 +683,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.2</strong><br>
                         <span>Дата: 11.01.2025</span>
@@ -676,7 +693,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.1</strong><br>
                         <span>Дата: 11.01.2025</span>
@@ -686,7 +703,7 @@
                     </div>
                 </div>
 
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 1.0</strong><br>
                         <span>Дата: 10.01.2025</span>
@@ -695,7 +712,7 @@
                         <p><strong class="">Начало развертывания нового проекта</strong></p>
                     </div>
                 </div>
-                <div class="update-item p-3 mb-3">
+                <div class="update-item p-3 mb-3" data-aos="fade-down">
                     <div class="update-info mb-2">
                         <strong>Версия: 0</strong><br>
                         <span>Дата: 10.09.2023</span>
@@ -726,6 +743,7 @@
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/aos-cards.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

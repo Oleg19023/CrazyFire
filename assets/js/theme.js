@@ -37,8 +37,8 @@ function applyTheme(theme) {
 
                 const parallaxIcon = document.getElementById('parallaxIcon');
                 if (parallaxIcon) {
-                    parallaxIcon.classList.remove('fa-stop');
-                    parallaxIcon.classList.add('fa-play');
+                    parallaxIcon.classList.remove('fa-wand-magic');
+                    parallaxIcon.classList.add('fa-wand-magic-sparkles');
                 }
 
                 isParticlesEnabled = false;
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxToggle.style.display = 'inline-block';
             const parallaxIcon = document.getElementById('parallaxIcon');
             if (parallaxIcon) {
-                parallaxIcon.classList.remove('fa-play');
-                parallaxIcon.classList.add('fa-stop');
+                parallaxIcon.classList.remove('fa-wand-magic-sparkles');
+                parallaxIcon.classList.add('fa-wand-magic');
             }
             isParticlesEnabled = true;
         }

@@ -4,10 +4,24 @@
 
 h2 {
     text-align: center; /* Центрирование заголовка */
+    font-size: 1.8rem; /* Размер подзаголовка */
+    margin-top: 10px; /* Отступ сверху */
+    margin-bottom: 30px; /* Отступ снизу */
+}
+
+h1 {
+    font-size: 2.5rem; /* Размер заголовка */
+    margin-bottom: 20px; /* Отступ снизу */
+    text-align: center; /* Центрирование заголовка */
+}
+
+p {
+    font-size: 1rem; /* Размер текста */
+    line-height: 1.6; /* Межстрочный интервал */
+    margin-bottom: 15px; /* Отступ снизу */
 }
 
 .update-list {
-    max-width: 800px;
     margin: auto;
 }
 
@@ -20,10 +34,16 @@ h2 {
     border: 1px solid #dee2e6; /* Рамка для элементов обновлений */
 }
 
+.aos-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
 .update-item:hover {
-    background-color: #edf0f3; /* Светло-серый фон при наведении */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .update-info {
@@ -61,32 +81,12 @@ body.dark-theme .update-item {
     background-color: #43484f; /* Цвет фона карточки в темной теме */
     color: #f8f9fa; /* Светлый текст для карточек в темной теме */
     border: none; /* Убираем рамку для карточек в темной теме */
-    transition: background-color 0.8s ease, color 0.8s ease; /* Плавный переход цвета */
 }
 
 body.dark-theme .update-item:hover {
     background-color: #495057; /* Темно-серый фон при наведении в темной теме */
     transform: translateY(-3px);
     box-shadow: 0 6px 10px rgb(129, 129, 129);
-    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход цвета */
 
-}
-
-h1 {
-    font-size: 2.5rem; /* Размер заголовка */
-    margin-bottom: 20px; /* Отступ снизу */
-    text-align: center; /* Центрирование заголовка */
-}
-
-h2 {
-    font-size: 1.8rem; /* Размер подзаголовка */
-    margin-top: 30px; /* Отступ сверху */
-    margin-bottom: 10px; /* Отступ снизу */
-}
-
-p {
-    font-size: 1rem; /* Размер текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin-bottom: 15px; /* Отступ снизу */
 }
 

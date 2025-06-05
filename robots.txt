@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+
+Allow: /
+
+Sitemap: https://crazyfire-app.web.app/sitemap.xml

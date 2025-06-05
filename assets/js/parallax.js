@@ -513,8 +513,8 @@ const particlesConfig = {
         const parallaxIcon = document.getElementById('parallaxIcon');
         if (isParticlesEnabled) {
             if (parallaxIcon) {
-                parallaxIcon.classList.remove('fa-play');
-                parallaxIcon.classList.add('fa-stop');
+                parallaxIcon.classList.remove('fa-wand-magic');
+                parallaxIcon.classList.add('fa-wand-magic-sparkles');
             }
             // Загружаем частицы, если они были включены
             setTimeout(function() {
@@ -522,8 +522,8 @@ const particlesConfig = {
             }, 300);
         } else {
             if (parallaxIcon) {
-                parallaxIcon.classList.remove('fa-stop');
-                parallaxIcon.classList.add('fa-play');
+                parallaxIcon.classList.remove('fa-wand-magic-sparkles');
+                parallaxIcon.classList.add('fa-wand-magic');
             }
         }
     });
@@ -537,16 +537,16 @@ const particlesConfig = {
                 tsparticlesElement.parentNode.removeChild(tsparticlesElement);
             }
             if (parallaxIcon) {
-                parallaxIcon.classList.remove('fa-stop');
-                parallaxIcon.classList.add('fa-play');
+                parallaxIcon.classList.remove('fa-wand-magic-sparkles');
+                parallaxIcon.classList.add('fa-wand-magic');
             }
         } else {
             setTimeout(function() {
                 tsParticles.load(particlesConfig);
             }, 300);
             if (parallaxIcon) {
-                parallaxIcon.classList.remove('fa-play');
-                parallaxIcon.classList.add('fa-stop');
+                parallaxIcon.classList.remove('fa-wand-magic');
+                parallaxIcon.classList.add('fa-wand-magic-sparkles');
             }
         }
         isParticlesEnabled = !isParticlesEnabled;

@@ -82,7 +82,7 @@
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
-                        <i id="parallaxIcon" class="fas fa-play"></i>
+                        <i id="parallaxIcon" class="fa-solid fa-wand-magic"></i>
                     </button>
                     
                     <label class="switch" style="display: inline-block; margin-right: 10px;">
@@ -1211,9 +1211,9 @@
         <div class="player-header">
             <div class="player-title"></div>
             <div class="playlist-loader">
-                <button class="load-playlist-btn" id="load-playlist-btn">Загрузить плейлист</button>
+                <button class="load-playlist-btn" id="load-playlist-btn">Загрузить трек</button>
                 <div class="playlist-input-container" id="playlist-input-container">
-                    <input type="text" class="playlist-input" id="playlist-input" placeholder="Введите URL плейлиста YouTube">
+                    <input type="text" class="playlist-input" id="playlist-input" placeholder="Введите URL YouTube">
                     <button class="option-btn" id="crazyfire-btn">
                         <i class="fas fa-fire"></i> CrazyFire
                     </button>
@@ -1406,6 +1406,25 @@ async function loadPlaylist() {
         renderPlaylist();
     }
 }
+
+async function fetchVideoData(videoId) {
+    const apiUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        if (data.items && data.items.length > 0) {
+            return data.items[0].snippet;
+        } else {
+            console.warn("Видео не найдено");
+            return null;
+        }
+    } catch (error) {
+        console.error("Ошибка при получении видео:", error);
+        return null;
+    }
+}
+
     
 // Отображение плейлиста
 function renderPlaylist() {
@@ -1761,11 +1780,47 @@ function setupEventListeners() {
     e.preventDefault();
     const playlistUrl = document.getElementById('playlist-input').value;
     const playlistId = extractPlaylistId(playlistUrl);
-    
-    if (!playlistId) {
-        alert('Некорректная ссылка на плейлист YouTube');
+    const videoId = extractVideoId(playlistUrl);
+
+    if (!playlistId && !videoId) {
+        alert('Некорректная ссылка на YouTube');
         return;
     }
+
+    // Останавливаем текущее воспроизведение
+    if (player && player.stopVideo && isPlaying) {
+        await player.stopVideo();
+        isPlaying = false;
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+
+    if (playlistId) {
+        PLAYLIST_ID = playlistId;
+        localStorage.setItem("lastPlaylistId", PLAYLIST_ID);
+        document.getElementById('playlist-input-container').classList.remove('visible');
+        await loadPlaylist();
+    } else if (videoId) {
+        const snippet = await fetchVideoData(videoId);
+
+        if (snippet) {
+            playlistItems = [{
+                snippet: {
+                    title: snippet.title,
+                    videoOwnerChannelTitle: snippet.channelTitle,
+                    resourceId: { videoId: videoId }
+                }
+            }];
+
+            localStorage.setItem("lastSingleVideo", JSON.stringify(playlistItems[0]));
+            renderPlaylist();
+            selectTrack(0);
+        }
+
+        renderPlaylist();
+        selectTrack(0);
+        document.getElementById('playlist-input-container').classList.remove('visible');
+    }
+
     
     // Останавливаем текущее воспроизведение
     if (player && player.stopVideo && isPlaying) {
@@ -1789,6 +1844,14 @@ function extractPlaylistId(url) {
     const match = url.match(regExp);
     return match ? match[1] : null;
 }
+
+// Извлечение ID видео из URL
+function extractVideoId(url) {
+    const regExp = /(?:v=|\/videos\/|embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+}
+
     
 // Инициализация YouTube плеера
 function initYouTubePlayer() {
@@ -2140,6 +2203,16 @@ document.addEventListener('DOMContentLoaded', function() {
         initMobilePlaylist();
     });
 });
+
+const lastSingle = localStorage.getItem("lastSingleVideo");
+if (lastSingle) {
+    const track = JSON.parse(lastSingle);
+    playlistItems = [track];
+    renderPlaylist();
+    selectTrack(0);
+}
+
+
 
 </script>
 

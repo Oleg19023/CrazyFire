@@ -2,13 +2,13 @@
 // import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // const firebaseConfig = {
-//   apiKey: "AIzaSyB-nLWTMjzrsfYiDtHeItdT3Aa2KAEWqoI",
-//   authDomain: "crazyfire-app.firebaseapp.com",
-//   projectId: "crazyfire-app",
-//   storageBucket: "crazyfire-app.appspot.com",
-//   messagingSenderId: "218958038563",
-//   appId: "1:218958038563:web:07df108430af2145f45396",
-//   measurementId: "G-X69JL6FMKQ"
+//   apiKey: "",
+//   authDomain: "",
+//   projectId: "",
+//   storageBucket: "",
+//   messagingSenderId: "",
+//   appId: "",
+//   measurementId: ""
 // };
 
 // // Инициализация Firebase

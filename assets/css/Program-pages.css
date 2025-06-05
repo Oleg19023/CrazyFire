@@ -4,7 +4,6 @@
     gap: 20px;
     justify-content: center;
     margin: 20px auto;
-    max-width: 1200px;
     padding-top: 70px;
 }
 
@@ -20,6 +19,12 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     transition: all 0.8s ease;
     border: hidden;
+    will-change: transform, box-shadow;
+}
+
+.aos-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
 }
 
 .program-icon {
@@ -29,8 +34,8 @@
 }
 
 .program-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .program-image {
