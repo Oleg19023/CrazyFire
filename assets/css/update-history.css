@@ -16,9 +16,13 @@ h1 {
 }
 
 p {
-    font-size: 1rem; /* Размер текста */
+    font-size: 18px; /* Размер текста */
     line-height: 1.6; /* Межстрочный интервал */
     margin-bottom: 15px; /* Отступ снизу */
+}
+
+.footer-text {
+    font-size: 15px !important;
 }
 
 .update-list {

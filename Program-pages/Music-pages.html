@@ -67,8 +67,8 @@
                             </li>
                     
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Магазин</a>
-                            <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Магазин</a>
+                            <ul class="dropdown-menu" aria-labelledby="shopDropdown">
                                 <li><a class="dropdown-item" href="https://funpay.com/users/12379589/">Funpay</a></li>
                             </ul>
                         </li>
@@ -82,6 +82,10 @@
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
                         <i id="parallaxIcon" class="fa-solid fa-wand-magic"></i>
+                    </button>
+                    <!-- Кнопка полноэкранного режима -->
+                    <button id="fullscreen-btn" class="btn btn-outline-secondary d-none d-lg-block" style="margin-right: 5px;" title="Во весь экран">
+                        <i class="fas fa-expand"></i>
                     </button>
                     
                     <label class="switch" style="display: inline-block; margin-right: 10px;">
@@ -509,9 +513,17 @@
         body {
             background: var(--dynamic-bg);
             color: var(--spotify-white);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh; /* Используем min-height вместо height */
             transition: background 1s ease;
+            /* Убираем overflow: hidden отсюда */
+        }
+
+        /* Стили для мобильных устройств (ширина до 991.5px) */
+        @media (max-width: 991.5px) {
+            body {
+                height: 100vh; /* Возвращаем фиксированную высоту */
+                overflow: hidden; /* Запрещаем прокрутку, чтобы работал свайп */
+            }
         }
     
         .fullscreen-player {
@@ -589,9 +601,9 @@
     
         .progress-bar {
             width: 100%;
-            height: 4px;
+            height: 6px;
             background: var(--spotify-gray);
-            border-radius: 2px;
+            border-radius: 3px;
             margin-bottom: 10px;
             cursor: pointer;
         }
@@ -608,19 +620,21 @@
         .progress::after {
             content: '';
             position: absolute;
-            right: -6px;
-            top: -5px;
-            width: 12px;
-            height: 12px;
+            right: -8px; /* Немного сдвинем, чтобы было по центру */
+            top: -5px;   /* Центрируем по вертикали */
+            width: 16px; /* Увеличили размер */
+            height: 16px;/* Увеличили размер */
             background: var(--spotify-white);
             border-radius: 50%;
             opacity: 0;
-            transition: opacity 0.2s;
-            transition: all 0.3s ease; /* Плавное появление/исчезновение кружка */
+            transform: scale(0); /* Сделаем появление через scale, это красивее */
+            transition: opacity 0.2s, transform 0.2s ease-out; /* Анимируем scale и opacity */
         }
     
-        .progress-bar:hover .progress::after {
+        .progress-bar:hover .progress::after,
+        .progress-bar:active .progress::after { /* Добавим :active для видимости при перетаскивании */
             opacity: 1;
+            transform: scale(1); /* Возвращаем к нормальному размеру */
         }
     
         .time-info {
@@ -649,6 +663,10 @@
             font-size: 24px;
             cursor: pointer;
             transition: transform 0.2s;
+        }
+
+        .control-btn.active {
+            color: var(--spotify-green);
         }
     
         .control-btn:hover {
@@ -965,7 +983,9 @@
             opacity: 1;
         }
 
-        /* Мобильная адаптация */
+        /* ==================================== */
+        /*     СТИЛИ ДЛЯ МОБИЛЬНОГО ПЛЕЕРА     */
+        /* ==================================== */
         @media (max-width: 991.5px) {
             .fullscreen-player {
                 padding: 10px;
@@ -986,6 +1006,25 @@
                 padding: 0 15px;
                 justify-content: flex-start;
                 margin-top: 20px;
+            }
+
+            .progress-bar {
+                height: 15px;
+                border-radius: 8px;
+            }
+            
+            .progress {
+                border-radius: 8px;
+            }
+            
+            .progress::after {
+                opacity: 1;
+                transform: scale(1);
+                width: 28px;
+                height: 24px;
+                right: -12px;
+                top: -4.5px;
+                box-shadow: 0 0 5px rgba(0,0,0,0.3);
             }
             
             .track-name {
@@ -1086,111 +1125,146 @@
             .cover-container {
             position: relative;
             touch-action: pan-y; /* Важно для свайпов */
-        }
+            }
 
-        .cover-container.show-mobile-btn .mobile-play-btn {
-            opacity: 1;
-        }
+            .cover-container.show-mobile-btn .mobile-play-btn {
+                opacity: 1;
+            }
 
-        .album-cover {
-            cursor: pointer;
-        }
+            .album-cover {
+                cursor: pointer;
+            }
 
-        ol, ul {padding-left: 0;}
+            ol, ul {padding-left: 0;}
 
-        .mobile-playlist li {
-            padding: 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+            .mobile-playlist li {
+                padding: 12px 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
         
-        .mobile-playlist .track-title {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 180px;
-        }
+            .mobile-playlist .track-title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 180px;
+            }
+            
+            .mobile-playlist .track-duration {
+                flex-shrink: 0;
+            }
+
+            .play-btn {
+                position: absolute;
+                left: 50%;
+                transform: translate(-50%, 0%);
+                background: rgba(0, 0, 0, 0);
+                border: none;
+                opacity: 0.9; /* Всегда видима */
+                transition: all 0.3s ease;
+                z-index: 10;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.5rem;
+                color: white;
+            }
+
+            .player-header {
+                justify-content: center;
+            }
+
+            .playlist-input-container {
+                position: relative;
+                top: 100%;
+                background: var(--spotify-black);
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+                z-index: 10;
+                display: none;
+            }
         
-        .mobile-playlist .track-duration {
-            flex-shrink: 0;
         }
 
-        .play-btn {
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, 0%);
-            background: rgba(0, 0, 0, 0);
-            border: none;
-            opacity: 0.9; /* Всегда видима */
-            transition: all 0.3s ease;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            color: white;
+        .mobile-playlist-container {
+            display: none !important;
         }
 
-        .player-header {
-            justify-content: center;
-        }
-
-        .playlist-input-container {
-            position: relative;
-            top: 100%;
-            background: var(--spotify-black);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            z-index: 10;
-            display: none;
-        }
-
-    }
-    .mobile-drag-handle {
-        display: none; /* По умолчанию скрыто */
-        position: fixed;
-        bottom: 18px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 100;
-        animation: bounce 4s infinite;
-        }
-
-        .mobile-drag-handle i {
-        font-size: 24px;
-        color: var(--spotify-light-gray);
-        opacity: 0.7;
-        }
-
-        @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-        }
-        40% {
-            transform: translateY(-4px);
-        }
-        60% {
-            transform: translateY(-1px);
-        }
-        }
-
-        @media (max-width: 768px) {
         .mobile-drag-handle {
-            display: block; /* Показываем только на мобильных */
+            display: none; /* По умолчанию скрыто */
+            position: fixed;
+            bottom: 18px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 100;
+            animation: bounce 4s infinite;
+            }
+
+            .mobile-drag-handle i {
+            font-size: 24px;
+            color: var(--spotify-light-gray);
+            opacity: 0.7;
+            }
+
+            @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-4px);
+            }
+            60% {
+                transform: translateY(-1px);
+            }
+            }
+
+            @media (max-width: 768px) {
+            .mobile-drag-handle {
+                display: block; /* Показываем только на мобильных */
+            }
+            
+            .volume-control {
+                margin-bottom: 30px; /* Добавляем место под стрелку */
+            }
+        }
+
+        /* ==================================== */
+        /*  ПОЗИЦИОНИРОВАНИЕ ЗАГРУЗЧИКА ТРЕКОВ */
+        /* ==================================== */
+
+        /* Стили для мобильной версии (по умолчанию) */
+        .player-header {
+            position: relative; 
+        }
+
+        .playlist-loader {
+            margin-top: 60px; /* Возвращаем отступ для мобильной версии */
+        }
+
+        @media (min-width: 991.6px) {
+            .playlist-loader {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                margin-top: 60px;
+                z-index: 10;
+            }
+
+            .playlist-loader .playlist-input-container {
+                right: 0;
+                top: 100%;
+            }
         }
         
-        .volume-control {
-            margin-bottom: 30px; /* Добавляем место под стрелку */
-        }
-    }
     </style>
     
     <div class="fullscreen-player">
         <div class="player-header">
             <div class="player-title"></div>
+            <!-- ЕДИНЫЙ БЛОК ЗАГРУЗЧИКА -->
             <div class="playlist-loader">
                 <button class="load-playlist-btn" id="load-playlist-btn">Загрузить трек</button>
                 <div class="playlist-input-container" id="playlist-input-container">
@@ -1234,14 +1308,24 @@
                     </div>
                     
                     <div class="main-controls">
-                        <button class="control-btn" id="prev-btn">
+                        <!-- Кнопка перемешивания -->
+                        <button class="control-btn" id="shuffle-btn" title="Перемешать">
+                            <i class="fa-solid fa-shuffle"></i>
+                        </button>
+
+                        <button class="control-btn" id="prev-btn" title="Предыдущий трек">
                             <i class="fas fa-step-backward"></i>
                         </button>
-                        <button class="play-btn" id="play-btn">
+                        <button class="play-btn" id="play-btn" title="Воспроизведение/Пауза">
                             <i class="fas fa-play"></i>
                         </button>
-                        <button class="control-btn" id="next-btn">
+                        <button class="control-btn" id="next-btn" title="Следующий трек">
                             <i class="fas fa-step-forward"></i>
+                        </button>
+
+                        <!-- Кнопка повтора -->
+                        <button class="control-btn" id="repeat-btn" title="Повтор выключен">
+                            <i class="fa-solid fa-repeat"></i>
                         </button>
                     </div>
                     
@@ -1297,10 +1381,17 @@ let player;
 let currentTrackIndex = 0;
 let playlistItems = [];
 let isPlaying = false;
-let updateInterval;
-let isDraggingProgress = false;
+let animationFrameId; // Вместо updateInterval
+let isDraggingProgress = false; // Эта переменная уже есть, но убедитесь, что она используется
 let currentTimeBeforePause = 0;
 let isPlayerReady = false;
+
+// НОВЫЕ ПЕРЕМЕННЫЕ ДЛЯ ПОВТОРА И ПЕРЕМЕШИВАНИЯ
+let repeatMode = 0; // 0: нет повтора, 1: повтор списка, 2: повтор трека
+let isShuffling = false;
+let shuffledPlaylist = [];
+let originalPlaylist = [];
+let currentShuffleIndex = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
     const savedPlaylist = localStorage.getItem("lastPlaylistId");
@@ -1356,6 +1447,14 @@ async function loadPlaylist() {
             await player.stopVideo();
             isPlaying = false;
             playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+
+        // СБРАСЫВАЕМ СОСТОЯНИЕ ПЕРЕМЕШИВАНИЯ ПРИ ЗАГРУЗКЕ НОВОГО ПЛЕЙЛИСТА
+        isShuffling = false;
+        const shuffleBtn = document.getElementById('shuffle-btn');
+        if(shuffleBtn) {
+            shuffleBtn.classList.remove('active');
+            shuffleBtn.title = 'Перемешивание выключено';
         }
         
         const response = await fetch(
@@ -1596,44 +1695,124 @@ function handlePlayerError(error) {
     }
 }
     
-    // Переключение треков
     function playNext() {
     if (!playlistItems || playlistItems.length === 0) return;
-    
-    currentTrackIndex = (currentTrackIndex + 1) % playlistItems.length;
+
+    if (isShuffling) {
+        currentShuffleIndex++;
+        if (currentShuffleIndex >= shuffledPlaylist.length) {
+            // Если дошли до конца перемешанного списка
+            if (repeatMode === 1) { // Если включен повтор списка
+                generateShuffleList(); // Создаем новый перемешанный список
+                currentShuffleIndex = 0;
+            } else {
+                // Если повтор выключен, останавливаем воспроизведение
+                pauseTrack();
+                return;
+            }
+        }
+        currentTrackIndex = shuffledPlaylist[currentShuffleIndex];
+    } else {
+        // Логика без перемешивания
+        currentTrackIndex++;
+        if (currentTrackIndex >= playlistItems.length) {
+            // Если дошли до конца обычного списка
+            if (repeatMode === 1) { // Если включен повтор списка
+                currentTrackIndex = 0;
+            } else {
+                // Если повтор выключен, останавливаем
+                pauseTrack();
+                return;
+            }
+        }
+    }
+
     selectTrack(currentTrackIndex);
-    playTrack(true); // forceRestart = true
+    playTrack(true);
 }
 
-    function playPrev() {
+function playPrev() {
     if (!playlistItems || playlistItems.length === 0) return;
-    
-    currentTrackIndex = (currentTrackIndex - 1 + playlistItems.length) % playlistItems.length;
+
+    if (isShuffling) {
+        currentShuffleIndex--;
+        if (currentShuffleIndex < 0) {
+            // Перематываем на конец перемешанного списка
+            currentShuffleIndex = shuffledPlaylist.length - 1;
+        }
+        currentTrackIndex = shuffledPlaylist[currentShuffleIndex];
+    } else {
+        // Логика без перемешивания
+        currentTrackIndex = (currentTrackIndex - 1 + playlistItems.length) % playlistItems.length;
+    }
+
     selectTrack(currentTrackIndex);
-    playTrack(true); // forceRestart = true
+    playTrack(true);
+}
+
+// НОВАЯ ФУНКЦИЯ ДЛЯ ПЕРЕМЕШИВАНИЯ
+function generateShuffleList() {
+    // Создаем массив индексов от 0 до N-1
+    shuffledPlaylist = Array.from(playlistItems.keys());
+
+    // Алгоритм перемешивания Фишера–Йетса
+    for (let i = shuffledPlaylist.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledPlaylist[i], shuffledPlaylist[j]] = [shuffledPlaylist[j], shuffledPlaylist[i]];
+    }
+
+    // Найдем текущий трек в новом перемешанном списке и поставим его на первое место
+    // чтобы воспроизведение продолжилось логично, а не прыгнуло на случайный трек.
+    const currentTrackInShuffledList = shuffledPlaylist.indexOf(currentTrackIndex);
+    if (currentTrackInShuffledList > -1) {
+        // Убираем его с текущей позиции и ставим в начало
+        const [item] = shuffledPlaylist.splice(currentTrackInShuffledList, 1);
+        shuffledPlaylist.unshift(item);
+    }
+    
+    currentShuffleIndex = 0; // Начинаем с первого (текущего) трека в перемешанном списке
+    console.log("Новый перемешанный список:", shuffledPlaylist.map(i => playlistItems[i].snippet.title));
 }
     
 // Управление прогресс-баром
+// Новая функция для запуска цикла анимации
 function startProgressUpdate() {
-    stopProgressUpdate();
-    updateProgress();
-    updateInterval = setInterval(updateProgress, 200);
+    // Отменяем предыдущий цикл, если он был
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+    }
+    // Запускаем новый цикл
+    animationFrameId = requestAnimationFrame(animationLoop);
 }
 
+// Новая функция для остановки цикла
 function stopProgressUpdate() {
-    clearInterval(updateInterval);
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+    }
 }
 
+// Функция, которая будет выполняться на каждом кадре анимации
+function animationLoop() {
+    updateProgress(); // Вызываем нашу старую функцию обновления
+    animationFrameId = requestAnimationFrame(animationLoop); // Планируем следующий вызов
+}
+
+// В эту функцию нужно добавить проверку на isDraggingProgress
 function updateProgress() {
-    if (!player || isDraggingProgress) return;
+    // НЕ обновляем прогресс, если пользователь перетаскивает ползунок
+    if (!player || isDraggingProgress) return; 
     
     try {
         const currentTime = player.getCurrentTime();
         const duration = player.getDuration();
         
-        progress.style.width = `${(currentTime / duration) * 100}%`;
-        currentTimeElement.textContent = formatTime(currentTime);
-        durationElement.textContent = formatTime(duration);
+        if (duration > 0) { // Добавим проверку, чтобы избежать деления на ноль
+            progress.style.width = `${(currentTime / duration) * 100}%`;
+            currentTimeElement.textContent = formatTime(currentTime);
+            durationElement.textContent = formatTime(duration);
+        }
     } catch (e) {
         console.log("Ошибка обновления прогресса:", e);
     }
@@ -1701,35 +1880,96 @@ function setupEventListeners() {
         volumeSlider.dispatchEvent(new Event('input'));
     });
 
-    progressBar.addEventListener('click', seekTo);
+    // НОВЫЕ ОБРАБОТЧИКИ
+    const repeatBtn = document.getElementById('repeat-btn');
+    const shuffleBtn = document.getElementById('shuffle-btn');
 
-    let isDragging = false;
+    repeatBtn.addEventListener('click', () => {
+        repeatMode = (repeatMode + 1) % 3; // Цикл 0 -> 1 -> 2 -> 0
+
+        switch (repeatMode) {
+            case 0: // Выключен
+                repeatBtn.classList.remove('active');
+                repeatBtn.title = 'Повтор выключен';
+                // Убираем цифру 1, если она была
+                repeatBtn.innerHTML = '<i class="fa-solid fa-repeat"></i>'; 
+                break;
+            case 1: // Повтор списка
+                repeatBtn.classList.add('active');
+                // Убеждаемся, что цифры 1 здесь нет
+                repeatBtn.innerHTML = '<i class="fa-solid fa-repeat"></i>'; 
+                repeatBtn.title = 'Повтор списка';
+                break;
+            case 2: // Повтор трека
+                // Добавляем единичку к иконке
+                repeatBtn.innerHTML = '<i class="fa-solid fa-repeat"></i><sup style="font-size: 0.6em; margin-left: 2px;">1</sup>';
+                repeatBtn.title = 'Повтор трека';
+                // Убедимся, что класс 'active' установлен, если его не было
+                if (!repeatBtn.classList.contains('active')) {
+                    repeatBtn.classList.add('active');
+                }
+                break;
+        }
+    });
+
+    shuffleBtn.addEventListener('click', () => {
+        isShuffling = !isShuffling;
+        shuffleBtn.classList.toggle('active', isShuffling);
+        shuffleBtn.title = isShuffling ? 'Перемешивание включено' : 'Перемешивание выключено';
+        
+        if (isShuffling) {
+            generateShuffleList();
+        }
+    });
+
     progressBar.addEventListener('mousedown', (e) => {
-        isDragging = true;
+        isDraggingProgress = true;
+        stopProgressUpdate(); 
         updateProgressOnDrag(e);
     });
 
     document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
+        if (isDraggingProgress) {
             updateProgressOnDrag(e);
         }
     });
 
     document.addEventListener('mouseup', (e) => {
-        if (isDragging) {
-            isDragging = false;
-            seekTo(e);
+        if (isDraggingProgress) {
+            isDraggingProgress = false;
+            
+            const progressBarRect = progressBar.getBoundingClientRect();
+            const clientX = e.clientX < progressBarRect.left ? progressBarRect.left : e.clientX > progressBarRect.right ? progressBarRect.right : e.clientX;
+            const clickPosition = clientX - progressBarRect.left;
+            const percent = clickPosition / progressBarRect.width;
+            const duration = player.getDuration();
+            
+            if (duration > 0) {
+                const seekTime = duration * percent;
+                player.seekTo(seekTime, true);
+                
+                setTimeout(() => {
+                    startProgressUpdate();
+                }, 250);
+            } else {
+                 startProgressUpdate();
+            }
         }
     });
 
+    // Функция updateProgressOnDrag остается почти такой же, но с небольшим исправлением
     function updateProgressOnDrag(e) {
         const progressBarRect = progressBar.getBoundingClientRect();
-        const clickPosition = e.clientX - progressBarRect.left;
+        // Ограничиваем значение, чтобы ползунок не выходил за пределы
+        const clientX = e.clientX < progressBarRect.left ? progressBarRect.left : e.clientX > progressBarRect.right ? progressBarRect.right : e.clientX;
+        const clickPosition = clientX - progressBarRect.left;
         const percent = Math.max(0, Math.min(1, clickPosition / progressBarRect.width));
+        
         progress.style.width = `${percent * 100}%`;
         
+        // Также обновляем текстовое значение времени для наглядности
         if (player) {
-            const duration = player.getDuration() || 100;
+            const duration = player.getDuration() || 0;
             currentTimeElement.textContent = formatTime(duration * percent);
         }
     }
@@ -1819,6 +2059,54 @@ function setupEventListeners() {
 });
 }
 
+/* ==================================== */
+/*  ЛОГИКА ПОЛНОЭКРАННОГО РЕЖИМА  */
+/* ==================================== */
+function setupFullscreenButton() {
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const fullscreenIcon = fullscreenBtn.querySelector('i');
+
+    // Проверяем, поддерживается ли Fullscreen API
+    if (!document.fullscreenEnabled) {
+        fullscreenBtn.style.display = 'none'; // Скрываем кнопку, если API не поддерживается
+        return;
+    }
+
+    fullscreenBtn.addEventListener('click', () => {
+        toggleFullScreen();
+    });
+
+    // Функция для переключения режима
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                // Обработка ошибок, если пользователь не разрешил
+                console.error(`Ошибка при входе в полноэкранный режим: ${err.message} (${err.name})`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+    // Слушаем изменения состояния, чтобы менять иконку
+    document.addEventListener('fullscreenchange', () => {
+        if (document.fullscreenElement) {
+            fullscreenIcon.classList.remove('fa-expand');
+            fullscreenIcon.classList.add('fa-compress');
+            fullscreenBtn.title = "Выйти из полноэкранного режима";
+        } else {
+            fullscreenIcon.classList.remove('fa-compress');
+            fullscreenIcon.classList.add('fa-expand');
+            fullscreenBtn.title = "Во весь экран";
+        }
+    });
+}
+
+// Вызываем нашу новую функцию после загрузки DOM
+document.addEventListener('DOMContentLoaded', setupFullscreenButton);
+
 // Извлечение ID плейлиста из URL
 function extractPlaylistId(url) {
     const regExp = /[&?]list=([^&]+)/;
@@ -1887,7 +2175,12 @@ function onPlayerStateChange(event) {
             break;
                 
         case YT.PlayerState.ENDED:
-            playNext();
+            // НОВАЯ ЛОГИКА ОКОНЧАНИЯ ТРЕКА
+            if (repeatMode === 2) { // Если включен повтор трека
+                player.seekTo(0); // Просто перематываем на начало и играем снова
+            } else {
+                playNext(); // Иначе переходим к следующему треку по общей логике
+            }
             break;
                 
         case YT.PlayerState.ERROR:

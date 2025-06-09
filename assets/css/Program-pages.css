@@ -13,7 +13,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
+    max-width: 350px;
     text-align: center;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -39,20 +39,24 @@
 }
 
 .program-image {
-    height: 150px;
+    height: 170px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
 .program-title {
-    font-size: 20px;
+    font-size: 25px;
     color: #333; /* Цвет текста для светлой темы */
     margin-bottom: 10px;
 }
 
+.program-tegs {
+    font-size: 16px;
+}
+
 .program-description {
-    font-size: 14px;
+    font-size: 17px;
     color: #555; /* Цвет текста для светлой темы */
     margin-bottom: 15px;
 }
