@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
     <!-- Основной favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -20,7 +30,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/gradient-card.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
@@ -57,9 +67,14 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -93,7 +108,8 @@
                         </li>
 
                         </li>
-                    </ul>                     
+                    </ul>
+                    <div class="page-actions-container">                    
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
@@ -221,6 +237,7 @@
                         </div>
                     </div>
                     </div>
+                </div> 
 
                 </div>
             </div>
@@ -547,7 +564,7 @@
                 <i class="fa-solid fa-font program-icon"></i>
                 <h3 class="program-title">Words of Wonders</h3>
                 <p class="program-description">🔠 Соединяйте буквы и разгадывайте слова в этой увлекательной головоломке!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/WordsOfWonders.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=words-of-wonders" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
 
             <!-- Mahjongg Solitaire -->
@@ -555,7 +572,7 @@
                 <i class="fa-solid fa-chess program-icon"></i>
                 <h3 class="program-title">Mahjongg Solitaire</h3>
                 <p class="program-description">🀄 Найдите пары одинаковых плиток и очистите поле в классической игре "Маджонг".</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/MahjonggSolitaire.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=mahjongg-solitaire" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
 
             <!-- 8 Ball Pool Billiards -->
@@ -563,7 +580,7 @@
                 <i class="fa-solid fa-circle program-icon"></i>
                 <h3 class="program-title">8 Ball Pool Billiards</h3>
                 <p class="program-description">🎱 Соревнуйтесь в классическом бильярде, забивайте шары и побеждайте соперников!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/8BallPool.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=8-ball-pool" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- WorldGuessr -->
@@ -571,7 +588,7 @@
                 <i class="fa-solid fa-globe program-icon"></i>
                 <h3 class="program-title">WorldGuessr</h3>
                 <p class="program-description">🌍 Угадывайте местоположение на карте и проверьте свои знания географии!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/WorldGuessr.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=world-guessr" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Ragdoll Archers -->
@@ -579,7 +596,7 @@
                 <i class="fa-solid fa-bullseye program-icon"></i>
                 <h3 class="program-title">Ragdoll Archers</h3>
                 <p class="program-description">🏹 Стреляйте из лука и сражайтесь с противниками в этом веселом арчерском батле!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/RagdollArchers.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=ragdoll-archers" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Space Waves -->
@@ -587,7 +604,7 @@
                 <i class="fa-solid fa-rocket program-icon"></i>
                 <h3 class="program-title">Space Waves</h3>
                 <p class="program-description">🚀 Исследуйте космос и сражайтесь с врагами в этом космическом шутере!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/SpaceWaves.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=space-waves" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Slice Master -->
@@ -595,7 +612,7 @@
                 <i class="fa-solid fa-cutlery program-icon"></i>
                 <h3 class="program-title">Slice Master</h3>
                 <p class="program-description">🔪 Станьте мастером резки, делая идеальные нарезки в этой захватывающей игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/SliceMaster.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=slice-master" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Bubble Blast -->
@@ -603,7 +620,7 @@
                 <i class="fa-solid fa-baseball-bat-ball program-icon"></i>
                 <h3 class="program-title">Bubble Blast</h3>
                 <p class="program-description">💥 Лопайте пузырьки и очищайте экран в этой увлекательной аркадной игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/BubbleBlast.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=bubble-blast" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Tile Jumper 3D -->
@@ -611,7 +628,7 @@
                 <i class="fa-solid fa-music program-icon"></i>
                 <h3 class="program-title">Tile Jumper 3D</h3>
                 <p class="program-description">🏃‍♂️ Прыгайте по плиткам и избегайте падений в этой динамичной 3D-игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/TileJumper3D.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=tile-jumper-3d" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Chess -->
@@ -619,7 +636,7 @@
                 <i class="fa-solid fa-chess-knight program-icon"></i>
                 <h3 class="program-title">Chess</h3>
                 <p class="program-description">♟️ Проверьте свои стратегические навыки в классической игре в шахматы.</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/Chess.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=chess" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- English Checkers -->
@@ -627,7 +644,7 @@
                 <i class="fa-solid fa-chess-board program-icon"></i>
                 <h3 class="program-title">English Checkers</h3>
                 <p class="program-description">⚫⚪ Испытайте свою смекалку в классической игре "Шашки". Сразитесь с компьютером или другом!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/EnglishCheckers.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=english-checkers" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Pacman -->
@@ -635,7 +652,7 @@
                 <i class="fa-solid fa-cookie-bite program-icon"></i>
                 <h3 class="program-title">Pacman</h3>
                 <p class="program-description">🍬 Управляйте Пакманом, собирайте точки и избегайте привидений в классической аркадной игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/Pacman.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=pacman" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Fruit Masters -->
@@ -643,7 +660,7 @@
                 <i class="fa-solid fa-apple-alt program-icon"></i>
                 <h3 class="program-title">Fruit Masters</h3>
                 <p class="program-description">🍉 Убирайте фрукты с поля и добивайтесь максимального результата в этой увлекательной игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/FruitMasters.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=fruit-masters" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Geometry Dash -->
@@ -651,7 +668,7 @@
                 <i class="fa-solid fa-shapes program-icon"></i>
                 <h3 class="program-title">Geometry Dash</h3>
                 <p class="program-description">🎮 Прыгайте, уворачивайтесь и проходите опасные уровни под ритмичную музыку в культовой аркаде Geometry Dash!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/GeometryGame.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=geometry-dash" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Foono Online Multiplayer -->
@@ -659,7 +676,7 @@
                 <i class="fa-solid fa-users program-icon"></i>
                 <h3 class="program-title">Foono Online Multiplayer</h3>
                 <p class="program-description">🃏 Играйте в увлекательную многопользовательскую версию классической игры Uno с друзьями онлайн!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/FoonoOnlineMultiplayer.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=foono-online" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Kings and Queens Solitaire -->
@@ -667,7 +684,7 @@
                 <i class="fa-solid fa-crown program-icon"></i>
                 <h3 class="program-title">Kings and Queens Solitaire</h3>
                 <p class="program-description">👑 Наслаждайтесь классической игрой в пасьянс с королями и королевами!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/KingsAndQueensSolitaire.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=kings-and-queens-solitaire" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Night City Racing -->
@@ -675,7 +692,7 @@
                 <i class="fa-solid fa-car program-icon"></i>
                 <h3 class="program-title">Night City Racing</h3>
                 <p class="program-description">🌆 Участвуйте в ночных гонках по городским улицам и становитесь чемпионом!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/NightCityRacing.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=night-city-racing" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Capybara Clicker -->
@@ -683,7 +700,7 @@
                 <i class="fa-solid fa-paw program-icon"></i>
                 <h3 class="program-title">Capybara Clicker</h3>
                 <p class="program-description">🐹 Нажимайте на капибар и зарабатывайте очки, открывайте новых капибар и улучшайте свои навыки!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/CapybaraClicker.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=capybara-clicker" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Golf Orbit -->
@@ -691,7 +708,7 @@
                 <i class="fa-solid fa-golf-ball-tee program-icon"></i>
                 <h3 class="program-title">Golf Orbit</h3>
                 <p class="program-description">⛳ Пройдите уникальные уровни гольфа, используя свою ловкость и стратегию!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/GolfOrbit.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=golf-orbit" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- 3D Bowling -->
@@ -699,7 +716,7 @@
                 <i class="fa-solid fa-bowling-ball program-icon"></i>
                 <h3 class="program-title">3D Bowling</h3>
                 <p class="program-description">🎳 Играй в боулинг в 3D! Соревнуйтесь с друзьями или просто наслаждайтесь игрой.</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/3DBowling.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=3d-bowling" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Bowman 2 -->
@@ -707,7 +724,7 @@
                 <i class="fa-solid fa-arrow-alt-circle-right program-icon"></i>
                 <h3 class="program-title">Bowman 2</h3>
                 <p class="program-description">🏹 Сразитесь с противником, используя лук и стрелы в этой увлекательной игре!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/Bowman2.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=bowman-2" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Basketball FRVR -->
@@ -715,7 +732,7 @@
                 <i class="fa-solid fa-basketball-ball program-icon"></i>
                 <h3 class="program-title">Basketball FRVR</h3>
                 <p class="program-description">🏀 Забивайте очки в этой увлекательной игре в баскетбол! Проверяйте свои навыки меткости.</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/BasketballFRVR.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=basketball-frvr" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
             
             <!-- Stickman Destruction 3 -->
@@ -723,7 +740,7 @@
                 <i class="fa-solid fa-user-ninja program-icon"></i>
                 <h3 class="program-title">Stickman Destruction 3</h3>
                 <p class="program-description">🗡️ Уничтожайте препятствия и врагов в этой динамичной игре про стикименов!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/StickmanDestruction3.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=stickman-destruction-3" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
 
             <!-- SkillWarz -->
@@ -731,7 +748,7 @@
                 <i class="fa-solid fa-crosshairs program-icon"></i>
                 <h3 class="program-title">SkillWarz</h3>
                 <p class="program-description">🔫 Многопользовательский онлайн-шутер с разными режимами и динамичными сражениями. Проверь свои скиллы в бою!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/SkillWarz.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=skillwarz" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
 
             <!-- Squid Game Online -->
@@ -739,7 +756,7 @@
                 <i class="fa-solid fa-gamepad program-icon"></i>
                 <h3 class="program-title">Squid Game Online</h3>
                 <p class="program-description">🦑 Примите участие в опасных испытаниях на выживание, вдохновлённых сериалом «Игра в кальмара»!</p>
-                <a href="/Program-pages/Game-pages/CrazyGames/SquidGameOnline.html" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
+                <a href="/Program-pages/Game-pages/play-game.html?game=squid-game-online" class="program-button"><i class="fa-solid fa-gamepad"></i> Играть</a>
             </div>
 
             <!-- Крестики-нолики -->
@@ -820,7 +837,7 @@
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>
-    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/header.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>

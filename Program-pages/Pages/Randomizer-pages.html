@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
     <!-- Основной favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -27,6 +37,9 @@
     <link rel="stylesheet" href="/assets/css/program-page-css/Randomizer.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <!-- Color Picker (Pickr) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
@@ -164,9 +177,10 @@
             <a href="#" id="randomQuote">Генератор цитат</a>
             <a href="#" id="steamKey">Генератор ключей Steam</a>
             <a href="#" id="randomPhoto">Генератор случайных фото</a>
-            <a href="#" id="random">???</a>
+            <a href="#" id="palette">Генератор палитры</a>
             <h2>Жребии</h2>
             <a href="#" id="coinFlip">Орел или Решка</a>
+            <a href="#" id="diceRoller">Игральная кость</a> 
             <a href="#" id="wheelOfFortune">Колесо Фортуны</a>
         </div>
         <div class="main">
@@ -224,6 +238,7 @@
                 </label>
                 <button id="generatePassword">Сгенерировать пароль</button>
                 <div id="passwordResult"></div>
+                <button id="copyPasswords" style="display:none;">Копировать</button>
             </div>
             <!-- Генератор цитат -->
             <div class="generator" id="randomQuoteGenerator" style="display: none;">
@@ -232,15 +247,58 @@
                 <p id="author">— Автор</p>
                 <button id="new-quote">Генерировать цитату</button>
             </div>
-            <!-- Орел или решка -->
+            <!-- Орел или решка (УЛУЧШЕННАЯ ВЕРСИЯ) -->
             <div class="generator" id="coinFlipGenerator" style="display: none;">
                 <h1>Подкинуть монетку</h1>
-                <button id="flipCoin">Бросить монетку</button>
-                <div id="coinContainer">
-                    <img id="coinImage" src="/assets/images/Program-pages/Orel_or_reshka/heads.png" alt="Монета">
+                
+                <div class="coin-stats">
+                    Попыток генерации: <span id="flipCount">0</span> 
+                    (<a href="#" id="resetFlipCount">сброс</a>)
                 </div>
+
+                <div class="coin-controls">
+                    <div class="form-group">
+                        <label for="coinAmount">Количество монет (1-10):</label>
+                        <select id="coinAmount" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coinType">Тип монеты:</label>
+                        <select id="coinType" class="form-control">
+                            <option value="ruble">Рубль</option>
+                            <option value="dollar">Доллар</option>
+                            <option value="euro">Евро</option>
+                            <option value="bitcoin">Биткоин</option>
+                            <option value="pound">Фунт</option>
+                            <option value="hryvnia">Гривна</option>
+                            <option value="tenge">Тенге</option>
+                            <option value="soviet_ruble">Советский рубль</option>
+                            <option value="tsar_ruble">Царский рубль</option>
+                            <option value="piastra">Пиастра</option>
+                            <option value="word">Слово</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="flipCoin">Бросить монетку</button>
+                
+                <div id="coinContainer">
+                    <!-- Сюда будут добавляться монеты/слова -->
+                </div>
+                
                 <p id="coinResult"></p>
-            </div>    
+            </div>   
             <!-- Генератор ключей Steam -->
             <div class="generator" id="steamKeyGenerator" style="display: none;">
                 <h1>Генератор ключей Steam</h1>
@@ -262,6 +320,97 @@
                     <button id="prevPhoto" class="btn btn-secondary" disabled>Предыдущее фото</button>
                 </div>
                 <div id="photoInfo" style="margin-top: 10px;"></div>
+            </div>
+            <!-- Генератор палитры (УЛУЧШЕННАЯ ВЕРСИЯ) -->
+            <div class="generator" id="paletteGenerator" style="display: none;">
+                <div class="palette-header">
+                    <h1>Палитра</h1>
+                    <i class="fas fa-share-alt palette-share-icon"></i>
+                </div>
+
+                <!-- Новый контейнер для двухколоночного макета -->
+                <div class="palette-content">
+                    <!-- Колонка 1: Палитра -->
+                    <div class="color-picker-container">
+                        <!-- Сюда Pickr встроит свой интерфейс -->
+                    </div>
+                    
+                    <!-- Колонка 2: Поля с результатами -->
+                    <div class="palette-outputs">
+                        <div class="palette-output-group">
+                            <div class="palette-output-item main-hex">
+                                <span class="label">HEX</span>
+                                <span id="palette-hex-value">#FFAA00</span>
+                                <i class="far fa-copy copy-icon" id="copy-hex"></i>
+                            </div>
+                        </div>
+                        <div class="palette-output-group">
+                            <div class="palette-output-item">
+                                <span class="label">RGB</span>
+                                <span id="palette-rgb-value">255, 170, 0</span>
+                            </div>
+                            <div class="palette-output-item">
+                                <span class="label">CMYK</span>
+                                <span id="palette-cmyk-value">0%, 33%, 100%, 0%</span>
+                            </div>
+                            <div class="palette-output-item">
+                                <span class="label">HSV</span>
+                                <span id="palette-hsv-value">40°, 100%, 100%</span>
+                            </div>
+                            <div class="palette-output-item">
+                                <span class="label">HSL</span>
+                                <span id="palette-hsl-value">40°, 100%, 50%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Генератор "Игральная кость" -->
+            <div class="generator" id="diceRollerGenerator" style="display: none;">
+                <h1>Игральная кость</h1>
+
+                <!-- Основная область, где появляются кости -->
+                <div class="dice-container" id="dice-container">
+                    <!-- Кости будут добавляться сюда с помощью JS -->
+                </div>
+
+                <!-- Панель с результатами и управлением -->
+                <div class="dice-footer">
+                    <div class="dice-results">
+                        <span>Всего</span>
+                        <span id="dice-total">0</span>
+                    </div>
+                    
+                    <!-- Панель выбора костей -->
+                    <div class="dice-controls">
+                        <button class="dice-tray-btn" data-sides="4" title="Бросить d4">
+                            <svg viewBox="0 0 100 100"><path d="M50 10 L90 80 L10 80 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" data-sides="6" title="Бросить d6">
+                            <svg viewBox="0 0 100 100"><path d="M15 15 H85 V85 H15 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" data-sides="8" title="Бросить d8">
+                            <svg viewBox="0 0 100 100"><path d="M50 10 L90 50 L50 90 L10 50 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" data-sides="10" title="Бросить d10">
+                            <svg viewBox="0 0 100 100"><path d="M50 10 L90 40 L80 90 L20 90 L10 40 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" data-sides="12" title="Бросить d12">
+                            <svg viewBox="0 0 100 100"><path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" data-sides="20" title="Бросить d20">
+                            <svg viewBox="0 0 100 100"><path d="M50 10 L20 35 L20 65 L50 90 L80 65 L80 35 Z"></path></svg>
+                        </button>
+                        <button class="dice-tray-btn" id="add-custom-die" title="Добавить свою кость">
+                            ±
+                        </button>
+                    </div>
+
+                    <button id="roll-dice" class="main-roll-btn">Бросить</button>
+                    <button id="clear-dice" class="clear-roll-btn" title="Очистить всё">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
             <!-- Колесо Фортуны -->
             <div class="generator" id="wheelOfFortuneGenerator" style="display: none;">
