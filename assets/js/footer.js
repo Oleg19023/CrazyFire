@@ -4,66 +4,85 @@ document.addEventListener("DOMContentLoaded", () => {
     // Функция для обновления времени и даты
     function updateTime() {
         const currentDate = new Date();
-        const formattedDate = currentDate.toLocaleDateString("uk-UA"); // Формат для Украины (дд.мм.гггг)
-        const formattedTime = currentDate.toLocaleTimeString("uk-UA"); // Формат времени (часы:минуты:секунды)
+        const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        
+        const formattedDate = currentDate.toLocaleDateString("uk-UA", dateOptions);
+        const formattedTime = currentDate.toLocaleTimeString("uk-UA", timeOptions);
 
-        // Обновляем только нужные элементы в футере
-        document.getElementById("footerYear").textContent = currentDate.getFullYear();
-        document.getElementById("footerDate").textContent = `${formattedDate}`;
-        document.getElementById("footerTime").textContent = `${formattedTime}`;
+        const yearEl = document.getElementById("footerYear");
+        if (yearEl) yearEl.textContent = currentDate.getFullYear();
+        
+        const dateEl = document.getElementById("footerDate");
+        if (dateEl) dateEl.textContent = formattedDate;
+
+        const timeEl = document.getElementById("footerTime");
+        if (timeEl) timeEl.textContent = formattedTime;
     }
 
-    // Изначально создаем футер с нужными элементами
+    // HTML-шаблон. Обратите внимание на class="footer-hidden"
     const footerHTML = `
-        <footer id="footer" style="display: none;">
-            <p class="footer-text"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="logo" class="footer-logo">© 2023-<span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b> Заставка и логотип являются товарными знаками CrazyFire.</p>  
-            <div class="footer-links">
-                <a href="/Info-pages/about.html">| Про нас |</a>
-                <a href="/Info-pages/contacts.html">Контакты |</a>
-                <a href="/Info-pages/privacy.html">Конфиденциальность |</a>
-            </div>
-            <div>
+        <footer id="footer" class="footer-hidden">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-info">
+                        <img src="/assets/images/Site-logos/4kLogo2.webp" alt="logo" class="footer-logo">
+                        <div class="footer-text-block">
+                            <p class="copyright">© 2023-<span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b></p>
+                            <p class="trademark">Заставка и логотип являются товарными знаками CrazyFire.</p>
+                        </div>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://www.youtube.com/@-WizarD_" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="/Program-pages/Discord-pages.html" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://t.me/CrazyFireApp" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.instagram.com/w1zardii/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100084032918642" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <hr class="footer-divider">
+
                 <div class="footer-bottom">
-                    <div class="footer-admin-button">
-                        <a href="/AdminSettings.html" class="btn btn-secondary">
+                    <div class="footer-links">
+                        <a href="/Info-pages/about.html">Про нас</a>
+                        <a href="/Info-pages/contacts.html">Контакты</a>
+                        <a href="/Info-pages/privacy.html">Конфиденциальность</a>
+                    </div>
+                    <div class="footer-meta">
+                        <a href="/AdminSettings.html" class="btn btn-secondary admin-button" title="Настройки">
                             <i class="fas fa-cogs"></i>
                         </a>
+                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.6dev</a>
+                        <span class="footer-separator">|</span>
+                        <span id="footerDate"></span>
+                        <span class="footer-separator">|</span>
+                        <span id="footerTime"></span>
                     </div>
-                    <h6 class="m-3">
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.6dev</a> | <span id="footerDate"></span> | <span id="footerTime"></span>
-                    </h6>
                 </div>
             </div>
         </footer>
     `;
 
-    // Добавляем футер в конец body
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
-    // Обновляем время каждую секунду
     setInterval(updateTime, 1000);
-
-    // Изначально вызываем функцию для первого отображения
     updateTime();
 
-    // Проверка текущей страницы
+    const footerElement = document.getElementById("footer");
     const currentPage = window.location.pathname;
 
-    // Если это главная страница
     if (currentPage.includes("index.html") || currentPage === "/") {
-        const startButton = document.getElementById("startButton"); // Кнопка "Начать"
+        const startButton = document.getElementById("startButton");
         if (startButton) {
             startButton.addEventListener("click", () => {
-                document.getElementById("footer").style.display = "block";
+                footerElement.classList.remove("footer-hidden");
             });
         }
     } else {
-        // На других страницах показываем футер всегда
-        document.getElementById("footer").style.display = "block";
+        footerElement.classList.remove("footer-hidden");
     }
 });
 
 
 ///////// <-Footer-JS-> ////////////
-
-

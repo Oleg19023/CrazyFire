@@ -31,7 +31,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/update-history.css">
+    <link rel="stylesheet" href="/assets/css/Program-pages.css">
+    <link rel="stylesheet" href="/assets/css/gradient-card.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <!-- AOS -->
@@ -108,7 +109,7 @@
 
                         </li>
                     </ul>
-                    <div class="page-actions-container">                     
+                    <div class="page-actions-container">                    
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
@@ -198,8 +199,8 @@
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>                    
-                    
+                    </button>
+
                     <!-- Кнопка Войти -->
                     <button id="loginBtn" class="btn btn-primary me-2" style="border-radius: 20px;">Войти в аккаунт</button>
 
@@ -236,7 +237,7 @@
                         </div>
                     </div>
                     </div>
-                </div>
+                </div> 
 
                 </div>
             </div>
@@ -538,314 +539,215 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-<style>
-/* ---- Анимация мерцания (Shimmer) ---- */
-.shimmer-container {
-    background: none; 
-}
+    <style>
+    /* Стили для страницы Discord */
 
-.shimmer-text {
-    /* Градиент, который будет двигаться по тексту */
-    background: linear-gradient(90deg, #888, #fff, #888);
-    background-size: 200% 100%;
-    
-    /* Делаем текст прозрачным, чтобы был виден градиент под ним */
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    
-    /* Запускаем анимацию */
-    animation: shimmer 2.5s linear infinite;
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
+    /* Контейнер для двух колонок: виджет и описание */
+    .discord-intro-section .row {
+        align-items: center; /* Вертикальное выравнивание по центру */
     }
-    100% {
-        background-position: -200% 0;
+
+    /* Стили для карточек ботов (адаптация твоего programs.css) */
+    .bots-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
     }
-}
 
-
-/* ---- Анимация пульсирующих точек (Blink) ---- */
-
-.dot {
-    /* Важно: задаем цвет точкам явно, так как они не должны быть градиентными */
-    /* Этот цвет будет хорошо смотреться и на светлой, и на темной теме */
-    color: #a0a0a0; 
-    animation: blink 1.4s infinite both;
-}
-
-/* Задержка для каждой точки, чтобы они мигали по очереди */
-.dot:nth-of-type(2) { /* Используем nth-of-type, т.к. они одного типа в своем родителе */
-    animation-delay: .2s;
-}
-
-.dot:nth-of-type(3) {
-    animation-delay: .4s;
-}
-
-@keyframes blink {
-    0% {
-        opacity: .2;
+    .bot-card {
+        background-color: #f8f9fa;
+        width: 220px; /* Фиксированная ширина для единообразия */
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
     }
-    20% {
-        opacity: 1;
+
+    .bot-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
-    100% {
-        opacity: .2;
+
+    .bot-icon {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 15px;
     }
-}
-</style>
+
+    .bot-title {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .bot-button {
+        display: inline-block;
+        text-decoration: none;
+        background-color: #f8f9fa; /* Белый для светлой темы */
+        color: #333;
+        padding: 8px 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        border: 1px solid #ccc;
+        width: 150px; /* Фиксированная ширина кнопки */
+    }
+
+    .bot-button:hover {
+        background-color: #e9ecef;
+    }
+
+    .bot-button.disabled {
+        background-color: transparent;
+        border: 1px solid #6c757d; /* Серый бордер */
+        color: #6c757d;
+        cursor: not-allowed;
+    }
+
+
+    /* Стили для ТЕМНОЙ ТЕМЫ */
+    .dark-theme .bot-card {
+        background-color: #1e1f22; /* Цвет фона карточки как на скрине */
+        border: 1px solid #33363a;
+    }
+
+    .dark-theme .bot-title {
+        color: #f8f9fa;
+    }
+
+    .dark-theme .bot-button {
+        background-color: #f2f3f5; /* Светлая кнопка */
+        color: #000;
+        border: none;
+    }
+
+    .dark-theme .bot-button:hover {
+        background-color: #dcdedF;
+    }
+
+    .dark-theme .bot-button.disabled {
+        background-color: transparent;
+        border: 1px solid #555;
+        color: #999;
+    }
+    </style>
 
     <main>
-        <div class="container mt-4">
-            <h1 class="text-center">Последние обновления сайта</h1>
-            <div class="update-list">
+    <div class="container my-5">
 
-                <!-- <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: </strong><br>
-                        <span>Дата: - <span class="current-date"></span> | <span class="current-time"></span></span>
-                    </div>
-                    <div class="update-description">
+        <!-- Заголовок -->
+        <div class="mb-5">
+            <h1 class="display-4" style="color: #5865F2; font-weight: 700;">
+                <i class="fab fa-discord"></i> Discord
+            </h1>
+        </div>
 
-                        <h3 class="shimmer-container">
-                            <strong class="shimmer-text">
-                                Обновление в процессе
-                            </strong>
-                            <strong>
-                                <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
-                            </strong>
-                        </h3>
-                        
-                        <p><h5> </h5></p>
-                        <p><strong class="text-success">Добавлено:</strong> </p>
-                        <p><strong class="text-warning">Исправлено:</strong> </p>
-                    </div>
-                </div> -->
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.6dev-5</strong><br>
-                        <span>Дата: 05.06.2025 - <span class="current-date"></span> | <span class="current-time"></span></span>
-                    </div>
-                    <div class="update-description">
-
-                        <h1 class="shimmer-container">
-                            <strong class="shimmer-text">
-                                Обновление в процессе
-                            </strong>
-                            <strong>
-                                <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
-                            </strong>
-                        </h1>
-                        
-                        <p><h3>✨ Оптимизация, плавные анимации, SEO, и новые функции!</h3></p>
-                        <p><strong class="text-success">Добавлено:</strong> Глобальная оптимизация сайта: видео, картинок и кеша. В CrazyMusic теперь можно проигрывать треки в одиночном режиме, независимо от того, плейлист это или просто видео. Добавлены кнопки перемешивания, повтора и полноэкранного режима: перемешивание включает треки в случайном порядке, а кнопка повтора имеет два режима — повтор списка и повтор текущего трека. Подключена библиотека AOS для плавных анимаций карточек программ, приложений и игр, а также расширена область их отображения. Добавлена индексация через robots.txt и sitemap.xml, настроена оптимальная индексация сайта в Google. В программе «Рандомайзер» добавлено генератор палитры, игральная кость, и улучшенный Орел или Решка. Header был глобально переделан, для мобильной версии header тоже стал лучше. В CrazyGames игры теперь загружаются через json. Добавлены структурированные данные об Organization на сайте. Теперь страница обновлений сайта, отображает обновления которые находятся в процессе, с датой и временем. В программе список, улучшен и добавлен новый функционал. Был глобально изменен footer сайта. Добавлены социальные сети в футере. Добавлена страница Discord.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Кнопка включения параллакса получила новый стиль. В CrazyMusic ползунок в перемотки теперь работает плавно и больше не дёргается при перемещении. Более живой градиент карточек на странице с играми. Размер шрифта на основных страницах увеличен. Улучшена гибкость настройки градиента для карточек. </p>
-                        <p><strong class="text-danger">Удалено:</strong> Картинки png и jpg формата с заменой на webp, для уменьшения веса и скорости загрузки страницы. Cтраницы старой логики загрузки игр. </p>
-                    </div>
+        <!-- Секция с виджетом и описанием -->
+        <div class="discord-intro-section">
+            <div class="row g-5">
+                <!-- Левая колонка: Виджет -->
+                <div class="col-lg-4 d-flex justify-content-center">
+                    <iframe src="https://discord.com/widget?id=812750445223084073&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                 </div>
 
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.5</strong><br>
-                        <span>Дата: 04.05.2025 - 18.05.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>🚀 Авторизация, профили и множество исправлений!</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> Теперь у нас полноценная система аккаунтов: создавай профиль, входи с почтой или через любимые сервисы (Google, GitHub, Facebook, Apple, Discord, X), восстанавливай пароль и управляй своими данными. Страница пользователя с балансом и статусом (в бета-режиме). Всё просто, быстро и безопасно. (CrazyMusic-update): Теперь последние загруженные плейлисты сохраняются даже после перезагрузки страницы. Введён динамический фон, который адаптируется под обложку трека. Добавлена стрелка-подсказка для нижнего меню в мобильной версии. В раздел «Рандомайзер» добавлены новые инструменты: генератор случайных фото и колесо фортуны.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> (CrazyMusic-update): Обновлён размер обложки трека для лучшего отображения. Повышена плавность анимации полоски продолжительности. Стандартные кнопки заменены на новые иконки, улучшившие внешний вид. Исправлена ошибка с самопроизвольным запуском трека при загрузке. Также улучшена общая адаптация интерфейса под мобильные устройства. Графический эквалайзер теперь корректно останавливается при постановке трека на паузу. (Web-log): Также реализована плавная загрузка страниц — без мерцаний и визуальных артефактов. Обновлены кнопки в разделах с играми и приложениями — теперь они выглядят современнее и работают стабильнее.</p>
-                    </div>
+                <!-- Правая колонка: Описание -->
+                <div class="col-lg-8">
+                    <h2 class="mb-3"><a href="https://discord.gg/PY6jhsT9mH" style="text-decoration: none"><b>CRAZYFIRE</b></a></h2>
+                    <p>
+                        Добро пожаловать на наш сервер Discord! 🎉 Если у вас нет друзей или же вам очень одиноко, вы можете зайти к нам и найти с кем поговорить. 🗣️ У нас есть множество добрых и отзывчивых модераторов, которые следят за порядком на сервере, и вы можете не беспокоиться, что кто-то вам сможет помешать или испортить вам день. 🛡️
+                    </p>
+                    <p>
+                        Вы всегда сможете обратиться к ним. Также на нашем сервере есть множество веселых, и даже некоторых полезных ботов, которых можно использовать для прослушивания музыки 🎶 или веселого времяпровождения. 🎮
+                    </p>
+                    <p>
+                        Присоединяйтесь к нам, и вы обязательно найдете интересных и дружелюбных собеседников, а также много увлекательного контента. Мы рады приветствовать каждого нового участника и стремимся создать дружелюбную обстановку, где каждый может почувствовать себя как дома. 🏠 Не стесняйтесь присоединиться к нашему уютному сообществу и сделать новых друзей! ❤️
+                    </p>
                 </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.4</strong><br>
-                        <span>Дата: 8.04.2025 - 15.04.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>🎶 CrazyMusic</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> Мы рады представить новый глобальный раздел «Музыка», который позволит пользователям наслаждаться музыкальным контентом как никогда раньше. CrazyMusic автоматически загружает треки из нашего тщательно подобранного плейлиста, предлагая высококачественный музыкальный опыт. При желании пользователи могут подключить свои личные плейлисты, однако стоит учитывать, что стабильность воспроизведения зависит от исходного источника.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Мы устранили проблему с плавающей кнопкой сворачивания и разворачивания заголовка (header), которая ранее некорректно отображалась на некоторых страницах полноэкранных приложений. Теперь интерфейс работает более стабильно и комфортно. Также поработали над улучшением описания обновлений сайта.</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.3</strong><br>
-                        <span>Дата: 23.03.2025 - 8.04.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>🎮 CrazyGames</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> Мы с гордостью представляем новый глобальный раздел CrazyGames, где собрано множество увлекательных игр на любой вкус. Теперь пользователи могут наслаждаться такими популярными играми, как Skydom, Words of Wonders, Mahjongg Solitaire, 8 Ball Pool Billiards, WorldGuessr, Ragdoll Archers, Space Waves, Slice Master, Bubble Blast, Tile Jumper 3D, Chess, English Checkers, Pacman, Fruit Masters, Geometry Game, Foono Online Multiplayer, Kings and Queens Solitaire, Night City Racing, Capybara Clicker, Golf Orbit, 3D Bowling, Bowman 2, Basketball FRVR, Stickman Destruction 3, SkillWarz, Doors Online, Squid Game Online. Для ценителей классики мы добавили базовые игры: «Крестики-нолики», «Угадайка», «Три в ряд» и «Тетрис». CrazyGames подарит бесконечное удовольствие и разнообразие игрового досуга. </p>
-                        <p><strong class="text-warning">Исправлено:</strong> В мобильной версии был оптимизирован нижний колонтитул (footer), обеспечивая более удобное использование. Также была устранена проблема с функцией параллакса, теперь настройки сохраняются корректно после перезагрузки страницы. </p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.2</strong><br>
-                        <span>Дата: 2.03.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>📊 Google Analytics</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> В рамках данного обновления была интегрирована система аналитики Google Analytics для сбора и анализа данных о пользователях. Это обновление направлено на улучшение мониторинга посещаемости, анализа источников трафика и взаимодействий пользователей с сайтом.</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.1</strong><br>
-                        <span>Дата: 2.03.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>✨ Много нового</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> В этой версии мы существенно улучшили функционал и интерфейс:
-                            Введена новая кнопка прокрутки страницы для удобства навигации. Раздел новостей CrazyNews больше не находится в стадии бета-тестирования и теперь доступен всем пользователям. Раздел магазина также вышел из бета, а с ним появилась интеграция популярного сервиса Funpay. Расширен выбор заставок на главной странице, чтобы каждый мог выбрать под свой вкус. Добавлены новые страницы, включая вкладку Игры. Мы рады представить новую коллекцию приложений: Wiztree, WinDirStat, PowerToys, EarTrumpet, Twinkle Tray, Speccy, SpaceDesk (Host and Client), Total Commander, CheatEngine, AutoHotkey, CurseForge, Vortex, Microsoft Teams. Появились новые полезные программы: Проверка ИНН UA, Проверка таблицы умножения, Калькулятор кредита (аннуитетная схема), Валютный конвертер в слова (грн), Угадайка.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Мы оптимизировали главную страницу, улучшив её производительность и удобство для пользователей.</p>
-                        <p><strong class="text-danger">Удалено:</strong> Убрана большая часть устаревших заставок с предыдущей версии главной страницы для улучшения визуального стиля и скорости загрузки.</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 2.0</strong><br>
-                        <span>Дата: 22.02.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong><h3>🔥 Крупное обновление</h3></strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> В данном крупном обновлении мы интегрировали множество новых возможностей и улучшений: Новая кнопка смены темы, позволяющая легко переключать внешний вид интерфейса. Улучшенная кнопка на главной странице для быстрого доступа к ключевым функциям. Новый scrollbar с улучшенной визуализацией для комфортной навигации. Анимация загрузки страниц для более плавного и приятного пользовательского опыта. Кнопка «Назад» в программах для удобной навигации. Появились вкладки «Новости» и «Магазин» (пока в стадии beta). Расширение списка базовых приложений, включающего такие популярные программы, как: Viber, WhatsApp, Telegram, Skype, EA Origin, GOG Galaxy, NVIDIA GeForce NOW, Zoom, Adobe Creative Cloud, Spotify, Blender, Figma, Canva, Yandex, Tor Browser, TikTok, GitHub Desktop, Visual Studio, Visual Studio Code, AnyDesk, Parsec, OBS Studio, Netflix, HDrezka, FL Studio, VLC Media Player, RAR, 7zip, AIDA64, HW Monitor, MSI Afterburner, FurMark, CCleaner, LogMeIn Hamachi, Radmin VPN. Добавлены новые программы: Тонгенератор, Paint, Рандомайзер (с множеством встроенных генераторов), Список, Полезные вычисления, Курс валют НБУ, Азбука Морзе, Фонетический алфавит. Новая страница projects-pages для упрощённого доступа к проектам.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Обновлен и закреплен Header для более плавной работы. Контакты были обновлены для актуальности. Раздел «Базовые платформы» теперь переименован в «Приложения».</p>
-                        <p><strong class="text-danger">Удалено:</strong> Убраны устаревшие элементы, включая: demo file, twitch drop css, некоторые иконки. </p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.9</strong><br>
-                        <span>Дата: 12.02.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="">Подготовка к 2.0</strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> Оптимизация производительности, улучшены загрузочные экраны.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Исправлены мелкие баги и недочеты в интерфейсе. </p>
-                    </div>
-                </div>
-                
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.8</strong><br>
-                        <span>Дата: 9.02.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="">Промежуточный апдейт</strong></p>
-                        <p><strong class="text-success">Добавлено:</strong> Общие улучшения и новые функции.</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Исправлены некоторые баги и недочеты.</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.7</strong><br>
-                        <span>Дата: 5.02.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Смена цвета фона, лицензия, страница 404, фон в админ панели, Базовые платформы: Steam,Epic Games,Discord,Ubisoft Connect,Rockstar Games Launcher,Battle.net,Google Chrome,Opera,Opera GX</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Улучшена защита и некоторые исправления: Main page, About, Contacts, Privacy, AdminSettings</p>
-                        <p><strong class="text-danger">Удалено:</strong> old 404</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.6</strong><br>
-                        <span>Дата: 14.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Страница обновлений сайта(Данная страница), улучшен режим темной темы</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Обновлен heder, переводы футера и форм заполнения, шрифты</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.5</strong><br>
-                        <span>Дата: 13.01.2025</span>
-                    </div>
-                    <div class="update-description" data-aos="fade-down">
-                        <p><strong class="text-success">Добавлено:</strong> New Pages: About, Contacts, Privacy, AdminSettings</p>
-                        <p><strong class="text-warning">Исправлено:</strong> Некоторые исправления темы. Исправления меню заголовков (для мобильных устройств), исправления перевода, некоторые исправления нижнего колонтитула</p>
-                        <p><strong class="text-danger">Удалено:</strong> Убрана кнопка поиска на главной странице</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.4</strong><br>
-                        <span>Дата: 11.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Footer, Firebase files. Firebase install module. Сайт на хостинге 🎉</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.3</strong><br>
-                        <span>Дата: 11.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Тема, поиск(beta)</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.2</strong><br>
-                        <span>Дата: 11.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Базовые платформы, программы </p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.1</strong><br>
-                        <span>Дата: 11.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="text-success">Добавлено:</strong> Главная страница, ресурсы</p>
-                    </div>
-                </div>
-
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 1.0</strong><br>
-                        <span>Дата: 10.01.2025</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="">Начало развертывания нового проекта</strong></p>
-                    </div>
-                </div>
-                <div class="update-item p-3 mb-3" data-aos="fade-down">
-                    <div class="update-info mb-2">
-                        <strong>Версия: 0</strong><br>
-                        <span>Дата: 10.09.2023</span>
-                    </div>
-                    <div class="update-description">
-                        <p><strong class="">Закрытие проекта в google sites</strong></p>
-                        <p><strong class=""><a href="https://sites.google.com/view/crazyfire/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9?authuser=0">Перейти</a></strong></p>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </main>
+
+        <hr class="my-5">
+
+        <!-- Секция с ботами -->
+        <div class="text-center mb-5">
+            <h2 class="mb-3">Боты</h2>
+        </div>
+
+        <div class="bots-container">
+
+            <!-- Ряд 1 -->
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-1.png" alt="CrazyFire" class="bot-icon">
+                <h5 class="bot-title">CrazyFire</h5>
+                <a href="https://discord.com/api/oauth2/authorize?client_id=866394478969749524&permissions=8&scope=bot" class="bot-button" target="_blank">Пригласить</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-2.png" alt="CrazyFire 2" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 2</h5>
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1119956216446210088&permissions=8&scope=bot" class="bot-button" target="_blank">Пригласить</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-3.png" alt="CrazyFire 3" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 3</h5>
+                <a href="https://discord.com/api/oauth2/authorize?client_id=1119964705209991180&permissions=8&scope=bot" class="bot-button" target="_blank">Пригласить</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-4.png" alt="CrazyFire 4" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 4</h5>
+                <a class="bot-button disabled">Скоро...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-5.png" alt="CrazyFire 5" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 5</h5>
+                <a class="bot-button disabled">Скоро...</a>
+            </div>
+            <!-- <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-6.png" alt="CrazyFire 6" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 6</h5>
+                <a class="bot-button disabled">Скоро...</a>
+            </div> -->
+
+            <!-- Ряд 2 -->
+            <!-- <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-7.png" alt="CrazyFire 7" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 7</h5>
+                <a class="bot-button disabled">...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-8.png" alt="CrazyFire 8" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 8</h5>
+                <a class="bot-button disabled">...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-9.png" alt="CrazyFire 9" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 9</h5>
+                <a class="bot-button disabled">...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-10.png" alt="CrazyFire 10" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 10</h5>
+                <a class="bot-button disabled">...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-11.png" alt="CrazyFire 11" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 11</h5>
+                <a class="bot-button disabled">...</a>
+            </div>
+            <div class="bot-card">
+                <img src="/assets/images/Discord-pages/bots/crazyfire-12.png" alt="CrazyFire 12" class="bot-icon">
+                <h5 class="bot-title">CrazyFire 12</h5>
+                <a class="bot-button disabled">...</a>
+            </div> -->
+        </div>
+
+    </div>
+</main>
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -854,8 +756,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="/assets/js/scroll-top-button.js"></script>
     <!-- Back to Top End -->
-       
-    
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>
@@ -864,8 +764,7 @@
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
     <script src="/assets/js/aos-cards.js"></script>
-    <script src="/assets/js/time.js"></script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>
 </html>

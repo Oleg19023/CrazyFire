@@ -410,3 +410,234 @@ html {
 body.mobile-menu-open {
     overflow: hidden;
 }
+
+
+
+
+
+/* --- Стили для футера --- */
+
+/* Класс для скрытия футера до его активации через JS */
+.footer-hidden {
+    display: none;
+}
+
+/* --- Базовые стили (Светлая тема по умолчанию) --- */
+
+#footer {
+    background-color: #f8f9fa; /* Светло-серый фон */
+    color: #555; /* Тёмно-серый текст */
+    padding: 40px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    border-top: 1px solid #dee2e6; /* Светлая граница */
+    transition: background-color 0.8s, color 0.8s;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Верхняя часть */
+.footer-top, .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    height: 55px;
+    width: auto;
+}
+
+.footer-text-block p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-text-block .copyright {
+    color: #212529; /* Почти черный для основной надписи */
+}
+
+.footer-text-block .trademark {
+    font-size: 12px;
+    color: #6c757d; /* Серый для вторичной надписи */
+}
+
+/* Иконки соцсетей */
+.footer-social {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social a {
+    color: #555; /* Тёмно-серые иконки */
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.1); /* Эффект увеличения остаётся для всех */
+}
+
+/* Разделитель */
+.footer-divider {
+    border: none;
+    height: 1px;
+    background-color: #a0a3a7; /* Светлый разделитель */
+    margin: 25px 0;
+}
+
+/* Нижняя часть */
+.footer-links a {
+    color: #555;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #000;
+}
+
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.footer-meta .update-button,
+.footer-meta .admin-button {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-meta .update-button:hover,
+.footer-meta .admin-button:hover {
+    color: #000;
+}
+
+.footer-meta .admin-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* --- Переопределение для тёмной темы (.dark-theme) --- */
+/* Эти стили сработают, только если у body есть класс dark-theme */
+
+.dark-theme #footer {
+    background-color: #000000;
+    color: #cccccc;
+    border-top-color: #333;
+}
+
+.dark-theme .footer-text-block .copyright {
+    color: #ffffff;
+}
+
+.dark-theme .footer-text-block .trademark {
+    color: #a0a0a0;
+}
+
+.dark-theme .footer-social a {
+    color: #ffffff;
+}
+
+.dark-theme .footer-divider {
+    background-color: #646464;
+}
+
+.dark-theme .footer-links a {
+    color: #cccccc;
+}
+
+.dark-theme .footer-links a:hover {
+    color: #ffffff;
+}
+
+.dark-theme .footer-meta {
+    color: #a0a0a0;
+}
+
+.dark-theme .footer-meta .update-button,
+.dark-theme .footer-meta .admin-button {
+    color: #cccccc;
+}
+
+.dark-theme .footer-meta .update-button:hover,
+.dark-theme .footer-meta .admin-button:hover {
+    color: #ffffff;
+}
+
+/* --- Уникальные цвета для иконок соцсетей при наведении (работают в обеих темах) --- */
+
+.footer-social a[aria-label="YouTube"]:hover { color: #FF0000; }
+.footer-social a[aria-label="Instagram"]:hover { color: #E1306C; }
+.footer-social a[aria-label="Facebook"]:hover { color: #1877F2; }
+.footer-social a[aria-label="Telegram"]:hover { color: #26A5E4; }
+.footer-social a[aria-label="Discord"]:hover { color: #5865F2; }
+
+
+/* --- Адаптивность для мобильных устройств--- */
+@media (max-width: 768px) {
+    /* Уменьшаем вертикальные отступы на мобильных, чтобы футер был компактнее */
+    #footer {
+        padding: 30px 0;
+    }
+
+    /* Главные контейнеры по-прежнему располагаем друг под другом, но с более выраженным отступом */
+    .footer-top, .footer-bottom {
+        flex-direction: column;
+        gap: 30px; /* Увеличим основной отступ между верхним и нижним блоком */
+    }
+
+    /* Блок с логотипом и текстом остается по центру, это выглядит хорошо */
+    .footer-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Иконки соцсетей выравниваем по центру */
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-links {
+        /* Делаем ссылки в виде ряда, который переносится */
+        display: flex;
+        flex-direction: row; /* Возвращаем в строку */
+        flex-wrap: wrap; /* Разрешаем перенос */
+        justify-content: center; /* Центрируем всю группу ссылок */
+        gap: 10px 20px; /* Отступы: 10px по вертикали, 20px по горизонтали */
+        margin: 0; /* Убираем лишние внешние отступы */
+    }
+    .footer-links a {
+        margin-right: 0; /* Отключаем старый отступ, теперь работает gap */
+    }
+
+    .footer-meta {
+        /* Тоже делаем компактным рядом с переносом */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px 12px; /* Компактные отступы */
+    }
+}
