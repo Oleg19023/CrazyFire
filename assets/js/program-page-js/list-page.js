@@ -1,24 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Получаем обычные элементы со страницы ---
+    // --- Получаем все необходимые элементы со страницы ---
     const checklist = document.getElementById('checklist');
     const addButton = document.getElementById('addButton');
     const clearButton = document.getElementById('clearButton');
     const inputField = document.getElementById('newItemInput');
     const taskCounter = document.getElementById('taskCounter');
-    
-    // --- Новые элементы ---
     const listTitle = document.getElementById('listTitle');
     const copyListButton = document.getElementById('copyListButton');
     const downloadListButton = document.getElementById('downloadListButton');
-
-    // --- Элементы модального окна ---
     const importModalElement = document.getElementById('importModal');
     const importModal = new bootstrap.Modal(importModalElement);
     const confirmImportButton = document.getElementById('confirmImportButton');
     const importTextArea = document.getElementById('importTextArea');
     const importFileInput = document.getElementById('importFileInput');
-    
-    // --- Основные функции ---
+
+    // --- Основные функции и обработчики ---
     const handleAddItem = () => {
         const itemText = inputField.value.trim();
         if (itemText) {
@@ -54,13 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
             saveChecklist();
         }
     });
-    
+
     // --- Логика для редактируемого заголовка ---
-    listTitle.addEventListener('blur', () => saveTitle()); // Сохраняем, когда убираем фокус
+    listTitle.addEventListener('blur', () => saveTitle());
     listTitle.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Предотвращаем перенос строки
-            listTitle.blur();   // Убираем фокус, что вызовет сохранение
+            e.preventDefault();
+            listTitle.blur();
         }
     });
 
@@ -92,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const blob = new Blob([textToDownload], { type: 'text/plain' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `${listTitle.textContent.trim()}.txt`; // Имя файла = заголовок списка
+            link.download = `${listTitle.textContent.trim()}.txt`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -114,64 +110,100 @@ document.addEventListener('DOMContentLoaded', () => {
     importTextArea.addEventListener('input', () => { if (importFileInput.value) importFileInput.value = ''; });
     importFileInput.addEventListener('change', () => { if (importTextArea.value) importTextArea.value = ''; });
 
-    // --- Функции для работы со списком и localStorage ---
-    function addItemToChecklist(itemText, isChecked) { /* ... без изменений ... */ }
-    function updateTaskCounter() { /* ... без изменений ... */ }
-    function saveChecklist() { /* ... без изменений ... */ }
 
-    function saveTitle() {
-        localStorage.setItem('todoListTitle', listTitle.textContent.trim());
-    }
-
-    function loadData() {
-        // Загрузка заголовка
-        const savedTitle = localStorage.getItem('todoListTitle');
-        if (savedTitle) {
-            listTitle.textContent = savedTitle;
-        }
-        // Загрузка списка
-        const savedItems = JSON.parse(localStorage.getItem('checklistItems')) || [];
-        savedItems.forEach(item => addItemToChecklist(item.text, item.checked));
-        updateTaskCounter();
-    }
-
-    loadData(); // Одна функция для загрузки всего
-
-    // --- Темная тема для модального окна ---
-    function syncModalTheme() { /* ... без изменений ... */ }
-    const themeObserver = new MutationObserver(() => syncModalTheme());
-    themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    syncModalTheme();
-
-    // Неизмененные функции копируем сюда
+    // --- Функция для создания элементов списка (с иконками) ---
     function addItemToChecklist(itemText, isChecked) {
         const item = document.createElement('div');
         item.classList.add('checklist-item');
+    
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         const uniqueId = `item-${Math.random().toString(36).substring(2, 9)}`;
         checkbox.id = uniqueId;
         checkbox.checked = isChecked;
+        checkbox.addEventListener('change', saveChecklist);
+        
         const label = document.createElement('label');
         label.htmlFor = uniqueId;
+    
         const textSpan = document.createElement('span');
         textSpan.textContent = itemText;
+        
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.className = 'form-control form-control-sm item-edit-input';
+        editInput.style.display = 'none';
+    
         label.appendChild(textSpan);
+        label.appendChild(editInput);
+        
+        const buttonGroup = document.createElement('div');
+        buttonGroup.className = 'd-flex gap-2 ms-auto align-items-center';
+    
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+        editButton.className = 'btn btn-primary btn-sm';
+        
+        editButton.addEventListener('click', () => {
+            const isEditing = editButton.classList.contains('btn-success');
+            
+            if (!isEditing) {
+                textSpan.style.display = 'none';
+                editInput.style.display = 'block';
+                editInput.value = textSpan.textContent;
+                editInput.focus();
+                editInput.select();
+                editButton.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+                editButton.classList.replace('btn-primary', 'btn-success');
+            } else {
+                const newText = editInput.value.trim();
+                if (newText) {
+                    textSpan.textContent = newText;
+                }
+                textSpan.style.display = 'block';
+                editInput.style.display = 'none';
+                editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+                editButton.classList.replace('btn-success', 'btn-primary');
+                saveChecklist();
+            }
+        });
+    
+        editInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                editButton.click();
+            }
+            if (e.key === 'Escape') {
+                textSpan.style.display = 'block';
+                editInput.style.display = 'none';
+                editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+                editButton.classList.replace('btn-success', 'btn-primary');
+            }
+        });
+    
         const removeItemButton = document.createElement('button');
-        removeItemButton.textContent = 'Удалить';
-        removeItemButton.classList.add('delete-item');
-        removeItemButton.addEventListener('click', () => { item.remove(); saveChecklist(); });
-        checkbox.addEventListener('change', saveChecklist);
+        removeItemButton.innerHTML = '×';
+        removeItemButton.className = 'btn btn-danger btn-sm';
+        removeItemButton.addEventListener('click', () => {
+            item.remove();
+            saveChecklist();
+        });
+    
+        buttonGroup.appendChild(editButton);
+        buttonGroup.appendChild(removeItemButton);
+    
         item.appendChild(checkbox);
         item.appendChild(label);
-        item.appendChild(removeItemButton);
+        item.appendChild(buttonGroup);
         checklist.appendChild(item);
     }
+
+    // --- Функции для сохранения и загрузки данных ---
     function updateTaskCounter() {
         const totalTasks = document.querySelectorAll('.checklist-item').length;
         const completedTasks = document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').length;
         taskCounter.textContent = totalTasks > 0 ? `Выполнено: ${completedTasks} из ${totalTasks}` : '';
     }
+
     function saveChecklist() {
         const items = [];
         document.querySelectorAll('.checklist-item').forEach(item => {
@@ -182,6 +214,22 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('checklistItems', JSON.stringify(items));
         updateTaskCounter();
     }
+
+    function saveTitle() {
+        localStorage.setItem('todoListTitle', listTitle.textContent.trim());
+    }
+
+    function loadData() {
+        const savedTitle = localStorage.getItem('todoListTitle');
+        if (savedTitle) {
+            listTitle.textContent = savedTitle;
+        }
+        const savedItems = JSON.parse(localStorage.getItem('checklistItems')) || [];
+        savedItems.forEach(item => addItemToChecklist(item.text, item.checked));
+        updateTaskCounter();
+    }
+
+    // --- Темная тема для модального окна ---
     function syncModalTheme() {
         if (document.body.classList.contains('dark-theme')) {
             importModalElement.setAttribute('data-bs-theme', 'dark');
@@ -189,4 +237,10 @@ document.addEventListener('DOMContentLoaded', () => {
             importModalElement.removeAttribute('data-bs-theme');
         }
     }
+    const themeObserver = new MutationObserver(() => syncModalTheme());
+    themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+    // --- Первичная загрузка данных при старте ---
+    loadData();
+    syncModalTheme();
 });

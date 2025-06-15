@@ -1,0 +1,291 @@
+/* ============================================= */
+/*     НОВЫЕ СТИЛИ СТРАНИЦЫ "КОНТАКТЫ"           */
+/* ============================================= */
+
+.contact-page-wrapper {
+    padding-top: 50px; /* Отступ от фиксированного хедера */
+}
+
+.contact-page-container-v2 {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+.page-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* --- Секции --- */
+section {
+    margin-bottom: 40px;
+}
+section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* --- Блок прямых контактов --- */
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 20px;
+}
+.contact-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: #0d6efd;
+}
+.contact-card .icon {
+    font-size: 1.5rem;
+    color: #0d6efd;
+}
+.contact-card .card-content {
+    display: flex;
+    flex-direction: column;
+}
+.contact-card strong {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #212529;
+}
+.contact-card span {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* --- Блок поддержки --- */
+.support-section { text-align: center; }
+.support-section p { color: #6c757d; margin-bottom: 20px; }
+.support-box {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-details {
+    text-align: left;
+}
+.bank-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 4px;
+}
+.card-number {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #343a40;
+}
+.copy-btn {
+    background: #e9ecef;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #495057;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.fa-copy {
+    align-items: center;
+}
+
+
+.copy-btn:hover { background-color: #dee2e6; }
+.copy-btn.copied { background-color: #28a745; color: #fff; }
+
+/* --- Форма --- */
+.form-section {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.contact-form {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 30px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.form-group { margin-bottom: 20px; }
+.form-grid > .form-group:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #495057;
+}
+.form-control, .form-select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus, .form-select:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+.submit-wrapper { text-align: center; margin-top: 10px; }
+.btn-submit {
+    padding: 14px 40px;
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.btn-submit:hover:not(:disabled) {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+}
+.btn-submit:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-header p,
+.dark-theme .support-section p,
+.dark-theme .contact-card span,
+.dark-theme .bank-name {
+    color: #a0a0a0;
+}
+.dark-theme .contact-card,
+.dark-theme .support-box,
+.dark-theme .contact-form {
+    background: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .contact-card:hover { border-color: #0d6efd; }
+.dark-theme .contact-card strong,
+.dark-theme .card-number { color: #f2f2f7; }
+.dark-theme .copy-btn {
+    background-color: #3a3a3c;
+    color: #ccc;
+}
+.dark-theme .copy-btn:hover { background-color: #555; }
+.dark-theme .form-group label { color: #a0a0a0; }
+.dark-theme .form-control,
+.dark-theme .form-select {
+    background-color: #1c1c1e;
+    border-color: #555;
+    color: #fff;
+}
+.dark-theme .form-control:focus,
+.dark-theme .form-select:focus { background-color: #1c1c1e; }
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Поля формы в один столбец */
+    }
+    .page-header h1 { font-size: 2.2rem; }
+}
+
+/* ============================================= */
+/*          СТИЛИ ДЛЯ СООБЩЕНИЯ ОБ УСПЕХЕ         */
+/* ============================================= */
+
+.success-message {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    display: flex; /* Используем flex для центрирования */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.success-message h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.success-message p {
+    color: #6c757d;
+    max-width: 400px;
+    margin-bottom: 30px;
+}
+
+.success-message .btn-submit {
+    background-color: #6c757d;
+}
+.success-message .btn-submit:hover {
+    background-color: #5a6268;
+}
+
+/* --- Темная тема для сообщения об успехе --- */
+.dark-theme .success-message {
+    background: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .success-message p {
+    color: #a0a0a0;
+}

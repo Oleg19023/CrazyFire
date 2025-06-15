@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (timeEl) timeEl.textContent = formattedTime;
     }
 
-    // HTML-шаблон. Обратите внимание на class="footer-hidden"
     const footerHTML = `
         <footer id="footer" class="footer-hidden">
             <div class="footer-container">
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="footer-info">
                         <img src="/assets/images/Site-logos/4kLogo2.webp" alt="logo" class="footer-logo">
                         <div class="footer-text-block">
-                            <p class="copyright">© 2023-<span id="footerYear"></span> <b>CrazyFire сorporation. Все права защищены.</b></p>
+                            <p class="copyright"><b>© 2023-<span id="footerYear"></b></span> <b>CrazyFire сorporation. Все права защищены.</b></p>
                             <p class="trademark">Заставка и логотип являются товарными знаками CrazyFire.</p>
                         </div>
                     </div>
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="/AdminSettings.html" class="btn btn-secondary admin-button" title="Настройки">
                             <i class="fas fa-cogs"></i>
                         </a>
-                        <a class="update-button" href="/Info-pages/update-history.html">Update v2.6dev</a>
+                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>2.6</b></b></a>
                         <span class="footer-separator">|</span>
                         <span id="footerDate"></span>
                         <span class="footer-separator">|</span>

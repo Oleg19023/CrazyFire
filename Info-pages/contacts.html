@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/contacts.css">
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -534,97 +535,248 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-    <main class="container mt-4" style="max-width: 800px; display: block;">
-        <div class="mt-4">
-            <h3>Контакты</h3>
-            <address>
-                <p><strong>Электронная почта компании:</strong> <a href="mailto:crazyfirecompany@gmail.com">crazyfirecompany@gmail.com</a></p>
-                <p><strong>Личный адрес директора компании:</strong> <a href="mailto:olegmordan621@gmail.com">olegmordan621@gmail.com</a></p>
-                <p><strong>Номер телефона:</strong></p>
-                <p>MTC: <a href="tel:+380662898035">+380662898035</a></p>
-                <p>KYIVSTAR (Не активно сейчас) : <a href="tel:+380683623836">+380683623836</a></p>
-                <p>Poland PLAY: <a href="tel:+48733627534">+48733627534</a></p>
-                <p><strong>Поддержать проект:</strong></p>
-                <p>Privat: 5168 7451 2529 8163</p>
-            </address>
-        </div>   
-		<h2>Напишите нам</h2>
-		<form id="contactForm">
-			<!-- Поле для ввода email -->
-			<div class="mb-3">
-				<label for="email" class="form-label">Електронная почта</label>
-				<input type="email" class="form-control" id="email" value="crazyfirecompany@gmail.com">
-			</div>
-			<!-- Поле для выбора типа сообщения -->
-			<div class="mb-3">
-				<label for="messageType" class="form-label">Тип сообщения</label>
-				<select class="form-select" id="messageType">
-					<option value="Отзыв" selected>Отзыв</option>
-					<option value="Вопрос">Вопрос</option>
-					<option value="Другое">Другое</option>
-				</select>
-			</div>
-			<!-- Поле для ввода заголовка -->
-			<div class="mb-3">
-				<label for="subject" class="form-label">Заголовок</label>
-				<input type="text" class="form-control" id="subject" value="">
-			</div>
-			<!-- Поле для текста сообщения -->
-			<div class="mb-3">
-				<label for="messageText" class="form-label">Ваше сообщения</label>
-				<textarea class="form-control" id="messageText" rows="5"></textarea>
-			</div>
-			<!-- Поле для ввода имени -->
-			<div class="mb-3">
-				<label for="name" class="form-label">Ваше имя</label>
-				<input type="text" class="form-control" id="name">
-			</div>
-			<!-- Меню выбора оценки -->
-			<div class="mb-3" id="ratingContainer">
-				<label for="rating" class="form-label">Оцените наш сервис</label>
-				<select class="form-select" id="rating">
-                    <option value="5">5 звезд</option>
-                    <option value="4">4 звезды</option>
-                    <option value="3">3 звезды</option>
-                    <option value="2">2 звезды</option>
-					<option value="1">1 звезда</option>
-				</select>
-			</div>
-			<!-- Кнопка отправки -->
-			<button type="button" id="submitButton" class="btn btn-primary">Отправить</button>
-		</form>
-     
-        
-	</main>	
+<main class="contact-page-wrapper">
+    <div class="contact-page-container-v2">
+        <div class="page-header">
+            <h1>Свяжитесь с нами</h1>
+            <p>Есть вопросы, предложения или хотите сообщить об ошибке? Мы всегда на связи!</p>
+        </div>
 
-    <style>
-    .mt-4 {
-        margin-top: 1.5rem;
+        <!-- Блок 1: Прямые контакты -->
+        <section class="contact-methods-section">
+            <div class="methods-grid">
+                <a href="mailto:olegmordan621@gmail.com" class="contact-card">
+                    <i class="fas fa-envelope icon"></i>
+                    <div class="card-content">
+                        <strong>Email</strong>
+                        <span>olegmordan621@gmail.com</span>
+                    </div>
+                </a>
+                <a href="tel:+380662898035" class="contact-card">
+                    <i class="fas fa-phone-alt icon"></i>
+                    <div class="card-content">
+                        <strong>Телефон</strong>
+                        <span>+38 (066) 289-80-35</span>
+                    </div>
+                </a>
+                <a href="https://t.me/W1zarDll" target="_blank" class="contact-card">
+                    <i class="fab fa-telegram-plane icon"></i>
+                    <div class="card-content">
+                        <strong>Telegram</strong>
+                        <span>Написать в чат</span>
+                    </div>
+                </a>
+                <a href="/Program-pages/Discord-pages.html" class="contact-card">
+                    <i class="fab fa-discord icon"></i>
+                    <div class="card-content">
+                        <strong>Discord</strong>
+                        <span>Присоединиться</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Блок 2: Поддержка проекта -->
+        <section class="support-section">
+             <h2>Поддержать проект</h2>
+             <p>Ваша поддержка помогает нам развиваться и оставаться бесплатными.</p>
+             <div class="support-box">
+                <div class="card-details">
+                    <div class="bank-name">Privat Bank</div>
+                    <span class="card-number">5168 7451 2529 8163</span>
+                </div>
+                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
+                    <i class="far fa-copy"></i>
+                </button>
+             </div>
+             <div class="support-box" style="margin-top: 10px;">
+                <div class="card-details">
+                    <div class="bank-name">Monobank</div>
+                    <span class="card-number">4441 1110 7492 5771</span>
+                </div>
+                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
+                    <i class="far fa-copy"></i>
+                </button>
+             </div>
+              <!-- <div class="support-box" style="margin-top: 10px;">
+                <div class="card-details">
+                    <div class="bank-name">Crypto</div>
+                    <span class="card-number">-</span>
+                </div>
+                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
+                    <i class="far fa-copy"></i>
+                </button>
+             </div> -->
+        </section>
+
+        <!-- Блок 3: Форма обратной связи -->
+        <section class="form-section">
+            <h2>Напишите нам</h2>
+            
+            <form id="contactForm" class="contact-form">
+                <!-- URL для отправки -->
+                <input type="hidden" id="formSubmitUrl" value="https://formsubmit.co/olegmordan621@gmail.com">
+                <input type="hidden" name="_subject" value="Новое сообщение с сайта CrazyFire!">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Ваш Email для ответа</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="messageType">Тема обращения</label>
+                        <select id="messageType" name="topic" class="form-select">
+                            <option value="Отзыв о проекте">Отзыв о проекте</option>
+                            <option value="Общий вопрос">Общий вопрос</option>
+                            <option value="Сообщить об ошибке">Сообщить об ошибке</option>
+                            <option value="Предложение о сотрудничестве">Предложение о сотрудничестве</option>
+                            <option value="Другое">Другое</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="ratingContainer" style="display: none;">
+                        <label for="rating">Оцените наш сервис</label>
+                        <select id="rating" name="rating" class="form-select">
+                            <option value="5">⭐⭐⭐⭐⭐ (Отлично)</option>
+                            <option value="4">⭐⭐⭐⭐ (Хорошо)</option>
+                            <option value="3">⭐⭐⭐ (Нормально)</option>
+                            <option value="2">⭐⭐ (Плохо)</option>
+                            <option value="1">⭐ (Ужасно)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="messageText">Сообщение</label>
+                    <textarea id="messageText" name="message" class="form-control" rows="6" required></textarea>
+                </div>
+
+                <div class="submit-wrapper">
+                    <button type="submit" id="submitButton" class="btn-submit">Отправить сообщение</button>
+                </div>
+            </form>
+            
+            <div id="successMessage" class="success-message" style="display: none;">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>Сообщение отправлено!</h3>
+                <p>Спасибо за ваше обращение. Мы ответим вам в ближайшее время.</p>
+                <button id="sendAnotherMessage" class="btn-submit">Написать еще одно</button>
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<!-- Полностью новый скрипт для AJAX отправки -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // --- Логика для формы ---
+    const contactForm = document.getElementById("contactForm");
+    const successMessage = document.getElementById("successMessage");
+    const sendAnotherBtn = document.getElementById("sendAnotherMessage");
+    const submitButton = document.getElementById("submitButton");
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+            const formData = new FormData(contactForm);
+            const formUrl = document.getElementById('formSubmitUrl').value;
+            
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+
+            fetch(formUrl, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Успешная отправка
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'flex';
+                } else {
+                    // Ошибка сервера
+                    return response.json().then(data => {
+                        throw new Error(data.message || 'Что-то пошло не так');
+                    });
+                }
+            })
+            .catch(error => {
+                // Ошибка сети или другая проблема
+                console.error('Ошибка отправки формы:', error);
+                alert('Не удалось отправить сообщение. Пожалуйста, попробуйте еще раз.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Отправить сообщение';
+            });
+        });
     }
 
-    h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+    if (sendAnotherBtn) {
+        sendAnotherBtn.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            contactForm.style.display = 'block';
+            contactForm.reset(); // Очищаем форму
+            submitButton.disabled = false;
+            submitButton.textContent = 'Отправить сообщение';
+            // Не забываем обновить видимость поля с рейтингом
+            toggleRatingVisibility(); 
+        });
     }
 
-    address {
-        font-style: normal;
-        line-height: 1.6;
-    }
+    // --- Логика для поля "Оцените наш сервис" ---
+    const messageType = document.getElementById("messageType");
+    const ratingContainer = document.getElementById("ratingContainer");
 
-    address p {
-        margin: 0.5rem 0;
+    const toggleRatingVisibility = () => {
+        if (messageType && ratingContainer) {
+            if (messageType.value === "Отзыв о проекте") {
+                ratingContainer.style.display = "block";
+            } else {
+                ratingContainer.style.display = "none";
+            }
+        }
+    };
+    
+    toggleRatingVisibility(); 
+    if(messageType) {
+        messageType.addEventListener("change", toggleRatingVisibility);
     }
+    
 
-    address a {
-        color: #007bff;
-        text-decoration: none;
-    }
+    // --- Логика для кнопки "Копировать" ---
+    const copyButton = document.getElementById('copyButton');
+    if(copyButton) {
+        const originalIcon = copyButton.innerHTML;
+        const cardNumberElement = document.querySelector('.card-number');
+        const cardNumber = cardNumberElement.textContent;
 
-    address a:hover {
-        text-decoration: underline;
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(cardNumber.replace(/\s/g, ''))
+            .then(() => {
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                copyButton.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyButton.innerHTML = originalIcon;
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Не удалось скопировать текст: ', err);
+                alert('Ошибка при копировании.');
+            });
+        });
     }
-    </style>
+});
+</script>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -638,7 +790,6 @@
     <script src="/assets/js/search.js"></script>
     <script src="/assets/js/header.js"></script>
     <script src="/assets/js/footer.js"></script>
-    <script src="/assets/js/contacts.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
 

@@ -129,3 +129,10 @@ body.dark-theme {
     transition: background-color 0.3s ease; flex-shrink: 0;
 }
 .delete-item:hover { background-color: #ff1a1a; }
+
+/* Стили для поля редактирования внутри элемента списка */
+.item-edit-input {
+    width: 100%;
+    /* Чтобы инпут не вылезал за границы лейбла */
+    box-sizing: border-box; 
+}

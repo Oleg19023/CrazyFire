@@ -1,60 +1,151 @@
-        
-        body {
-            color: #e0e0e0; /* Светлый текст */
-        }
-        
-        .container {
-            margin: 0 auto; /* Центрирование контейнера */
-            padding: 20px; /* Отступы внутри контейнера */
-            padding-top: 90px;
-            background-color: #1e1e1e; /* Фон контейнера */
-            border-radius: 8px; /* Скругление углов */
-        }
-        
-        h1 {
-            font-size: 2.5rem; /* Размер заголовка */
-            color: #ffffff; /* Цвет заголовка */
-            margin-bottom: 20px; /* Отступ снизу */
-        }
-        
-        h2 {
-            font-size: 1.8rem; /* Размер подзаголовка */
-            color: #ffffff; /* Цвет подзаголовка */
-            margin-top: 30px; /* Отступ сверху */
-            margin-bottom: 10px; /* Отступ снизу */
-        }
-        
-        p {
-            font-size: 1rem; /* Размер текста */
-            color: #e0e0e0; /* Цвет текста */
-            line-height: 1.6; /* Межстрочный интервал */
-            margin-bottom: 15px; /* Отступ снизу */
-        }
-        
-        a {
-            color: #bb86fc; /* Цвет ссылок */
-            text-decoration: none; /* Убрать подчеркивание */
-        }
-        
-        a:hover {
-            text-decoration: underline; /* Подчеркивание при наведении */
-        }   
+/* ============================================= */
+/*  СТИЛИ СТРАНИЦЫ "ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ" */
+/* ============================================= */
 
+/* Отодвигаем весь контент страницы вниз, чтобы он не залезал под хедер */
+main.legal-page-wrapper {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
 
-        
-        
-        footer {
-            background-color: #1e1e1e; /* Темный фон футера */
-            color: #e0e0e0; /* Светлый цвет текста футера */
-            padding: 15px 0; /* Отступы внутри футера */
-            text-align: center; /* Центрирование текста футера */
-        }
+.legal-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 50px;
+}
 
-        footer a {
-            color: #bb86fc; /* Цвет ссылок в футере */
-            text-decoration: none; /* Убрать подчеркивание */
-        }
+/* --- Боковая навигация --- */
+.legal-nav {
+    position: relative;
+}
+.nav-sticky-content {
+    position: sticky;
+    top: 90px; /* Отступ от верха, чтобы прилипало ниже хедера */
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+.nav-sticky-content strong {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#toc-list li a {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #555;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+#toc-list a:hover {
+    background-color: #e5e5e5;
+    color: #111;
+}
 
-        footer a:hover {
-            text-decoration: underline; /* Подчеркивание при наведении на ссылки футера */
-        }
+/* --- Основной контент --- */
+.legal-content section {
+    scroll-margin-top: 90px; /* Компенсация для якорных ссылок */
+}
+
+/* Стили для заголовка H1, который теперь внутри первой секции */
+.legal-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.last-updated {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 30px; /* Отступ после даты до подзаголовка */
+}
+
+.legal-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.legal-content p, .legal-content li {
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1em;
+}
+.legal-content ul {
+    padding-left: 25px;
+}
+.legal-content a {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 123, 255, 0.3);
+    transition: border-bottom-color 0.2s;
+}
+.legal-content a:hover {
+    border-bottom-color: #007bff;
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .nav-sticky-content {
+    background-color: #2c2c2e;
+}
+.dark-theme .nav-sticky-content strong {
+    color: #f2f2f7;
+    border-bottom-color: #444;
+}
+.dark-theme #toc-list a {
+    color: #a0a0a0;
+}
+.dark-theme #toc-list a:hover {
+    background-color: #3a3a3c;
+    color: #fff;
+}
+.dark-theme .legal-content h1 {
+    color: #fff;
+    border-bottom-color: #444;
+}
+.dark-theme .last-updated {
+    color: #8e8e93;
+}
+.dark-theme .legal-content h2 {
+    color: #eee;
+}
+.dark-theme .legal-content p,
+.dark-theme .legal-content li {
+    color: #d1d1d6;
+}
+.dark-theme .legal-content a {
+    color: #58a6ff;
+    border-bottom-color: rgba(88, 166, 255, 0.4);
+}
+.dark-theme .legal-content a:hover {
+    border-bottom-color: #58a6ff;
+}
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+@media (max-width: 992px) {
+    .legal-page-container {
+        grid-template-columns: 1fr; 
+    }
+    .legal-nav {
+        display: none; 
+    }
+}
