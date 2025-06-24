@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/phonetic-alphabet.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,51 +162,38 @@
         </nav>
     </header> 
 
-    <main>
-        <div class="container">
-            <div class="container mt-5">
-                <h1 class="mb-3">Фонетический алфавит шифрования</h1>
-                <div class="mb-3 row">
-                    <label for="inputText" class="col-sm-2 col-form-label">Введите буквенно-цифровую комбинацию</label>
-                    <div class="col-sm-10">
-                      <input type="text" oninput="convertToICAO()" class="form-control" id="inputText" placeholder="Введите комбинацию">
-                    </div>
-                  </div>
-                  <div class="mb-3 row">
-                    <div class="col-sm-2 col-form-label">Расшифровка</div>
-                    <div class="col-sm-10">
-                      <h4 id="outputText"></h4>
-                    </div>
-                  </div>
+    <main class="phonetic-alphabet-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Фонетический алфавит ICAO</h1>
+                <p>Введите текст или номер для получения его фонетического представления</p>
+            </div>
+
+            <!-- Панель конвертера -->
+            <div class="converter-wrapper">
+                <!-- Поле для ввода -->
+                <div class="input-panel">
+                    <i class="fas fa-keyboard input-icon"></i>
+                    <input type="text" id="inputText" placeholder="Например, AZ-123">
+                    <button id="clearButton" class="clear-btn" title="Очистить">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Контейнер для вывода результата -->
+                <div id="outputContainer" class="output-container">
+                </div>
+
+                <!-- Кнопка Копировать -->
+                <div id="copyPanel" class="copy-panel" style="display: none;">
+                    <button id="copyButton" class="copy-btn">
+                        <i class="fas fa-copy"></i> Копировать результат
+                    </button>
+                </div>
             </div>
         </div>
     </main>
-    
-    <script>
-        function convertToICAO() {
-        const inputText = document.getElementById("inputText").value.toUpperCase();
-        const outputText = document.getElementById("outputText");
-
-        const icaoMap = {
-            'A': 'Alpha', 'B': 'Bravo', 'C': 'Charlie',
-            'D': 'Delta', 'E': 'Echo', 'F': 'Foxtrot',
-            'G': 'Golf', 'H': 'Hotel', 'I': 'India',
-            'J': 'Juliet', 'K': 'Kilo', 'L': 'Lima',
-            'M': 'Mike', 'N': 'November', 'O': 'Oscar',
-            'P': 'Papa', 'Q': 'Quebec', 'R': 'Romeo',
-            'S': 'Sierra', 'T': 'Tango', 'U': 'Uniform',
-            'V': 'Victor', 'W': 'Whiskey', 'X': 'X-ray',
-            'Y': 'Yankee', 'Z': 'Zulu',
-            '0': 'Zero', '1': 'One', '2': 'Two',
-            '3': 'Three', '4': 'Four', '5': 'Five',
-            '6': 'Six', '7': 'Seven', '8': 'Eight',
-            '9': 'Nine'
-        };
-
-        const decodedWords = Array.from(inputText).map(char => icaoMap[char] || char);
-        outputText.textContent = decodedWords.join(' ');
-    }
-    </script>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -226,6 +210,7 @@
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/program-page-js/phonetic-alphabet.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

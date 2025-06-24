@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/exchange-rates.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,10 +162,44 @@
         </nav>
     </header> 
 
-    <main>
-        <div class="programs-container">
-            <h1 class="mb-4">Курсы валют НБУ</h1>
-            <div id="currencyContainer" class="mt-4"></div>
+    <main class="exchange-rates-page">
+        <div class="page-container">
+            <!-- Заголовок страницы -->
+            <div class="page-title-section">
+                <h1>Курсы валют НБУ</h1>
+                <p id="exchangeDate">Загрузка данных...</p>
+            </div>
+
+            <!-- Калькулятор конвертации -->
+            <section class="converter-section-v1">
+                <h2>Конвертер валют</h2>
+                <div class="converter-box">
+                    <div class="converter-group">
+                        <label for="amountFrom">Сумма</label>
+                        <input type="number" id="amountFrom" value="100" class="form-control">
+                        <select id="currencyFrom" class="form-select"></select>
+                    </div>
+                    <div class="swap-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="converter-group">
+                        <label for="amountTo">Результат</label>
+                        <input type="number" id="amountTo" readonly class="form-control">
+                        <select id="currencyTo" class="form-select"></select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Контейнер для карточек валют -->
+            <div id="currencyGrid" class="currency-grid">
+                <!-- Сюда JS будет добавлять карточки валют -->
+            </div>
+
+            <!-- Прелоадер (индикатор загрузки) -->
+            <div id="loader" class="loader-wrapper">
+                <div class="loader-spinner"></div>
+            </div>
+
         </div>
     </main>
 

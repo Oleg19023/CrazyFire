@@ -1,96 +1,237 @@
+/* ============================================= */
+/*       СТИЛИ СТРАНИЦЫ ИСТОРИИ ОБНОВЛЕНИЙ       */
+/* ============================================= */
+
+/* --- Общие стили контейнера и заголовков --- */
 .container {
-    margin-top: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+h1.text-center {
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-h2 {
-    text-align: center; /* Центрирование заголовка */
-    font-size: 1.8rem; /* Размер подзаголовка */
-    margin-top: 10px; /* Отступ сверху */
-    margin-bottom: 30px; /* Отступ снизу */
+/* --- Контейнер для двух колонок --- */
+.timeline-wrapper {
+    display: grid;
+    grid-template-columns: 150px 1fr; /* Левая колонка 150px, правая - остальное */
+    gap: 50px;
+    position: relative;
 }
 
-h1 {
-    font-size: 2.5rem; /* Размер заголовка */
-    margin-bottom: 20px; /* Отступ снизу */
-    text-align: center; /* Центрирование заголовка */
+/* --- Левая колонка: Навигация --- */
+.timeline-nav {
+    position: sticky; /* Делаем панель "липкой" */
+    top: 100px; /* Отступ от верха, чтобы не прилипала к хедеру */
+    align-self: start; /* Выравниваем по верху */
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+}
+.timeline-nav nav a {
+    display: block;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #6c757d;
+    font-weight: 600;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+}
+.timeline-nav nav a:hover {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+.timeline-nav nav a.active {
+    color: #0d6efd;
+    background-color: #e7f1ff;
+    border-left-color: #0d6efd;
+    transform: translateX(5px);
 }
 
-p {
-    font-size: 18px; /* Размер текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin-bottom: 15px; /* Отступ снизу */
-}
-
-.footer-text {
-    font-size: 15px !important;
-}
-
+/* --- Правая колонка: Таймлайн --- */
 .update-list {
-    margin: auto;
+    position: relative;
+    padding-left: 30px;
+}
+.update-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
 }
 
+/* --- Карточка обновления --- */
 .update-item {
-    background-color: #ffffff; /* Белый фон для элементов обновлений */
-    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход цвета */
-    padding: 15px; /* Добавляем немного отступов для карточек */
-    border-radius: 5px; /* Закругленные углы для карточек */
-    margin-bottom: 10px; /* Отступ между карточками */
-    border: 1px solid #dee2e6; /* Рамка для элементов обновлений */
+    position: relative;
+    padding: 25px 30px;
+    margin-bottom: 35px;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+/* Маркер на линии напротив карточки */
+.update-item::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: -39px; /* Позиционируем на линии */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #adb5bd;
+    border: 4px solid #fff;
+    z-index: 1;
+    transition: background-color 0.2s;
+}
+/* Активный маркер */
+.update-item.is-visible::before {
+    background-color: #0d6efd;
 }
 
-.aos-hidden {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none;
-}
-.update-item:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+/* --- Стили текста внутри карточки --- */
+.update-info strong { font-size: 1.5rem; font-weight: 700; display: block; margin-bottom: 0.25rem; }
+.update-info span { font-size: 1rem; color: #6c757d; }
+.update-description h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1.25rem; }
+.update-description p { font-size: 1.1rem; line-height: 1.75; margin-bottom: 1.25rem; }
 
-.update-info {
-    border-bottom: 1px solid #dee2e6; /* Разделитель между информацией и описанием */
-    padding-bottom: 10px;
-}
-
-.update-description {
-    margin-top: 10px;
-}
-
-/* Цвета для добавленного, исправленного и удаленного */
-.text-success {
-    color: green;
-}
-
-.text-warning {
-    color: orange;
-}
-
-.text-danger {
-    color: red;
+/* ============================================= */
+/*          АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ)      */
+/* ============================================= */
+@media (max-width: 992px) {
+    .timeline-wrapper {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+    .timeline-nav {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-bottom: 30px;
+        overflow-x: auto; /* Горизонтальный скролл для навигации */
+    }
+    .timeline-nav nav {
+        display: flex; /* Ссылки в ряд */
+        padding-bottom: 10px;
+    }
+    .timeline-nav nav a {
+        flex-shrink: 0; /* Не сжимать ссылки */
+    }
+    .update-list { padding-left: 20px; }
+    .update-item::before { left: -31px; }
 }
 
-body.light-theme {
-    transition: background-color 0.8s ease, color 0.8s ease; /* Плавный переход цвета для светлой темы */
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .timeline-nav nav a { color: #a0a0a0; }
+.dark-theme .timeline-nav nav a:hover { background-color: #3a3a3c; color: #fff; }
+.dark-theme .timeline-nav nav a.active { color: #58a6ff; background-color: #2c3a5e; border-left-color: #58a6ff; }
+.dark-theme .update-list::before { background: #444; }
+.dark-theme .update-item { background-color: #2c2c2e; border-color: #444; }
+.dark-theme .update-item::before { background: #6c757d; border-color: #2c2c2e; }
+.dark-theme .update-item.is-visible::before { background-color: #58a6ff; }
+.dark-theme .update-list::before {
+    background: #444;
+}
+.dark-theme .update-item {
+    background-color: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .update-item:hover {
+    background-color: #3a3a3c;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.dark-theme .update-info span {
+    color: #a0a0a0;
+}
+/* Анимация мерцания для темной темы */
+.dark-theme .shimmer-text {
+    background: linear-gradient(90deg, #666, #fff, #666);
+    background-size: 200% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 2.5s linear infinite;
 }
 
-/* Темная тема */
-body.dark-theme {
-    color: #f8f9fa;
+/* ============================================= */
+/*       СТИЛИ ДЛЯ ИКОНОК ОБНОВЛЕНИЙ             */
+/* ============================================= */
+
+/* Родительский strong, который содержит иконку и текст */
+.update-description .text-success,
+.update-description .text-warning,
+.update-description .text-danger {
+    position: relative; /* Необходимо для позиционирования ::before */
+    padding-left: 35px; /* Создаем место слева для кружка с иконкой */
+    display: inline-block; /* Позволяет padding-top работать как надо */
+    width: 100%;
 }
 
-body.dark-theme .update-item {
-    background-color: #43484f; /* Цвет фона карточки в темной теме */
-    color: #f8f9fa; /* Светлый текст для карточек в темной теме */
-    border: none; /* Убираем рамку для карточек в темной теме */
+/* Сам кружок с иконкой */
+.update-description .text-success::before,
+.update-description .text-warning::before,
+.update-description .text-danger::before {
+    /* 1. Задаем контент и шрифт иконки */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: #fff;
+
+    /* 2. Позиционируем кружок слева от текста */
+    position: absolute;
+    left: 0;
+    top: 50%; /* Смещаем верхний край кружка на 50% высоты родителя */
+    transform: translateY(-50%); /* Поднимаем кружок на половину его собственной высоты */
+
+    /* 3. Создаем сам кружок */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    /* 4. Центрируем иконку ВНУТРИ кружка */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-body.dark-theme .update-item:hover {
-    background-color: #495057; /* Темно-серый фон при наведении в темной теме */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgb(129, 129, 129);
-
+/* 5. Применяем уникальные иконки и цвета */
+.update-description .text-success::before {
+    content: "\f067"; /* Иконка + */
+    background-color: #28a745;
 }
 
+.update-description .text-warning::before {
+    content: "\f0ad"; /* Иконка гаечного ключа */
+    background-color: #ffc107;
+}
+
+.update-description .text-danger::before {
+    content: "\f1f8"; /* Иконка корзины */
+    background-color: #dc3545;
+}
+
+/* =================================================== */
+/*       СКРЫВАЕМ СКРОЛЛБАР В НАВИГАЦИИ ПО ВЕРСИЯМ      */
+/* =================================================== */
+
+/* Для Chrome, Safari, Opera и других WebKit-браузеров */
+.timeline-nav::-webkit-scrollbar {
+  display: none; /* Полностью прячем скроллбар */
+}
+
+/* Для Firefox */
+.timeline-nav {
+  scrollbar-width: none; /* Убираем скроллбар, сохраняя прокрутку */
+}
+
+/* Для Internet Explorer и Edge (старые версии) */
+.timeline-nav {
+  -ms-overflow-style: none;  /* Убираем скроллбар */
+}

@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/loan-calculator.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +59,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -164,92 +162,70 @@
             </div>
         </nav>
     </header>  
-    <main>
-        <div class="container">
-            <h1 class="mb-4">Калькулятор кредита (Аннуитетная схема)</h1>
-
-        <form id="loanCalculatorForm">
-            <div class="mb-3">
-                <label for="loanTermMonths" class="form-label">Количество месяцев:</label>
-                <input type="number" class="form-control" id="loanTermMonths" required>
+    
+    <main class="loan-calculator-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Кредитный калькулятор</h1>
+                <p>Рассчитайте аннуитетный платеж и график погашения</p>
             </div>
 
-            <div class="mb-3">
-                <label for="loanAmount" class="form-label">Сумма кредита:</label>
-                <input type="number" class="form-control" id="loanAmount" required>
+            <!-- Основной блок -->
+            <div class="calculator-wrapper">
+                <!-- Панель управления (ввод данных) -->
+                <div class="controls-panel">
+                    <div class="input-group">
+                        <label for="loanAmount">Сумма кредита (грн)</label>
+                        <input type="number" id="loanAmount" value="100000">
+                    </div>
+                    <div class="input-group">
+                        <label for="annualInterestRate">Годовая ставка (%)</label>
+                        <input type="number" id="annualInterestRate" value="12">
+                    </div>
+                    <div class="input-group">
+                        <label for="loanTermMonths">Срок (месяцы)</label>
+                        <input type="number" id="loanTermMonths" value="24">
+                    </div>
+                </div>
+
+                <!-- Блок с результатами и диаграммой -->
+                <div class="results-overview">
+                    <div class="summary-panel">
+                        <div class="summary-item">
+                            <span>Ежемесячный платеж</span>
+                            <strong id="monthlyPayment">0.00 грн</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Общая выплата</span>
+                            <strong id="totalPayment">0.00 грн</strong>
+                        </div>
+                        <div class="summary-item overpayment">
+                            <span>Переплата по процентам</span>
+                            <strong id="totalInterest">0.00 грн</strong>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="loanChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Детальная таблица платежей -->
+                <div class="payment-schedule">
+                    <div class="schedule-header">
+                        <h2>График платежей</h2>
+                        <!-- НОВАЯ КНОПКА -->
+                        <button id="downloadCsvButton" class="download-btn" disabled>
+                            <i class="fas fa-file-csv"></i> Скачать CSV
+                        </button>
+                    </div>
+                    <div id="resultContainer" class="table-responsive">
+                        <!-- Сюда JS будет вставлять таблицу -->
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label for="annualInterestRate" class="form-label">Проценты в год:</label>
-                <input type="number" class="form-control" id="annualInterestRate" required>
-            </div>
-
-            <button type="button" class="btn btn-primary" onclick="calculateLoan()">Рассчитать</button>
-        </form>
-
-        <div class="table-responsive" id="resultContainer" class="mt-4"></div>
         </div>
-        <script>
-            const resultContainer = document.getElementById('resultContainer');
-            resultContainer.innerHTML = '';
-            
-            const tableWrapper = document.createElement('div');
-            tableWrapper.className = 'table-responsive';
-            
-            const table = document.createElement('table');
-            table.className = 'table';
-            table.innerHTML = '<tr><th>Месяц</th><th>Задолженность</th><th>Погашение</th><th>Проценты</th><th>Выплаты</th><th>Остаток</th></tr>';
-            
-            tableWrapper.appendChild(table);
-            resultContainer.appendChild(tableWrapper);
-        </script>
     </main>
-
-    <style>
-        .container {
-            margin-top: 80px;
-            padding-top: 20px;
-            padding-bottom: 2px;
-            max-width: 900px;
-            background-color: #ececec;
-            border-radius: 10px;
-        }
-        .dark-theme .container {
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        table {
-            width: 100%;
-            font-size: 14px;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: center;
-        }
-
-        /* Контейнер для горизонтального скролла */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        /* Уменьшаем шрифт на маленьких экранах */
-        @media (max-width: 480px) {
-            table {
-                font-size: 12px;
-            }
-
-            th, td {
-                padding: 5px;
-                white-space: nowrap; /* Предотвращает перенос текста */
-            }
-        }
-
-
-    </style>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

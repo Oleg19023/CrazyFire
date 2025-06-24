@@ -44,144 +44,151 @@ document.addEventListener('DOMContentLoaded', () => {
         'ʕ ᵔᴥᵔ ʔ',
     ];    
 
-    const videos = [
-        './assets/media/Main-page/1.mp4',
-        './assets/media/Main-page/2.mp4',
-        './assets/media/Main-page/3.mp4',
-        './assets/media/Main-page/4.mp4',
-        './assets/media/Main-page/5.mp4',
-        './assets/media/Main-page/6.mp4',
-        './assets/media/Main-page/7.mp4',
-        './assets/media/Main-page/8.mp4',
-        './assets/media/Main-page/9.mp4',
-        './assets/media/Main-page/10.mp4',
-        './assets/media/Main-page/11.mp4',
-        './assets/media/Main-page/12.mp4',
-        './assets/media/Main-page/13.mp4',
-        './assets/media/Main-page/14.mp4',
-        './assets/media/Main-page/15.mp4',
-        './assets/media/Main-page/16.mp4',
-        './assets/media/Main-page/17.mp4',
-        './assets/media/Main-page/18.mp4',
-        './assets/media/Main-page/19.mp4',
-        './assets/media/Main-page/20.mp4',
-        './assets/media/Main-page/21.mp4',
-        './assets/media/Main-page/22.mp4',
-        './assets/media/Main-page/23.mp4',
-        './assets/media/Main-page/24.mp4',
-        './assets/media/Main-page/25.mp4',
-        './assets/media/Main-page/26.mp4',
-        './assets/media/Main-page/27.mp4',
-        './assets/media/Main-page/28.mp4',
-        './assets/media/Main-page/29.mp4',
-        './assets/media/Main-page/30.mp4',
-        './assets/media/Main-page/31.mp4',
-        './assets/media/Main-page/32.mp4',
-        './assets/media/Main-page/33.mp4',
-        './assets/media/Main-page/34.mp4',
-        './assets/media/Main-page/35.mp4',
-        './assets/media/Main-page/36.mp4',
-        './assets/media/Main-page/37.mp4',
-        './assets/media/Main-page/38.mp4',
-        './assets/media/Main-page/39.mp4',
-        './assets/media/Main-page/40.mp4',
-        './assets/media/Main-page/41.mp4',
-        './assets/media/Main-page/42.mp4',
-        './assets/media/Main-page/43.mp4',
-        './assets/media/Main-page/44.mp4',
-        './assets/media/Main-page/45.mp4',
-        './assets/media/Main-page/46.mp4',
-        './assets/media/Main-page/47.mp4',
-        './assets/media/Main-page/48.mp4',
-        './assets/media/Main-page/49.mp4',
-        './assets/media/Main-page/50.mp4',
-        // './assets/media/Main-page/51.mp4',
-        // './assets/media/Main-page/52.mp4',
-        // './assets/media/Main-page/53.mp4',
-        // './assets/media/Main-page/54.mp4',
-        // './assets/media/Main-page/55.mp4',
-        // './assets/media/Main-page/56.mp4',
-        // './assets/media/Main-page/57.mp4',
-        // './assets/media/Main-page/58.mp4',
-        // './assets/media/Main-page/59.mp4',
-        // './assets/media/Main-page/60.mp4',
-        // './assets/media/Main-page/61.mp4',
-        // './assets/media/Main-page/62.mp4',
-        // './assets/media/Main-page/63.mp4',
-        // './assets/media/Main-page/64.mp4',
-        // './assets/media/Main-page/65.mp4',
-        // './assets/media/Main-page/66.mp4',
-        // './assets/media/Main-page/67.mp4',
-        // './assets/media/Main-page/68.mp4',
-        // './assets/media/Main-page/69.mp4',
-        // './assets/media/Main-page/70.mp4',
-        // './assets/media/Main-page/71.mp4',
-        // './assets/media/Main-page/72.mp4',
-        // './assets/media/Main-page/73.mp4',
-        // './assets/media/Main-page/74.mp4',
-        // './assets/media/Main-page/75.mp4',
-        // './assets/media/Main-page/76.mp4',
-        // './assets/media/Main-page/77.mp4',
-        // './assets/media/Main-page/78.mp4',
-        // './assets/media/Main-page/79.mp4',
-        // './assets/media/Main-page/80.mp4',
-        // './assets/media/Main-page/81.mp4',
-        // './assets/media/Main-page/82.mp4',
-        // './assets/media/Main-page/83.mp4',
-        // './assets/media/Main-page/84.mp4',
-        // './assets/media/Main-page/85.mp4',
-        // './assets/media/Main-page/86.mp4',
-        // './assets/media/Main-page/87.mp4',
-        // './assets/media/Main-page/88.mp4',
-        // './assets/media/Main-page/89.mp4',
-        // './assets/media/Main-page/90.mp4',
-        // './assets/media/Main-page/91.mp4',
-        // './assets/media/Main-page/92.mp4',
-        // './assets/media/Main-page/93.mp4',
-        // './assets/media/Main-page/94.mp4',
-        // './assets/media/Main-page/95.mp4',
-        // './assets/media/Main-page/96.mp4',
-        // './assets/media/Main-page/97.mp4',
-        // './assets/media/Main-page/98.mp4',
-        // './assets/media/Main-page/99.mp4',
-        // './assets/media/Main-page/100.mp4',
-    ];    
-
     // Генерация случайного индекса для приветствия
     const randomGreetingIndex = Math.floor(Math.random() * greetings.length);
     document.getElementById('greeting').textContent = greetings[randomGreetingIndex];
 
-    // Генерация случайного индекса для видео
-    const backgroundVideo = document.getElementById('backgroundVideo');
-    const randomVideoIndex = Math.floor(Math.random() * videos.length);
-    backgroundVideo.src = videos[randomVideoIndex];
+    const backgroundIframe = document.getElementById('backgroundIframe');
     
-    // Включаем видео сразу после его загрузки
-    backgroundVideo.onloadeddata = () => {
-        backgroundVideo.classList.add('show'); // Делаем видео видимым
-        backgroundVideo.play(); // Запускаем видео
+    const kinescopeVideos = [
+        // 1 //
+        'https://kinescope.io/embed/7L7W8nZoXJygFgjYvii5tC?autoplay=true&muted=true&loop=true&background=1',
+        // 2 //
+        'https://kinescope.io/embed/fmag8YRSN97uPJK5iLKKEK?autoplay=true&muted=true&loop=true&background=1',
+        // 3 //
+        'https://kinescope.io/embed/uUJG9KtEhKECqDEDPs9pHB?autoplay=true&muted=true&loop=true&background=1',
+        // 4 //
+        'https://kinescope.io/embed/vZNGRDAMHQsA56bgdYndEy?autoplay=true&muted=true&loop=true&background=1',
+        // 5 //
+        'https://kinescope.io/embed/gRzAdPfNZDkwgWPuymP9TY?autoplay=true&muted=true&loop=true&background=1',
+        // 6 //
+        'https://kinescope.io/embed/43y3HfyxFrgoTZ89US7AUV?autoplay=true&muted=true&loop=true&background=1',
+        // 7 //
+        'https://kinescope.io/embed/2V1cTauBsqfGT1ujE4WRAp?autoplay=true&muted=true&loop=true&background=1',
+        // 8 //
+        'https://kinescope.io/embed/x5LnF9Kpf1NyheWdbJMmyK?autoplay=true&muted=true&loop=true&background=1',
+        // 9 //
+        'https://kinescope.io/embed/mRYv4cuGdMkAkmD2gzYcYs?autoplay=true&muted=true&loop=true&background=1',
+        // 10 //
+        'https://kinescope.io/embed/bWTit2wJiXPkVaNt4WXgvy?autoplay=true&muted=true&loop=true&background=1',
+        // 11 //
+        'https://kinescope.io/embed/eRKxz6Jtk4eaeAkrApy4tr?autoplay=true&muted=true&loop=true&background=1',
+        // 12 //
+        'https://kinescope.io/embed/hnYjJJPgRYaqyoSCXqskmr?autoplay=true&muted=true&loop=true&background=1',
+        // 13 //
+        'https://kinescope.io/embed/7An83s3CszZDmqSf3KzHEp?autoplay=true&muted=true&loop=true&background=1',
+        // 14 //
+        'https://kinescope.io/embed/jusGzB75Je9Fqi7opYiGLj?autoplay=true&muted=true&loop=true&background=1',
+        // 15 //
+        'https://kinescope.io/embed/8CoMKvfHZvwxpYXS74LFqy?autoplay=true&muted=true&loop=true&background=1',
+        // 16 //
+        'https://kinescope.io/embed/9M2mVYmJt91JtDWUZ6nYHe?autoplay=true&muted=true&loop=true&background=1',
+        // 17 //
+        'https://kinescope.io/embed/cMN8ZCHihxGrYtBRF1rvSV?autoplay=true&muted=true&loop=true&background=1',
+        // 18 //
+        'https://kinescope.io/embed/jHNhXkF1ezh9zW7nCfrBRF?autoplay=true&muted=true&loop=true&background=1',
+        // 19 //
+        'https://kinescope.io/embed/ocbUUjfyiNjZBMWKYgj5AQ?autoplay=true&muted=true&loop=true&background=1',
+        // 20 //
+        'https://kinescope.io/embed/8Bk2TRLDd6wwBYQtwpd5Yz?autoplay=true&muted=true&loop=true&background=1',
+        // 21 //
+        'https://kinescope.io/embed/s93vnU3zJyEHSWd8ojdeRE?autoplay=true&muted=true&loop=true&background=1',
+        // 22 //
+        'https://kinescope.io/embed/7AcL9GmQRFqfPnzga4uZD7?autoplay=true&muted=true&loop=true&background=1',
+        // 23 //
+        'https://kinescope.io/embed/mSYq4eRVd2H9fQJQrw9XE8?autoplay=true&muted=true&loop=true&background=1',
+        // 24 //
+        'https://kinescope.io/embed/fTeMYjwuwXaagk13vvBxnn?autoplay=true&muted=true&loop=true&background=1',
+        // 25 //
+        'https://kinescope.io/embed/t1CU2zmfYgA3wNuwds7EDq?autoplay=true&muted=true&loop=true&background=1',
+        // 26 //
+        'https://kinescope.io/embed/kMVdhzU11F1CV1fu7qUt4K?autoplay=true&muted=true&loop=true&background=1',
+        // 27 //
+        'https://kinescope.io/embed/jxcdzTUGtHCX3QdJgtM2jC?autoplay=true&muted=true&loop=true&background=1',
+        // 28 //
+        'https://kinescope.io/embed/acfZrNEhG1p5TgSgpj3FTi?autoplay=true&muted=true&loop=true&background=1',
+        // 29 //
+        'https://kinescope.io/embed/o17wWammbqa4DMVnEqCgNs?autoplay=true&muted=true&loop=true&background=1',
+        // 30 //
+        'https://kinescope.io/embed/qCb4inht5Kz1yCTFavPHvs?autoplay=true&muted=true&loop=true&background=1',
+        // 31 //
+        'https://kinescope.io/embed/gGinEZLuy68Kk3rUPPnikp?autoplay=true&muted=true&loop=true&background=1',
+        // 32 //
+        'https://kinescope.io/embed/qrzeeqhAQrnE9xCsN7vcCB?autoplay=true&muted=true&loop=true&background=1',
+        // 33 //
+        'https://kinescope.io/embed/uG4xhKiViFC61kKQG9YY5S?autoplay=true&muted=true&loop=true&background=1',
+        // 34 //
+        'https://kinescope.io/embed/69zQQUAYpGaTfAHwUWRJa8?autoplay=true&muted=true&loop=true&background=1',
+        // 35 //
+        'https://kinescope.io/embed/xhtxZrNp6xKKT2FEKRhvxn?autoplay=true&muted=true&loop=true&background=1',
+        // 36 //
+        'https://kinescope.io/embed/mb8jDXCmcn34oxH3P2nf4y?autoplay=true&muted=true&loop=true&background=1',
+        // 37 //
+        'https://kinescope.io/embed/qxEzGM9rFEXMfKrdzzCPSG?autoplay=true&muted=true&loop=true&background=1',
+        // 38 //
+        'https://kinescope.io/embed/qsCrrZ7mHZ9jZsGDkgpAf5?autoplay=true&muted=true&loop=true&background=1',
+        // 39 //
+        'https://kinescope.io/embed/aWu6hoC2JZJsSdPTFCHjoW?autoplay=true&muted=true&loop=true&background=1',
+        // 40 //
+        'https://kinescope.io/embed/wyd6Lr4UKyeur4RK8D4yAg?autoplay=true&muted=true&loop=true&background=1',
+        // 41 //
+        'https://kinescope.io/embed/qWWSeqCfb3DDbEsSSW7ApN?autoplay=true&muted=true&loop=true&background=1',
+        // 42 //
+        'https://kinescope.io/embed/9kVfz4ooH5BuCzqkfw5p9p?autoplay=true&muted=true&loop=true&background=1',
+        // 43 //
+        'https://kinescope.io/embed/mVWRGETP2r3QsJd4vtmuAz?autoplay=true&muted=true&loop=true&background=1',
+        // 44 //
+        'https://kinescope.io/embed/rzyX39oX9LuQ1NntTxxEVu?autoplay=true&muted=true&loop=true&background=1',
+        // 45 //
+        'https://kinescope.io/embed/evM5EgBm8w3mu8C3jwETF9?autoplay=true&muted=true&loop=true&background=1',
+        // 46 //
+        'https://kinescope.io/embed/oNSpYm9AxQTkYAzHwZLCJf?autoplay=true&muted=true&loop=true&background=1',
+        // 47 //
+        'https://kinescope.io/embed/tuXRxJV8Gbonsz9exGo2vH?autoplay=true&muted=true&loop=true&background=1',
+        // 48 //
+        'https://kinescope.io/embed/gRePLY4a8MdUhUs8X9bo2r?autoplay=true&muted=true&loop=true&background=1',
+        // 49 //
+        'https://kinescope.io/embed/qkvpXrFhQPjmXXxJdQZgmg?autoplay=true&muted=true&loop=true&background=1',
+        // 50 //
+        'https://kinescope.io/embed/mre3hX76h4gKeUrsAy9H9c?autoplay=true&muted=true&loop=true&background=1',
+    ];
+
+    let currentVideoIndex = -1;
+
+    // Функция, которая будет менять видео
+    function setNextVideo() {
+        // 1. Делаем iframe прозрачным, запуская анимацию исчезновения
+        backgroundIframe.classList.remove('show');
+
+        // 2. Ждем, пока анимация исчезновения завершится
+        setTimeout(() => {
+            // 3. Выбираем новый случайный индекс, не повторяющийся с предыдущим
+            let newVideoIndex;
+            do {
+                newVideoIndex = Math.floor(Math.random() * kinescopeVideos.length);
+            } while (kinescopeVideos.length > 1 && newVideoIndex === currentVideoIndex);
+            
+            currentVideoIndex = newVideoIndex;
+            
+            // 4. Устанавливаем новый src.
+            console.log("Загружаю видео:", kinescopeVideos[currentVideoIndex]); // Для отладки
+            backgroundIframe.src = kinescopeVideos[currentVideoIndex];
+        }, 800); // Эта задержка ДОЛЖНА соответствовать времени `transition` в CSS
+    }
+
+    backgroundIframe.onload = () => {
+        // 5. Как только новое видео загрузилось, делаем iframe видимым.
+        console.log("Видео загружено, показываю."); // Для отладки
+        backgroundIframe.classList.add('show');
     };
 
-    // Функция для смены видео каждые 10 секунд
-    setInterval(() => {
-        const newVideoIndex = Math.floor(Math.random() * videos.length);
-        
-        // Плавное отключение текущего видео
-        backgroundVideo.classList.remove('show'); // Убираем класс для перехода
+    const initialIndex = Math.floor(Math.random() * kinescopeVideos.length);
+    currentVideoIndex = initialIndex;
+    backgroundIframe.src = kinescopeVideos[currentVideoIndex];
 
-        setTimeout(() => {
-            backgroundVideo.src = videos[newVideoIndex]; // Меняем источник видео
-            backgroundVideo.load(); // Перезагрузка видео
-
-            // Включаем видео после загрузки
-            backgroundVideo.onloadeddata = () => {
-                backgroundVideo.classList.add('show'); // Добавляем класс для плавного появления
-                backgroundVideo.play(); // Запускаем новое видео
-            };
-        }, 500); // Задержка, чтобы видео успело потухнуть
-    }, 10000); // 10000 миллисекунд = 10 секунд
+    // Интервал для смен видео.
+    setInterval(setNextVideo, 10000); // 10 секунд
 });
-
 
 
 

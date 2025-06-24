@@ -74,7 +74,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Разделы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
                                 <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Приложения</a></li>
@@ -576,98 +576,127 @@
             </div>
         </section>
 
-        <!-- Блок 2: Поддержка проекта -->
-        <section class="support-section">
-             <h2>Поддержать проект</h2>
-             <p>Ваша поддержка помогает нам развиваться и оставаться бесплатными.</p>
-             <div class="support-box">
-                <div class="card-details">
-                    <div class="bank-name">Privat Bank</div>
-                    <span class="card-number">5168 7451 2529 8163</span>
-                </div>
-                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
-                    <i class="far fa-copy"></i>
-                </button>
-             </div>
-             <div class="support-box" style="margin-top: 10px;">
-                <div class="card-details">
-                    <div class="bank-name">Monobank</div>
-                    <span class="card-number">4441 1110 7492 5771</span>
-                </div>
-                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
-                    <i class="far fa-copy"></i>
-                </button>
-             </div>
-              <!-- <div class="support-box" style="margin-top: 10px;">
-                <div class="card-details">
-                    <div class="bank-name">Crypto</div>
-                    <span class="card-number">-</span>
-                </div>
-                <button id="copyButton" class="copy-btn" title="Копировать номер карты">
-                    <i class="far fa-copy"></i>
-                </button>
-             </div> -->
-        </section>
+        <div class="content-row">
 
-        <!-- Блок 3: Форма обратной связи -->
-        <section class="form-section">
-            <h2>Напишите нам</h2>
-            
-            <form id="contactForm" class="contact-form">
-                <!-- URL для отправки -->
-                <input type="hidden" id="formSubmitUrl" value="https://formsubmit.co/olegmordan621@gmail.com">
-                <input type="hidden" name="_subject" value="Новое сообщение с сайта CrazyFire!">
-                <input type="hidden" name="_captcha" value="false">
+            <!-- Блок 2: Поддержка проекта -->
+            <section class="support-section">
+                <h2>Поддержать проект</h2>
+                <p>Ваша поддержка помогает нам развиваться и оставаться бесплатными.</p>
 
-                <div class="form-grid">
+                <div class="support-box">
+                    <div class="card-details">
+                        <div class="bank-name">Privat Bank</div>
+                        <span class="card-number">5168 7451 2529 8163</span>
+                    </div>
+                    <button class="copy-btn" title="Копировать номер карты">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="support-box" style="margin-top: 10px;">
+                    <div class="card-details">
+                        <div class="bank-name">Monobank</div>
+                        <span class="card-number">4441 1110 7492 5771</span>
+                    </div>
+                    <button class="copy-btn" title="Копировать номер карты">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="support-box" style="margin-top: 10px;">
+                    <div class="card-details">
+                        <div class="bank-name">USDT (TRC20)</div>
+                        <span class="card-number">TGatWPz8C2q7gN7v4arHLUXWpG94atbhUc</span>
+                    </div>
+                    <button class="copy-btn" title="Копировать адрес USDT">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="support-box" style="margin-top: 10px;">
+                    <div class="card-details">
+                        <div class="bank-name">Bitcoin (BTC)</div>
+                        <span class="card-number">1GPWzaitZA9jeVSasjua1FkPGH4vAAPnTF</span>
+                    </div>
+                    <button class="copy-btn" title="Копировать адрес Bitcoin">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="support-box" style="margin-top: 10px;">
+                    <div class="card-details">
+                        <div class="bank-name">ETH / BNB / USDT (ERC20, BEP20)</div>
+                        <span class="card-number">0xf4f6c2d5981dc7457660fe1e686dc84a36026929</span>
+                    </div>
+                    <button class="copy-btn" title="Копировать адрес Ethereum/ERC20">
+                        <i class="far fa-copy"></i>
+                    </button>
+                </div>
+                
+                
+            </section>
+
+            <!-- Блок 3: Форма обратной связи -->
+            <section class="form-section">
+                <h2>Напишите нам</h2>
+                
+                <form id="contactForm" class="contact-form">
+                    <!-- URL для отправки -->
+                    <input type="hidden" id="formSubmitUrl" value="https://formsubmit.co/olegmordan621@gmail.com">
+                    <input type="hidden" name="_subject" value="Новое сообщение с сайта CrazyFire!">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ваш Email для ответа</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="messageType">Тема обращения</label>
+                            <select id="messageType" name="topic" class="form-select">
+                                <option value="Отзыв о проекте">Отзыв о проекте</option>
+                                <option value="Общий вопрос">Общий вопрос</option>
+                                <option value="Сообщить об ошибке">Сообщить об ошибке</option>
+                                <option value="Предложение о сотрудничестве">Предложение о сотрудничестве</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="ratingContainer" style="display: none;">
+                            <label for="rating">Оцените наш сервис</label>
+                            <select id="rating" name="rating" class="form-select">
+                                <option value="5">⭐⭐⭐⭐⭐ (Отлично)</option>
+                                <option value="4">⭐⭐⭐⭐ (Хорошо)</option>
+                                <option value="3">⭐⭐⭐ (Нормально)</option>
+                                <option value="2">⭐⭐ (Плохо)</option>
+                                <option value="1">⭐ (Ужасно)</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <label for="messageText">Сообщение</label>
+                        <textarea id="messageText" name="message" class="form-control" rows="6" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Ваш Email для ответа</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+
+                    <div class="submit-wrapper">
+                        <button type="submit" id="submitButton" class="btn-submit">Отправить сообщение</button>
                     </div>
-                    <div class="form-group">
-                        <label for="messageType">Тема обращения</label>
-                        <select id="messageType" name="topic" class="form-select">
-                            <option value="Отзыв о проекте">Отзыв о проекте</option>
-                            <option value="Общий вопрос">Общий вопрос</option>
-                            <option value="Сообщить об ошибке">Сообщить об ошибке</option>
-                            <option value="Предложение о сотрудничестве">Предложение о сотрудничестве</option>
-                            <option value="Другое">Другое</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="ratingContainer" style="display: none;">
-                        <label for="rating">Оцените наш сервис</label>
-                        <select id="rating" name="rating" class="form-select">
-                            <option value="5">⭐⭐⭐⭐⭐ (Отлично)</option>
-                            <option value="4">⭐⭐⭐⭐ (Хорошо)</option>
-                            <option value="3">⭐⭐⭐ (Нормально)</option>
-                            <option value="2">⭐⭐ (Плохо)</option>
-                            <option value="1">⭐ (Ужасно)</option>
-                        </select>
-                    </div>
+                </form>
+                
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Сообщение отправлено!</h3>
+                    <p>Спасибо за ваше обращение. Мы ответим вам в ближайшее время.</p>
+                    <button id="sendAnotherMessage" class="btn-submit">Написать еще одно</button>
                 </div>
 
-                <div class="form-group">
-                    <label for="messageText">Сообщение</label>
-                    <textarea id="messageText" name="message" class="form-control" rows="6" required></textarea>
-                </div>
+            </section>
 
-                <div class="submit-wrapper">
-                    <button type="submit" id="submitButton" class="btn-submit">Отправить сообщение</button>
-                </div>
-            </form>
-            
-            <div id="successMessage" class="success-message" style="display: none;">
-                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
-                <h3>Сообщение отправлено!</h3>
-                <p>Спасибо за ваше обращение. Мы ответим вам в ближайшее время.</p>
-                <button id="sendAnotherMessage" class="btn-submit">Написать еще одно</button>
-            </div>
-
-        </section>
+        </div>
     </div>
 </main>
 
@@ -751,22 +780,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
 
-    // --- Логика для кнопки "Копировать" ---
-    const copyButton = document.getElementById('copyButton');
-    if(copyButton) {
-        const originalIcon = copyButton.innerHTML;
-        const cardNumberElement = document.querySelector('.card-number');
-        const cardNumber = cardNumberElement.textContent;
+    // --- Логика для кнопок "Копировать" ---
+    const copyButtons = document.querySelectorAll('.copy-btn');
 
-        copyButton.addEventListener('click', () => {
-            navigator.clipboard.writeText(cardNumber.replace(/\s/g, ''))
+    copyButtons.forEach(button => {
+        const originalIcon = button.innerHTML; // Сохраняем иконку для каждой кнопки
+
+        button.addEventListener('click', () => {
+            // Находим родительский блок .support-box
+            const supportBox = button.closest('.support-box');
+            // Внутри этого блока ищем номер карты
+            const cardNumberElement = supportBox.querySelector('.card-number');
+            const textToCopy = cardNumberElement.textContent;
+
+            navigator.clipboard.writeText(textToCopy.replace(/\s/g, ''))
             .then(() => {
-                copyButton.innerHTML = '<i class="fas fa-check"></i>';
-                copyButton.classList.add('copied');
+                // Меняем иконку на "галочку"
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.classList.add('copied');
                 
+                // Через 2 секунды возвращаем исходную иконку
                 setTimeout(() => {
-                    copyButton.innerHTML = originalIcon;
-                    copyButton.classList.remove('copied');
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('copied');
                 }, 2000);
             })
             .catch(err => {
@@ -774,7 +810,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert('Ошибка при копировании.');
             });
         });
-    }
+    });
 });
 </script>
 

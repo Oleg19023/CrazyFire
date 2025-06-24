@@ -1,28 +1,60 @@
-#videoBackground {
-    position: relative;
-    overflow: hidden;
-    height: 100vh; /* Высота экрана */
+/* Контейнер для фонового iframe. */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; /* Чтобы можно было кликать на элементы "сквозь" видео */
+    background-color: black; /* Фон на время загрузки, чтобы не было белой вспышки */
+    overflow: hidden; /* ОБЯЗАТЕЛЬНО! Скрываем части iframe, которые выходят за пределы экрана */
 }
 
-#videoBackground video {
+/* Стили для iframe. */
+#backgroundIframe {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 178vh; 
+    height: 100vw;
     min-width: 100%;
     min-height: 100%;
-    z-index: -1; /* Позади текста */
     transform: translate(-50%, -50%);
-    filter: blur(7px); /* Размытие видео */
+    
+    filter: blur(7px);
+    
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
 }
 
+#backgroundIframe.show {
+    opacity: 1;
+}
+
+.page-content-wrapper {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.page-content-wrapper main {
+    flex-grow: 1;
+}
+
+/* Контент поверх видео */
 #mainpage {
-    position: absolute; /* Используйте absolute для центрирования */
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Центрирование */
-    text-align: center; /* Выравнивание текста по центру */
-    color: white; /* Цвет текста */
-    z-index: 1; /* Поверх видео */
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1; 
 }
 
 h2 {

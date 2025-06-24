@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/multiplication-quiz.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -164,35 +161,73 @@
             </div>
         </nav>
     </header>  
-    <main>
-        <div class="container">
-            <div class="container mt-5">
-                <h1 class="mb-4">Таблица умножения: проверьте свои знания</h1>
-                <form id="multiplicationQuizForm">
-                    <!-- Вопросы будут добавлены динамически с использованием JavaScript -->
-                </form>
-                <button type="button" class="btn btn-primary mt-3" onclick="checkAnswers()">Проверить ответы</button>
-                <div class="result mt-3" id="resultContainer"></div>
+
+        <main class="quiz-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Тренажер таблицы умножения</h1>
+                <p>Проверь свои знания в увлекательной форме!</p>
+            </div>
+
+            <!-- Основной блок викторины -->
+            <div class="quiz-wrapper">
+                <!-- 1. Стартовый экран -->
+                <div id="startScreen" class="quiz-screen">
+                    <div class="start-content">
+                        <i class="fas fa-brain start-icon"></i>
+                        <h2>Готов проверить себя?</h2>
+                        <p>Тебя ждет 10 примеров на время. Постарайся ответить как можно быстрее и без ошибок!</p>
+                        <button id="startButton" class="quiz-btn start">Начать тест!</button>
+                    </div>
                 </div>
-              </div>
+
+                <!-- 2. Игровой экран (скрыт) -->
+                <div id="quizScreen" class="quiz-screen" style="display: none;">
+                    <div class="quiz-header">
+                        <div class="progress-bar">
+                            <div id="progressBarFill" class="progress-bar-fill"></div>
+                        </div>
+                        <div class="quiz-stats">
+                            <span id="questionCounter">Вопрос 1/10</span>
+                            <span id="timer">Время: 0с</span>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <p id="questionText">2 × 2 = ?</p>
+                    </div>
+                    <div class="answer-container">
+                        <input type="number" id="answerInput" placeholder="Ваш ответ">
+                        <button id="submitAnswerButton" class="quiz-btn submit">Ответить</button>
+                    </div>
+                    <div id="feedback" class="feedback"></div>
+                </div>
+
+                <!-- 3. Экран результатов (скрыт) -->
+                <div id="resultScreen" class="quiz-screen" style="display: none;">
+                    <div class="result-content">
+                        <h2 id="resultTitle">Отличный результат!</h2>
+                        <p id="resultSummary">Вы ответили на 10 из 10 вопросов правильно.</p>
+                        <div class="result-details">
+                            <div class="detail-item">
+                                <i class="fas fa-stopwatch"></i>
+                                <span>Время:</span>
+                                <strong id="finalTime">30с</strong>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Точность:</span>
+                                <strong id="finalAccuracy">100%</strong>
+                            </div>
+                        </div>
+                        <ul id="mistakesList" class="mistakes-list"></ul>
+                        <button id="restartButton" class="quiz-btn restart">Попробовать снова</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
-
-    <style>
-        .container {
-            margin-top: 100px;
-            padding-top: 1px;
-            padding-bottom: 2px;
-            max-width: 900px;
-            background-color: #ececec;
-            border-radius: 10px;
-        }
-        .dark-theme .container {
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-    </style>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -209,8 +244,7 @@
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
-
-    <script src="/assets/js/program-page-js/Multiplication-table-check.js"></script>
+    <script src="/assets/js/program-page-js/multiplication-quiz.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

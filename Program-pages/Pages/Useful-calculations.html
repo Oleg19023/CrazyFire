@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/useful-calculations.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,103 +162,19 @@
         </nav>
     </header>  
 
-    <main>
-        <div class="programs-container">
-            <main class="container">
-                <div class="component">
-                    <h4>Выбери что посчитать:</h4>
-                    <form>
-                        <div class="mb-3">
-                            <select id="question" class="form-select" aria-label="Default select example" onchange="UpdateInput()">
-                                <option selected >Выбрать</option>
-                                <option value="1">Периметр квадрата</option>
-                                <option value="2">Объем куба</option>
-                                <option value="3">Площадь круга</option>
-                                <option value="4">Плотность материала</option>
-                                <option value="5">Плотность населения</option>
-                                <option value="6">Гипотенуза прямоугольного треугольника</option>
-                                <option value="7">Вычислить значение Y</option>
-                                <option value="8">ИМТ Тела</option>
-                            </select>
-                        </div>
-                        <div class="mb-3"  id="additionalInputs0" style="display: none;">
-                            <label class="form-label">Введите значение:</label>
-                            <input class="form-control" id="Input1" placeholder="Введите значение">
-                        </div>
-                        <div class="mb-3" id="additionalInputs" style="display: none;">
-                            <label class="form-label">Введите объем:</label>
-                            <input class="form-control" id="Input2" placeholder="Введите объем">
-                            <label class="form-label">Введите массу:</label>
-                            <input class="form-control" id="Input3" placeholder="Введите массу">
-                        </div>
-                        <div class="mb-3" id="additionalInputs2" style="display: none;">
-                            <label class="form-label">Население:</label>
-                            <input class="form-control" id="Input4" placeholder="Введите население">
-                            <label class="form-label">Площадь:</label>
-                            <input class="form-control" id="Input5" placeholder="Введите площадь">
-                        </div>
-                        <div class="mb-3" id="additionalInputs3" style="display: none;">
-                            <label class="form-label">Длина катета 1:</label>
-                            <input class="form-control" id="Input6" placeholder="Введите длину катета 1">
-                            <label class="form-label">Длина катета 2:</label>
-                            <input class="form-control" id="Input7" placeholder="Введите длину катета 2">
-                        </div>
-                        <div class="mb-3" id="additionalInputs4" style="display: none;">
-                            <label class="form-label">Введите вес:</label>
-                            <input class="form-control" id="Input8" placeholder="Введите вес в кг.">
-                            <label class="form-label">Введите рост:</label>
-                            <input class="form-control" id="Input9" placeholder="Введите рост в м.">
-                        </div>                  
-                        <button type="button" class="btn btn-primary" onclick="calculate()">Посчитать</button>
-                        
-                        <div id="result"></div>                
-                      </form>
-                </div>
-            </main>
+    <main class="calculators-page">
+    <div class="page-container">
+        <!-- Заголовок страницы -->
+        <div class="page-title-section">
+            <h1>Полезные вычисления</h1>
+            <p>Набор простых калькуляторов для повседневных задач и учебы.</p>
         </div>
-    </main> 
-    
-    <style>
-        main {
-            display: grid;
-            padding: 20px;
-            justify-content: center;
-        }
+        <!-- Сетка для карточек калькуляторов -->
+        <div id="calculatorsGrid" class="calculators-grid">
+        </div>
 
-        .component {
-            margin-top: 80px;
-            display: grid;
-            justify-content: center;
-            border: 1px solid rgb(163, 163, 163);
-            border-radius: 3%;
-            box-shadow: 0px 0px 5px rgb(151, 151, 151);
-            padding: 50px 0px;
-            width: 800px;
-        }
-
-        .dark-theme .component {
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        @media (max-width: 600px) {
-
-            .component {
-                width: 350px;
-                padding: 20px;
-            }
-
-            .button1 {
-                width: 250px;
-            }
-
-            input#phone {
-                width: 250px;
-            }
-
-        }
-    </style>
+    </div>
+    </main>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

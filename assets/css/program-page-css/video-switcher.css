@@ -1,0 +1,156 @@
+/* ============================================= */
+/*       СТИЛИ СТРАНИЦЫ "VIDEO SWITCHER"         */
+/* ============================================= */
+
+/* --- Общие стили страницы --- */
+main.video-switcher-page {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.page-title-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-title-section h1 { font-size: 2.8rem; font-weight: 700; }
+.page-title-section p { font-size: 1.1rem; color: #6c757d; }
+
+/* --- Обертка плеера --- */
+.player-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+}
+.panel {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+.panel-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.panel-header h3 { font-size: 1.1rem; font-weight: 600; margin: 0; }
+.panel-body { padding: 20px; }
+
+/* --- Левая панель: Плейлист --- */
+.playlist-panel .panel-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.playlist-actions { display: flex; gap: 8px; }
+.action-btn-sm {
+    width: 32px; 
+    height: 32px; 
+    border: 1px solid #ced4da;
+    background: transparent; 
+    color: #6c757d; 
+    border-radius: 6px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 200px; max-height: 400px;
+}
+.video-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    word-break: break-all;
+    cursor: pointer;
+}
+.video-list li.playing { background-color: #d1e7dd; font-weight: 600; }
+.delete-video-btn { background: transparent; border: none; color: #dc3545; }
+.add-video-form { display: flex; gap: 10px; margin-top: 15px; }
+#videoUrlInput { flex-grow: 1; min-width: 0; padding: 10px; border: 1px solid #ced4da; border-radius: 8px; }
+.add-btn { flex-shrink: 0; border: none; background-color: #0d6efd; color: #fff; border-radius: 8px; font-size: 1.2rem; cursor: pointer; }
+
+/* --- Правая панель: Видео и управление --- */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Соотношение сторон 16:9 */
+    background-color: #000;
+}
+#videoPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+}
+.player-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+.player-overlay i { font-size: 4rem; margin-bottom: 15px; }
+.playback-controls {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.timer-control { display: flex; align-items: center; gap: 10px; }
+.timer-control label { font-size: 0.9rem; font-weight: 500; }
+#intervalSlider { width: 100%; }
+.player-buttons { display: flex; gap: 10px; }
+.control-btn {
+    flex: 1; padding: 12px; border: none; border-radius: 8px; color: #fff;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.control-btn.start { background-color: #28a745; }
+.control-btn.stop { background-color: #dc3545; }
+.control-btn:disabled { background-color: #e9ecef; color: #6c757d; cursor: not-allowed; }
+.progress-bar-container { height: 6px; background-color: #e9ecef; }
+.progress-bar { height: 100%; width: 0%; background-color: #0d6efd; transition: width 1s linear; }
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-title-section p { color: #a0a0a0; }
+.dark-theme .panel { background-color: #2c2c2e; border-color: #444; }
+.dark-theme .panel-header { border-bottom-color: #444; }
+.dark-theme .action-btn-sm { background-color: #3a3a3c; border-color: #555; color: #a0a0a0; }
+.dark-theme .video-list li.playing { background-color: #2a4837; }
+.dark-theme .add-video-form { border-top-color: #444; }
+.dark-theme #videoUrlInput { background-color: #1c1c1e; border-color: #555; color: #fff; }
+.dark-theme .timer-control label, .dark-theme #intervalValue { color: #f2f2f7; }
+.dark-theme .control-btn:disabled { background-color: #3a3a3c; color: #888; }
+.dark-theme .progress-bar-container { background-color: #444; }
+.dark-theme .progress-bar { background-color: #58a6ff; }
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+@media (max-width: 992px) {
+    .player-wrapper { grid-template-columns: 1fr; }
+}

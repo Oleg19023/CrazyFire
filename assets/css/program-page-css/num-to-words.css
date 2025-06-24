@@ -1,0 +1,152 @@
+/* ============================================= */
+/*       СТИЛИ СТРАНИЦЫ "ЧИСЛО ПРОПИСЬЮ"    */
+/* ============================================= */
+
+/* --- Общие стили страницы --- */
+main.num-to-words-page {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.page-title-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-title-section h1 { font-size: 2.8rem; font-weight: 700; }
+.page-title-section p { font-size: 1.1rem; color: #6c757d; }
+
+/* --- Обертка конвертера --- */
+.converter-wrapper {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* --- Секция ввода --- */
+.input-section label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#inputNumber {
+    flex-grow: 1;
+    min-width: 0;
+    padding: 15px;
+    font-size: 1.8rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+#inputNumber:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+/* --- Секция результата --- */
+.result-section {
+    background-color: #f8f9fa;
+    border: 1px dashed #ced4da;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+.output-words {
+    flex-grow: 1;
+    min-width: 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #212529;
+}
+.output-words .placeholder {
+    color: #6c757d;
+}
+
+/* --- Кнопки действий --- */
+.action-btn {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    color: #6c757d;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.action-btn:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-title-section p { color: #a0a0a0; }
+.dark-theme .converter-wrapper {
+    background-color: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .input-section label { color: #f2f2f7; }
+.dark-theme #inputNumber {
+    background-color: #1c1c1e;
+    border-color: #555;
+    color: #fff;
+}
+.dark-theme #inputNumber:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+.dark-theme .result-section {
+    background-color: #3a3a3c;
+    border-color: #555;
+}
+.dark-theme .output-words { color: #f2f2f7; }
+.dark-theme .output-words .placeholder { color: #a0a0a0; }
+.dark-theme .action-btn {
+    background-color: #3a3a3c;
+    border-color: #555;
+    color: #a0a0a0;
+}
+.dark-theme .action-btn:hover {
+    background-color: #4e4f50;
+}
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+@media (max-width: 480px) {
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #inputNumber {
+        width: 100%;
+    }
+    .action-btn {
+        width: 100%;
+    }
+}

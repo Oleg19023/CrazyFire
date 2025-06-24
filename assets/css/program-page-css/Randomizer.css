@@ -180,7 +180,7 @@ button:hover {
     border-radius: 4px;
     background: #007bff;
     color: white;
-    font-size: 30px; /* Стандартный размер */
+    font-size: 30px;
     word-break: break-word;
     text-align: center;
 }
@@ -348,7 +348,7 @@ button:hover {
 /* Адаптивность для телефонов */
 @media (max-width: 768px) {
     .password-box {
-        font-size: 24px; /* Уменьшаем размер на мобильных */
+        font-size: 24px;
     }
     .long-password {
         font-size: 20px;
@@ -458,13 +458,12 @@ button:hover {
     }
 }
 
-/* --- Улучшенная анимация для "Орел или Решка" --- */
+/* --- Анимация для "Орел или Решка" --- */
 
 
 .coin-image-item {
-    /* Эта настройка необходима для 3D-трансформаций */
+    /* 3D-трансформации */
     transform-style: preserve-3d;
-    /* Убираем старый transition, так как будем использовать keyframes */
     transition: none; 
 }
 
@@ -473,7 +472,7 @@ button:hover {
     animation: flip-animation 1s ease-out forwards;
 }
 
-/* --- НОВЫЕ СТИЛИ ДЛЯ ДВУХСТОРОННЕЙ МОНЕТЫ --- */
+/* --- СТИЛИ ДЛЯ ДВУХСТОРОННЕЙ МОНЕТЫ --- */
 
 #coinContainer {
     display: flex;
@@ -482,23 +481,23 @@ button:hover {
     flex-wrap: wrap;
     gap: 20px; /* Расстояние между монетами */
     margin-top: 20px;
-    min-height: 120px; /* Чтобы контейнер не "прыгал" по высоте */
+    min-height: 120px;
 }
 
-/* Внешний контейнер для каждой монеты, задает перспективу */
+/* Внешний контейнер для каждой монеты */
 .coin {
     width: 300px;
     height: 300px;
     perspective: 1000px;
 }
 
-/* Внутренний контейнер, который будет вращаться */
+/* Внутренний контейнер */
 .coin__inner {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s; /* Плавный переход в финальное состояние, если понадобится */
+    transition: transform 0.8s; /* Плавный переход в финальное состояние */
 }
 
 /* Общий стиль для обеих сторон монеты */

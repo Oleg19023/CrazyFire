@@ -1,0 +1,177 @@
+/* ============================================= */
+/*          СТИЛИ ДЛЯ СТРАНИЦЫ ПРОЕКТОВ          */
+/* ============================================= */
+
+.projects-page-container h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-top: 20px;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.projects-grid {
+    display: grid;
+    gap: 3rem; /* Отступ между карточками проектов */
+}
+
+/* --- Стили для карточки проекта --- */
+.project-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Две колонки: картинка и контент */
+    gap: 2.5rem;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+/* --- Изображение проекта --- */
+.project-card-image {
+    min-height: 100%;
+}
+.project-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Изображение полностью заполняет контейнер */
+}
+
+/* --- Контент проекта --- */
+.project-card-content {
+    padding: 2.5rem 2.5rem 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-status {
+    display: inline-block;
+    align-self: flex-start; /* Прижимаем к левому краю */
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+/* Активен */
+.project-status.active {
+    background-color: #d1e7dd; /* Светло-зеленый */
+    color: #0f5132;
+}
+
+/* В разработке */
+.project-status.in-development {
+    background-color: #fff3cd; /* Светло-желтый */
+    color: #664d03;
+}
+
+/* Неактивен */
+.project-status.inactive {
+    background-color: #cc1111; /* Светло-красный */
+    color: #f8d7da;
+}
+
+
+.project-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+.project-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #6c757d;
+    flex-grow: 1; /* Занимает все доступное место, отодвигая кнопку вниз */
+}
+
+/* --- Особенности проекта --- */
+.project-features {
+    margin: 1.5rem 0;
+}
+.project-features p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.project-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.project-features li {
+    background-color: #e9ecef;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- Кнопка действия --- */
+.project-actions {
+    margin-top: 1rem;
+}
+.project-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 14px 28px;
+    background-color: #0d6efd;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.project-button:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.03);
+}
+.project-button i {
+    transition: transform 0.3s ease;
+}
+.project-button:hover i {
+    transform: translateX(5px);
+}
+.project-button.disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* ============================================= */
+/*          АДАПТИВНОСТЬ (MOBILE)                */
+/* ============================================= */
+@media (max-width: 992px) {
+    .project-card {
+        grid-template-columns: 1fr; /* Переводим в одну колонку */
+    }
+    .project-card-content {
+        padding: 2rem; /* Уменьшаем отступы для мобильных */
+    }
+}
+@media (max-width: 576px) {
+    .projects-page-container h1 { font-size: 2.2rem; }
+    .project-title { font-size: 1.6rem; }
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .project-card {
+    background-color: #2c2c2e;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.dark-theme .project-description { color: #a0a0a0; }
+.dark-theme .project-features li { background-color: #3a3a3c; }
+.dark-theme .project-status.active { background-color: #0f5132; color: #d1e7dd; }
+.dark-theme .project-status.in-development { background-color: #664d03; color: #fff3cd; }

@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/video-switcher.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,52 +162,61 @@
         </nav>
     </header>   
 
-    <main class="container">
-        <section id="randomVideoSwitcher">
-            <h2>Random Video Switcher</h2>
-            <div>
-                <textarea id="videoLinks" class="form-control mb-3" placeholder="Введите ссылки на видео, каждую с новой строки"></textarea>
-                <div class="d-flex align-items-center mb-3">
-                    <label for="switchTime" class="me-2">Время переключения:</label>
-                    <input id="switchTime" type="range" min="20" max="1800" step="10" value="20" class="form-range" oninput="updateSwitchTimeLabel()">
-                    <span id="switchTimeLabel" class="ms-2">20 секунд (0.33 минуты)</span>
-                </div>
-                <button id="startButton" class="btn btn-success me-2">Запустить</button>
-                <button id="nextButton" class="btn btn-primary">Следующее</button>
+    <main class="video-switcher-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Случайный видеоплеер</h1>
+                <p>Создайте плейлист и смотрите видео, которые будут переключаться автоматически</p>
             </div>
-            <div id="playerContainer" class="mt-4">
-                <video id="videoPlayer" class="w-100 rounded" controls></video>
-            </div>
-            <div id="statusMessage" class="mt-3 text-center text-muted"></div>
-            <div>
-                <h3>Демо</h3>
-                <pre>
-                    <code>
-https://cdn.pixabay.com/video/2015/08/11/311-135956325_tiny.mp4
-https://cdn.pixabay.com/video/2024/03/21/205009-926015715_tiny.mp4
-https://cdn.pixabay.com/video/2017/03/20/8451-209292190_tiny.mp4
-https://cdn.pixabay.com/video/2020/05/24/39981-424061531_tiny.mp4
-https://cdn.pixabay.com/video/2020/10/25/53305-472605911_tiny.mp4
-https://cdn.pixabay.com/video/2024/12/22/248218_tiny.mp4
-https://cdn.pixabay.com/video/2020/04/02/34829-403777575_tiny.mp4
-https://cdn.pixabay.com/video/2024/07/07/219828_tiny.mp4
-https://cdn.pixabay.com/video/2020/07/13/44557-439940096_tiny.mp4
-https://cdn.pixabay.com/video/2021/01/06/61336-498228565_tiny.mp4
-https://cdn.pixabay.com/video/2024/07/07/219829_tiny.mp4
-https://cdn.pixabay.com/video/2020/05/15/39163-419858971_tiny.mp4
-https://cdn.pixabay.com/video/2019/06/29/24842-346036399_tiny.mp4
-                    </code>
-                </pre>
-            </div>
-        </section>
-    </main>
-    
 
-    <style>
-    #randomVideoSwitcher {
-        padding-top: 50px;
-    }
-    </style>
+            <!-- Основной блок плеера -->
+            <div class="player-wrapper">
+                <!-- Левая колонка: Плейлист -->
+                <div class="panel playlist-panel">
+                    <div class="panel-header">
+                        <h3>Плейлист (<span id="videoCount">0</span>)</h3>
+                        <div class="playlist-actions">
+                            <button id="addDemoButton" class="action-btn-sm" title="Вставить демо-ссылки"><i class="fas fa-list-ol"></i></button>
+                            <button id="clearPlaylistButton" class="action-btn-sm" title="Очистить плейлист"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="videoList" class="video-list"></ul>
+                        <div class="add-video-form">
+                            <input type="url" id="videoUrlInput" placeholder="Вставьте ссылку на видео...">
+                            <button id="addVideoButton" class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Экран и управление -->
+                <div class="panel video-panel">
+                    <div class="video-container">
+                        <video id="videoPlayer" controls></video>
+                        <div id="playerOverlay" class="player-overlay">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Добавьте видео в плейлист и нажмите "Старт"</span>
+                        </div>
+                    </div>
+                    <div class="playback-controls">
+                        <div class="timer-control">
+                            <label for="intervalSlider">Переключать каждые:</label>
+                            <input type="range" id="intervalSlider" min="10" max="600" step="5" value="30">
+                            <span id="intervalValue">30 сек.</span>
+                        </div>
+                        <div class="player-buttons">
+                            <button id="startButton" class="control-btn start"><i class="fas fa-play"></i> Старт</button>
+                            <button id="stopButton" class="control-btn stop" disabled><i class="fas fa-stop"></i> Стоп</button>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div id="nextVideoProgress" class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Apple устройства -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Android устройства -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <!-- Manifest-->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+
+    <link rel="stylesheet" href="/assets/css/program-page-css/qr-code.css">
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
+                    </a>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+
+                    </ul>                     
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fa-solid fa-wand-magic"></i>
+                    </button>
+                    
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>  
+
+    <main class="qr-generator-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Генератор QR-кодов</h1>
+                <p>Создайте свой уникальный QR-код для любых нужд — от ссылок до визиток.</p>
+            </div>
+
+            <div class="qr-app-wrapper">
+                <!-- Левая колонка: Настройки -->
+                <div class="qr-controls-panel">
+                    <!-- Вкладки для типов данных -->
+                    <ul class="nav nav-pills mb-3" id="qr-type-tabs" role="tablist">
+                        <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-url" type="button"><i class="fas fa-link"></i> URL</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-text" type="button"><i class="fas fa-font"></i> Текст</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-wifi" type="button"><i class="fas fa-wifi"></i> Wi-Fi</button></li>
+                        <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-vcard" type="button"><i class="fas fa-address-card"></i> Контакт</button></li>
+                    </ul>
+                    
+                    <!-- Содержимое вкладок -->
+                    <div class="tab-content" id="qr-type-content">
+                        <div class="tab-pane fade show active" id="tab-url"><input type="url" id="qr-data-url" class="form-control" placeholder="https://example.com"></div>
+                        <div class="tab-pane fade" id="tab-text"><textarea id="qr-data-text" class="form-control" placeholder="Введите любой текст"></textarea></div>
+                        <div class="tab-pane fade" id="tab-wifi">
+                            <input type="text" id="qr-wifi-ssid" class="form-control mb-2" placeholder="Название сети (SSID)">
+                            <input type="password" id="qr-wifi-pass" class="form-control mb-2" placeholder="Пароль">
+                            <select id="qr-wifi-enc" class="form-select">
+                                <option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">Без пароля</option>
+                            </select>
+                        </div>
+                        <div class="tab-pane fade" id="tab-vcard">
+                            <input type="text" id="qr-vcard-name" class="form-control mb-2" placeholder="Имя и Фамилия">
+                            <input type="tel" id="qr-vcard-tel" class="form-control mb-2" placeholder="Телефон">
+                            <input type="email" id="qr-vcard-email" class="form-control mb-2" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Настройки дизайна -->
+                    <h4>Дизайн</h4>
+                    <div class="row">
+                        <div class="col-6 mb-3"><label class="form-label">Цвет точек</label><input type="color" id="qr-color-dark" class="form-control form-control-color" value="#000000"></div>
+                        <div class="col-6 mb-3"><label class="form-label">Цвет фона</label><input type="color" id="qr-color-light" class="form-control form-control-color" value="#ffffff"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Логотип (PNG, JPG)</label>
+                        <div class="input-group">
+                            <input type="file" id="qr-logo-input" class="form-control" accept="image/png, image/jpeg">
+                            <button class="btn btn-outline-secondary" id="qr-logo-remove"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary mt-2 w-100" id="show-logo-modal-btn">
+                        <i class="fas fa-th-large"></i> Выбрать из галереи
+                    </button>
+                    <div class="control-group">
+                        <label for="qr-size-slider" class="form-label">Размер: <span id="qr-size-value">300</span>px</label>
+                        <input type="range" class="form-range" id="qr-size-slider" min="100" max="1000" step="10" value="300">
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Превью и скачивание -->
+                <div class="qr-preview-panel">
+                    <div id="qr-canvas" class="qr-canvas-wrapper"></div>
+                    <div class="download-actions">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success btn-lg" id="download-btn">Скачать</button>
+                            <button type="button" class="btn btn-success btn-lg dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-format="png">PNG</a></li>
+                                <li><a class="dropdown-item" href="#" data-format="jpeg">JPG</a></li>
+                                <li><a class="dropdown-item" href="#" data-format="svg">SVG</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- === МОДАЛЬНОЕ ОКНО С ВКЛАДКАМИ === -->
+    <div id="logo-modal-wrapper" class="logo-modal-wrapper">
+        <div class="logo-modal-overlay"></div>
+        <div class="logo-modal-content">
+            <button id="logo-modal-close" class="logo-modal-close">×</button>
+            <h3>Выберите логотип из галереи</h3>
+            
+            <!-- Навигация по вкладкам категорий -->
+            <ul class="nav nav-pills nav-justified mb-3 logo-modal-tabs" id="logo-category-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#gallery-brands" type="button">Бренды</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#gallery-icons" type="button">Иконки</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#gallery-basic" type="button">Базовые</button>
+                </li>
+            </ul>
+
+            <!-- Контент для вкладок -->
+            <div class="tab-content logo-modal-tab-content">
+                <div class="tab-pane fade" id="gallery-basic" role="tabpanel">
+                    <div class="logo-gallery-grid"></div>
+                </div>
+                <div class="tab-pane fade" id="gallery-icons" role="tabpanel">
+                    <div class="logo-gallery-grid"></div>
+                </div>
+                <div class="tab-pane fade show active" id="gallery-brands" role="tabpanel">
+                    <div class="logo-gallery-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    </main>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
+    <style>.back-to-top {position: fixed;bottom: 20px;right: 20px;z-index: 9999;display: none;}</style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/scroll-top-button.js"></script>
+    <!-- Back to Top End -->    
+    
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/menu.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/program-page-js/qr-code.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+</body>
+</html>

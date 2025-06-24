@@ -92,7 +92,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Разделы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
                                 <li><a class="dropdown-item" href="./Program-pages/Platforms-pages.html">Приложения</a></li>
@@ -549,62 +549,34 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-    <main class="container">
-		<div class="container">    
-			<div class="wrap d-flex flex-column">
-				<main class="admin-container">
-					<h1 id="accessStatus" class="text-red">Доступ заблокирован!</h1>
-					<button id="showLoginForm">Войти в систему</button>
-					<div id="loginForm" style="display: none; margin-top: 20px;">
-						<input type="text" id="username" class="form-control mb-2" placeholder="Логін">
-						<input type="password" id="password" class="form-control mb-2" placeholder="Пароль">
-						<button id="loginButton" class="btn btn-primary">Войти</button>
-						<p id="loginStatus" style="color: red; display: none;">Неверный логин или пароль</p>
-					</div>
-					<div id="adminMenu" style="display: none; margin-top: 20px;">
-						<h2>Меню администратора</h2>
-                        <ul>
-                            <li><a href="#manageCategories">Управление категориями</a></li>
-                            <li><a href="#manageUsers">Управление пользователями</a></li>
-                            <li><a href="#viewReports">Просмотр отчетов</a></li>
-                            <li><a href="#manageReviews">Управление отзывами</a></li>
-                            <li><a href="#manageNews">Добавить новость</a></li>
-                        </ul>
-						<hr>
-						<div class="admin-actions">
-                            <h3>Действия администратора:</h3>
-                            <button id="backupDatabase" class="btn btn-secondary mb-2">Резервное копирование базы данных</button>
-                            <button id="restoreDatabase" class="btn btn-secondary mb-2">Восстановление базы данных</button>
-                            <button id="clearCache" class="btn btn-secondary mb-2">Очистить кэш</button>
-                        </div>
-                        <hr>
-                        <h3>Настройки:</h3>
-                        <form id="settingsForm">
-                            <label for="siteTitle" class="form-label">Название сайта:</label>
-                            <input type="text" id="siteTitle" class="form-control mb-2" placeholder="Введите название сайта">
-                            <label for="languageSelect" class="form-label">Язык интерфейса:</label>
-                            <select id="languageSelect" class="form-control mb-2">
-                                <option value="ru">Русский</option>
-                                <option value="uk">Українська</option>
-                                <option value="en">English</option>
-                            </select>
-                            <label for="notificationsToggle" class="form-label">Отображение уведомлений:</label>
-                            <input type="checkbox" id="notificationsToggle" checked class="form-check-input mb-2">
-                            <label for="contactEmail" class="form-label">Электронная почта для контактов:</label>
-                            <input type="email" id="contactEmail" class="form-control mb-2" placeholder="example@mail.com">
-                            <label for="contactPhone" class="form-label">Телефон для контактов:</label>
-                            <input type="text" id="contactPhone" class="form-control mb-2" placeholder="+380123456789">
-                            <label for="siteLogo" class="form-label">Логотип сайта:</label>
-                            <input type="file" id="siteLogo" class="form-control mb-2">
-                            <button id="saveSettings" class="btn btn-primary">Сохранить настройки</button>
-                        </form>                        
-					
-						<button id="logoutButton" class="btn btn-danger" style="margin-top: 20px;">Выйти из системы</button>
-					</div>					
-				</main>
-			</div>
-		</div>    
-	</main>
+  <main class="admin-page-wrapper">
+      <div class="admin-access-panel">
+          <div class="lock-icon">
+              <i class="fas fa-shield-alt"></i>
+          </div>
+          <h1 id="accessStatus">Доступ ограничен</h1>
+          <p class="access-description">Для просмотра этой страницы у вас должны быть права администратора.</p>
+          <button id="showLoginForm" class="btn btn-primary">Попытаться войти</button>
+          
+          <!-- Этот блок будет скрыт до клика -->
+          <div id="loginError" class="login-error-message"></div>
+      </div>
+  </main>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+      const loginButton = document.getElementById('showLoginForm');
+      const errorMessageDiv = document.getElementById('loginError');
+
+      if (loginButton && errorMessageDiv) {
+          loginButton.addEventListener('click', () => {
+              errorMessageDiv.textContent = 'Вам вход запрещен!';
+              
+              errorMessageDiv.classList.add('visible');
+          });
+      }
+  });
+  </script>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -617,9 +589,8 @@
     <script src="./assets/js/theme.js"></script>
     <script src="./assets/js/search.js"></script>
     <script src="./assets/js/header.js"></script>
-    <script src="./assets/js/footer.js"></script>
-    <script src="./assets/js/AdminSettings.js"></script>
     <script src="/assets/js/AdminSettingsBackground.js"></script>
+    <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/loader.js"></script>
 </body>
 </html>

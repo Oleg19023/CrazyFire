@@ -514,16 +514,45 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-    <div id="message">
-        <h2>404</h2>
-        <h1>Страница не найдена</h1>
-        <p>Извините, но запрашиваемая вами страница не найдена. Возможно, она была удалена, переименована или никогда не существовала. Пожалуйста, проверьте правильность введенного URL-адреса на наличие ошибок, таких как опечатки или неверные символы. Если вы уверены, что страница должна существовать, попробуйте обновить страницу или вернуться на главную, чтобы найти нужную информацию. Мы приносим извинения за неудобства и надеемся, что вы сможете найти то, что искали.</p>
-        <div class="button-container">
-            <a href="/index.html">Вернуться на главную страницу</a>
-            <a href="#">Помощь(Beta)</a>
-            <a href="#">Служба поддержки(Beta)</a>
-        </div>
-    </div>
+    <main>
+      <div class="container-fluid d-flex justify-content-center align-items-center vh-100 p-0">
+          <div class="error-container">
+              <div class="error-code">
+                  <span>4</span>
+                  <span class="animated-zero">
+                      <!-- Иконка теперь внутри контейнера, который будет вращаться -->
+                      <i class="far fa-compass"></i>
+                  </span>
+                  <span>4</span>
+              </div>
+              <h1 class="error-title">Похоже, вы сбились с пути</h1>
+              <p class="error-description">
+                  Страница, которую вы ищете, могла быть перемещена, удалена или вы просто ошиблись в адресе. Не волнуйтесь, мы поможем вам вернуться на верный курс!
+              </p>
+
+              <div class="error-actions">
+                  <a href="/index.html" class="action-button primary">
+                      <i class="fas fa-home"></i>
+                      На главную
+                  </a>
+                  <a href="javascript:history.back()" class="action-button secondary">
+                      <i class="fas fa-arrow-left"></i>
+                      Вернуться назад
+                  </a>
+              </div>
+
+              <div class="helpful-links">
+                  <p>Или попробуйте найти то, что вам нужно:</p>
+                  <div class="quick-links">
+                      <a href="/Program-pages/Program-pages.html">Программы</a>
+                      <a href="/Program-pages/Games-pages.html">Игры</a>
+                      <a href="/Program-pages/Music-pages.html">Музыка</a>
+                      <a href="/Info-pages/contacts.html">Контакты</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
 
     <script src="/assets/js/theme.js"></script>
     <script src="./assets/js/header.js"></script>

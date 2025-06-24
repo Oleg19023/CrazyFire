@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/tin-checker.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,44 +162,69 @@
         </nav>
     </header>  
 
-    <main class="container">
-        <h1 class="mb-4">Проверка ИНН</h1>
-        <div id="app">
-            <form>
-                <div class="mb-3">
-                    <label for="tinNumber" class="form-label">ИНН:</label>
-                    <input type="text" class="form-control" v-model="tin" placeholder="Введите ИНН">
+    <main class="tin-checker-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Проверка ИНН Украины</h1>
+                <p>Введите 10-значный номер, чтобы узнать дату рождения, пол и другую информацию</p>
+            </div>
+
+            <!-- Приложение Vue.js -->
+            <div id="app" class="tin-app-wrapper">
+                <!-- Поле для ввода ИНН -->
+                <div class="tin-input-group">
+                    <i class="fas fa-fingerprint input-icon"></i>
+                    <input 
+                        type="text" 
+                        v-model="tin" 
+                        @input="validateInput"
+                        placeholder="Введите 10 цифр ИНН" 
+                        maxlength="10" 
+                        class="tin-input"
+                        :class="inputStatusClass"
+                    >
+                    <span class="char-counter">{{ tin.length }}/10</span>
                 </div>
-                <div class="mt-4">
-                    <p v-if="result">
-                        <b>ИНН:</b> <span :class="{ 'text-success': isTinValid, 'text-danger': !isTinValid }">{{ result.tin }}</span><br>
-                        <div v-if="isTinValid">
-                            <b>Дата рождения:</b> 🎂 {{ result.birthDate }}<br>
-                            <b>Пол:</b> {{ result.gender === 'Мужской' ? '👨' : '👩' }} {{ result.gender }}<br>
-                            <b>Полных лет:</b> 🎉 {{ result.age }}<br>
-                            <b>Знак зодиака:</b> {{ result.zodiacSign }}<br>
-                            <b>Восточный календарь:</b> {{ result.chineseSign }}
+                
+                <!-- Сообщение об ошибке -->
+                <div class="error-message" v-if="errorMessage">
+                    {{ errorMessage }}
+                </div>
+
+                <!-- Контейнер с результатами -->
+                <transition name="slide-fade">
+                    <div class="results-container" v-if="isTinValid">
+                        <div class="result-card">
+                            <i class="fas fa-birthday-cake result-icon"></i>
+                            <span class="result-label">Дата рождения</span>
+                            <span class="result-value">{{ result.birthDate }}</span>
                         </div>
-                    </p>
-                </div>
-            </form>
+                        <div class="result-card">
+                            <i class="fas fa-venus-mars result-icon"></i>
+                            <span class="result-label">Пол</span>
+                            <span class="result-value">{{ result.gender }}</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-calendar-check result-icon"></i>
+                            <span class="result-label">Полных лет</span>
+                            <span class="result-value">{{ result.age }}</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-star result-icon"></i>
+                            <span class="result-label">Знак зодиака</span>
+                            <span class="result-value">{{ result.zodiacSign }}</span>
+                        </div>
+                        <div class="result-card">
+                            <i class="fas fa-dragon result-icon"></i>
+                            <span class="result-label">Восточный гороскоп</span>
+                            <span class="result-value">{{ result.chineseSign }}</span>
+                        </div>
+                    </div>
+                </transition>
+            </div>
         </div>
     </main>
-
-    <style>
-        .container {
-            margin-top: 100px;
-            max-width: 900px;
-            background-color: #ececec;
-            border-radius: 10px;
-
-        }
-        .dark-theme .container {
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-    </style>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

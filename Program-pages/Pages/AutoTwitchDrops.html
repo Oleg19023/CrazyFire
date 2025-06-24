@@ -30,11 +30,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/program-page-css/AutoTwitchDrops.css">
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/auto-twitch.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -58,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -165,27 +161,69 @@
             </div>
         </nav>
     </header>  
-    <main>
-        <div class="container">
-            <div class="header">
-                <h1>Автоматическое открытие и закрытие стримов Twitch</h1>
+    <main class="auto-twitch-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Twitch Drops Farmer</h1>
+                <p>Автоматически переключает стримы для получения наград</p>
             </div>
-    
-            <label for="streamUrl">Добавить ссылку на стрим:</label>
-            <input type="url" id="streamUrl" placeholder="https://www.twitch.tv/12345">
-            <button id="addStream">Добавить</button>
-    
-            <div id="streamList">
-                <h3>Список стримов:</h3>
-                <ul id="streams"></ul>
+
+            <!-- Панель управления -->
+            <div class="dashboard">
+                <!-- Левая колонка: Список и добавление -->
+                <div class="panel list-panel">
+                    <div class="panel-header">
+                        <h3>Список стримов (<span id="streamCount">0</span>)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="streamList">
+                            <!-- Сюда JS будет добавлять стримы -->
+                        </ul>
+                        <div class="add-stream-form">
+                            <input type="url" id="streamUrlInput" placeholder="https://www.twitch.tv/channel">
+                            <button id="addStreamButton" class="add-btn" title="Добавить стрим">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая колонка: Настройки и статус -->
+                <div class="panel control-panel">
+                    <!-- Настройки -->
+                    <div class="panel-header">
+                        <h3>Настройки</h3>
+                    </div>
+                    <div class="panel-body settings">
+                        <div class="control-group">
+                            <label for="intervalSlider">Интервал переключения</label>
+                            <input type="range" id="intervalSlider" min="1" max="180" value="60">
+                            <span id="intervalValue" class="interval-value">60 мин</span>
+                        </div>
+                    </div>
+                    <!-- Статус -->
+                    <div class="panel-header">
+                        <h3>Статус</h3>
+                    </div>
+                    <div id="statusPanel" class="panel-body status">
+                        <div class="status-light-off" id="statusLight"></div>
+                        <div class="status-text">
+                            <strong id="statusText">Остановлено</strong>
+                            <span id="nextStreamInfo"></span>
+                        </div>
+                    </div>
+                    <!-- Кнопки управления -->
+                    <div class="playback-controls">
+                        <button id="startButton" class="control-btn start">
+                            <i class="fas fa-play"></i> Начать
+                        </button>
+                        <button id="stopButton" class="control-btn stop" disabled>
+                            <i class="fas fa-stop"></i> Остановить
+                        </button>
+                    </div>
+                </div>
             </div>
-    
-            <label for="intervalSlider">Интервал между стримами:</label>
-            <input type="range" id="intervalSlider" min="1" max="600" value="60">
-            <span id="intervalValue">60 минут</span> (<span id="intervalHours">1 час</span>)
-    
-            <button id="start">Начать</button>
-            <button id="stop" disabled>Остановить</button>
         </div>
     </main>
     

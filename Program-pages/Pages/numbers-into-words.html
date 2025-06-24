@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
+        <link rel="stylesheet" href="/assets/css/program-page-css/num-to-words.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
 </head>
@@ -57,14 +58,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <a href="/Program-pages/Program-pages.html" class="buttonLink">
-                        <button class="button">
-                            <svg class="svgIcon" viewBox="0 0 384 512">
-                                <path
-                                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-                                ></path>
-                            </svg>
-                        </button>
+                    <!-- Кнопка "Назад" -->
+                    <a href="/Program-pages/Program-pages.html" class="header-back-button" title="Вернуться назад">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-button-text">Назад</span>
                     </a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -164,41 +161,40 @@
             </div>
         </nav>
     </header>  
-    <main>
-        <div class="container">
-            <div class="container mt-3">
-                <h1 class="mb-3">Преобразование чисел в слова</h1>
-                <div class="mb-3 row">
-                    <label for="inputNumber" class="col-sm-2 col-form-label">Введите число</label>
-                    <div class="col-sm-10">
-                        <input type="number" oninput="numberToWords()" class="form-control" id="inputNumber" placeholder="Введите число" min="1" max="999999999">
+    <main class="num-to-words-page">
+        <div class="page-container">
+            <!-- Заголовок -->
+            <div class="page-title-section">
+                <h1>Число прописью</h1>
+                <p>Конвертируйте числа в текстовый формат для документов и отчетов</p>
+            </div>
+
+            <!-- Панель конвертера -->
+            <div class="converter-wrapper">
+                <div class="input-section">
+                    <label for="inputNumber">Введите число</label>
+                    <div class="input-group">
+                        <input type="text" id="inputNumber" placeholder="Например, 12345.67">
+                        <button id="copyInputNum" class="action-btn" title="Копировать число">
+                            <i class="fas fa-copy"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">Результат</label>
-                    <div class="col-sm-10">
-                        <h4 id="outputWords">Введите число</h4>
+
+                <div class="result-section">
+                    <div id="outputWords" class="output-words">
+                        <!-- Сюда JS будет вставлять результат -->
+                        <span class="placeholder">Результат появится здесь...</span>
+                    </div>
+                    <div class="result-actions">
+                        <button id="copyOutputWords" class="action-btn" title="Копировать пропись">
+                            <i class="fas fa-copy"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <style>
-        .container {
-            margin-top: 100px;
-            padding-top: 1px;
-            padding-bottom: 2px;
-            max-width: 900px;
-            background-color: #ececec;
-            border-radius: 10px;
-        }
-        .dark-theme .container {
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s ease-in-out;
-        }
-    </style>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

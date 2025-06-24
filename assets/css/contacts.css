@@ -7,7 +7,7 @@
 }
 
 .contact-page-container-v2 {
-    max-width: 1200px; 
+    max-width: 1850px; 
     margin: 0 auto;
     padding: 20px;
 }
@@ -37,7 +37,6 @@ section h2 {
     text-align: center;
     font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 25px;
 }
 
 /* --- Блок прямых контактов --- */
@@ -87,7 +86,7 @@ section h2 {
     background: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 12px;
-    max-width: 450px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -96,6 +95,7 @@ section h2 {
 }
 .card-details {
     text-align: left;
+    min-width: 0; /* **ВАЖНОЕ ИЗМЕНЕНИЕ 1:** Позволяет flex-элементу сжиматься */
 }
 .bank-name {
     font-size: 1rem;
@@ -108,6 +108,8 @@ section h2 {
     font-size: 1.3rem;
     letter-spacing: 2px;
     color: #343a40;
+    overflow-wrap: break-word; /* **ВАЖНОЕ ИЗМЕНЕНИЕ 2:** Заставляет текст переноситься */
+    word-break: break-all;     /* Дополнительное правило для лучшей совместимости */
 }
 .copy-btn {
     background: #e9ecef;
@@ -123,12 +125,8 @@ section h2 {
     align-items: center;
     justify-content: center;
     line-height: 1;
+    flex-shrink: 0; /* **ВАЖНОЕ ИЗМЕНЕНИЕ 3:** Запрещает кнопке сжиматься */
 }
-
-.fa-copy {
-    align-items: center;
-}
-
 
 .copy-btn:hover { background-color: #dee2e6; }
 .copy-btn.copied { background-color: #28a745; color: #fff; }
@@ -197,6 +195,43 @@ section h2 {
 }
 
 /* ============================================= */
+/*       СТИЛИ ДЛЯ МАКЕТА В ДВЕ КОЛОНКИ         */
+/* ============================================= */
+
+.content-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.content-row .support-section {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.content-row .form-section {
+    flex: 1.5;
+    margin-bottom: 0;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.support-section {
+    text-align: left;
+}
+
+.support-box {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.content-row section h2 {
+    text-align: left;
+}
+
+/* ============================================= */
 /*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
 /* ============================================= */
 .dark-theme .page-header p,
@@ -229,56 +264,50 @@ section h2 {
 .dark-theme .form-control:focus,
 .dark-theme .form-select:focus { background-color: #1c1c1e; }
 
+
 /* ============================================= */
-/*             АДАПТИВНОСТЬ (MOBILE)             */
+/*         АДАПТИВНОСТЬ (MOBILE) - ИЗМЕНЕНИЯ     */
 /* ============================================= */
+
+@media (max-width: 992px) {
+    .content-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .content-row .support-section,
+    .content-row .form-section {
+        flex-basis: auto;
+    }
+
+    .content-row section h2 {
+        text-align: center;
+    }
+}
+
 @media (max-width: 768px) {
     .form-grid {
-        grid-template-columns: 1fr; /* Поля формы в один столбец */
+        grid-template-columns: 1fr;
     }
     .page-header h1 { font-size: 2.2rem; }
 }
 
-/* ============================================= */
-/*          СТИЛИ ДЛЯ СООБЩЕНИЯ ОБ УСПЕХЕ         */
-/* ============================================= */
-
-.success-message {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 40px;
-    text-align: center;
-    display: flex; /* Используем flex для центрирования */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.success-icon {
-    font-size: 4rem;
-    color: #28a745;
-    margin-bottom: 20px;
-    line-height: 1;
-}
-
-.success-message h3 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.success-message p {
-    color: #6c757d;
-    max-width: 400px;
-    margin-bottom: 30px;
-}
-
-.success-message .btn-submit {
-    background-color: #6c757d;
-}
-.success-message .btn-submit:hover {
-    background-color: #5a6268;
+/* **ВАЖНОЕ ИЗМЕНЕНИЕ 4:** Улучшение для очень маленьких экранов */
+@media (max-width: 480px) {
+    .support-box {
+        flex-direction: column; /* Ставим элементы друг под друга */
+        align-items: stretch;   /* Растягиваем их на всю ширину */
+        gap: 15px;              /* Добавляем отступ между ними */
+    }
+    .card-number {
+        font-size: 1.1rem; /* Немного уменьшаем шрифт для лучшей читаемости */
+        letter-spacing: 1px;
+    }
+    .copy-btn {
+        width: 100%; /* Делаем кнопку на всю ширину для удобства нажатия */
+        padding: 10px;
+        height: auto;
+    }
 }
 
 /* --- Темная тема для сообщения об успехе --- */

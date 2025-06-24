@@ -1,94 +1,168 @@
-#message {
-    background: #fff;
-    height: 600px;
-    padding: 40px;
-    border-radius: 8px;
+/* --- Стили для обертки страницы 404 --- */
+/* Убираем стили с ID, они больше не нужны */
+/* #message { ... } */
+
+main {
+    padding: 0;
+}
+
+/* --- Основной контейнер ошибки --- */
+.error-container {
+    /* max-width убран */
+    width: 100%;
+    /* Занимает всю доступную высоту, но не менее 500px */
+    min-height: calc(100vh - 120px); /* 100% высоты вьюпорта минус отступы */
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex; /* Используем Flexbox для центрирования */
-    flex-direction: column; /* Располагаем элементы вертикально */
-    justify-content: center; /* Центрируем по вертикали */
-    align-items: center; /* Центрируем по горизонтали */
-    transition: background-color 0.8s, color 0.8s;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s, border-color 0.3s;
+    
+    /* Добавляем Flexbox для внутреннего центрирования контента */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#message h2 {
-    font-size: 48px;
-    color: #ff0000;
-    margin-bottom: 20px;
+/* --- Код ошибки "404" --- */
+.error-code {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
-#message h1 {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 20px;
+/* --- Анимированный ноль --- */
+.animated-zero {
+    display: inline-block;
+    position: relative;
+    color: #ff4d4f;
+    /* Убираем анимацию с контейнера, чтобы он не вращался вокруг своей оси */
+}
+/* Анимация теперь применяется непосредственно к иконке */
+.animated-zero i {
+    font-size: 7rem;
+    display: inline-block; /* Необходимо для transform */
+    animation: spin-self 10s linear infinite; /* Новая анимация */
 }
 
-#message p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 30px;
-    max-width: 1000px; /* Максимальная ширина параграфа */
+@keyframes spin-self {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.button-container {
-    display: flex; /* Используем Flexbox для кнопок */
-    gap: 10px; /* Расстояние между кнопками */
+/* --- Заголовки и текст --- */
+.error-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+.error-description {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-top: 1rem;
+    line-height: 1.6;
+    max-width: 600px; /* Ограничиваем ширину текста для читаемости */
 }
 
-#message a {
-    font-size: 16px;
-    color: #007bff;
+/* --- Кнопки действий --- */
+.error-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 24px;
+    border-radius: 50px;
     text-decoration: none;
-    border: 1px solid #007bff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-
-#message a:hover {
-    background-color: #007bff;
+.action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.action-button.primary {
+    background-color: #0d6efd;
     color: #fff;
 }
-
-/* Стили для тёмной темы */
-body.dark-theme #message {
-    background: #333;
+.action-button.secondary {
+    background-color: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #dee2e6;
 }
 
-body.dark-theme #message h2 {
-    color: #ff0000;
+/* --- Полезные ссылки --- */
+.helpful-links {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+    width: 100%;
+    max-width: 600px; /* Ограничиваем ширину этого блока */
+}
+.helpful-links p {
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.quick-links a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+.quick-links a:hover {
+    text-decoration: underline;
 }
 
-body.dark-theme #message h1 {
-    color: #fff;
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .error-container {
+    background: rgba(44, 44, 46, 0.85);
+    border-color: rgba(255,255,255,0.1);
+}
+.dark-theme .error-code { color: #58a6ff; }
+.dark-theme .animated-zero { color: #ff6961; }
+.dark-theme .error-title { color: #fff; }
+.dark-theme .error-description,
+.dark-theme .helpful-links p {
+    color: #a0a0a0;
+}
+.dark-theme .action-button.secondary {
+    background-color: #3a3a3c;
+    color: #f2f2f7;
+    border-color: #545458;
+}
+.dark-theme .helpful-links {
+    border-top-color: #444;
+}
+.dark-theme .quick-links a {
+    color: #58a6ff;
 }
 
-body.dark-theme #message p {
-    color: #ccc;
-}
-
-body.dark-theme #message a {
-    color: #8cd9d6;
-    border-color: #8cd9d6;
-}
-
-body.dark-theme #message a:hover {
-    background-color: #8cd9d6;
-    color: #333;
-}
-
+/* Адаптивность для мобильных */
 @media (max-width: 576px) {
-    #message {
-        height: 900px;
+    .error-code { font-size: 6rem; }
+    .animated-zero i { font-size: 5rem; }
+    .error-title { font-size: 1.8rem; }
+    .error-container { 
+        padding: 25px; 
+        min-height: calc(100vh - 40px);
     }
-    #message a {
-        font-size: 13px;
-        color: #007bff;
-        text-decoration: none;
-        border: 1px solid #007bff;
-        padding: 1px 1px;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-    }
+    .error-actions { flex-direction: column; }
 }

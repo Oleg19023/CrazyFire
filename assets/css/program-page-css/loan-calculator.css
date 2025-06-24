@@ -1,0 +1,229 @@
+/* ============================================= */
+/*      СТИЛИ СТРАНИЦЫ "КРЕДИТНЫЙ КАЛЬКУЛЯТОР"    */
+/* ============================================= */
+
+/* --- Общие стили страницы --- */
+main.loan-calculator-page {
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.page-title-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-title-section h1 { font-size: 2.8rem; font-weight: 700; }
+.page-title-section p { font-size: 1.1rem; color: #6c757d; }
+
+/* --- Обертка калькулятора --- */
+.calculator-wrapper {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+
+/* --- Панель ввода данных --- */
+.controls-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px;
+    border-bottom: 1px solid #e9ecef;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.input-group input[type="number"] {
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+}
+.input-group input[type="number"]:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+
+/* --- Блок результатов и диаграммы --- */
+.results-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+    align-items: center;
+}
+.summary-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+.summary-item span {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.summary-item strong {
+    font-size: 2rem;
+    font-weight: 700;
+}
+.summary-item.overpayment strong {
+    color: #dc3545;
+}
+.chart-container {
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* --- Таблица с графиком платежей --- */
+.payment-schedule {
+    padding: 30px;
+    border-top: 1px solid #e9ecef;
+}
+.payment-schedule h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.table-responsive {
+    max-height: 400px;
+    overflow-y: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px 15px;
+    text-align: right;
+    border-bottom: 1px solid #e9ecef;
+}
+th {
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0;
+    font-weight: 600;
+}
+td:first-child, th:first-child {
+    text-align: left;
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-title-section p { color: #a0a0a0; }
+.dark-theme .calculator-wrapper { background-color: #2c2c2e; border-color: #444; }
+.dark-theme .controls-panel { border-bottom-color: #444; }
+.dark-theme .input-group label { color: #f2f2f7; }
+.dark-theme .input-group input[type="number"] {
+    background-color: #1c1c1e;
+    border-color: #555;
+    color: #fff;
+}
+.dark-theme .input-group input[type="number"]:focus {
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.25);
+}
+.dark-theme .summary-item span { color: #a0a0a0; }
+.dark-theme .summary-item strong { color: #f2f2f7; }
+.dark-theme .summary-item.overpayment strong { color: #ff4d4d; }
+.dark-theme .payment-schedule { border-top-color: #444; }
+.dark-theme th { background-color: #3a3a3c; }
+.dark-theme th, .dark-theme td { border-bottom-color: #444; }
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+@media (max-width: 768px) {
+    .results-overview {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .summary-item strong { font-size: 1.8rem; }
+}
+
+
+/* --- Стили для заголовка таблицы и кнопки скачивания --- */
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.schedule-header h2 {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.download-btn {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #0d6efd;
+    background-color: #fff;
+    color: #0d6efd;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.download-btn:hover:not(:disabled) {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.download-btn:disabled {
+    border-color: #ced4da;
+    color: #ced4da;
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+}
+
+/* --- Темная тема для кнопки --- */
+.dark-theme .download-btn {
+    background-color: transparent;
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+.dark-theme .download-btn:hover:not(:disabled) {
+    background-color: #58a6ff;
+    color: #fff;
+}
+.dark-theme .download-btn:disabled {
+    border-color: #444;
+    color: #555;
+    background-color: #2c2c2e;
+}
+
+/* Адаптивность для заголовка таблицы */
+@media (max-width: 576px) {
+    .schedule-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch; /* Растягиваем на всю ширину */
+    }
+    .schedule-header h2 {
+        text-align: center;
+    }
+    .download-btn {
+        justify-content: center;
+    }
+}

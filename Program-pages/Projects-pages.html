@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/projects-page.css">
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -73,7 +74,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ресурсы</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Разделы</a>
                             <ul class="dropdown-menu" aria-labelledby="programDropdown">
 
                                 <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Приложения</a></li>
@@ -534,86 +535,67 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-    <main>
-        <div class="container"><h1>Наши проекты:</h1></div>
-        <div class="programs-container">
-            <div class="program-card project-card">
-                <img src="/assets/images/Projects/Кулінарний щоденник.webp" alt="Описание изображения" class="project-image">
-                <div class="program-content">
-                    <h3 class="program-title project-title">Кулінарний щоденник</h3>
-                    <p class="program-description project-description">Кулінарний щоденник — це унікальний проект, призначений для всіх, хто любить готувати та хоче зберігати свої рецепти в одному місці. Програма дозволяє створювати та зберігати улюблені рецепти, ділитися ними з друзями та отримувати нові ідеї для приготування страв. З легкістю плануйте свої меню на тиждень, додавайте нотатки про особливості приготування і ведіть облік продуктів.
-                    </p></p>
-                    <a href="https://culinary-diary-site.web.app" class="program-button">Перейти</a>
+<main class="projects-page-container">
+    <div class="container">
+        <h1>Наши проекты</h1>
+        
+        <div class="projects-grid">
+            <!-- Кулинарный дневник -->
+            <div class="project-card">
+                <div class="project-card-image">
+                    <img src="/assets/images/Projects/Кулінарний щоденник.webp" alt="Кулінарний щоденник">
+                </div>
+                <div class="project-card-content">
+                    <span class="project-status active">Активен</span>
+                    <h3 class="project-title">Кулінарний щоденник</h3>
+                    <p class="project-description">
+                        Уникальный проект для всех, кто любит готовить и хочет хранить свои рецепты в одном месте. Программа позволяет создавать, сохранять и делиться любимыми рецептами, а также планировать меню на неделю.
+                    </p>
+                    <div class="project-features">
+                        <p><strong>Ключевые особенности:</strong></p>
+                        <ul>
+                            <li><i class="fas fa-book"></i>Сохранение рецептов</li>
+                            <li><i class="fas fa-users"></i>Обмен с друзьями</li>
+                            <li><i class="fas fa-calendar-alt"></i>Планировщик меню</li>
+                            <li><i class="fas fa-fire"></i>Firebase</li>
+                        </ul>
+                    </div>
+                    <div class="project-actions">
+                        <a href="https://culinary-diary-site.web.app" class="project-button" target="_blank">
+                            Перейти к проекту <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="program-card project-card">
-                <img src="/assets/images/Projects" alt="Описание изображения" class="project-image">
-                <div class="program-content">
-                    <h3 class="program-title"></h3>
-                    <p class="program-description"></p>
-                    <a href="/Program-pages/Pages/AutoTwitchDrops.html" class="program-button">Перейти</a>
-                </div>
-            </div> -->
-        </div>
-    </main>
 
-    <style>
-    h1 {
-        text-align: center;
-        font-size: 3em;
-        margin-top: 20px;
-    }
-    .programs-container {
-        padding-top: 0;
-        display: flex ; 
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .project-card {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden; /* Скрытие переполнения */
-        width: 590px; /* Ширина карточки */
-        max-width: 1000px; /* Максимальная ширина карточки */
-    }
-    
-    .project-image {
-        width: 100%;
-        height: auto;
-    }
-    
-    .project-content {
-        padding: 20px;
-    }
-    
-    .project-title {
-        font-size: 2em; /* Увеличенный размер заголовка */
-        margin: 10px;
-    }
-    
-    .project-description {
-        font-size: 1em; /* Увеличенный размер описания */
-        color: #555;
-        margin-bottom: 20px;
-    }
-    
-    .program-button {
-        display: inline-block;
-        padding: 15px 20px;
-        background-color: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1.2em; /* Увеличенный размер кнопки */
-        transition: background-color 0.3s;
-    }
-    
-    .program-button:hover {
-        background-color: #0056b3;
-    }
-    </style>
+            <!-- 
+            <div class="project-card">
+                <div class="project-card-image">
+                    <img src="/path/to/your/image.webp" alt="Название проекта">
+                </div>
+                <div class="project-card-content">
+                    <span class="project-status in-development">В разработке</span>
+                    <h3 class="project-title">Название нового проекта</h3>
+                    <p class="project-description">
+                        Краткое и емкое описание вашего следующего потрясающего проекта.
+                    </p>
+                    <div class="project-features">
+                        <p><strong>Технологии:</strong></p>
+                        <ul>
+                            <li><i class="fab fa-vuejs"></i>Vue.js</li>
+                            <li><i class="fas fa-bolt"></i>Vite</li>
+                            <li><i class="fas fa-database"></i>API</li>
+                        </ul>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="project-button disabled">Скоро</a>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+</main>
 
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>

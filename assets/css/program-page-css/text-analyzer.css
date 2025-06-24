@@ -1,0 +1,183 @@
+/* ============================================= */
+/*          СТИЛИ ДЛЯ АНАЛИЗАТОРА ТЕКСТА         */
+/* ============================================= */
+
+main.text-analyzer-page .container {
+    max-width: 1200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.page-header {
+    margin-top: 25px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.page-header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+.page-header p {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+/* --- Главная обертка --- */
+.analyzer-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Левая колонка шире правой */
+    gap: 30px;
+}
+
+/* --- Левая колонка: Поле ввода --- */
+.text-input-area {
+    display: flex;
+    flex-direction: column;
+}
+#text-input {
+    width: 100%;
+    height: 100%;
+    min-height: 400px; /* Минимальная высота */
+    padding: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border: 1px solid #ced4da;
+    border-radius: 12px;
+    resize: vertical;
+    flex-grow: 1; /* Позволяет полю расти */
+}
+#text-input:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.textarea-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 5px;
+}
+#char-count-realtime {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+#clear-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* --- Правая колонка: Результаты --- */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Две колонки для карточек */
+    gap: 15px;
+    align-content: start; /* Карточки начинаются сверху */
+}
+.stat-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    text-align: center;
+}
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* ============================================= */
+/*          АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ)      */
+/* ============================================= */
+@media (max-width: 992px) {
+    .analyzer-wrapper {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+}
+@media (max-width: 576px) {
+    .results-grid {
+        grid-template-columns: 1fr; /* Карточки тоже в одну колонку */
+    }
+    .page-header h1 { font-size: 2.2rem; }
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-header p,
+.dark-theme #char-count-realtime,
+.dark-theme .stat-label {
+    color: #a0a0a0;
+}
+.dark-theme #text-input {
+    background-color: #1c1c1e;
+    border-color: #555;
+    color: #fff;
+}
+.dark-theme .stat-card {
+    background-color: #2c2c2e;
+    border-color: #444;
+}
+
+
+/* --- Стили для загрузки файла --- */
+.file-upload-wrapper {
+    text-align: center;
+    border: 2px dashed #ced4da;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+.file-upload-wrapper.dragover {
+    border-color: #0d6efd;
+    background-color: #f0f8ff;
+}
+.file-upload-label {
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0d6efd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.file-upload-label i {
+    font-size: 2rem;
+}
+#file-input {
+    display: none; /* Скрываем стандартный инпут */
+}
+.file-info {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* --- Темная тема для загрузки --- */
+.dark-theme .file-upload-wrapper {
+    border-color: #555;
+}
+.dark-theme .file-upload-wrapper.dragover {
+    border-color: #58a6ff;
+    background-color: #2c3a5e;
+}
+.dark-theme .file-upload-label {
+    color: #58a6ff;
+}
+.dark-theme .file-info {
+    color: #a0a0a0;
+}

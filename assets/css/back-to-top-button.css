@@ -1,67 +1,96 @@
-.button {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-background-color: rgb(20, 20, 20);
-border: none;
-font-weight: 600;
-display: flex;
-align-items: center;
-justify-content: center;
-box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
-cursor: pointer;
-transition-duration: 0.3s;
-overflow: hidden;
-position: relative;
+/* ============================================= */
+/*       СТИЛИ ДЛЯ КНОПКИ "НАЗАД" В ХЕДЕРЕ      */
+/* ============================================= */
+
+/* --- Ссылка-контейнер для кнопки --- */
+.header-back-button {
+    display: inline-flex; /* Используем flex для выравнивания иконки и текста */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Расстояние между иконкой и текстом */
+    
+    height: 40px; /* Фиксированная высота, как у других элементов хедера */
+    padding: 0 15px;
+    margin-right: 15px; /* Отступ от других элементов */
+    
+    background-color: #f0f2f5; /* Светлый фон для светлой темы */
+    color: #050505; /* Темный текст */
+    
+    border: 1px solid #ccd0d5;
+    border-radius: 8px; /* Скругленные углы */
+    
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
-.svgIcon {
-width: 12px;
-transition-duration: 0.3s;
+/* --- Эффект при наведении --- */
+.header-back-button:hover {
+    background-color: #e4e6eb;
+    border-color: #bec3c9;
 }
 
-.svgIcon path {
-fill: white;
+/* --- Эффект при нажатии --- */
+.header-back-button:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.button:hover {
-width: 140px;
-border-radius: 50px;
-transition-duration: 0.3s;
-background-color: rgb(181, 160, 255);
-align-items: center;
+/* --- Иконка внутри кнопки --- */
+.header-back-button .fa-arrow-left {
+    font-size: 1rem;
 }
 
-.button:hover .svgIcon {
-/* width: 20px; */
-transition-duration: 0.3s;
-transform: translateY(-200%);
+/* --- Текст внутри кнопки (по умолчанию скрыт на маленьких экранах) --- */
+.back-button-text {
+    display: none; /* Скрываем текст по умолчанию */
 }
 
-.button::before {
-position: absolute;
-bottom: -20px;
-content: "Назад";
-color: white;
-/* transition-duration: .3s; */
-font-size: 0px;
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .header-back-button {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+    border-color: #4e4f50;
 }
 
-.button:hover::before {
-font-size: 13px;
-opacity: 1;
-bottom: unset;
-/* transform: translateY(-30px); */
-transition-duration: 0.3s;
+.dark-theme .header-back-button:hover {
+    background-color: #4e4f50;
+    border-color: #606162;
 }
 
-.header {
-    display: flex;
-    align-items: center; /* Центрирование по вертикали */
-    margin-bottom: 20px; /* Отступ снизу для разделения */
+.dark-theme .header-back-button:active {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.buttonLink {
-    margin-right: 15px; /* Отступ справа для кнопки */
-    text-decoration: none; /* Убираем подчеркивание */
+
+/* ============================================= */
+/*             АДАПТИВНОСТЬ (MOBILE)             */
+/* ============================================= */
+
+/* --- Показываем текст на экранах больше мобильных --- */
+@media (min-width: 768px) {
+    .back-button-text {
+        display: inline; /* Показываем текст "Назад" */
+    }
+}
+
+/* --- Делаем кнопку круглой и без текста на самых маленьких экранах --- */
+@media (max-width: 576px) {
+    .header-back-button {
+        width: 40px;  /* Делаем кнопку квадратной */
+        border-radius: 50%; /* Скругляем до круга */
+        padding: 0; /* Убираем внутренние отступы */
+        gap: 0;
+    }
+    
+    /* Текст точно должен быть скрыт */
+    .back-button-text {
+        display: none;
+    }
 }

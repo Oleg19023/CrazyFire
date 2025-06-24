@@ -18,7 +18,7 @@
             animation: shimmer-animation 12s linear infinite;
         }
 
-        /* Стили для СВЕТЛОЙ ТЕМЫ (без изменений) */
+        /* Стили для СВЕТЛОЙ ТЕМЫ */
         .gradient-card {
             background-image: linear-gradient(
                 45deg,
@@ -44,10 +44,10 @@
         .dark-theme .gradient-card {
             background-image: linear-gradient(
                 -45deg,
-                #4329a3, /* Глубокий фиолетовый */
-                #2575fc, /* Яркий синий */
-                #6a11cb, /* Пурпурно-фиолетовый */
-                #2c3e50  /* Темно-синий/серый для глубины */
+                #4329a3,
+                #2575fc,
+                #6a11cb,
+                #2c3e50
             );
             color: #fff;
         }
@@ -67,3 +67,73 @@
             border-radius: 7px;
             width: 11em;
         }
+
+
+/* =============== */
+/*     ЛЕНТЫ       */
+/* =============== */
+
+/* 1. Анимация */
+@keyframes scroll-and-rotate {
+  from {
+    transform: rotate(-45deg) translateX(0);
+  }
+  to {
+    transform: rotate(-45deg) translateX(-50%);
+  }
+}
+
+/* 2. Общие стили для ВСЕХ лент */
+.program-beta-card::before,
+.program-new-card::before,
+.program-update-card::before {
+    /* --- Позиционирование и вид ленты --- */
+    content: '';
+    position: absolute;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+    transform-origin: 0 0; /* Для поворота */
+    height: 36px;
+    top: 75px;
+    left: -25px;
+
+    /* --- Стилизация текста --- */
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 36px;
+    white-space: nowrap;
+    
+    /* Применяем анимацию */
+    animation-name: scroll-and-rotate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* --- 3. Индивидуальные настройки для каждой ленты --- */
+
+/* BETA */
+.program-beta-card::before {
+    content: "BETA 🛠 BETA 🛠 BETA 🛠  BETA 🛠 BETA 🛠 BETA 🛠";
+    background-color: rgba(255, 166, 0, 0.774);
+    animation-duration: 15s;
+}
+
+/* NEW */
+.program-new-card::before {
+    content: "NEW 🔥 NEW 🔥 NEW 🔥  NEW 🔥 NEW 🔥 NEW 🔥";
+    background-color: #e74c3c;
+    animation-duration: 13s;
+}
+
+/* UPDATED */
+.program-update-card::before {
+    content: "UPDATED ⚙ UPDATED ⚙ UPDATED ⚙ UPDATED ⚙ ";
+    background-color: #8e44ad;
+    animation-duration: 14s;
+}
+
+.program-card {
+    position: relative;
+    overflow: hidden;
+}

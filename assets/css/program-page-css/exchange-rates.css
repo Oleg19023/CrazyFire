@@ -1,0 +1,219 @@
+/* ================================== */
+/*    СТИЛИ СТРАНИЦЫ "КУРСЫ ВАЛЮТ"    */
+/* ================================== */
+
+/* --- Общие стили страницы --- */
+main.exchange-rates-page {
+    padding-bottom: 40px;
+}
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.page-title-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+.page-title-section #exchangeDate {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* --- Секция конвертера --- */
+.converter-section-v1 {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 30px;
+}
+.converter-section-v1 h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.converter-box {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+}
+.converter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+/* Скрываем label на десктопе */
+.converter-group label {
+    display: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: -2px;
+}
+.form-control, .form-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    background-color: #fff;
+}
+.form-control:focus, .form-select:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.2);
+}
+.swap-icon {
+    font-size: 1.5rem;
+    color: #0d6efd;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding-bottom: 12px; /* Иконка по центру инпутов */
+}
+.swap-icon:hover {
+    transform: rotate(180deg);
+}
+
+/* --- Сетка карточек валют --- */
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* --- Карточка валюты --- */
+.currency-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.currency-card:hover {
+    border-color: #0d6efd;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+.flag-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.currency-info {
+    display: flex;
+    flex-direction: column;
+}
+.currency-code {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+}
+.currency-name {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.card-body {
+    padding-top: 15px;
+    font-size: 1.2rem;
+    color: #495057;
+}
+.rate-value {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+/* --- Индикатор загрузки (Прелоадер) --- */
+.loader-wrapper {
+    display: none;
+    text-align: center;
+    padding: 40px;
+}
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #0d6efd;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================= */
+/*          АДАПТАЦИЯ ДЛЯ ТЕМНОЙ ТЕМЫ            */
+/* ============================================= */
+.dark-theme .page-title-section h1 { color: #fff; }
+.dark-theme .page-title-section #exchangeDate { color: #a0a0a0; }
+
+.dark-theme .converter-section-v1 {
+    background-color: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .converter-section-v1 h2 { color: #fff; }
+
+.dark-theme .converter-group label { color: #a0a0a0; }
+.dark-theme .form-control, .dark-theme .form-select {
+    background-color: #1c1c1e;
+    border-color: #555;
+    color: #fff;
+}
+.dark-theme .swap-icon { color: #58a6ff; }
+
+.dark-theme .currency-card {
+    background-color: #2c2c2e;
+    border-color: #444;
+}
+.dark-theme .currency-card:hover {
+    border-color: #58a6ff;
+}
+.dark-theme .card-header { border-bottom-color: #444; }
+.dark-theme .currency-code { color: #f2f2f7; }
+.dark-theme .currency-name { color: #a0a0a0; }
+.dark-theme .card-body { color: #d1d1d6; }
+.dark-theme .rate-value { color: #58a6ff; }
+
+.dark-theme .loader-spinner {
+    border-color: #444;
+    border-top-color: #58a6ff;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 576px) {
+    .converter-box { 
+        flex-direction: column; 
+        align-items: stretch; /* На всю ширину */
+    }
+    .swap-icon {
+        transform: rotate(90deg); /* Поворачиваем иконку для вертикального вида */
+        padding: 10px 0;
+        text-align: center;
+    }
+    .swap-icon:hover {
+        transform: rotate(90deg) scale(1.1);
+    }
+    /* Показываем label на мобильных */
+    .converter-group label {
+        display: block;
+    }
+    .currency-grid { grid-template-columns: 1fr; }
+}
