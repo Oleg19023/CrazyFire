@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Инициализация Firebase
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
+  const db = firebase.firestore(); // Инициализация Firestore
 
   // Безопасное получение элементов
   function getElement(id) {
@@ -95,6 +96,31 @@ function updateUI(user) {
   }
 }
 
+// Вспомогательная функция для проверки и создания документа пользователя в Firestore
+async function checkAndCreateUserDocument(user) {
+    if (!user) return;
+
+    const userDocRef = db.collection('users').doc(user.uid);
+    const doc = await userDocRef.get();
+
+    if (!doc.exists) {
+        // Документа нет, создаем его (первый вход)
+        console.log(`Создание нового документа для пользователя ${user.uid}`);
+        try {
+            await userDocRef.set({
+                displayName: user.displayName,
+                email: user.email,
+                photoURL: user.photoURL,
+                balance: 0,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } catch (error) {
+            console.error("Ошибка при создании документа пользователя:", error);
+        }
+    }
+    // Если документ уже существует, ничего не делаем
+}
+
 // Инициализация аутентификации
 function initAuth() {
   // Социальная аутентификация
@@ -129,17 +155,31 @@ function initAuth() {
     Object.entries(providers).forEach(([name, provider]) => {
       const buttons = document.querySelectorAll(`.${name}-auth`);
       buttons.forEach(btn => {
+        // Новый код в setupSocialAuth
         btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          auth.signInWithPopup(provider)
-            .then(() => {
-              if (elements.loginModal) elements.loginModal.style.display = "none";
-              if (elements.registerModal) elements.registerModal.style.display = "none";
-            })
-            .catch(error => {
-              console.error(`Ошибка входа через ${name}:`, error);
-              alert(`Ошибка входа через ${name}: ${error.message}`);
-            });
+            e.preventDefault();
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    // После успешного входа вызываем нашу новую функцию
+                    return checkAndCreateUserDocument(result.user);
+                })
+                .then(() => {
+                    // После проверки/создания документа закрываем модальные окна
+                    if (elements.loginModal) elements.loginModal.style.display = "none";
+                    if (elements.registerModal) elements.registerModal.style.display = "none";
+                    const overlay = getElement('modalOverlay');
+                    if (overlay) overlay.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                })
+                .catch(error => {
+                    console.error(`Ошибка входа через ${name}:`, error);
+                    // Улучшаем сообщение об ошибке
+                    if (error.code === 'auth/account-exists-with-different-credential') {
+                        alert('Аккаунт с таким email уже существует, но привязан к другому способу входа. Попробуйте войти с помощью него.');
+                    } else {
+                        alert(`Ошибка входа через ${name}: ${error.message}`);
+                    }
+                });
         });
       });
     });
@@ -152,6 +192,12 @@ function initAuth() {
         e.preventDefault();
         const email = getElement("login_email_field").value;
         const password = getElement("login_password_field").value;
+
+        // Проверка длины email
+        if (email.length > 254) {
+            alert("Введен слишком длинный email-адрес.");
+            return; // Прерываем выполнение функции
+        }
 
         auth.signInWithEmailAndPassword(email, password)
           .then((userCredential) => {
@@ -169,43 +215,81 @@ function initAuth() {
       });
     }
 
-    if (elements.registerForm) {
-      elements.registerForm.addEventListener("submit", (e) => {
+if (elements.registerForm) {
+    elements.registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        
+        // 1. Получаем все данные
         const email = getElement("register_email_field").value;
         const password = getElement("register_password_field").value;
         const confirmPassword = getElement("confirm_password_field").value;
+        const displayName = getElement("name_field").value.trim();
 
+        // 2. Сначала проводим все проверки
+        if (displayName.length < 3) {
+            alert("Имя должно быть не короче 3 символов.");
+            return;
+        }
+        if (email.length < 5 || email.length > 254) {
+            alert("Длина email должна быть от 5 до 254 символов.");
+            return;
+        }
         if (password !== confirmPassword) {
-          alert("Пароли не совпадают!");
-          return;
+            alert("Пароли не совпадают!");
+            return;
         }
 
+        // 3. Только после успешных проверок пытаемся создать пользователя
         auth.createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            // Отправляем письмо подтверждения
-            return userCredential.user.sendEmailVerification();
-          })
-          .then(() => {
-            alert('Письмо с подтверждением отправлено на ваш email. Пожалуйста, проверьте почту и подтвердите адрес перед входом.');
-            if (elements.registerModal) elements.registerModal.style.display = "none";
-            return auth.signOut(); // Выходим до подтверждения email
-          })
-          .catch(error => {
-            alert("Ошибка регистрации: " + error.message);
-          });
+            .then((userCredential) => {
+                const user = userCredential.user;
+
+                // Обновляем профиль в Auth
+                return user.updateProfile({ displayName: displayName })
+                    .then(() => {
+                        // Создаем документ в Firestore
+                        return db.collection("users").doc(user.uid).set({
+                            displayName: displayName,
+                            email: user.email,
+                            photoURL: null,
+                            balance: 0,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                    })
+                    .then(() => {
+                        // Отправляем письмо подтверждения
+                        return user.sendEmailVerification();
+                    });
+            })
+            .then(() => {
+                alert('Письмо с подтверждением отправлено! Пожалуйста, проверьте почту.');
+                if (elements.registerModal) elements.registerModal.style.display = "none";
+                auth.signOut();
+            })
+            .catch(error => {
+                alert("Ошибка регистрации: " + error.message);
+            });
       });
     }
   }
     
 
     // Выход из системы
-    if (elements.logoutBtn) {
-      elements.logoutBtn.addEventListener("click", () => {
-        auth.signOut();
-      });
+    // Новый универсальный обработчик для всех кнопок выхода
+    function setupLogoutButtons() {
+        const logoutButtons = document.querySelectorAll('.js-logout-btn');
+        logoutButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                auth.signOut().catch(error => {
+                    console.error("Ошибка при выходе из аккаунта:", error);
+                    alert("Не удалось выйти. Пожалуйста, попробуйте снова.");
+                });
+            });
+        });
     }
 
+    setupLogoutButtons();
     setupSocialAuth();
     setupEmailAuth();
   }
@@ -230,49 +314,28 @@ function initAuth() {
     });
 
   // Отслеживание состояния аутентификации
-  auth.onAuthStateChanged(user => {
-    updateUI(user);
-  });
+auth.onAuthStateChanged(user => {
+  if (user) {
+    // Пользователь авторизован
+    updateUI(user); // Ваш существующий вызов
+
+    // Загружаем данные из Firestore для хедера
+    db.collection('users').doc(user.uid).get().then(doc => {
+        if (doc.exists) {
+            const data = doc.data();
+            const balanceElement = document.getElementById('userBalance');
+            if (balanceElement) {
+                balanceElement.textContent = data.balance.toLocaleString('ru-RU');
+            }
+        }
+    });
+
+  } else {
+    // Пользователь не авторизован
+    updateUI(null);
+  }
+});
 
   // Инициализация
   initAuth();
 });
-
-
-
-
-
-
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyB-nLWTMjzrsfYiDtHeItdT3Aa2KAEWqoI",
-//   authDomain: "crazyfire-app.firebaseapp.com",
-//   projectId: "crazyfire-app",
-//   storageBucket: "crazyfire-app.firebasestorage.app",
-//   messagingSenderId: "218958038563",
-//   appId: "1:218958038563:web:07df108430af2145f45396",
-//   measurementId: "G-X69JL6FMKQ"
-// };
-
-// // Инициализация Firebase
-// firebase.initializeApp(firebaseConfig);
-
-// // Инициализация FirebaseUI
-// const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-// ui.start("#firebaseui-auth-container", {
-//   signInOptions: [
-//     firebase.auth.EmailAuthProvider.PROVIDER_ID,
-//     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-//   ],
-//   signInSuccessUrl: "/", // URL, куда перенаправить после успешного входа
-// });
-
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     console.log("Пользователь вошел:", user.email);
-//   } else {
-//     console.log("Пользователь вышел");
-//   }
-// });

@@ -34,11 +34,12 @@
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
-    <link rel="stylesheet" href="/assets/css/projects-page.css">
+    <link rel="stylesheet" href="/assets/css/bank.css">
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     <script src="/assets/js/auth.js"></script>
@@ -64,14 +65,14 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </button>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -106,7 +107,7 @@
 
                         </li>
                     </ul>
-                    <div class="page-actions-container">                    
+                    <div class="page-actions-container">                
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
@@ -197,6 +198,7 @@
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                    </div>     
 
                     <!-- Кнопка Войти -->
                     <button id="loginBtn" class="btn btn-primary me-2" style="border-radius: 20px;">Войти в аккаунт</button>
@@ -216,10 +218,9 @@
                         <div class="dropdown">
                         <button class="profile-dropdown-btn" id="profileDropdown" data-bs-toggle="dropdown">
                             <span id="profileName" class="profile-name"></span>
-                            <span id="profileEmail" style="display:none;"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
+                            <li><a class="dropdown-item" href="./profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><button class="dropdown-item js-logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button></li>
                         </ul>
@@ -233,9 +234,8 @@
                             </span>
                         </a>
                     </div>
-                    </div>
-                </div> 
-
+                  </div>
+                    
                 </div>
             </div>
         </nav>
@@ -246,7 +246,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <form class="form_container" id="loginForm">
-      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="logo_container"><img src="./assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
       <div class="title_container">
         <p class="title">Вход в аккаунт</p>
         <span class="subtitle">Войдите, чтобы получить доступ ко всем возможностям</span>
@@ -382,7 +382,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <form class="form_container" id="registerForm">
-      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="logo_container"><img src="./assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
       <div class="title_container">
         <p class="title">Создать аккаунт</p>
         <span class="subtitle">Присоединяйтесь к нашему сообществу</span>
@@ -536,74 +536,54 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-<main class="projects-page-container">
-    <div class="container">
-        <h1>Наши проекты</h1>
-        
-        <div class="projects-grid">
-            <!-- Кулинарный дневник -->
-            <div class="project-card">
-                <div class="project-card-image">
-                    <img src="/assets/images/Projects/Кулінарний щоденник.webp" alt="Кулінарний щоденник">
-                </div>
-                <div class="project-card-content">
-                    <span class="project-status active">Активен</span>
-                    <h3 class="project-title">Кулінарний щоденник</h3>
-                    <p class="project-description">
-                        Уникальный проект для всех, кто любит готовить и хочет хранить свои рецепты в одном месте. Программа позволяет создавать, сохранять и делиться любимыми рецептами, а также планировать меню на неделю.
-                    </p>
-                    <div class="project-features">
-                        <p><strong>Ключевые особенности:</strong></p>
-                        <ul>
-                            <li><i class="fas fa-book"></i>Сохранение рецептов</li>
-                            <li><i class="fas fa-users"></i>Обмен с друзьями</li>
-                            <li><i class="fas fa-calendar-alt"></i>Планировщик меню</li>
-                            <li><i class="fas fa-fire"></i>Firebase</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <a href="https://culinary-diary-site.web.app" class="project-button" target="_blank">
-                            Перейти к проекту <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 
-            <div class="project-card">
-                <div class="project-card-image">
-                    <img src="/path/to/your/image.webp" alt="Название проекта">
-                </div>
-                <div class="project-card-content">
-                    <span class="project-status in-development">В разработке</span>
-                    <h3 class="project-title">Название нового проекта</h3>
-                    <p class="project-description">
-                        Краткое и емкое описание вашего следующего потрясающего проекта.
-                    </p>
-                    <div class="project-features">
-                        <p><strong>Технологии:</strong></p>
-                        <ul>
-                            <li><i class="fab fa-vuejs"></i>Vue.js</li>
-                            <li><i class="fas fa-bolt"></i>Vite</li>
-                            <li><i class="fas fa-database"></i>API</li>
-                        </ul>
-                    </div>
-                    <div class="project-actions">
-                        <a href="#" class="project-button disabled">Скоро</a>
-                    </div>
-                </div>
-            </div>
-            -->
+<main class="container bank-page-container" style="padding-top: 100px;">
+        <!-- Лоадер -->
+        <div id="bankLoader" class="bank-loader">
+            <div class="spinner-border" role="status"><span class="visually-hidden">Загрузка...</span></div>
         </div>
-    </div>
-</main>
 
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/search.js"></script>
-    <script src="/assets/js/header.js"></script>
-    <script src="/assets/js/footer.js"></script>
-    <script src="/assets/js/parallax.js"></script>
-    <script src="/assets/js/loader.js"></script>
+        <!-- Основной контент (скрыт до загрузки) -->
+        <div id="bankWrapper" class="bank-wrapper loading">
+            <div class="bank-card">
+                <div class="bank-card-header">
+                    <h1 class="bank-title">Мой кошелек</h1>
+                    <div class="currency-info">
+                        <span>Ваша валюта:</span>
+                        <strong class="currency-name">
+                            <i class="fas fa-fire me-1"></i> FireCoin
+                        </strong>
+                    </div>
+                </div>
+                <hr>
+                <div class="balance-section">
+                    <p class="balance-label">Текущий баланс</p>
+                    <div class="balance-amount-wrapper">
+                        <span id="bankUserBalance" class="balance-amount-large">0</span>
+                        <img src="/assets/images/Site-logos/4kLogo2.webp" alt="FireCoin" class="currency-logo-large">
+                    </div>
+                </div>
+                <div class="bank-actions">
+                    <button id="topUpBtn" class="btn btn-primary btn-lg">
+                        <i class="fas fa-plus-circle me-2"></i> Пополнить баланс
+                    </button>
+                    <p class="mt-3 text-muted small">Вы будете перенаправлены на страницу оплаты.</p>
+                </div>
+            </div>
+
+            <div class="transaction-history">
+                <h2 class="history-title">История операций</h2>
+                <div class="history-list">
+                    <!-- Заглушка, пока нет реальных данных -->
+                    <div class="history-item-placeholder">
+                        <i class="fas fa-box-open"></i>
+                        <p>Здесь будет отображаться история ваших пополнений и трат.</p>
+                    </div>
+                    <!-- Сюда будут добавляться реальные транзакции -->
+                </div>
+            </div>
+        </div>
+    </main>
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -613,6 +593,14 @@
     <script src="/assets/js/scroll-top-button.js"></script>
     <!-- Back to Top End -->
     
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="./assets/js/header.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/bank.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>
 </html>

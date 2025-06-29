@@ -1,6 +1,3 @@
-
-
-
 // Функционал модальных окон
         document.addEventListener('DOMContentLoaded', function() {
         const loginBtn = document.getElementById('loginBtn');

@@ -1,0 +1,233 @@
+/* Основные стили профиля */
+.profile-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-wrapper.loading {
+  display: none;
+}
+
+.profile-loader {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column; /* Элементы идут друг под другом: аватар, имя, почта */
+  align-items: center;   /* Центрируем их по горизонтали */
+  justify-content: center; /* Центрируем по вертикали (на всякий случай) */
+  text-align: center;      /* Центрируем сам текст внутри h1 и p */
+}
+
+/* Используем класс, а не ID для стилизации, чтобы избежать конфликтов */
+.profile-header .profile-name-display {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bs-body-color);
+}
+
+.profile-header .profile-email-display {
+  color: var(--bs-secondary-color);
+  margin-top: 0.25rem;
+  font-size: 1rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--bs-body-bg, white);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.avatar-wrapper:hover .avatar-img {
+  filter: brightness(0.7);
+}
+
+.avatar-edit-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-wrapper:hover .avatar-edit-btn {
+  opacity: 1;
+}
+
+#editProfileModal {
+  z-index: 1060; /* z-index Bootstrap-оверлея 1055, ставим наше окно выше */
+}
+
+.profile-card {
+  background: var(--bs-body-bg);
+  border-radius: 12px;
+  padding: 25px;
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-body-color);
+}
+
+.profile-balance-amount {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--bs-body-color);
+}
+
+.currency-logo {
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.info-label {
+  font-weight: 500;
+  color: var(--bs-secondary-color);
+  margin-right: 8px;
+}
+
+.info-value {
+  font-weight: 500;
+  color: var(--bs-body-color);
+}
+
+.profile-actions .btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  margin: 5px;
+}
+
+/* === НАЧАЛО ИСПРАВЛЕНИЙ ДЛЯ ТЕМНОЙ ТЕМЫ === */
+
+body.dark-theme .profile-card {
+  background-color: #2c3036;
+  border-color: #495057;
+}
+
+body.dark-theme .avatar-img {
+  border-color: #2c3036;
+}
+
+/* Явно указываем белый/светлый цвет для текста в темной теме */
+body.dark-theme .profile-page-container h1,
+body.dark-theme .profile-page-container h5,
+body.dark-theme .profile-page-container p,
+body.dark-theme .profile-page-container span {
+  color: #f8f9fa; /* Светло-серый цвет текста Bootstrap */
+}
+
+/* Второстепенному тексту задаем более тусклый оттенок */
+body.dark-theme .profile-email-display,
+body.dark-theme .info-label {
+  color: #adb5bd;
+}
+
+/* === КОНЕЦ ИСПРАВЛЕНИЙ ДЛЯ ТЕМНОЙ ТЕМЫ === */
+
+/* === СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА В ТЕМНОЙ ТЕМЕ === */
+
+body.dark-theme .modal-content {
+  background-color: #2c3036; /* Темный фон для самого окна */
+  color: #f8f9fa;             /* Светлый цвет основного текста */
+  border: 1px solid #495057;
+}
+
+body.dark-theme .modal-header {
+  border-bottom: 1px solid #495057; /* Линия под заголовком */
+}
+
+body.dark-theme .modal-footer {
+  border-top: 1px solid #495057; /* Линия над кнопками */
+}
+
+/* Стилизуем кнопку "крестик" для закрытия */
+body.dark-theme .modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Стилизуем поля ввода */
+body.dark-theme .modal-body .form-control {
+  background-color: #212529;
+  border-color: #495057;
+  color: #f8f9fa;
+}
+
+body.dark-theme .modal-body .form-control:focus {
+  background-color: #212529;
+  border-color: #86b7fe; /* Стандартный цвет фокуса Bootstrap */
+  color: #f8f9fa;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Стилизуем лейблы */
+body.dark-theme .modal-body .form-label {
+  color: #adb5bd; /* Более тусклый цвет для лейблов */
+}
+
+/* profile.css */
+.profile-card .card-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-header .profile-name-display {
+    font-size: 1.75rem;
+  }
+  .profile-balance-amount {
+    font-size: 1.75rem;
+  }
+  .profile-card {
+    padding: 20px;
+  }
+}

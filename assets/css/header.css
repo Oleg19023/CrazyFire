@@ -133,3 +133,57 @@ body:not(.dark-theme) .navbar-toggler-icon span { background: #000; }
         align-items: center;
     }
 }
+
+/* === БЛОК БАЛАНСА В ХЕДЕРЕ === */
+
+a.balance-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.balance-amount {
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.balance-logo {
+  height: 18px;
+  width: 18px;
+  margin-bottom: 3px;
+}
+
+/* --- Стили для СВЕТЛОЙ ТЕМЫ (по умолчанию) --- */
+a.balance-container {
+  background-color: #f8f9fa; /* Светло-серый фон */
+  border: 1px solid #dee2e6; /* Светло-серая рамка */
+}
+.balance-amount {
+  color: #212529; /* Темный текст */
+}
+a.balance-container:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+  background-color: #e9ecef; /* Фон чуть темнее при наведении */
+}
+
+
+/* --- Стили для ТЕМНОЙ ТЕМЫ --- */
+body.dark-theme a.balance-container {
+  background-color: #343a40; /* Темно-серый фон */
+  border: 1px solid #495057; /* Рамка чуть светлее фона */
+}
+
+body.dark-theme .balance-amount {
+  color: #f8f9fa; /* Светлый текст */
+}
+
+body.dark-theme a.balance-container:hover {
+  background-color: #495057; /* Фон чуть светлее при наведении */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

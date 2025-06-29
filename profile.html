@@ -34,10 +34,12 @@
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
-    <link rel="stylesheet" href="/assets/css/about-page.css">
+    <link rel="stylesheet" href="/assets/css/profile.css">
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     <script src="/assets/js/auth.js"></script>
@@ -220,17 +222,17 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="./profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><button class="dropdown-item" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button></li>
+                            <li><button class="dropdown-item js-logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button></li>
                         </ul>
                         </div>
                         
                         <!-- Блок баланса -->
-                        <div class="balance-container ms-2">
-                        <span class="balance-amount" id="userBalance"></span>
-                        <span class="balance-currency">
-                            <img src="./assets/images/Site-logos/4kLogo2.webp" alt="Balance" class="balance-logo">
-                        </span>
-                        </div>
+                        <a href="/bank.html" class="balance-container ms-2 text-decoration-none">
+                            <span class="balance-amount" id="userBalance"></span>
+                            <span class="balance-currency">
+                                <img src="/assets/images/Site-logos/4kLogo2.webp" alt="Balance" class="balance-logo">
+                            </span>
+                        </a>
                     </div>
                   </div>
                     
@@ -256,7 +258,7 @@
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M7 8.5L9.94202 10.2394C11.6572 11.2535 12.3428 11.2535 14.058 10.2394L17 8.5"></path>
           <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"></path>
         </svg>
-        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="login_email_field" required>
+        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="login_email_field" required maxlength="254">
       </div>
       <div class="input_container">
         <label class="input_label" for="password_field">Пароль</label>
@@ -400,7 +402,7 @@
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M7 8.5L9.94202 10.2394C11.6572 11.2535 12.3428 11.2535 14.058 10.2394L17 8.5"></path>
           <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"></path>
         </svg>
-        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="register_email_field" required>
+        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="register_email_field" required maxlength="254">
       </div>
       <div class="input_container">
         <label class="input_label" for="password_field">Пароль</label>
@@ -534,205 +536,110 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-<main class="container" style="padding-top: 100px;">
-  <div class="profile-wrapper">
-    <!-- Шапка профиля --> <h1>🛠Работаем над профилем </h1>
-    <div class="profile-header mb-5 text-center">
-      <div class="avatar-wrapper mb-4 mx-auto">
-        <img id="profile-icon" src="./assets/images/None-person.jpg" alt="Аватар" class="avatar-img">
-        <button id="changeAvatarBtn" class="avatar-edit-btn">
-          <i class="fas fa-camera"></i>
-        </button>
-      </div>
-      <h1 id="profileName" class="mb-2">Загрузка...</h1>
-      <p id="profileEmail" class="profileEmail">Загрузка...</p>
+ <main class="container profile-page-container" style="padding-top: 100px;">
+        
+    <!-- Лоадер, пока грузятся данные -->
+    <div id="profileLoader" class="profile-loader">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+        <p class="mt-2">Загружаем ваш профиль...</p>
     </div>
 
-    <!-- Карточки информации -->
-    <div class="profile-cards row g-4 justify-content-center">
-      <!-- Карточка баланса -->
-      <div class="col-md-6">
-        <div class="profile-card h-100">
-          <div class="card-body text-center">
-            <h5 class="card-title">
-              <i class="fas fa-wallet me-2"></i>Баланс
-            </h5>
-            <div class="align-items-end justify-content-center mt-3">
-              <span id="userBalance" class="profile-balance-amount">0.00</span>
-              <img src="./assets/images/Site-logos/4kLogo2.webp" alt="Валюта" class="currency-logo ms-2">
+    <!-- Основной контейнер профиля (скрыт по умолчанию) -->
+    <div id="profileWrapper" class="profile-wrapper loading">
+        
+        <!-- Шапка профиля -->
+        <div class="profile-header mb-5">
+            <div class="avatar-wrapper">
+                <img id="profileIcon" src="./assets/images/None-person.jpg" alt="Аватар" class="avatar-img">
             </div>
-          </div>
+            <!-- ИЗМЕНЕНЫ ID И ДОБАВЛЕНЫ КЛАССЫ -->
+            <h1 id="profileNameDisplay" class="profile-name-display"></h1>
+            <p id="profileEmailDisplay" class="profile-email-display"></p>
         </div>
-      </div>
 
-      <!-- Карточка информации -->
-      <div class="col-md-6">
-        <div class="profile-card h-100">
-          <div class="card-body text-center">
-            <h5 class="card-title">
-              <i class="fas fa-info-circle me-2"></i>Информация
-            </h5>
-            <ul class="info-list mt-3 text-center list-unstyled">
-              <li class="mb-2">
-                <span class="info-label">Статус:</span>
-                <span class="info-value">Активен</span>
-              </li>
-              <li>
-                <span class="info-label">Регистрация:</span>
-                <span id="profileCreatedAt" class="info-value">Загрузка...</span>
-              </li>
-            </ul>
-          </div>
+        <!-- Карточки информации -->
+        <div class="profile-cards row g-4 justify-content-center">
+            <!-- Карточка баланса -->
+            <div class="col-lg-6">
+                <div class="profile-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><i class="fas fa-wallet me-2"></i>Баланс</h5>
+                        <div class="d-flex align-items-end justify-content-center mt-3">
+                            <!-- ИЗМЕНЕН ID -->
+                            <span id="userBalanceDisplay" class="profile-balance-amount"></span>
+                            <img src="./assets/images/Site-logos/4kLogo2.webp" alt="Валюта" class="currency-logo ms-2">
+                        </div>
+                    </div>
+                    <!-- НОВАЯ КНОПКА -->
+            <div class="card-footer bg-transparent border-0 pt-0 pb-3 text-center">
+                        <a href="/bank.html" class="btn btn-primary">
+                            <i class="fas fa-plus-circle me-1"></i> Пополнить
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка информации -->
+            <div class="col-lg-6">
+                <div class="profile-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><i class="fas fa-info-circle me-2"></i>Информация</h5>
+                        <ul class="info-list mt-3">
+                            <li class="mb-2 d-flex justify-content-center">
+                                <span class="info-label">Статус:</span>
+                                <span class="info-value text-success">Активен</span>
+                            </li>
+                            <li class="d-flex justify-content-center">
+                                <span class="info-label">Регистрация:</span>
+                                <span id="profileCreatedAt" class="info-value"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <!-- Действия профиля -->
-      <div class="col-12 mt-4 text-center">
-        <div>
-          <a href="#" class="btn btn-primary">
-            <i class="fas fa-user-edit me-2"></i>Редактировать
-          </a>
-          <button id="logoutBtn" class="btn btn-danger">
-            <i class="fas fa-sign-out-alt me-2"></i>Выйти
-          </button>
+        <!-- Действия профиля -->
+        <div class="col-12 mt-5 text-center profile-actions">
+            <button class="btn btn-primary" id="editProfileBtn"> <!-- <<< ДОБАВИЛИ ID ЗДЕСЬ -->
+                <i class="fas fa-user-edit me-2"></i>Редактировать
+            </button>
+            <button class="btn btn-danger js-logout-btn">
+                <i class="fas fa-sign-out-alt me-2"></i>Выйти
+            </button>
+        </div>
+    </div>
+</main>
+
+  <!-- Модальное окно для редактирования профиля -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editProfileModalLabel">Редактировать профиль</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editProfileForm">
+            <div class="mb-3">
+              <label for="newDisplayName" class="form-label">Новое имя</label>
+              <input type="text" class="form-control" id="newDisplayName" required minlength="3" maxlength="25">
+            </div>
+            <div class="mb-3">
+              <label for="newPhotoURL" class="form-label">Ссылка на новый аватар (URL)</label>
+              <input type="url" class="form-control" id="newPhotoURL" placeholder="https://example.com/image.png">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-primary" id="saveProfileChanges">Сохранить</button>
         </div>
       </div>
     </div>
   </div>
-</main>
-
-<style>
- /* Основные стили профиля */
-.profile-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.avatar-wrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.avatar-edit-btn {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #6366f1;
-  color: white;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.avatar-edit-btn:hover {
-  transform: scale(1.1);
-}
-
-.profile-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-  height: 100%;
-}
-
-body.dark-theme .profile-card {
-  background-color: #43484f;
-}
-
-.profile-card:hover {
-  transform: translateY(-5px);
-}
-
-.profile-balance-amount {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1f2937;
-}
-
-body.dark-theme .profile-balance-amount {
-  color: white;
-}
-
-.currency-logo {
-  height: 28px;
-  margin-bottom: 6px;
-}
-
-.info-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-body.dark-theme .info-label {
-  color: rgb(192, 192, 192);
-}
-
-.profileEmail {
-  color: rgb(0, 0, 0);
-}
-
-body.dark-theme .profileEmail {
-  color: white;
-}
-
-
-body.dark-theme .info-value {
-  color: white;
-}
-
-.info-label {
-  font-weight: 500;
-  color: #1f2937;
-  margin-right: 5px;
-}
-
-.info-value {
-  color: #6c757d;
-}
-
-.profile-actions .btn {
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-weight: 500;
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-  .profile-header {
-    margin-bottom: 2rem !important;
-  }
-  
-  .profile-balance-amount {
-    font-size: 1.5rem;
-  }
-  
-  .profile-cards .col-md-6 {
-    margin-bottom: 15px;
-  }
-}
-</style>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -748,6 +655,7 @@ body.dark-theme .info-value {
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/profile.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

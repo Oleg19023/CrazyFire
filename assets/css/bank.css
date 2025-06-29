@@ -1,0 +1,140 @@
+.bank-page-container {
+  max-width: 800px;
+}
+
+.bank-wrapper.loading {
+  display: none;
+}
+
+.bank-loader {
+  text-align: center;
+  padding: 50px;
+}
+
+.bank-card {
+  background: var(--bs-body-bg);
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--bs-border-color);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bank-card-header {
+  margin-bottom: 20px;
+}
+
+.bank-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--bs-body-color);
+}
+
+.currency-info {
+  font-size: 1.1rem;
+  color: var(--bs-secondary-color);
+}
+
+.currency-name {
+  color: #fd7e14; /* Оранжевый цвет огня */
+}
+
+.balance-section {
+  margin: 30px 0;
+}
+
+.balance-label {
+  font-size: 1rem;
+  color: var(--bs-secondary-color);
+  margin-bottom: 5px;
+}
+
+.balance-amount-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-amount-large {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bs-body-color);
+}
+
+.currency-logo-large {
+  height: 60px;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.bank-actions .btn {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+.transaction-history {
+  text-align: center;
+}
+
+.history-title {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--bs-body-color);
+}
+
+.history-item-placeholder {
+  background-color: var(--bs-tertiary-bg);
+  padding: 40px;
+  border-radius: 12px;
+  color: var(--bs-secondary-color);
+  border: 2px dashed var(--bs-border-color);
+}
+
+.history-item-placeholder .fas {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+/* Темная тема */
+body.dark-theme .currency-name {
+  color: #ff9933; /* Более яркий оранжевый для темной темы */
+}
+
+/* === СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ === */
+
+body.dark-theme .bank-card {
+  background-color: #2c3036;
+  border-color: #495057;
+}
+
+body.dark-theme .bank-title,
+body.dark-theme .balance-amount-large,
+body.dark-theme .history-title {
+  color: #f8f9fa;
+}
+
+/* Новый код */
+body.dark-theme .currency-info,
+body.dark-theme .balance-label,
+body.dark-theme .history-item-placeholder p,
+body.dark-theme .bank-actions .text-muted { /* <<< Добавили этот селектор */
+  color: #adb5bd !important; /* Добавим !important, чтобы перебить класс .text-muted */
+}
+
+body.dark-theme .currency-name {
+  color: #ff9933; /* Более яркий оранжевый для контраста */
+}
+
+body.dark-theme .history-item-placeholder {
+  background-color: #212529;
+  border-color: #495057;
+}
+
+body.dark-theme .history-item-placeholder .fas {
+  color: #6c757d;
+}

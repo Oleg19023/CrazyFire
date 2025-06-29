@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="/AdminSettings.html" class="btn btn-secondary admin-button" title="Настройки">
                             <i class="fas fa-cogs"></i>
                         </a>
-                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>2.7</b></b> BETA</a>
+                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>2.8</b></b> </a>
                         <span class="footer-separator">|</span>
                         <span id="footerDate"></span>
                         <span class="footer-separator">|</span>
