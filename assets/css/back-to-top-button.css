@@ -84,7 +84,6 @@
 @media (max-width: 576px) {
     .header-back-button {
         width: 40px;  /* Делаем кнопку квадратной */
-        border-radius: 50%; /* Скругляем до круга */
         padding: 0; /* Убираем внутренние отступы */
         gap: 0;
     }
@@ -92,5 +91,9 @@
     /* Текст точно должен быть скрыт */
     .back-button-text {
         display: none;
+    }
+
+    .navbar-nav {
+        display: none !important;
     }
 }

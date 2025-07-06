@@ -172,6 +172,16 @@ a.balance-container:hover {
   background-color: #e9ecef; /* Фон чуть темнее при наведении */
 }
 
+@media (max-width: 991.98px) {
+  a.balance-container {
+    background-color: #343a40; /* Темно-серый фон */
+    border: 1px solid #495057; /* Рамка чуть светлее фона */
+  }
+  .balance-amount {
+    color: #f8f9fa !important; /* Светлый текст */
+  }
+}
+
 
 /* --- Стили для ТЕМНОЙ ТЕМЫ --- */
 body.dark-theme a.balance-container {

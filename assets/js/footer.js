@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="footer-info">
                         <img src="/assets/images/Site-logos/4kLogo2.webp" alt="logo" class="footer-logo">
                         <div class="footer-text-block">
-                            <p class="copyright"><b>© 2023-<span id="footerYear"></b></span> <b>CrazyFire сorporation. Все права защищены.</b></p>
-                            <p class="trademark">Заставка и логотип являются товарными знаками CrazyFire.</p>
+                            <p class="copyright"><b>© 2023-<span id="footerYear"></b></span> <b>CrazyFire. Все права защищены.</b></p>
+                            <p class="trademark">Заставка, логотип и FireCoin являются товарными знаками CrazyFire.</p>
                         </div>
                     </div>
                     <div class="footer-social">

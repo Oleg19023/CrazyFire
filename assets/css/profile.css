@@ -230,4 +230,10 @@ body.dark-theme .modal-body .form-label {
   .profile-card {
     padding: 20px;
   }
+  .currency-logo {
+    height: 30px;
+  }
+  .d-flex {
+    gap: 0!important;
+  }
 }

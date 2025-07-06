@@ -34,11 +34,12 @@
     <link rel="stylesheet" href="/assets/css/Program-pages.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
-    <link rel="stylesheet" href="/assets/css/about-page.css">
+    <link rel="stylesheet" href="/assets/css/bank.css">
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
     <script src="/assets/js/auth.js"></script>
@@ -64,14 +65,14 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 40px;"></a>
                 <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </button>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -106,7 +107,7 @@
 
                         </li>
                     </ul>
-                    <div class="page-actions-container">                    
+                    <div class="page-actions-container">                
                     <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
                     
                     <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
@@ -196,8 +197,9 @@
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>                    
-                    
+                    </button>
+                    </div>     
+
                     <!-- Кнопка Войти -->
                     <button id="loginBtn" class="btn btn-primary me-2" style="border-radius: 20px;">Войти в аккаунт</button>
 
@@ -216,10 +218,9 @@
                         <div class="dropdown">
                         <button class="profile-dropdown-btn" id="profileDropdown" data-bs-toggle="dropdown">
                             <span id="profileName" class="profile-name"></span>
-                            <span id="profileEmail" style="display:none;"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
+                            <li><a class="dropdown-item" href="./profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><button class="dropdown-item js-logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button></li>
                         </ul>
@@ -233,9 +234,8 @@
                             </span>
                         </a>
                     </div>
-                    </div>
-                  </div> 
-
+                  </div>
+                    
                 </div>
             </div>
         </nav>
@@ -246,7 +246,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <form class="form_container" id="loginForm">
-      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="logo_container"><img src="./assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
       <div class="title_container">
         <p class="title">Вход в аккаунт</p>
         <span class="subtitle">Войдите, чтобы получить доступ ко всем возможностям</span>
@@ -382,7 +382,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <form class="form_container" id="registerForm">
-      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="logo_container"><img src="./assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
       <div class="title_container">
         <p class="title">Создать аккаунт</p>
         <span class="subtitle">Присоединяйтесь к нашему сообществу</span>
@@ -536,177 +536,16 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-    <main class="container">
-        <div class="about-container">
-
-    <!-- Блок 1: О проекте -->
-    <section class="about-hero">
-        <div class="hero-content">
-            <h1 class="hero-title">О проекте CrazyFire</h1>
-            <p class="hero-subtitle">
-                CrazyFire — это не просто сайт, а целая платформа, созданная для того, чтобы предоставить вам удобный, быстрый и безопасный доступ к лучшим программам, играм и музыке. Наша миссия — сделать качественный цифровой контент доступным для каждого.
-            </p>
-        </div>
-        <div class="project-principles">
-            <div class="principle-item">
-                <div class="principle-icon"><i class="fas fa-shield-alt"></i></div>
-                <h3>Безопасно</h3>
-                <p>Все файлы проходят тщательную проверку на безопасность.</p>
-            </div>
-            <div class="principle-item">
-                <div class="principle-icon"><i class="fas fa-rocket"></i></div>
-                <h3>Быстро</h3>
-                <p>Интуитивный интерфейс и быстрая загрузка без лишних ожиданий.</p>
-            </div>
-            <div class="principle-item">
-                <div class="principle-icon"><i class="fas fa-users"></i></div>
-                <h3>Удобно</h3>
-                <p>Мы создаем продукт, ориентируясь на потребности нашего сообщества.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок 2: Наша команда -->
-    <section class="team-section">
-        <h2 class="team-title">Наша Команда</h2>
-        <p class="team-subtitle">Люди, которые создают и поддерживают CrazyFire.</p>
-        
-        <div class="team-grid">
-            <!-- Карточка разработчика 1 -->
-            <div class="dev-card">
-                <div class="dev-card-image-wrapper">
-                    <img src="/assets/images/Oleh.png" alt="Фото">
-                </div>
-                <div class="dev-card-body">
-                    <h3 class="dev-card-name">Олег</h3>
-                    <p class="dev-card-role">Главный разработчик / Основатель</p>
-                    <div class="dev-card-socials">
-                        <a href="https://github.com/Oleg19023" target="_blank" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://t.me/W1zarDll" target="_blank" aria-label="Telegram" title="Telegram"><i class="fab fa-telegram"></i></a>
-                        <a href="https://steamcommunity.com/id/91236786068" target="_blank" aria-label="Steam" title="Steam"><i class="fab fa-steam"></i></a>
-                        <a href="/Program-pages/Discord-pages.html" aria-label="Discord" title="Discord"><i class="fab fa-discord"></i></a>
-                        <a href="https://www.youtube.com/@-WizarD_" target="_blank" aria-label="Youtube" title="Youtube"><i class="fab fa-youtube"></i></a>
-                        <!-- <a href="https://www.instagram.com/w1zardii/" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=100084032918642" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook"></i></a> -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Карточка разработчика 2 -->
-            <div class="dev-card">
-                <div class="dev-card-image-wrapper">
-                    <img src="/assets/images/None-person.jpg" alt="Фото">
-                </div>
-                <div class="dev-card-body">
-                    <h3 class="dev-card-name">Никита</h3>
-                    <p class="dev-card-role">3D Элемент-Дизайнер / Моделлер</p>
-                    </p>
-                    <div class="dev-card-socials">
-                        <a href="https://steamcommunity.com/profiles/76561199096793609" target="_blank" aria-label="" title=""><i class="fab fa-steam"></i></a>
-                        <a href="https://www.artstation.com/ll4nik" target="_blank" aria-label="" title=""><i class="fab fa-artstation"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Плейсхолдер -->
-            <!-- <div class="dev-card placeholder js-open-contact-modal">
-                <div class="placeholder-icon"><i class="fas fa-user-plus"></i></div>
-                <div class="dev-card-body">
-                    <h3 class="dev-card-name">Вакантное место</h3>
-                    <p class="dev-card-role">Ищем талантливого дизайнера</p>
-                </div>
-            </div> -->
-
-            <!-- Плейсхолдер -->
-            <div class="dev-card placeholder js-open-contact-modal">
-                 <div class="placeholder-icon"><i class="fas fa-user-plus"></i></div>
-                <div class="dev-card-body">
-                    <h3 class="dev-card-name">Вакантное место</h3>
-                    <p class="dev-card-role">Ищем Backend-разработчика</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-</div>
-
-<!-- ============================================= -->
-<!--          HTML МОДАЛЬНОГО ОКНА                 -->
-<!-- ============================================= -->
-<!-- Этот блок будет скрыт до клика -->
-<div id="contactModal" class="contact-modal-wrapper">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-        <button class="modal-close" aria-label="Закрыть окно">×</button>
-        <h2 class="modal-title">Хотите присоединиться к нам?</h2>
-        <p class="modal-subtitle" style="font-size: 18px;">Мы всегда рады новым талантам! Свяжитесь с нами любым удобным способом, чтобы обсудить детали.</p>
-        
-        <ul class="contact-list">
-            <li>
-                <a href="mailto:crazyfirecompany@gmail.com" target="_blank">
-                    <i class="fas fa-envelope"></i>
-                    <span>crazyfirecompany@gmail.com</span>
-                </a>
-            </li>
-            <li>
-                <a href="mailto:olegmordan621@gmail.com" target="_blank">
-                    <i class="fas fa-envelope"></i>
-                    <span>olegmordan621@gmail.com</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://t.me/W1zarDll" target="_blank">
-                    <i class="fab fa-telegram-plane"></i>
-                    <span>Telegram</span>
-                </a>
-            </li>
-            <li>
-                <a href="/Program-pages/Discord-pages.html">
-                    <i class="fab fa-discord"></i>
-                    <span>Discord</span>
-                </a>
-            </li>
-        </ul>
-        <p class="modal-footer-note">Нажмите на фон или клавишу Esc, чтобы закрыть.</p>
+<main class="container bank-page-container" style="padding-top: 100px;">
+    <div class="fire-coin-about">
+        <h1 class="fire-coin-title">О FireCoin</h1>
+        <p class="fire-coin-description">
+            FireCoin - это новая валюта нашего сайта, созданная для того, чтобы сделать ваши покупки и транзакции более удобными и безопасными. Мы понимаем, что в мире криптовалют важно иметь надежный и простой в использовании инструмент, поэтому мы разработали FireCoin с учетом потребностей наших пользователей.
+        </p>
+        <p class="fire-coin-description">
+            FireCoin позволяет вам легко и быстро совершать покупки на нашем сайте. Мы стремимся обеспечить высокую степень безопасности и конфиденциальности для всех наших пользователей, поэтому FireCoin использует передовые технологии шифрования и защиты данных.
     </div>
-</div>
-
-<!-- ============================================= -->
-<!--            СКРИПТ ДЛЯ МОДАЛЬНОГО ОКНА         -->
-<!-- ============================================= -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Находим все элементы, которые должны открывать модальное окно
-    const openModalButtons = document.querySelectorAll('.js-open-contact-modal');
-    const modal = document.getElementById('contactModal');
-
-    // Проверяем, существует ли модальное окно на странице
-    if (modal) {
-        const closeModalButton = modal.querySelector('.modal-close');
-        const modalOverlay = modal.querySelector('.modal-overlay');
-
-        const openModal = () => modal.classList.add('visible');
-        const closeModal = () => modal.classList.remove('visible');
-
-        // Назначаем обработчик клика на каждую кнопку "Вакантное место"
-        openModalButtons.forEach(button => {
-            button.addEventListener('click', openModal);
-        });
-
-        // Обработчики для закрытия окна
-        closeModalButton.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', closeModal);
-
-        // Закрытие окна по нажатию на клавишу Escape
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && modal.classList.contains('visible')) {
-                closeModal();
-            }
-        });
-    }
-});
-</script>
-    </main>
+</main>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
@@ -718,10 +557,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/search.js"></script>
-    <script src="/assets/js/header.js"></script>
+    <script src="./assets/js/header.js"></script>
     <script src="/assets/js/footer.js"></script>
     <script src="/assets/js/parallax.js"></script>
     <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/bank.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
 </body>

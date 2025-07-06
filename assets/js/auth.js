@@ -313,28 +313,100 @@ if (elements.registerForm) {
     }
     });
 
-  // Отслеживание состояния аутентификации
+// Глобальная переменная для отписки от слушателя, чтобы избежать утечек памяти
+let userDocUnsubscribe = null;
+
 auth.onAuthStateChanged(user => {
+  // Если пользователь меняется (входит или выходит), отписываемся от старого слушателя
+  if (userDocUnsubscribe) {
+    userDocUnsubscribe();
+  }
+
   if (user) {
     // Пользователь авторизован
-    updateUI(user); // Ваш существующий вызов
+    
+    // Подписываемся на изменения его документа в Firestore
+    userDocUnsubscribe = db.collection('users').doc(user.uid).onSnapshot(doc => {
+      if (doc.exists) {
+        const userData = doc.data();
+        
+        // Создаем "синтетический" объект user, объединяя данные из Auth и Firestore
+        const enrichedUser = {
+          ...user, // все стандартные поля: uid, email, emailVerified
+          displayName: userData.displayName || user.displayName, // имя из Firestore имеет приоритет
+          photoURL: userData.photoURL || user.photoURL, // аватар из Firestore имеет приоритет
+          balance: userData.balance || 0
+        };
 
-    // Загружаем данные из Firestore для хедера
-    db.collection('users').doc(user.uid).get().then(doc => {
-        if (doc.exists) {
-            const data = doc.data();
-            const balanceElement = document.getElementById('userBalance');
-            if (balanceElement) {
-                balanceElement.textContent = data.balance.toLocaleString('ru-RU');
-            }
-        }
+        // Вызываем одну функцию обновления UI с полными данными
+        updateRealtimeUI(enrichedUser);
+
+      } else {
+        // Документа еще нет (редкий случай), показываем данные из Auth
+        updateRealtimeUI(user);
+      }
+    }, error => {
+        console.error("Ошибка при прослушивании документа пользователя:", error);
     });
 
   } else {
     // Пользователь не авторизован
-    updateUI(null);
+    updateRealtimeUI(null);
   }
 });
+
+function updateRealtimeUI(user) {
+  const loginBtn = document.getElementById("loginBtn");
+  const profileMenu = document.getElementById("profileMenu");
+  
+  if (user) {
+    // Пользователь авторизован
+    if (loginBtn) loginBtn.style.display = "none";
+    if (profileMenu) profileMenu.style.display = "flex";
+    
+    // Обновляем имя
+    const profileName = document.getElementById("profileName");
+    if (profileName) {
+      profileName.textContent = user.displayName || user.email.split('@')[0];
+    }
+    
+    const profileIconContainer = document.querySelector("#profileMenu .profile-icon");
+    if (profileIconContainer) {
+      if (user.photoURL) {
+        // Если есть URL, создаем или обновляем <img>
+        let avatarImg = profileIconContainer.querySelector('.profile-avatar');
+        if (!avatarImg) {
+          // Если <img> еще нет, создаем его и вставляем
+          profileIconContainer.innerHTML = ''; // Очищаем от SVG
+          avatarImg = document.createElement('img');
+          avatarImg.alt = 'Аватар';
+          avatarImg.className = 'profile-avatar';
+          profileIconContainer.appendChild(avatarImg);
+        }
+        avatarImg.src = user.photoURL;
+      } else {
+        // Если URL нет, возвращаем стандартную SVG-иконку
+        profileIconContainer.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+            <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="currentColor"/>
+          </svg>
+        `;
+      }
+    }
+    
+    // Обновляем баланс
+    const balanceElement = document.getElementById('userBalance');
+    if (balanceElement) {
+      balanceElement.textContent = (user.balance || 0).toLocaleString('ru-RU');
+    }
+
+  } else {
+    // Пользователь не авторизован
+    if (loginBtn) loginBtn.style.display = "block";
+    if (profileMenu) profileMenu.style.display = "none";
+  }
+}
 
   // Инициализация
   initAuth();

@@ -34,49 +34,47 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Глобальная переменная для текущего пользователя
     let currentUser = null;
+    let profileUnsubscribe = null; // Слушатель для страницы профиля
 
-    // Главный обработчик состояния аутентификации
     auth.onAuthStateChanged(user => {
-            if (user) {
-                currentUser = user;
-                loadProfileDataFromFirestore(user.uid);
-                setupEventListeners();
-            } else {
-                window.location.href = '/index.html';
-            }
-        });
+        if (profileUnsubscribe) {
+            profileUnsubscribe(); // Отписываемся от предыдущего слушателя
+        }
+        if (user) {
+            currentUser = user;
+            // Подписываемся на изменения
+            profileUnsubscribe = db.collection('users').doc(user.uid)
+                .onSnapshot(doc => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        // Заполняем данные на странице профиля
+                        profileNameDisplay.textContent = data.displayName || 'Имя не указано';
+                        profileEmailDisplay.textContent = data.email;
+                        profileIcon.src = data.photoURL || './assets/images/None-person.jpg';
+                        userBalanceDisplay.textContent = (data.balance || 0).toLocaleString('ru-RU');
+                        
+                        if (data.createdAt && data.createdAt.toDate) {
+                        const creationDate = data.createdAt.toDate();
+                        profileCreatedAt.textContent = creationDate.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+                        }
 
-    // Функция загрузки данных ТОЛЬКО из Firestore
-    function loadProfileDataFromFirestore(uid) {
-        const userDocRef = db.collection('users').doc(uid);
-        
-        userDocRef.get().then(doc => {
-            if (doc.exists) {
-                const data = doc.data();
-                
-                // Заполняем данные на странице профиля
-                profileNameDisplay.textContent = data.displayName || 'Имя не указано';
-                profileEmailDisplay.textContent = data.email;
-                profileIcon.src = data.photoURL || './assets/images/None-person.jpg';
-                userBalanceDisplay.textContent = (data.balance || 0).toLocaleString('ru-RU');
-                
-                if (data.createdAt && data.createdAt.toDate) {
-                   const creationDate = data.createdAt.toDate();
-                   profileCreatedAt.textContent = creationDate.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
-                }
-
-                // Показываем контент
-                profileWrapper.classList.remove('loading');
-                profileLoader.style.display = 'none';
-
-            } else {
-                console.error("Документ пользователя не найден в Firestore!");
-                // Можно перенаправить на страницу ошибки или попробовать создать документ
-            }
-        }).catch(error => {
-            console.error("Ошибка при загрузке данных профиля:", error);
-        });
-    }
+                        // Показываем контент (только один раз)
+                        if (profileWrapper.classList.contains('loading')) {
+                        profileWrapper.classList.remove('loading');
+                        profileLoader.style.display = 'none';
+                        }
+                    } else {
+                        console.error("Документ пользователя не найден в Firestore!");
+                    }
+                }, error => {
+                    console.error("Ошибка при загрузке данных профиля:", error);
+                });
+            
+            setupEventListeners();
+        } else {
+            window.location.href = '/index.html';
+        }
+    });
 
     // Настраиваем все обработчики событий
     function setupEventListeners() {

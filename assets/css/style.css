@@ -229,54 +229,6 @@ table th, table td {
 .links a.active:hover {
     color: #0093e2;
 }
-  
-footer {
-    padding: 15px 0; /* Отступы внутри футера */
-}
-
-.footer-logo {
-    width: 40px;
-    padding-right: 5px;
-}
-
-.footer-text {
-    text-align: center;
-    max-width: 900px; /* Установите максимальную ширину */
-    word-wrap: break-word; /* Для переноса слов на следующую строку */
-    overflow-wrap: break-word; /* Современный эквивалент */
-    white-space: normal; /* Убедитесь, что текст переносится */
-    margin: auto; /* Центрирование текста по горизонтали */
-}
-
-.footer-links {
-    display: flex; /* Используем Flexbox для выравнивания ссылок */
-    justify-content: center; /* Центрируем ссылки по горизонтали */
-}
-
-footer a {
-    color: #0077ff; /* Цвет ссылок в футере */
-    text-decoration: none; /* Убрать подчеркивание */
-    margin: 0 2px; /* Отступ между ссылками */
-}
-
-footer a:hover {
-    text-decoration: underline; /* Подчеркивание при наведении на ссылки футера */
-}
-
-
-.footer-bottom {
-    display: flex;
-    align-items: center; /* Выравнивание по вертикали по центру */
-    justify-content: center; /* Выравнивание по горизонтали по центру */
-}
-
-.footer-admin-button a {
-    font-size: 15px; /* Размер иконки */
-}
-
-.footer-admin-button a:hover {
-    background-color: #007bff; /* Цвет фона при наведении */
-}
 
 #result {
     margin-top: 20px;
@@ -460,9 +412,51 @@ body.mobile-menu-open {
     gap: 20px;
 }
 
+footer {
+    padding: 15px 0; /* Отступы внутри футера */
+}
+
 .footer-logo {
     height: 55px;
     width: auto;
+}
+
+.footer-text {
+    text-align: center;
+    max-width: 900px; /* Установите максимальную ширину */
+    word-wrap: break-word; /* Для переноса слов на следующую строку */
+    overflow-wrap: break-word; /* Современный эквивалент */
+    white-space: normal; /* Убедитесь, что текст переносится */
+    margin: auto; /* Центрирование текста по горизонтали */
+}
+
+.footer-links {
+    display: flex; /* Используем Flexbox для выравнивания ссылок */
+    justify-content: center; /* Центрируем ссылки по горизонтали */
+}
+
+footer a {
+    color: #0077ff; /* Цвет ссылок в футере */
+    text-decoration: none; /* Убрать подчеркивание */
+    margin: 0 2px; /* Отступ между ссылками */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении на ссылки футера */
+}
+
+
+.footer-bottom {
+    display: flex;
+    align-items: center; /* Выравнивание по вертикали по центру */
+}
+
+.footer-admin-button a {
+    font-size: 15px; /* Размер иконки */
+}
+
+.footer-admin-button a:hover {
+    background-color: #007bff; /* Цвет фона при наведении */
 }
 
 .footer-text-block p {
@@ -610,12 +604,6 @@ body.mobile-menu-open {
     .footer-top, .footer-bottom {
         flex-direction: column;
         gap: 30px; /* Увеличим основной отступ между верхним и нижним блоком */
-    }
-
-    /* Блок с логотипом и текстом остается по центру, это выглядит хорошо */
-    .footer-info {
-        flex-direction: column;
-        text-align: center;
     }
 
     /* Иконки соцсетей выравниваем по центру */
