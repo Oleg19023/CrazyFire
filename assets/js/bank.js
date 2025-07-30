@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- НАСТРОЙКИ ---
-    const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Rem4FCx81tTXrrEXk2ScyugQovPlckJUftlaUMEPbJOWNM3J2ARFkDwA1Y3TKPPtQYy9a4jRdlomAAnZc2QUpUZ00LHy3tp4f';
-
     // --- Инициализация сервисов ---
     const auth = firebase.auth();
     const db = firebase.firestore();
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let bankUnsubscribe = null;
     let historyUnsubscribe = null;
-    let currentUser = null;
 
     // --- Основной обработчик ---
     auth.onAuthStateChanged(user => {
@@ -28,15 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (historyUnsubscribe) historyUnsubscribe();
 
         if (user) {
-            currentUser = user;
             // Подписываемся на изменения баланса пользователя
             subscribeToBalanceUpdates(user.uid);
             // Загружаем историю транзакций
             subscribeToTransactionHistory(user.uid);
-            // Добавляем ID пользователя в таблицы цен
-            setClientReferenceId(user.uid);
+            // Устанавливаем идентификаторы для таблиц Stripe
+            setStripeIdentifiers(user.uid);
         } else {
-            currentUser = null;
             window.location.href = '/index.html';
         }
     });
@@ -45,24 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
      * Подписывается на изменения документа пользователя и обновляет баланс.
      * @param {string} uid - ID пользователя.
      */
-
-    function setClientReferenceId(uid) {
-        // Даем компоненту Stripe время на инициализацию
-        setTimeout(() => {
-            const pricingTables = document.querySelectorAll('stripe-pricing-table');
-            if (pricingTables.length === 0) {
-                console.warn("Таблицы цен Stripe еще не загружены. Повторная попытка через 1 секунду.");
-                setTimeout(() => setClientReferenceId(uid), 1000); // Повторяем попытку
-                return;
-            }
-
-            pricingTables.forEach(table => {
-                table.setAttribute('client-reference-id', uid);
-            });
-            console.log(`Client Reference ID (${uid}) УСПЕШНО УСТАНОВЛЕН для ${pricingTables.length} таблиц.`);
-        }, 500); // Начальная задержка в 500 мс
-    }
-
     function subscribeToBalanceUpdates(uid) {
         bankUnsubscribe = db.collection('users').doc(uid)
             .onSnapshot(doc => {
@@ -99,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
             historyList.querySelectorAll('.history-item').forEach(item => item.remove());
 
             if (snapshot.empty) {
-                placeholder.style.display = 'block';
+                if (placeholder) placeholder.style.display = 'block';
             } else {
-                placeholder.style.display = 'none';
+                if (placeholder) placeholder.style.display = 'none';
                 snapshot.forEach(doc => {
                     const tx = doc.data();
                     const historyItem = createHistoryItemElement(tx);
@@ -122,12 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const item = document.createElement('div');
         item.className = 'history-item';
 
-        const date = tx.timestamp.toDate();
+        const date = tx.timestamp ? tx.timestamp.toDate() : new Date();
         const formattedDate = date.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
         const formattedTime = date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
         
-        const amountSign = tx.type.includes('deposit') ? '+' : '-';
-        const amountClass = tx.type.includes('deposit') ? 'text-success' : 'text-danger';
+        const amountSign = tx.type && tx.type.includes('deposit') ? '+' : '-';
+        const amountClass = tx.type && tx.type.includes('deposit') ? 'text-success' : 'text-danger';
 
         item.innerHTML = `
             <div class="history-item-icon ${amountClass}">
@@ -138,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="history-item-date">${formattedDate} в ${formattedTime}</span>
             </div>
             <div class="history-item-amount">
-                <span class="coin-amount ${amountClass}">${amountSign}${tx.amount.toLocaleString('ru-RU')}</span>
+                <span class="coin-amount ${amountClass}">${amountSign}${(tx.amount || 0).toLocaleString('ru-RU')}</span>
                 <span class="real-amount">${(tx.amount_paid || 0).toLocaleString('ru-RU', { style: 'currency', currency: tx.currency || 'USD' })}</span>
             </div>
         `;
@@ -146,60 +122,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Устанавливает client-reference-id для всех таблиц цен Stripe на странице.
-     * Это связывает платеж с пользователем Firebase.
-     * @param {string} uid - ID текущего пользователя Firebase.
-     */
-    function setClientReferenceId(uid) {
-        const pricingTables = document.querySelectorAll('stripe-pricing-table');
-        pricingTables.forEach(table => {
-            table.setAttribute('client-reference-id', uid);
-        });
-        console.log(`Client Reference ID (${uid}) установлен для таблиц цен.`);
-    }
-
-    /**
      * Устанавливает идентификаторы для таблиц цен Stripe, чтобы связать платеж с пользователем.
      * Сначала пытается найти и использовать Stripe Customer ID. Если его нет, использует Firebase UID.
      * @param {string} uid - ID текущего пользователя Firebase.
      */
-    function setClientReferenceId(uid) {
+    function setStripeIdentifiers(uid) {
         const pricingTables = document.querySelectorAll('stripe-pricing-table');
         if (pricingTables.length === 0) {
             console.warn("Таблицы цен Stripe еще не загружены. Повторная попытка...");
-            setTimeout(() => setClientReferenceId(uid), 1000);
+            setTimeout(() => setStripeIdentifiers(uid), 1000);
             return;
         }
 
-        // Ищем Stripe Customer ID пользователя в коллекции 'customers'
         const customerRef = db.collection('customers').doc(uid);
         customerRef.get().then(doc => {
             let customerId = null;
             if (doc.exists && doc.data().stripeId) {
                 customerId = doc.data().stripeId;
-                console.log("Найден Stripe Customer ID:", customerId);
+                console.log("Найден Stripe Customer ID, будет использован атрибут 'customer':", customerId);
             } else {
-                console.log("Stripe Customer ID не найден, будет использован Firebase UID.");
+                console.log("Stripe Customer ID не найден, будет использован Firebase UID как 'client-reference-id'.");
             }
 
             pricingTables.forEach(table => {
-                // Если есть customerId, передаем его. Это предпочтительный способ.
                 if (customerId) {
                     table.setAttribute('customer', customerId);
                 }
-                // Всегда передаем UID как client-reference-id. Это наша подстраховка.
                 table.setAttribute('client-reference-id', uid);
             });
 
             console.log(`Идентификаторы установлены для ${pricingTables.length} таблиц.`);
 
         }).catch(error => {
-            console.error("Ошибка при получении Stripe Customer ID:", error);
-            // В случае ошибки, просто устанавливаем UID как запасной вариант
+            console.error("Ошибка при получении Stripe Customer ID, используется только UID:", error);
             pricingTables.forEach(table => {
                 table.setAttribute('client-reference-id', uid);
             });
         });
+    }
+
+    /**
+     * Вспомогательная функция для отображения ошибок.
+     * @param {string} message - Сообщение об ошибке.
+     */
+    function showBankError(message) {
+        bankWrapper.innerHTML = `<p class="text-danger text-center">${message}</p>`;
+        if (bankWrapper.classList.contains('loading')) {
+            bankWrapper.classList.remove('loading');
+            bankWrapper.classList.remove('loading');
+        }
     }
 
     // Показываем сообщение об успехе/отмене после возврата со страницы Stripe.
