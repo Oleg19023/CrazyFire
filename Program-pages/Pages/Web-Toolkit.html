@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Apple устройства -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Android устройства -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <!-- Manifest-->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <link rel="stylesheet" href="/assets/css/program-page-css/tools-layout.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
+
+
+
+<!-- Мобильный хедер-->
+<header class="mobile-header">
+    <button id="menu-toggle" class="menu-toggle-btn" aria-label="Открыть меню">
+        <i class="fas fa-bars"></i>
+    </button>
+    <h1 id="mobile-header-title" class="mobile-title">Главная</h1>
+</header>
+
+<!-- Оверлей для затемнения -->
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+<div class="tools-app-layout">
+    <!-- =========== САЙДБАР С ИНТЕГРИРОВАННЫМ ХЕДЕРОМ =========== -->
+    <aside class="tools-sidebar">
+
+        <div class="tools-sidebar-header">
+            <a class="logo-link" href="/index.html">
+                <img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 32px;">
+                <span>CRAZYFIRE</span>
+            </a>
+            <a href="/Program-pages/Program-pages.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Назад
+            </a>
+        </div>
+        
+        <nav class="tools-sidebar-nav">
+            <ul>
+                <!-- data-tool-id -->
+                <li><a href="#" class="nav-link active" data-tool-id="home-content"><i class="fas fa-home"></i> <span>Главная</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="media-studio-content"><i class="fas fa-photo-film"></i> <span>Медиа-Студия</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="converter-content"><i class="fas fa-exchange-alt"></i> <span>Конвертер</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="remover-content"><i class="fas fa-wand-magic-sparkles"></i> <span>Удаление фона</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="hash-check-content"><i class="fas fa-shield-halved"></i> <span>Проверка хеша</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- =========== ОСНОВНАЯ ОБЛАСТЬ (ПРАВАЯ ПАНЕЛЬ) =========== -->
+    <!-- index.html (заменяем содержимое тега <main>) -->
+    <main class="tools-main-content">
+        
+        <!-- Контейнер для Главной страницы -->
+        <div id="home-content" class="content-wrapper active">
+            <div class="tool-grid">
+                <!-- Карточки инструментов -->
+                <div class="tool-card" data-tool-id="media-studio-content">
+                    <div class="card-icon"><i class="fas fa-photo-film"></i></div>
+                    <h3>Медиа-Студия</h3>
+                    <p>Универсальный редактор для фото, видео и аудио. Загрузите файл, и мы подберем нужные инструменты.</p>
+                </div>
+                <div class="tool-card" data-tool-id="converter-content">
+                    <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Конвертер файлов</h3>
+                    <p>Легко конвертируйте файлы и получайте полезные советы по обработке от искусственного интеллекта.</p>
+                </div>
+                <div class="tool-card" data-tool-id="remover-content">
+                    <div class="card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>Умное удаление фона</h3>
+                    <p>Вырежьте главный объект из любого изображения одним кликом. Идеально для аватарок и коллажей.</p>
+                </div>
+                <div class="tool-card" data-tool-id="hash-check-content">
+                    <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Проверка целостности</h3>
+                    <p>Рассчитайте хеш-суммы (MD5, SHA-1, SHA-256) чтобы убедиться, что ваш файл не поврежден.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Медиа-Студия -->
+        <div id="media-studio-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://media-studio-218958038563.us-west1.run.app" title="Медиа-Студия"></iframe>
+        </div>
+
+        <!-- Конвертер Файлов -->
+        <div id="converter-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://ai-file-converter-218958038563.us-west1.run.app" title="Конвертер файлов"></iframe>
+        </div>
+
+        <!-- Удаление фона -->
+        <div id="remover-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://smart-background-removal-218958038563.us-west1.run.app" title="Удаление фона"></iframe>
+        </div>
+
+        <!-- Проверка хеша -->
+        <div id="hash-check-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://checking-file-integrity-218958038563.us-west1.run.app" title="Проверка хеша"></iframe>
+        </div>
+
+    </main>
+</div>
+    <script src="/assets/js/program-page-js/tools-app.js"></script>
+</body>
+</html>

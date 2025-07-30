@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (version && id) {
             const link = document.createElement('a');
             link.href = `#${id}`;
-            link.textContent = `v ${version}`;
+            link.textContent = `Версия ${version}`;
             navContainer.appendChild(link);
 
             // Плавная прокрутка по клику с учетом высоты хэдера

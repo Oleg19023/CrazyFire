@@ -3,7 +3,6 @@ header { position: fixed; top: 0; width: 100%; z-index: 1000; transition: backgr
 body.dark-theme header { background-color: #000; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 body:not(.dark-theme) header { background-color: #ffffff; border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-/* ИСПРАВЛЕНИЕ: Добавляем стили для темной темы для ВСЕХ выпадающих меню */
 body.dark-theme .dropdown-menu {
     background-color: #2c2c2c;
 }
@@ -14,7 +13,6 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
 
 /* --- Стили для выпадающих меню (ДЕСКТОП) --- */
 @media (min-width: 992px) {
-    /* ИСПРАВЛЕНИЕ: Логика открытия меню при наведении для .navbar-nav */
     .navbar-nav .dropdown:hover > .dropdown-menu {
         display: block;
         opacity: 1;
@@ -38,7 +36,6 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
         position: absolute; right: 0; top: 100%; margin-top: 10px !important;
         opacity: 0; visibility: hidden; transform: translateY(10px);
         transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-        /* Убираем display: block, чтобы им управлял JS */
         display: none;
     }
     #profileMenu .dropdown-menu.show {
@@ -92,7 +89,7 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
         position: absolute; right: 0; top: -100%;
         width: 150px; background: rgba(45, 45, 45, 0.9); border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 16px; padding: 10px;
-        display: none; /* Управляем через .show */
+        display: none;
     }
     #profileMenu .dropdown-menu.show { display: block; }
 }
@@ -110,18 +107,16 @@ body:not(.dark-theme) .navbar-toggler-icon span { background: #000; }
 .navbar-toggler-icon span:nth-child(4) { top: 20px; }
 .navbar-toggler:not(.collapsed) .navbar-toggler-icon span:nth-child(1), .navbar-toggler:not(.collapsed) .navbar-toggler-icon span:nth-child(4) { top: 10px; width: 0%; left: 50%; }
 
-/* /assets/css/header.css - добавьте этот код в самый конец файла */
-
 /* Стили для нового контейнера кнопок на мобильных */
 @media (max-width: 991.98px) {
     .page-actions-container {
-        margin-top: auto; /* Прижимает блок к низу */
+        margin-top: auto;
         display: flex;
-        flex-direction: row; /* Выстраивает элементы в ряд */
-        justify-content: center; /* Центрирует их */
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        flex-wrap: wrap; /* Позволяет переносить на новую строку, если не влезают */
-        gap: 10px; /* Пространство между кнопками */
+        flex-wrap: wrap;
+        gap: 10px;
         width: 100%;
     }
 }
@@ -156,6 +151,12 @@ a.balance-container {
   height: 18px;
   width: 18px;
   margin-bottom: 3px;
+}
+
+.balance-logo-header {
+  height: 15px;
+  width: 15px;
+  margin-top: 7.5px;
 }
 
 /* --- Стили для СВЕТЛОЙ ТЕМЫ (по умолчанию) --- */

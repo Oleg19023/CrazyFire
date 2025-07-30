@@ -1,5 +1,5 @@
 .bank-page-container {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .bank-wrapper.loading {
@@ -122,8 +122,8 @@ body.dark-theme .history-title {
 body.dark-theme .currency-info,
 body.dark-theme .balance-label,
 body.dark-theme .history-item-placeholder p,
-body.dark-theme .bank-actions .text-muted { /* <<< Добавили этот селектор */
-  color: #adb5bd !important; /* Добавим !important, чтобы перебить класс .text-muted */
+body.dark-theme .bank-actions .text-muted {
+  color: #adb5bd !important;
 }
 
 body.dark-theme .currency-name {
@@ -137,4 +137,111 @@ body.dark-theme .history-item-placeholder {
 
 body.dark-theme .history-item-placeholder .fas {
   color: #6c757d;
+}
+
+body.dark-theme .PricingTable-grid {
+  background-color: #343a40 !important; /* Темный фон для таблицы */
+  color: #f8f9fa; /* Светлый текст */
+}
+
+.about-coin-link {
+  font-size: 0.9em; /* Немного меньше основного текста */
+  font-weight: normal;
+  text-decoration: none; /* Убираем подчеркивание */
+  color: var(--bs-primary); /* Используем основной цвет Bootstrap */
+  transition: opacity 0.2s ease-in-out;
+}
+
+.about-coin-link:hover {
+  opacity: 0.8; /* Легкое затухание при наведении */
+  text-decoration: underline; /* Показываем подчеркивание при наведении */
+}
+
+.pricing-table-dark {
+  display: none;
+}
+.pricing-table-light {
+  display: block;
+}
+
+/* Когда на body появляется класс dark-theme, делаем наоборот:
+   скрываем светлую и показываем темную */
+body.dark-theme .pricing-table-dark {
+  display: block;
+}
+body.dark-theme .pricing-table-light {
+  display: none;
+}
+
+/* --- СТИЛИ ДЛЯ ИСТОРИИ ОПЕРАЦИЙ --- */
+
+.history-list {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--bs-tertiary-bg);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: background-color 0.2s;
+}
+
+.history-item:hover {
+  background-color: var(--bs-secondary-bg);
+}
+
+.history-item-icon {
+  font-size: 1.5rem;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-item-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.history-item-title {
+  font-weight: 600;
+  color: var(--bs-body-color);
+}
+
+.history-item-date {
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color);
+}
+
+.history-item-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.history-item-amount .coin-amount {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.history-item-amount .real-amount {
+  font-size: 0.85rem;
+  color: var(--bs-secondary-color);
+}
+
+
+/* --- СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ --- */
+body.dark-theme .history-item {
+  background-color: #212529;
+}
+
+body.dark-theme .history-item:hover {
+  background-color: #343a40;
 }

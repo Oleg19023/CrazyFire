@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmImportButton = document.getElementById('confirmImportButton');
     const importTextArea = document.getElementById('importTextArea');
     const importFileInput = document.getElementById('importFileInput');
+    // НОВЫЕ ЭЛЕМЕНТЫ
+    const markAllButton = document.getElementById('markAllButton');
+    const unmarkAllButton = document.getElementById('unmarkAllButton');
 
     // --- Основные функции и обработчики ---
     const handleAddItem = () => {
@@ -110,12 +113,31 @@ document.addEventListener('DOMContentLoaded', () => {
     importTextArea.addEventListener('input', () => { if (importFileInput.value) importFileInput.value = ''; });
     importFileInput.addEventListener('change', () => { if (importTextArea.value) importTextArea.value = ''; });
 
+    // --- НОВЫЕ СЛУШАТЕЛИ ДЛЯ МАССОВОГО ВЫДЕЛЕНИЯ ---
+    markAllButton.addEventListener('click', () => {
+        if (checklist.children.length > 0) {
+            document.querySelectorAll('.checklist-item input[type="checkbox"]:not(:checked)').forEach(cb => cb.click());
+            // saveChecklist() вызовется автоматически, так как мы имитируем клик
+        }
+    });
 
-    // --- Функция для создания элементов списка (с иконками) ---
+    unmarkAllButton.addEventListener('click', () => {
+        if (checklist.children.length > 0) {
+            document.querySelectorAll('.checklist-item input[type="checkbox"]:checked').forEach(cb => cb.click());
+            // saveChecklist() вызовется автоматически, так как мы имитируем клик
+        }
+    });
+
+    // --- Функция для создания элементов списка (ОБНОВЛЕНА) ---
     function addItemToChecklist(itemText, isChecked) {
         const item = document.createElement('div');
         item.classList.add('checklist-item');
     
+        // 1. РУЧКА ДЛЯ ПЕРЕТАСКИВАНИЯ
+        const dragHandle = document.createElement('div');
+        dragHandle.className = 'drag-handle';
+        dragHandle.innerHTML = '<i class="fa-solid fa-grip-vertical"></i>';
+        
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         const uniqueId = `item-${Math.random().toString(36).substring(2, 9)}`;
@@ -143,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const editButton = document.createElement('button');
         editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
         editButton.className = 'btn btn-primary btn-sm';
+        editButton.setAttribute('aria-label', 'Редактировать задачу'); // 2. ДОСТУПНОСТЬ
         
         editButton.addEventListener('click', () => {
             const isEditing = editButton.classList.contains('btn-success');
@@ -171,8 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         editInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 editButton.click();
-            }
-            if (e.key === 'Escape') {
+            } else if (e.key === 'Escape') {
                 textSpan.style.display = 'block';
                 editInput.style.display = 'none';
                 editButton.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
@@ -181,8 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     
         const removeItemButton = document.createElement('button');
-        removeItemButton.innerHTML = '×';
+        removeItemButton.innerHTML = '<i class="fas fa-trash"></i>'; // 2. ЕДИНООБРАЗИЕ ИКОНКИ
         removeItemButton.className = 'btn btn-danger btn-sm';
+        removeItemButton.setAttribute('aria-label', 'Удалить задачу'); // 2. ДОСТУПНОСТЬ
         removeItemButton.addEventListener('click', () => {
             item.remove();
             saveChecklist();
@@ -191,11 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonGroup.appendChild(editButton);
         buttonGroup.appendChild(removeItemButton);
     
+        item.appendChild(dragHandle); // Добавляем ручку
         item.appendChild(checkbox);
         item.appendChild(label);
         item.appendChild(buttonGroup);
         checklist.appendChild(item);
     }
+    
 
     // --- Функции для сохранения и загрузки данных ---
     function updateTaskCounter() {
@@ -206,10 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveChecklist() {
         const items = [];
+        // Важно: querySelectorAll сохраняет порядок элементов в DOM
         document.querySelectorAll('.checklist-item').forEach(item => {
             const label = item.querySelector('label span');
             const checkbox = item.querySelector('input[type="checkbox"]');
-            items.push({ text: label.textContent, checked: checkbox.checked });
+            if (label) { // Добавим проверку, на всякий случай
+                items.push({ text: label.textContent, checked: checkbox.checked });
+            }
         });
         localStorage.setItem('checklistItems', JSON.stringify(items));
         updateTaskCounter();
@@ -243,4 +271,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Первичная загрузка данных при старте ---
     loadData();
     syncModalTheme();
+
+    // --- НОВАЯ ИНИЦИАЛИЗАЦИЯ DRAG-AND-DROP ---
+    new Sortable(checklist, {
+        animation: 150, // Плавность анимации
+        handle: '.drag-handle', // Указываем, за какой элемент можно перетаскивать
+        onEnd: function() {
+            // Сохраняем новый порядок после завершения перетаскивания
+            saveChecklist();
+        }
+    });
 });

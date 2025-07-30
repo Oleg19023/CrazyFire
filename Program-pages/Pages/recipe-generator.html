@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="/assets/css/dropdown-menu.css">
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/program-page-css/file-converter.css">
     <link rel="stylesheet" href="/assets/css/back-to-top-button.css">
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
@@ -138,6 +139,20 @@
                             </div>
                         </div>
                     </label>
+
+                    <div class="dropdown" style="display: inline-block; margin-right: 5px;">
+                        <button class="btn btn-outline-secondary" id="settingsButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="settingsButton">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <b class="b2">Выберите цвет:</b>
+                                    <input type="color" id="colorPicker" value="#FFFFFF" class="form-control">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
     
                     <button id="searchToggle" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -145,17 +160,20 @@
                 </div>
             </div>
         </nav>
-    </header>  
+    </header>
 
-
-    <main>
-        <iframe src="https://react-paint-pro-218958038563.us-west1.run.app" frameborder="0"></iframe>
+    <main class="file-converter-page">
+        <iframe 
+            src="https://recipe-generator-218958038563.us-west1.run.app/"
+            frameborder="0"
+            title="Конвертер Файлов">
+        </iframe>
     </main>
 
     <style>
     main {
         padding: 0;
-        margin-top: 35px;
+        margin-top: 80px;
     }
 
     iframe {

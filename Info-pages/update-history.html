@@ -232,7 +232,10 @@
                         <a href="/bank.html" class="balance-container ms-2 text-decoration-none">
                             <span class="balance-amount" id="userBalance"></span>
                             <span class="balance-currency">
-                                <img src="/assets/images/Site-logos/4kLogo2.webp" alt="Balance" class="balance-logo">
+                              <video class="balance-logo-header" autoplay loop muted playsinline>
+                                <source src="/assets/images/Firecoin/50x.webm" type="video/webm">
+                                Ваш браузер не поддерживает видео.
+                              </video>
                             </span>
                         </a>
                     </div>
@@ -617,7 +620,7 @@
             <!-- Правая колонка: Сам таймлайн -->
             <div class="update-list">
 
-                <!-- <div id="update-2-9" class="update-item p-3 mb-3" data-aos="fade-down" data-version="2.7 BETA">
+                <!-- <div id="update-3-1" class="update-item p-3 mb-3" data-aos="fade-down" data-version="3.1">
                     <div class="update-info mb-2">
                         <strong>Версия:</strong>
                         <span>Дата: - <span class="current-date"></span> | <span class="current-time"></span></span>
@@ -639,17 +642,58 @@
                     </div>
                 </div> -->
 
-                <div id="update-2-8" class="update-item p-3 mb-3" data-aos="fade-down" data-version="2.8">
+                <div id="update-3-0" class="update-item p-3 mb-3" data-aos="fade-down" data-version="3.0">
                     <div class="update-info mb-2">
-                        <strong>Версия: 2.8</strong>
-                        <span>Дата: 26.06.2025 - <span class="current-date"></span> | <span class="current-time"></span></span>
+                        <strong>Версия: 3.0</strong>
+                        <span>Дата: - <!-- <span class="current-date"></span> | <span class="current-time"></span> --></span>
                     </div>
                     <div class="update-description">
-                        <h3>👤 Профиль, 💰 Банк и новая валюта — FireCoin!</h3>
+                        <h3 class="shimmer-container">
+                            <strong class="shimmer-text">Реализация нейросети на базе Gemini</strong>
+                            <strong><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></strong>
+                        </h3>
+                        <!-- <p>
+                            <strong class="text-success">Добавлено:</strong>
+                        </p>
+                        <p>
+                            <strong class="text-warning">Исправлено:</strong> 
+                        </p>
+                        <p>
+                            <strong class="text-danger">Удалено:</strong> 
+                        </p> -->
+                    </div>
+                </div>
+
+                <div id="update-2-9" class="update-item p-3 mb-3" data-aos="fade-down" data-version="2.9">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 2.9</strong>
+                        <span>Дата: 20.07.2025 - <span class="current-date"></span> | <span class="current-time"></span></span>
+                    </div>
+                    <div class="update-description">
                         <h3 class="shimmer-container">
                             <strong class="shimmer-text">Обновление в процессе</strong>
                             <strong><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></strong>
                         </h3>
+                        <h3>💳 Система пополнений, анимация токена и новые программы!</h3>
+                        <p>
+                            <strong class="text-success">Добавлено:</strong> Реализована система оплаты и возможность пополнения баланса прямо на сайте. Монетка теперь анимирована — вместо статичной картинки используется плавная 3D-анимация вращения. Добавлены новые программы: «Быстрые заметки», «Paint», «Генератор рецептов», «Конвертер файлов». Также был улучшен функционал инструмента «Рандомайзер». Добавлен Web-Toolkit где есть: Умное удаление фона, Конвертер Файлов, Медиа-Студия, Проверка целостности файлов.
+                        </p>
+                        <p>
+                            <strong class="text-warning">Исправлено:</strong> Некоторые визуальные ошибки в интерфейсе. Исправлены баги с анимацией монетки, теперь она работает корректно на всех устройствах. Улучшена программа «Список».
+                        </p>
+                        <p>
+                            <strong class="text-danger">Удалено:</strong> Убраны некоторые неактуальные функции.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="update-2-8" class="update-item p-3 mb-3" data-aos="fade-down" data-version="2.8">
+                    <div class="update-info mb-2">
+                        <strong>Версия: 2.8</strong>
+                        <span>Дата: 26.06.2025 - 7.07.2025</span>
+                    </div>
+                    <div class="update-description">
+                        <h3>👤 Профиль, 💰 Банк и новая валюта — FireCoin!</h3>
                         <p>
                             <strong class="text-success">Добавлено:</strong> Глобальное обновление системы аккаунтов! Теперь у каждого пользователя есть полноценная страница профиля с возможностью редактирования никнейма и установки аватара по ссылке. Мы вводим внутреннюю экономику с собственной валютой — FireCoin, баланс которой отображается в шапке сайта и в профиле. Создана новая страница для управления кошельком, на которую можно попасть, кликнув на баланс. На странице кошелька появилась кнопка "Пополнить", сама система оплаты находится в активной разработке.
                         </p>

@@ -111,7 +111,7 @@ async function checkAndCreateUserDocument(user) {
                 displayName: user.displayName,
                 email: user.email,
                 photoURL: user.photoURL,
-                balance: 0,
+                balance: 10, // Начальный баланс
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
         } catch (error) {

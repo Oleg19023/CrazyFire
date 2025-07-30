@@ -1,0 +1,342 @@
+/* Переменные для темной темы */
+:root {
+    --tools-bg-primary: #030712;    /* Фон основной */
+    --tools-bg-secondary: #111827;  /* Фон сайдбара и карточек */
+    --tools-text-primary: #f9fafb;      /* Основной текст */
+    --tools-text-secondary: #9ca3af;    /* Второстепенный текст */
+    --tools-accent-color: #8b5cf6;      /* Фиолетовый акцент */
+    --tools-accent-hover: #7c3aed;
+    --tools-border-color: #1f2937;
+}
+
+/* Применяем стили только к нашему новому макету */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--tools-bg-primary);
+    color: var(--tools-text-primary);
+    overflow: hidden; /* Запрещаем прокрутку всей страницы */
+}
+
+.tools-app-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- Стили сайдбара --- */
+.tools-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background-color: var(--tools-bg-secondary);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--tools-border-color);
+}
+
+/* Новый хедер внутри сайдбара */
+.tools-sidebar-header {
+    padding: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tools-sidebar-header .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--tools-text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.tools-sidebar-header .back-button {
+    background-color: #374151;
+    color: var(--tools-text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+.tools-sidebar-header .back-button:hover {
+    background-color: #4b5563;
+}
+
+
+/* Навигация в сайдбаре */
+.tools-sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tools-sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--tools-text-secondary);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tools-sidebar-nav .nav-link:hover {
+    background-color: #374151;
+    color: var(--tools-text-primary);
+}
+
+.tools-sidebar-nav .nav-link.active {
+    background-color: var(--tools-accent-color);
+    color: #fff;
+    font-weight: 600;
+}
+
+.tools-sidebar-nav .nav-link i {
+    width: 20px;
+    margin-right: 16px;
+    text-align: center;
+}
+
+/* --- Стили основной области --- */
+.tools-main-content {
+    flex-grow: 1;
+    padding: 40px;
+    height: 100vh;
+    overflow-y: auto; /* Включаем прокрутку только для этой области */
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+}
+
+/* Сетка с карточками */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.tool-card {
+    background-color: var(--tools-bg-secondary);
+    padding: 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+    border: 1px solid transparent;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border-color: var(--tools-accent-hover);
+}
+
+.tool-card .card-icon, .tool-card h3 {
+    margin: 0 0 16px 0;
+    color: var(--tools-text-primary);
+}
+.tool-card .card-icon {
+    font-size: 1.5rem;
+    color: var(--tools-accent-color);
+}
+.tool-card p {
+    color: var(--tools-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Стили для iframe */
+#iframe-container {
+    width: 100%;
+    height: 100%;
+}
+
+#tool-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff; /* Фон на время загрузки */
+    border-radius: 8px;
+}
+
+/* Футер */
+.tools-main-footer-bottom {
+    text-align: center;
+    padding-top: 40px;
+    color: var(--tools-text-secondary);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* tools-layout.css (добавьте эти стили) */
+
+/* По умолчанию скрываем все контейнеры с контентом */
+.content-wrapper {
+    display: none;
+    flex-grow: 1; /* Нужно, чтобы контейнер занимал все доступное место */
+    flex-direction: column; /* Для правильной работы футера */
+}
+
+/* Показываем только активный контейнер */
+.content-wrapper.active {
+    display: flex;
+}
+
+/* Стили для контейнера iframe, чтобы он занимал все пространство */
+.iframe-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.iframe-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+    /* Ключевой момент: делаем iframe прозрачным, пока он не загрузится */
+    background-color: transparent; 
+}
+/* tools-layout.css (добавляем в конец файла) */
+
+/* --- Стили для мобильного хедера и оверлея (по умолчанию скрыты) --- */
+.mobile-header {
+    display: none; /* Скрыт на десктопе */
+    background-color: var(--tools-bg-secondary);
+    padding: 0 16px;
+    height: 60px;
+    align-items: center;
+    border-bottom: 1px solid var(--tools-border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.menu-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--tools-text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.mobile-title {
+    color: var(--tools-text-primary);
+    font-size: 1.1rem;
+    margin: 0;
+    padding-left: 16px;
+    font-weight: 500;
+}
+
+.sidebar-overlay {
+    display: none; /* Скрыт по умолчанию */
+    position: fixed;
+    inset: 0; /* Растягивает на весь экран (top, right, bottom, left = 0) */
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1040; /* Должен быть ниже сайдбара, но выше контента */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
+/* --- АДАПТАЦИЯ: Медиа-запрос для экранов 992px и меньше --- */
+@media (max-width: 992px) {
+    /* Показываем мобильный хедер */
+    .mobile-header {
+        display: flex;
+    }
+
+    /* Основной макет теперь будет вертикальным */
+    .tools-app-layout {
+        flex-direction: column;
+    }
+
+    /* Превращаем сайдбар в выезжающую панель */
+    .tools-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100vh;
+        z-index: 1050; /* Выше чем оверлей */
+        transform: translateX(-100%); /* Скрываем за левым краем */
+        transition: transform 0.3s ease-in-out;
+        will-change: transform; /* Подсказка браузеру для плавной анимации */
+    }
+
+    /* Класс для показа сайдбара */
+    .tools-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    /* Сдвигаем основной контент вниз, чтобы он не залезал под мобильный хедер */
+    .tools-main-content {
+        padding-top: 80px; /* 60px (высота хедера) + 20px отступ */
+        padding-left: 15px;
+        padding-right: 15px;
+        height: auto; /* Убираем 100vh, чтобы контент мог скроллиться */
+        min-height: 100vh; /* Занимает минимум всю высоту экрана */
+    }
+
+    /* Уменьшаем карточки, чтобы они лучше смотрелись на телефоне */
+    .tool-grid {
+        grid-template-columns: 1fr; /* Одна карточка в ряд */
+        gap: 16px;
+    }
+
+    .iframe-wrapper {
+    position: relative;
+    /* Можно добавить фон, чтобы не было прозрачности во время загрузки */
+    background-color: var(--tools-bg-primary); 
+    border-radius: 8px;
+    }
+
+    /* Стили для самого прелоадера (анимированные точки) */
+    .iframe-preloader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1; /* Прелоадер над фоном, но под iframe */
+        color: var(--tools-text-secondary);
+        font-size: 1.2rem;
+    }
+    .iframe-preloader::after {
+        content: 'Загрузка...';
+        display: inline-block;
+        animation: dots 1.4s infinite;
+        animation-timing-function: steps(4, end);
+    }
+
+    @keyframes dots {
+        0%   { content: 'Загрузка'; }
+        25%  { content: 'Загрузка.'; }
+        50%  { content: 'Загрузка..'; }
+        75%  { content: 'Загрузка...'; }
+        100% { content: 'Загрузка'; }
+    }
+
+
+    /* Сам iframe должен быть поверх прелоадера */
+    .iframe-wrapper iframe {
+        position: relative;
+        z-index: 2;
+        /* Убедимся, что фон прозрачный, чтобы прелоадер был виден, если контент iframe сам грузится */
+        background-color: transparent; 
+    }
+}

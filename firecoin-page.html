@@ -230,7 +230,10 @@
                         <a href="/bank.html" class="balance-container ms-2 text-decoration-none">
                             <span class="balance-amount" id="userBalance"></span>
                             <span class="balance-currency">
-                                <img src="/assets/images/Site-logos/4kLogo2.webp" alt="Balance" class="balance-logo">
+                              <video class="balance-logo-header" autoplay loop muted playsinline>
+                                <source src="/assets/images/Firecoin/50x.webm" type="video/webm">
+                                Ваш браузер не поддерживает видео.
+                              </video>
                             </span>
                         </a>
                     </div>
@@ -536,16 +539,42 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
-<main class="container bank-page-container" style="padding-top: 100px;">
-    <div class="fire-coin-about">
-        <h1 class="fire-coin-title">О FireCoin</h1>
-        <p class="fire-coin-description">
-            FireCoin - это новая валюта нашего сайта, созданная для того, чтобы сделать ваши покупки и транзакции более удобными и безопасными. Мы понимаем, что в мире криптовалют важно иметь надежный и простой в использовании инструмент, поэтому мы разработали FireCoin с учетом потребностей наших пользователей.
-        </p>
-        <p class="fire-coin-description">
-            FireCoin позволяет вам легко и быстро совершать покупки на нашем сайте. Мы стремимся обеспечить высокую степень безопасности и конфиденциальности для всех наших пользователей, поэтому FireCoin использует передовые технологии шифрования и защиты данных.
+  <main class="container" style="padding-top: 100px; padding-bottom: 50px;">
+      <div class="row align-items-center">
+    <!-- Левая колонка для GIF Монеты -->
+    <div class="col-lg-5 mb-4 mb-lg-0">
+        <div id="coin-viewer-container" style="height: 500px; width: 100%; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
+            <video class="currency-logo ms-2 coin-gif" autoplay loop muted playsinline>
+                <source src="/assets/images/Firecoin/1000x.webm" type="video/webm">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
     </div>
-</main>
+    <style>
+        .coin-gif {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+    </style>
+          <!-- Правая колонка для текста -->
+          <div class="col-lg-7">
+              <div class="fire-coin-about">
+                  <h1 class="fire-coin-title" style="font-size: 2.5rem; font-weight: bold;">О FireCoin</h1>
+                  <p class="fire-coin-description lead" style="font-size: 1.1rem;">
+                      FireCoin - это новая валюта нашего сайта, созданная для того, чтобы сделать ваши покупки и транзакции более удобными и безопасными.
+                  </p>
+                  <p class="fire-coin-description">
+                      Мы понимаем, что в мире криптовалют важно иметь надежный и простой в использовании инструмент, поэтому мы разработали FireCoin с учетом потребностей наших пользователей. FireCoin позволяет вам легко и быстро совершать покупки на нашем сайте. Мы стремимся обеспечить высокую степень безопасности и конфиденциальности для всех наших пользователей, поэтому FireCoin использует передовые технологии шифрования и защиты данных.
+                  </p>
+                  <a href="/bank.html" class="btn btn-primary btn-lg mt-3">
+                      <i class="fas fa-wallet me-2"></i> Перейти в кошелек
+                  </a>
+              </div>
+          </div>
+      </div>
+  </main>
+
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>

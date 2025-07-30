@@ -12,8 +12,8 @@ body.dark-theme {
     --checklist-disabled-color: #6c757d;
 }
 .todo-container { margin-top: 80px; }
-#addButton { margin: 0; }
-#importButton { margin: 0; }
+#addButton { margin: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+#importButton { margin: 0; border-radius: 0; }
 .todo-container {
     background-color: var(--checklist-bg);
     border: 1px solid var(--checklist-border-color);
@@ -21,7 +21,9 @@ body.dark-theme {
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
+    max-width: 1200px;  /* Максимальная ширина */
+    margin-left: auto;
+    margin-right: auto; 
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 .todo-container .form-control { height: 38px; }
@@ -35,22 +37,19 @@ body.dark-theme {
 .checklist-item:last-child { border-bottom: none; }
 
 
-/* =================================================================
-   ИСПРАВЛЕНИЕ №2: НАЛОЖЕНИЕ ГАЛОЧКИ (Z-INDEX)
-   ================================================================= */
 #checklist input[type="checkbox"] {
     -webkit-appearance: none; -moz-appearance: none;
     position: relative; height: 15px; width: 15px; outline: none;
     border: 0; margin: 0 15px 0 0; cursor: pointer;
     background: transparent; flex-shrink: 0;
-    z-index: 2; /* Галочка будет НАД линией */
+    z-index: 2;
 }
 #checklist label {
     color: var(--checklist-text);
     position: relative; cursor: pointer; display: flex;
     align-items: center; transition: color 0.3s ease;
     flex-grow: 1; word-break: break-word;
-    z-index: 1; /* Лейбл и линия будут ПОД галочкой */
+    z-index: 1;
 }
 
 
@@ -103,18 +102,15 @@ body.dark-theme {
     100% { width: 100%; }
 }
 
-/* Этот код заставляет дефис (-) плавно исчезать при отметке чекбокса */
 #checklist input[type="checkbox"]:checked + label::before {
     background: transparent;
 }
 
 
-/* Анимации для галочки и фейерверка */
 @keyframes check-01 { 0% { width: 4px; top: auto; transform: rotate(0); } 50% { width: 0px; top: auto; transform: rotate(0); } 51% { width: 0px; top: 8px; transform: rotate(45deg); } 100% { width: 5px; top: 8px; transform: rotate(45deg); } }
 @keyframes check-02 { 0% { width: 4px; top: auto; transform: rotate(0); } 50% { width: 0px; top: auto; transform: rotate(0); } 51% { width: 0px; top: 8px; transform: rotate(-45deg); } 100% { width: 10px; top: 8px; transform: rotate(-45deg); } }
 @keyframes firework { 0% { opacity: 1; box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0; } 30% { opacity: 1; } 100% { opacity: 0; box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0; } }
 
-/* Кнопки удаления */
 .button-delete { width: 50px; height: 50px; border-radius: 50%; background-color: rgb(20, 20, 20); border: none; font-weight: 600; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(0, 0, 0, 0.164); cursor: pointer; transition-duration: .3s; overflow: hidden; position: relative; }
 .button-delete .svgIcon { width: 12px; transition-duration: .3s; }
 .button-delete .svgIcon path { fill: white; }
@@ -129,9 +125,84 @@ body.dark-theme {
 }
 .delete-item:hover { background-color: #ff1a1a; }
 
-/* Стили для поля редактирования внутри элемента списка */
 .item-edit-input {
     width: 100%;
-    /* Чтобы инпут не вылезал за границы лейбла */
     box-sizing: border-box; 
+}
+
+.drag-handle {
+    cursor: grab;
+    margin-right: 15px;
+    color: var(--checklist-disabled-color);
+    transition: color 0.2s ease-in-out;
+}
+.drag-handle:hover {
+    color: var(--checklist-check-color);
+}
+
+.task-input-section {
+    background-color: rgba(0, 0, 0, 0.03); 
+    margin: 0 -1rem 1rem -1rem;
+    border-radius: 10px;
+}
+
+body.dark-theme .task-input-section {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.task-input-section .input-group {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.task-input-section .form-control {
+    flex-grow: 1; 
+}
+.task-input-controls {
+    display: flex;
+    margin-left: 0.5rem;
+}
+.task-input-controls .btn {
+    white-space: nowrap; 
+}
+
+.bottom-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--checklist-border-color);
+}
+
+/* 3. АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media (max-width: 576px) {
+    .todo-container {
+        padding: 1rem;
+    }
+
+    .task-input-section .input-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .task-input-section .form-control {
+        width: 100%;
+    }
+
+    .task-input-controls {
+        margin-left: 0;
+        width: 100%;
+    }
+    .task-input-controls .btn {
+        flex-grow: 1;
+    }
+
+    .bottom-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #addButton { margin: 0; border-radius: 0; }
+    #importButton { margin: 0; border-radius: 0; }
 }
