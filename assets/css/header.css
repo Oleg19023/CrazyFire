@@ -31,7 +31,8 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
     .navbar-nav .dropdown:hover > .dropdown-toggle::after { transform: rotate(180deg); }
     
     /* ИСПРАВЛЕНИЕ: Стили для профиля на ДЕСКТОПЕ (открытие ТОЛЬКО по клику) */
-    #profileMenu.profile-container { position: relative; }
+    #profileMenu.profile-container { position: relative; background-color: #ffffff; padding-left: 10px; border-radius: 10px; border: 1px solid #dee2e6; }
+    body.dark-theme #profileMenu.profile-container { background-color: #343a40; border: 1px solid #495057; }
     #profileMenu .dropdown-menu {
         position: absolute; right: 0; top: 100%; margin-top: 10px !important;
         opacity: 0; visibility: hidden; transform: translateY(10px);
@@ -43,6 +44,10 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
         opacity: 1; visibility: visible; transform: translateY(0);
     }
     #profileMenu .profile-info { cursor: pointer; }
+
+    a.balance-container { 
+        border-bottom-right-radius: 10px !important; border-top-right-radius: 10px !important;
+    }
 }
 
 
@@ -84,7 +89,7 @@ body.dark-theme .dropdown-item:hover { background-color: #3a3a3a; color: #fff; }
     #profileMenu .dropdown { flex-grow: 1; min-width: 0; position: static; }
     #profileMenu .profile-dropdown-btn { background: none; border: none; color: #fff; padding: 0; width: 100%; text-align: left; }
     #profileMenu .profile-name { display: block; font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #profileMenu .balance-container { text-align: left; margin-top: 5px; }
+    #profileMenu .balance-container { text-align: left; }
     #profileMenu .dropdown-menu {
         position: absolute; right: 0; top: -100%;
         width: 150px; background: rgba(45, 45, 45, 0.9); border: 1px solid rgba(255, 255, 255, 0.1);
@@ -135,8 +140,7 @@ a.balance-container {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  padding: 6px 12px;
-  border-radius: 50px;
+  padding: 7px 12px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -162,13 +166,11 @@ a.balance-container {
 /* --- Стили для СВЕТЛОЙ ТЕМЫ (по умолчанию) --- */
 a.balance-container {
   background-color: #f8f9fa; /* Светло-серый фон */
-  border: 1px solid #dee2e6; /* Светло-серая рамка */
 }
 .balance-amount {
   color: #212529; /* Темный текст */
 }
 a.balance-container:hover {
-  transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
   background-color: #e9ecef; /* Фон чуть темнее при наведении */
 }
@@ -177,6 +179,7 @@ a.balance-container:hover {
   a.balance-container {
     background-color: #343a40; /* Темно-серый фон */
     border: 1px solid #495057; /* Рамка чуть светлее фона */
+    border-radius: 10px !important;
   }
   .balance-amount {
     color: #f8f9fa !important; /* Светлый текст */
@@ -186,12 +189,11 @@ a.balance-container:hover {
 
 /* --- Стили для ТЕМНОЙ ТЕМЫ --- */
 body.dark-theme a.balance-container {
-  background-color: #343a40; /* Темно-серый фон */
-  border: 1px solid #495057; /* Рамка чуть светлее фона */
+  background-color: #3d444b;
 }
 
 body.dark-theme .balance-amount {
-  color: #f8f9fa; /* Светлый текст */
+  color: #f8f9fa;
 }
 
 body.dark-theme a.balance-container:hover {

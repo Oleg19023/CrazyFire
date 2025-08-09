@@ -24,13 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (historyUnsubscribe) historyUnsubscribe();
 
         if (user) {
-            // Подписываемся на изменения баланса пользователя
+            // Подписываемся на изменения баланса
             subscribeToBalanceUpdates(user.uid);
             // Загружаем историю транзакций
             subscribeToTransactionHistory(user.uid);
-            // Устанавливаем идентификаторы для таблиц Stripe
+            // Устанавливаем идентификаторы для таблиц цен Stripe
             setStripeIdentifiers(user.uid);
         } else {
+            // Пользователь не авторизован
             window.location.href = '/index.html';
         }
     });
@@ -127,40 +128,47 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {string} uid - ID текущего пользователя Firebase.
      */
     function setStripeIdentifiers(uid) {
-        const pricingTables = document.querySelectorAll('stripe-pricing-table');
-        if (pricingTables.length === 0) {
-            console.warn("Таблицы цен Stripe еще не загружены. Повторная попытка...");
-            setTimeout(() => setStripeIdentifiers(uid), 1000);
-            return;
-        }
-
-        const customerRef = db.collection('customers').doc(uid);
-        customerRef.get().then(doc => {
-            let customerId = null;
-            if (doc.exists && doc.data().stripeId) {
-                customerId = doc.data().stripeId;
-                console.log("Найден Stripe Customer ID, будет использован атрибут 'customer':", customerId);
-            } else {
-                console.log("Stripe Customer ID не найден, будет использован Firebase UID как 'client-reference-id'.");
+        // Используем задержку, чтобы дать веб-компоненту Stripe время на инициализацию
+        setTimeout(() => {
+            const pricingTables = document.querySelectorAll('stripe-pricing-table');
+            if (pricingTables.length === 0) {
+                console.warn("Таблицы цен Stripe еще не загружены. Повторная попытка...");
+                // Если таблицы не найдены, пробуем снова через секунду.
+                setTimeout(() => setStripeIdentifiers(uid), 1000);
+                return;
             }
 
-            pricingTables.forEach(table => {
-                if (customerId) {
-                    table.setAttribute('customer', customerId);
+            // Ищем Stripe Customer ID пользователя в коллекции 'customers'
+            const customerRef = db.collection('customers').doc(uid);
+            customerRef.get().then(doc => {
+                let customerId = null;
+                if (doc.exists && doc.data().stripeId) {
+                    customerId = doc.data().stripeId;
+                    console.log("Найден Stripe Customer ID, используется атрибут 'customer':", customerId);
+                } else {
+                    console.log("Stripe Customer ID не найден, будет использован Firebase UID как 'client-reference-id'.");
                 }
-                table.setAttribute('client-reference-id', uid);
-            });
 
-            console.log(`Идентификаторы установлены для ${pricingTables.length} таблиц.`);
-
-        }).catch(error => {
-            console.error("Ошибка при получении Stripe Customer ID, используется только UID:", error);
-            pricingTables.forEach(table => {
-                table.setAttribute('client-reference-id', uid);
+                pricingTables.forEach(table => {
+                    // Если есть customerId, передаем его. Это предпочтительный способ.
+                    if (customerId) {
+                        table.setAttribute('customer', customerId);
+                    }
+                    // Всегда передаем UID как client-reference-id. Это наша подстраховка.
+                    table.setAttribute('client-reference-id', uid);
+                });
+                console.log(`Идентификаторы установлены для ${pricingTables.length} таблиц.`);
+            }).catch(error => {
+                // В случае ошибки с чтением customers (маловероятно после исправления правил),
+                // просто устанавливаем UID как запасной вариант
+                console.error("Ошибка при получении Stripe Customer ID, используется только UID:", error);
+                pricingTables.forEach(table => {
+                    table.setAttribute('client-reference-id', uid);
+                });
             });
-        });
+        }, 500); // Начальная задержка 500мс
     }
-
+    
     /**
      * Вспомогательная функция для отображения ошибок.
      * @param {string} message - Сообщение об ошибке.
@@ -169,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bankWrapper.innerHTML = `<p class="text-danger text-center">${message}</p>`;
         if (bankWrapper.classList.contains('loading')) {
             bankWrapper.classList.remove('loading');
-            bankWrapper.classList.remove('loading');
+            bankLoader.style.display = 'none';
         }
     }
 
@@ -183,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (status === 'cancel') {
             alert("Оплата была отменена.");
         }
+        // Очищаем URL от параметров, чтобы сообщение не появлялось при перезагрузке
         window.history.replaceState({}, document.title, "/bank.html");
     }
 });

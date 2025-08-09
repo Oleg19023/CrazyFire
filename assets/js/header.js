@@ -1,5 +1,3 @@
-// /assets/js/header.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const mobileMenu = document.getElementById('navbarSupportedContent');

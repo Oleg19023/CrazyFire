@@ -111,6 +111,7 @@ async function checkAndCreateUserDocument(user) {
                 displayName: user.displayName,
                 email: user.email,
                 photoURL: user.photoURL,
+                bannerURL: null, // Баннер
                 balance: 0, // Начальный баланс
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
             });
@@ -252,7 +253,8 @@ if (elements.registerForm) {
                             displayName: displayName,
                             email: user.email,
                             photoURL: null,
-                            balance: 0,
+                            bannerURL: null, // Баннер
+                            balance: 0, // Начальный баланс
                             createdAt: firebase.firestore.FieldValue.serverTimestamp()
                         });
                     })

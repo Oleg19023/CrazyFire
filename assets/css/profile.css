@@ -1,8 +1,7 @@
-/* Основные стили профиля */
 .profile-page-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
 }
 
 .profile-wrapper.loading {
@@ -15,42 +14,92 @@
   font-size: 1.2rem;
 }
 
+/* === СТИЛИ ДЛЯ БАННЕРА (СЕКЦИЯ №1) === */
+
 .profile-header {
+  position: relative;
+  width: 100%;
+  min-height: 450px;
   display: flex;
-  flex-direction: column; /* Элементы идут друг под другом: аватар, имя, почта */
-  align-items: center;   /* Центрируем их по горизонтали */
-  justify-content: center; /* Центрируем по вертикали (на всякий случай) */
-  text-align: center;      /* Центрируем сам текст внутри h1 и p */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
 }
 
-/* Используем класс, а не ID для стилизации, чтобы избежать конфликтов */
+.profile-banner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Баннер находится под контентом */
+  display: none; /* По умолчанию скрыт */
+}
+
+/* Показываем контейнер, когда JavaScript добавит этот класс */
+.profile-header.has-banner .profile-banner-container {
+  display: block;
+}
+
+#profileBannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Умное затемнение: делаем темные картинки светлее, а светлые - темнее */
+  filter: brightness(0.7) contrast(1.1);
+}
+
+/* Контент внутри баннера (аватар, имя, почта) */
+.profile-header-content {
+  position: relative;
+  z-index: 2; /* Контент всегда НАД баннером */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Этот селектор гарантирует, что стили применятся только когда есть баннер */
+.profile-header.has-banner .profile-name-display,
+.profile-header.has-banner .profile-email-display {
+  color: #ffffff !important; /* !important для переопределения других правил */
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.75); /* Усиливаем тень для читаемости */
+}
+
 .profile-header .profile-name-display {
   margin-top: 1.5rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--bs-body-color);
 }
 
 .profile-header .profile-email-display {
-  color: var(--bs-secondary-color);
   margin-top: 0.25rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
+/* === ТЕМНАЯ ТЕМА === */
+body.dark-theme .profile-header {
+  background-color: #1a1a1a;
+}
+
+/* Аватар */
 .avatar-wrapper {
-  position: relative;
   width: 150px;
   height: 150px;
-  margin: 0 auto;
 }
+
 
 .avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid var(--bs-body-bg, white);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
@@ -83,6 +132,14 @@
 
 #editProfileModal {
   z-index: 1060; /* z-index Bootstrap-оверлея 1055, ставим наше окно выше */
+}
+
+/* === СТИЛИ ДЛЯ КОНТЕНТА ПОД БАННЕРОМ (СЕКЦИЯ №2) === */
+
+.profile-content-area {
+  padding-bottom: 50px;
+  background-color: #f0f2f5; /* Фон для светлой темы */
+  transition: background-color 0.3s ease;
 }
 
 .profile-card {
@@ -143,32 +200,32 @@
   margin: 5px;
 }
 
-/* === НАЧАЛО ИСПРАВЛЕНИЙ ДЛЯ ТЕМНОЙ ТЕМЫ === */
+/* === СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ === */
 
 body.dark-theme .profile-card {
   background-color: #2c3036;
   border-color: #495057;
 }
 
-body.dark-theme .avatar-img {
-  border-color: #2c3036;
-}
-
 /* Явно указываем белый/светлый цвет для текста в темной теме */
-body.dark-theme .profile-page-container h1,
-body.dark-theme .profile-page-container h5,
-body.dark-theme .profile-page-container p,
-body.dark-theme .profile-page-container span {
+body.dark-theme .profile-card h1,
+body.dark-theme .profile-card h5,
+body.dark-theme .profile-card p,
+body.dark-theme .profile-card span {
   color: #f8f9fa; /* Светло-серый цвет текста Bootstrap */
 }
 
 /* Второстепенному тексту задаем более тусклый оттенок */
-body.dark-theme .profile-email-display,
 body.dark-theme .info-label {
   color: #adb5bd;
 }
 
-/* === КОНЕЦ ИСПРАВЛЕНИЙ ДЛЯ ТЕМНОЙ ТЕМЫ === */
+body.dark-theme .profile-content-area {
+  background-color: rgb(34, 36, 40);
+}
+
+
+/* === КОНЕЦ ТЕМНОЙ ТЕМЫ === */
 
 /* === СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА В ТЕМНОЙ ТЕМЕ === */
 
@@ -210,7 +267,6 @@ body.dark-theme .modal-body .form-label {
   color: #adb5bd; /* Более тусклый цвет для лейблов */
 }
 
-/* profile.css */
 .profile-card .card-footer {
   text-align: center;
   margin-top: 20px;

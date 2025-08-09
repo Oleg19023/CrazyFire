@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return el;
     }
 
+    // --- Основные элементы страницы ---
     const profileLoader = getElement('profileLoader');
     const profileWrapper = getElement('profileWrapper');
     const profileIcon = getElement('profileIcon');
@@ -17,13 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileEmailDisplay = getElement('profileEmailDisplay');
     const userBalanceDisplay = getElement('userBalanceDisplay');
     const profileCreatedAt = getElement('profileCreatedAt');
-    const avatarInput = getElement('avatarInput');
+    const profileHeader = getElement('profileHeader');
+    const profileBannerImg = getElement('profileBannerImg');
 
-    // Элементы для модального окна
+    // --- Элементы модального окна ---
     const editProfileBtn = getElement('editProfileBtn');
     const changeAvatarBtn = getElement('changeAvatarBtn'); // Кнопка на аватаре
     const editProfileModalEl = getElement('editProfileModal');
-    
+
     // Проверяем, что ключевые элементы существуют
     if (!profileWrapper || !profileLoader || !editProfileModalEl) {
         console.error("Ключевые элементы профиля или модальное окно не найдены. Скрипт не может быть выполнен.");
@@ -31,103 +33,133 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const editProfileModal = new bootstrap.Modal(editProfileModalEl);
-    
-    // Глобальная переменная для текущего пользователя
+
+    // --- Глобальные переменные ---
     let currentUser = null;
+    let currentUserData = {}; // Храним здесь актуальные данные пользователя
     let profileUnsubscribe = null; // Слушатель для страницы профиля
 
     auth.onAuthStateChanged(user => {
         if (profileUnsubscribe) {
-            profileUnsubscribe(); // Отписываемся от предыдущего слушателя
+            profileUnsubscribe();
         }
         if (user) {
             currentUser = user;
-            // Подписываемся на изменения
+            // Подписываемся на изменения документа пользователя в реальном времени
             profileUnsubscribe = db.collection('users').doc(user.uid)
                 .onSnapshot(doc => {
                     if (doc.exists) {
                         const data = doc.data();
-                        // Заполняем данные на странице профиля
+                        currentUserData = data; // Обновляем локальную копию данных
+
+                        // Заполняем все поля на странице
                         profileNameDisplay.textContent = data.displayName || 'Имя не указано';
                         profileEmailDisplay.textContent = data.email;
                         profileIcon.src = data.photoURL || './assets/images/None-person.jpg';
                         userBalanceDisplay.textContent = (data.balance || 0).toLocaleString('ru-RU');
-                        
-                        if (data.createdAt && data.createdAt.toDate) {
-                        const creationDate = data.createdAt.toDate();
-                        profileCreatedAt.textContent = creationDate.toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+
+                        if (data.bannerURL) {
+                            // Если у пользователя есть своя ссылка на баннер, показываем его
+                            profileBannerImg.src = data.bannerURL;
+                            profileHeader.classList.add('has-banner');
+                        } else {
+                            // Если ссылки нет, просто скрываем контейнер с баннером
+                            profileHeader.classList.remove('has-banner');
                         }
 
-                        // Показываем контент (только один раз)
+                        // Форматируем дату регистрации
+                        if (data.createdAt && data.createdAt.toDate) {
+                            const creationDate = data.createdAt.toDate();
+                            profileCreatedAt.textContent = creationDate.toLocaleDateString('ru-RU', {
+                                day: '2-digit',
+                                month: 'long',
+                                year: 'numeric'
+                            });
+                        }
+
+                        // Показываем контент после первой загрузки
                         if (profileWrapper.classList.contains('loading')) {
-                        profileWrapper.classList.remove('loading');
-                        profileLoader.style.display = 'none';
+                            profileWrapper.classList.remove('loading');
+                            profileLoader.style.display = 'none';
                         }
                     } else {
                         console.error("Документ пользователя не найден в Firestore!");
+                        window.location.href = '/index.html'; // Перенаправляем, если данных нет
                     }
                 }, error => {
                     console.error("Ошибка при загрузке данных профиля:", error);
                 });
-            
+
+            // Настраиваем обработчики кнопок только после того, как пользователь определен
             setupEventListeners();
         } else {
+            // Если пользователя нет, перенаправляем на главную
             window.location.href = '/index.html';
         }
     });
 
     // Настраиваем все обработчики событий
     function setupEventListeners() {
+        // Получаем элементы модального окна
         const saveProfileChangesBtn = getElement('saveProfileChanges');
         const newDisplayNameInput = getElement('newDisplayName');
         const newPhotoURLInput = getElement('newPhotoURL');
+        const newBannerURLInput = getElement('newBannerURL');
 
-        // Обе кнопки (Редактировать и Камера на аватаре) открывают одно и то же модальное окно
+        // Функция для открытия модального окна
+        const openEditModal = () => {
+            // Заполняем поля актуальными данными из currentUserData
+            newDisplayNameInput.value = currentUserData.displayName || '';
+            newPhotoURLInput.value = currentUserData.photoURL || '';
+            newBannerURLInput.value = currentUserData.bannerURL || '';
+            editProfileModal.show();
+        };
+
         if (editProfileBtn) {
-            editProfileBtn.classList.remove('disabled');
-            editProfileBtn.addEventListener('click', () => {
-                // Перед открытием заполняем поля актуальными данными
-                newDisplayNameInput.value = currentUser.displayName;
-                newPhotoURLInput.value = currentUser.photoURL || '';
-                editProfileModal.show();
-            });
+            editProfileBtn.addEventListener('click', openEditModal);
         }
         if (changeAvatarBtn) {
-            changeAvatarBtn.addEventListener('click', () => {
-                newDisplayNameInput.value = currentUser.displayName;
-                newPhotoURLInput.value = currentUser.photoURL || '';
-                editProfileModal.show();
-            });
+            changeAvatarBtn.addEventListener('click', openEditModal);
         }
 
-        // Логика сохранения
+        // Логика сохранения по клику на кнопку
         if (saveProfileChangesBtn) {
             saveProfileChangesBtn.addEventListener('click', () => {
+                // 1. Получаем все значения из полей
                 const newName = newDisplayNameInput.value.trim();
-                const newURL = newPhotoURLInput.value.trim();
-                
+                const newAvatarURL = newPhotoURLInput.value.trim();
+                const newBannerURL = newBannerURLInput.value.trim();
+
                 if (newName.length < 3) {
                     alert("Имя должно быть не короче 3 символов.");
                     return;
                 }
 
-                // Функция для сохранения данных после всех проверок
-                const proceedToSave = (finalURL) => {
-                    saveProfileChangesBtn.disabled = true;
+                saveProfileChangesBtn.disabled = true;
+                saveProfileChangesBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Проверка...';
+
+                // 2. Финальная функция сохранения данных в Firebase
+                const proceedToSave = (finalAvatarURL, finalBannerURL) => {
                     saveProfileChangesBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Сохранение...';
-                    
+
                     const userDocRef = db.collection('users').doc(currentUser.uid);
-                    const dataToUpdate = {
+                    
+                    const dataToUpdateFirestore = {
                         displayName: newName,
-                        photoURL: finalURL || null // Если URL пустой или невалидный, сохраняем null
+                        photoURL: finalAvatarURL || null,
+                        bannerURL: finalBannerURL || null
                     };
 
+                    const dataToUpdateAuth = {
+                        displayName: newName,
+                        photoURL: finalAvatarURL || null,
+                    };
+
+                    // Обновляем данные одновременно
                     Promise.all([
-                        userDocRef.update(dataToUpdate),
-                        currentUser.updateProfile(dataToUpdate)
+                        userDocRef.update(dataToUpdateFirestore),
+                        currentUser.updateProfile(dataToUpdateAuth)
                     ]).then(() => {
-                        profileNameDisplay.textContent = newName;
-                        profileIcon.src = finalURL || './assets/images/None-person.jpg';
                         alert("Профиль успешно обновлен!");
                         editProfileModal.hide();
                     }).catch(error => {
@@ -139,27 +171,47 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 };
 
-                // --- НАЧАЛО НОВОЙ ЛОГИКИ ПРОВЕРКИ URL ---
+                // 3. Создаем цепочку проверок с помощью колбэков
 
-                // Если поле URL пустое, просто сохраняем остальные данные
-                if (!newURL) {
-                    proceedToSave(null);
-                    return;
-                }
+                // Функция для проверки аватара
+                const checkAvatar = (callback) => {
+                    if (!newAvatarURL) {
+                        callback(null); // URL пустой, передаем null дальше
+                        return;
+                    }
+                    const img = new Image();
+                    img.onload = () => callback(newAvatarURL); // Успех, передаем URL
+                    img.onerror = () => {
+                        alert('Не удалось загрузить АВАТАР по указанной ссылке. Проверьте URL.');
+                        saveProfileChangesBtn.disabled = false;
+                        saveProfileChangesBtn.textContent = 'Сохранить';
+                    };
+                    img.src = newAvatarURL;
+                };
 
-                // Если URL не пустой, проверяем его
-                const img = new Image();
-                img.onload = function() {
-                    // Картинка успешно загрузилась, можно сохранять
-                    console.log('URL изображения валиден.');
-                    proceedToSave(newURL);
+                // Функция для проверки баннера
+                const checkBanner = (validatedAvatarURL, callback) => {
+                    if (!newBannerURL) {
+                        callback(validatedAvatarURL, null); // URL баннера пустой, передаем null
+                        return;
+                    }
+                    const img = new Image();
+                    img.onload = () => callback(validatedAvatarURL, newBannerURL); // Успех, передаем оба URL
+                    img.onerror = () => {
+                        alert('Не удалось загрузить БАННЕР по указанной ссылке. Проверьте URL.');
+                        saveProfileChangesBtn.disabled = false;
+                        saveProfileChangesBtn.textContent = 'Сохранить';
+                    };
+                    img.src = newBannerURL;
                 };
-                img.onerror = function() {
-                    // Произошла ошибка, URL невалидный
-                    alert('Не удалось загрузить изображение по указанной ссылке. Пожалуйста, проверьте URL и убедитесь, что он ведет на картинку.');
-                };
-                
-                img.src = newURL; // Запускаем проверку
+
+                // 4. Запускаем цепочку проверок
+                checkAvatar((validatedAvatarURL) => {
+                    checkBanner(validatedAvatarURL, (finalAvatar, finalBanner) => {
+                        // Эта функция будет вызвана только если ОБЕ проверки прошли успешно
+                        proceedToSave(finalAvatar, finalBanner);
+                    });
+                });
             });
         }
     }

@@ -548,8 +548,10 @@
 <!-- Затемнение фона -->
 <div id="modalOverlay" class="overlay"></div>
 
- <main class="container profile-page-container" style="padding-top: 100px;">
-        
+<!-- ИЗМЕНЕННАЯ СТРУКТУРА PROFILE.HTML -->
+<main class="profile-page-container" style="padding-top: 75px;">
+    <!-- padding-top здесь нужен, чтобы контент не уезжал под фиксированную шапку сайта -->
+
     <!-- Лоадер, пока грузятся данные -->
     <div id="profileLoader" class="profile-loader">
         <div class="spinner-border" role="status">
@@ -561,68 +563,93 @@
     <!-- Основной контейнер профиля (скрыт по умолчанию) -->
     <div id="profileWrapper" class="profile-wrapper loading">
         
-        <!-- Шапка профиля -->
-        <div class="profile-header mb-5">
-            <div class="avatar-wrapper">
-                <img id="profileIcon" src="./assets/images/None-person.jpg" alt="Аватар" class="avatar-img">
+        <!-- СЕКЦИЯ №1: БАННЕР (ПОЛНАЯ ШИРИНА) -->
+        <div id="profileHeader" class="profile-header">
+            <div id="profileBannerContainer" class="profile-banner-container">
+                <img id="profileBannerImg" src="" alt="Баннер профиля">
             </div>
-            <h1 id="profileNameDisplay" class="profile-name-display"></h1>
-            <p id="profileEmailDisplay" class="profile-email-display"></p>
+            <div class="profile-header-content">
+                <div class="avatar-wrapper">
+                    <img id="profileIcon" src="./assets/images/None-person.jpg" alt="Аватар" class="avatar-img">
+                </div>
+                <h1 id="profileNameDisplay" class="profile-name-display"></h1>
+                <p id="profileEmailDisplay" class="profile-email-display"></p>
+            </div>
         </div>
 
-        <!-- Карточки информации -->
-        <div class="profile-cards row g-4 justify-content-center">
-            <!-- Карточка баланса -->
-            <div class="col-lg-6">
-                <div class="profile-card h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><i class="fas fa-wallet me-2"></i>Баланс</h5>
-                        <div class="d-flex align-items-end justify-content-center mt-3">
-                            <span id="userBalanceDisplay" class="profile-balance-amount"></span>
-                            <video class="currency-logo ms-2" autoplay loop muted playsinline>
-                                <source src="/assets/images/Firecoin/100x.webm" type="video/webm">
-                                Ваш браузер не поддерживает видео.
-                            </video>
-                            <div id="coin-container" class="balance-logo"></div>
+        <!-- СЕКЦИЯ №2: ОСНОВНОЙ КОНТЕНТ (С ОГРАНИЧЕНИЕМ ШИРИНЫ) -->
+        <div class="profile-content-area">
+            <div class="container">
+                <!-- Карточки информации -->
+                <div class="profile-cards row g-4 justify-content-center">
+
+                    <!-- Карточка баланса -->
+                    <div class="col-lg-4">
+                        <div class="profile-card h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><i class="fas fa-wallet me-2"></i>Баланс</h5>
+                                <div class="d-flex align-items-end justify-content-center mt-3">
+                                    <span id="userBalanceDisplay" class="profile-balance-amount"></span>
+                                    <video class="currency-logo ms-2" autoplay loop muted playsinline>
+                                        <source src="/assets/images/Firecoin/100x.webm" type="video/webm">
+                                        Ваш браузер не поддерживает видео.
+                                    </video>
+                                    <div id="coin-container" class="balance-logo"></div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 pt-0 pb-3 text-center">
+                                <a href="/bank.html" class="btn btn-primary">
+                                    <i class="fas fa-plus-circle me-1"></i> Пополнить
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <!-- НОВАЯ КНОПКА -->
-            <div class="card-footer bg-transparent border-0 pt-0 pb-3 text-center">
-                        <a href="/bank.html" class="btn btn-primary">
-                            <i class="fas fa-plus-circle me-1"></i> Пополнить
-                        </a>
+
+                    <!-- Карточка информации -->
+                    <div class="col-lg-4">
+                        <div class="profile-card h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><i class="fas fa-info-circle me-2"></i>Информация</h5>
+                                <ul class="info-list mt-3">
+                                    <li class="mb-2 d-flex justify-content-center">
+                                        <span class="info-label">Статус:</span>
+                                        <span class="info-value text-success">Активен</span>
+                                    </li>
+                                    <li class="d-flex justify-content-center">
+                                        <span class="info-label">Регистрация:</span>
+                                        <span id="profileCreatedAt" class="info-value"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- <div class="col-lg-4">
+                        <div class="profile-card h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><i class="fa-solid fa-gear me-2"></i>IN BETA</h5>
+                                <ul class="info-list mt-3">
+                                    <li class="mb-2 d-flex justify-content-center">
+                                        <span class="info-label"></span>
+                                        <span class="info-value"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                </div>
+
+                <!-- Действия профиля -->
+                <div class="col-12 mt-5 text-center profile-actions">
+                    <button class="btn btn-primary" id="editProfileBtn">
+                        <i class="fas fa-user-edit me-2"></i>Редактировать
+                    </button>
+                    <button class="btn btn-danger js-logout-btn">
+                        <i class="fas fa-sign-out-alt me-2"></i>Выйти
+                    </button>
                 </div>
             </div>
-
-            <!-- Карточка информации -->
-            <div class="col-lg-6">
-                <div class="profile-card h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"><i class="fas fa-info-circle me-2"></i>Информация</h5>
-                        <ul class="info-list mt-3">
-                            <li class="mb-2 d-flex justify-content-center">
-                                <span class="info-label">Статус:</span>
-                                <span class="info-value text-success">Активен</span>
-                            </li>
-                            <li class="d-flex justify-content-center">
-                                <span class="info-label">Регистрация:</span>
-                                <span id="profileCreatedAt" class="info-value"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Действия профиля -->
-        <div class="col-12 mt-5 text-center profile-actions">
-            <button class="btn btn-primary" id="editProfileBtn"> <!-- <<< ДОБАВИЛИ ID ЗДЕСЬ -->
-                <i class="fas fa-user-edit me-2"></i>Редактировать
-            </button>
-            <button class="btn btn-danger js-logout-btn">
-                <i class="fas fa-sign-out-alt me-2"></i>Выйти
-            </button>
         </div>
     </div>
 </main>
@@ -644,6 +671,10 @@
             <div class="mb-3">
               <label for="newPhotoURL" class="form-label">Ссылка на новый аватар (URL)</label>
               <input type="url" class="form-control" id="newPhotoURL" placeholder="https://example.com/image.png">
+            </div>
+            <div class="mb-3">
+              <label for="newBannerURL" class="form-label">Ссылка на новый баннер (URL)</label>
+              <input type="url" class="form-control" id="newBannerURL" placeholder="https://example.com/banner.png">
             </div>
           </form>
         </div>
