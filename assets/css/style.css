@@ -230,6 +230,46 @@ table th, table td {
     color: #0093e2;
 }
 
+/* Специальный класс для создания градиентного текста */
+.gradient-text {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+
+    /* --- Добавляем анимацию --- */
+    background-size: 200% auto;
+    animation: gradient-animation 4s linear infinite;
+}
+
+/* Описание самой анимации */
+@keyframes gradient-animation {
+    0%    { background-position: 0% 50%; }
+    50%   { background-position: 100% 50%; }
+    100%  { background-position: 0% 50%; }
+}
+
+/* Стили для мобильных устройств (экраны до 576px) */
+@media (max-width: 576px) { 
+    .gradient-text {
+        /* 1. Отключаем анимацию */
+        animation: none;
+
+        /* 2. Убираем градиентный фон */
+        background: none;
+
+        /* 3. Возвращаем тексту его обычный цвет (делаем его не прозрачным) */
+        -webkit-text-fill-color: initial; /* 'initial' сбрасывает свойство до значения по умолчанию */
+        
+        /* 4. Сбрасываем обрезку фона, чтобы текст вел себя как обычно */
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+    }
+}
+
+
+
 #result {
     margin-top: 20px;
     font-size: 18px;

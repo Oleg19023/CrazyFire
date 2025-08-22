@@ -46,13 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="footer-links">
                         <a href="/Info-pages/about.html">Про нас</a>
                         <a href="/Info-pages/contacts.html">Контакты</a>
+                        <a href="/Program-pages/Projects-pages.html">Проекты</a>
                         <a href="/Info-pages/privacy.html">Конфиденциальность</a>
                     </div>
                     <div class="footer-meta">
                         <a href="/AdminSettings.html" class="btn btn-secondary admin-button" title="Настройки">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fa-solid fa-gear"></i>
                         </a>
-                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>2.9</b></b> </a>
+                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>3.0</b></b> </a>
                         <span class="footer-separator">|</span>
                         <span id="footerDate"></span>
                         <span class="footer-separator">|</span>

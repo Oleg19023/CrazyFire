@@ -87,3 +87,54 @@ exports.grantCoinsOnSuccessfulPayment = onDocumentCreated("customers/{userId}/pa
       return { status: "error", message: "Ошибка при обновлении баланса." };
     }
 });
+
+// === НОВАЯ ФУНКЦИЯ ДЛЯ GEMINI AI ===
+
+const fetch = require("node-fetch");
+
+exports.callGemini = functions.https.onCall(async (data, context) => {
+    // ИСПРАВЛЕННАЯ И БОЛЕЕ НАДЕЖНАЯ ПРОВЕРКА
+    if (!data || typeof data.prompt !== 'string' || data.prompt.trim() === '') {
+        functions.logger.warn("Function called without a valid prompt.", {data: data});
+        throw new functions.https.HttpsError('invalid-argument', 'The function must be called with a non-empty "prompt" string.');
+    }
+
+    const prompt = data.prompt;
+    // Безопасно получаем API ключ из конфигурации
+    const geminiApiKey = functions.config().gemini.key;
+    
+    // Указываем модель. Используем gemini-1.5-flash-latest для актуальности.
+    const geminiModel = "gemini-1.5-flash-latest";
+
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${geminiApiKey}`;
+
+    const requestBody = {
+        "contents": [{
+            "parts": [{ "text": prompt }]
+        }]
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            functions.logger.error("Gemini API Error:", errorData);
+            throw new functions.https.HttpsError('internal', 'Failed to call Gemini API.');
+        }
+
+        const responseData = await response.json();
+        const aiText = responseData.candidates[0].content.parts[0].text;
+        
+        // Возвращаем только текст ответа клиенту
+        return { text: aiText };
+
+    } catch (error) {
+        functions.logger.error("Error processing Gemini request:", error);
+        throw new functions.https.HttpsError('unknown', 'An unknown error occurred.');
+    }
+});

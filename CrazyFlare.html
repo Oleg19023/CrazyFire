@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Apple устройства -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Android устройства -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <!-- Manifest-->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/Program-pages.css">
+    <link rel="stylesheet" href="/assets/css/gradient-card.css">
+    <link rel="stylesheet" href="/assets/css/theme-toggle.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS -->
+    <!-- firebase-auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css" />
+    <script src="/assets/js/auth.js"></script>
+    <link rel="stylesheet" href="/assets/css/auth.css">
+    <script src="/assets/js/modal-form-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-functions-compat.js"></script>
+    <!-- firebase-auth -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
+<body>
+    <div id="tsparticles"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html"><img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 40px;"></a>
+                <a class="navbar-brand" href="/index.html"><b><b>CRAZYFIRE</b></b></a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                        <a class="nav-link gradient-text" aria-current="page" href="/CrazyFlare.html">CrazyFlare AI</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="programDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Разделы</a>
+                            <ul class="dropdown-menu" aria-labelledby="programDropdown">
+
+                                <li><a class="dropdown-item" href="/Program-pages/Platforms-pages.html">Приложения</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Program-pages.html">Программы</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Games-pages.html">Игры</a></li>
+                                <li><a class="dropdown-item" href="/Program-pages/Music-pages.html">Музыка</a></li>
+
+                            </ul>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Новости</a>
+                                <ul class="dropdown-menu" aria-labelledby="newsDropdown">
+                                    <li><a class="dropdown-item" href="/News-pages/NewsPortal-page/index.html">Мировые новости</a></li>
+                                    <li><a class="dropdown-item" href="#">Coming soon...</a></li>
+                                </ul>
+                            </li>
+                    
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Магазин</a>
+                            <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                                <li><a class="dropdown-item" href="https://funpay.com/users/12379589/">Funpay</a></li>
+                            </ul>
+                        </li>
+
+                        </li>
+                    </ul>
+                    <div class="page-actions-container">                    
+                    <input id="searchInput" type="text" class="form-control" placeholder="Поиск" aria-label="Поиск" aria-describedby="basic-addon2" style="max-width: 200px; margin-right: 10px; display: none;">
+                    
+                    <button id="parallaxToggle" class="btn btn-outline-secondary" style="display: none; margin-right: 5px;">
+                        <i id="parallaxIcon" class="fa-solid fa-wand-magic"></i>
+                    </button>
+                    
+                    <label class="switch" style="display: inline-block; margin-right: 10px;">
+                        <input id="input" type="checkbox" checked="darkTheme" />
+                        <div class="slider round">
+                            <div class="sun-moon">
+                                <svg id="moon-dot-1" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-2" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="moon-dot-3" class="moon-dot" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-1" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-2" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="light-ray-3" class="light-ray" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                    
+                                <svg id="cloud-1" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-2" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-3" class="cloud-dark" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-4" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-5" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                                <svg id="cloud-6" class="cloud-light" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="50"></circle>
+                                </svg>
+                            </div>
+                            <div class="stars">
+                                <svg id="star-1" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-2" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-3" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                                <svg id="star-4" class="star" viewBox="0 0 20 20">
+                                    <path
+                                        d="M 0 10 C 10 10,10 10 ,0 10 C 10 10 , 10 10 , 10 20 C 10 10 , 10 10 , 20 10 C 10 10 , 10 10 , 10 0 C 10 10,10 10 ,0 10 Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+    
+                    <!-- <button id="searchToggle" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button> -->
+
+                    <!-- Кнопка Войти -->
+                    <button id="loginBtn" class="btn btn-primary me-2" style="border-radius: 20px;">Войти в аккаунт</button>
+
+                    <!-- Блок профиля -->
+                    <div id="profileMenu" style="display:none;" class="profile-container">
+                    <div class="profile-info d-flex align-items-center gap-2">
+                        <!-- Иконка профиля -->
+                        <div class="profile-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+                            <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="currentColor"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- Имя с выпадающим меню -->
+                        <div class="dropdown">
+                        <button class="profile-dropdown-btn" id="profileDropdown" data-bs-toggle="dropdown">
+                            <span id="profileName" class="profile-name"></span>
+                            <span id="profileEmail" style="display:none;"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/profile.html"><i class="fas fa-user me-2"></i>Профиль</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><button class="dropdown-item js-logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button></li>
+                        </ul>
+                        </div>
+                        
+                        <!-- Блок баланса -->
+                        <a href="/bank.html" class="balance-container ms-2 text-decoration-none">
+                            <span class="balance-amount" id="userBalance"></span>
+                            <span class="balance-currency">
+                              <video class="balance-logo-header" autoplay loop muted playsinline>
+                                <source src="/assets/images/Firecoin/50x.webm" type="video/webm">
+                                Ваш браузер не поддерживает видео.
+                              </video>
+                            </span>
+                        </a>
+                    </div>
+                    </div>
+                </div> 
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- Модальное окно входа -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form class="form_container" id="loginForm">
+      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="title_container">
+        <p class="title">Вход в аккаунт</p>
+        <span class="subtitle">Войдите, чтобы получить доступ ко всем возможностям</span>
+      </div>
+      <br>
+      <div class="input_container">
+        <label class="input_label" for="email_field">Email</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M7 8.5L9.94202 10.2394C11.6572 11.2535 12.3428 11.2535 14.058 10.2394L17 8.5"></path>
+          <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"></path>
+        </svg>
+        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="login_email_field" required maxlength="254">
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="password_field">Пароль</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M18 11.0041C17.4166 9.91704 16.273 9.15775 14.9519 9.0993C13.477 9.03404 11.9788 9 10.329 9C8.67911 9 7.18091 9.03404 5.70604 9.0993C3.95328 9.17685 2.51295 10.4881 2.27882 12.1618C2.12602 13.2541 2 14.3734 2 15.5134C2 16.6534 2.12602 17.7727 2.27882 18.865C2.51295 20.5387 3.95328 21.8499 5.70604 21.9275C6.42013 21.9591 7.26041 21.9834 8 22"></path>
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M6 9V6.5C6 4.01472 8.01472 2 10.5 2C12.9853 2 15 4.01472 15 6.5V9"></path>
+        </svg>
+        <input placeholder="Пароль" title="Пароль" name="password" type="password" class="input_field" id="login_password_field" required>
+        <button type="button" class="toggle-password" aria-label="Показать пароль">
+      <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+      </svg>
+    </button>
+      </div><p class="note">Забыли пароль? <a href="#" id="resetPassword">Сбросить пароль</a></p>
+      <button title="Sign In" type="submit" class="sign-in_btn">
+        <span>Войти</span>
+      </button>
+
+      <div class="separator">
+        <hr class="line">
+        <span>Или</span>
+        <hr class="line">
+      </div>
+
+      <div class="social-buttons">
+        <button type="button" class="button google-auth">
+          <svg viewBox="0 0 256 262" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
+            <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path>
+            <path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path>
+            <path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path>
+            <path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path>
+          </svg>
+          Войти через Google
+        </button>
+
+        <button type="button" class="button github-auth">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+            <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z"></path>
+          </svg>
+          Войти через GitHub
+        </button>
+
+        <button class="button facebook-auth">
+            <svg
+        class="w-5"
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        height="1.1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <path
+            d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+        ></path>
+        </svg>
+
+        Войти через Facebook
+        </button>
+
+        <button class="button discord-auth">
+        <svg
+            style="color: white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-discord"
+            viewBox="0 0 16 16"
+        >
+            <path
+            d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"
+            fill="white"
+            ></path>
+        </svg>
+        Войти через Discord
+        </button>
+
+                <button class="button apple-auth">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-twitter-x"
+            viewBox="0 0 24 24"
+        >
+            <path
+            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"
+            ></path>
+        </svg>
+        Войти через Apple
+        </button>
+        
+        <button class="button x-auth">
+        <svg
+            viewBox="0 0 16 16"
+            class="bi bi-twitter-x"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+            ></path>
+        </svg>
+        Войти через X
+        </button>
+
+      </div>
+
+      <p class="note">Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- Модальное окно регистрации -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form class="form_container" id="registerForm">
+      <div class="logo_container"><img src="/assets/images/Site-logos/4kLogo.jpg" alt="Логотип" class="logo"></div>
+      <div class="title_container">
+        <p class="title">Создать аккаунт</p>
+        <span class="subtitle">Присоединяйтесь к нашему сообществу</span>
+      </div>
+      <br>
+      <div class="input_container">
+        <label class="input_label" for="name_field">Имя</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1Z"></path>
+          <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+        </svg>
+        <input placeholder="Ваше имя" title="Имя" name="name" type="text" class="input_field" id="name_field" required>
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="email_field">Email</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M7 8.5L9.94202 10.2394C11.6572 11.2535 12.3428 11.2535 14.058 10.2394L17 8.5"></path>
+          <path stroke-linejoin="round" stroke-width="1.5" stroke="#141B34" d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"></path>
+        </svg>
+        <input placeholder="email@example.com" title="Email" name="email" type="email" class="input_field" id="register_email_field" required maxlength="254">
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="password_field">Пароль</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M18 11.0041C17.4166 9.91704 16.273 9.15775 14.9519 9.0993C13.477 9.03404 11.9788 9 10.329 9C8.67911 9 7.18091 9.03404 5.70604 9.0993C3.95328 9.17685 2.51295 10.4881 2.27882 12.1618C2.12602 13.2541 2 14.3734 2 15.5134C2 16.6534 2.12602 17.7727 2.27882 18.865C2.51295 20.5387 3.95328 21.8499 5.70604 21.9275C6.42013 21.9591 7.26041 21.9834 8 22"></path>
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M6 9V6.5C6 4.01472 8.01472 2 10.5 2C12.9853 2 15 4.01472 15 6.5V9"></path>
+        </svg>
+        <input placeholder="Пароль" title="Пароль" name="password" type="password" class="input_field" id="register_password_field" required>
+        <button type="button" class="toggle-password" aria-label="Показать пароль">
+      <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+      </svg>
+    </button>
+      </div>
+      <div class="input_container">
+        <label class="input_label" for="confirm_password_field">Подтвердите пароль</label>
+        <svg fill="none" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon-auth">
+          <path stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M18 11.0041C17.4166 9.91704 16.273 9.15775 14.9519 9.0993C13.477 9.03404 11.9788 9 10.329 9C8.67911 9 7.18091 9.03404 5.70604 9.0993C3.95328 9.17685 2.51295 10.4881 2.27882 12.1618C2.12602 13.2541 2 14.3734 2 15.5134C2 16.6534 2.12602 17.7727 2.27882 18.865C2.51295 20.5387 3.95328 21.8499 5.70604 21.9275C6.42013 21.9591 7.26041 21.9834 8 22"></path>
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#141B34" d="M6 9V6.5C6 4.01472 8.01472 2 10.5 2C12.9853 2 15 4.01472 15 6.5V9"></path>
+        </svg>
+        <input placeholder="Подтвердите пароль" title="Подтвердите пароль" name="confirm_password" type="password" class="input_field" id="confirm_password_field" required>
+        <button type="button" class="toggle-password" aria-label="Показать пароль">
+      <svg class="eye-icon" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+      </svg>
+    </button>
+      </div>
+      <button title="Sign Up" type="submit" class="sign-in_btn">
+        <span>Зарегистрироваться</span>
+      </button>
+
+      <div class="separator">
+        <hr class="line">
+        <span>Или</span>
+        <hr class="line">
+      </div>
+
+      <div class="social-buttons">
+        <button type="button" class="button google-auth">
+          <svg viewBox="0 0 256 262" preserveAspectRatio="xMidYMid" xmlns="http://www.w3.org/2000/svg">
+            <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path>
+            <path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path>
+            <path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path>
+            <path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path>
+          </svg>
+          Войти через Google
+        </button>
+
+        <button type="button" class="button github-auth">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+            <path d="M12,2A10,10,0,0,0,8.84,21.5c.5.08.66-.23.66-.5V19.31C6.73,19.91,6.14,18,6.14,18A2.69,2.69,0,0,0,5,16.5c-.91-.62.07-.6.07-.6a2.1,2.1,0,0,1,1.53,1,2.15,2.15,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C8,16.17,5.62,15.31,5.62,11.5a3.87,3.87,0,0,1,1-2.71,3.58,3.58,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.58,3.58,0,0,1,.1,2.64,3.87,3.87,0,0,1,1,2.71c0,3.82-2.34,4.66-4.57,4.91a2.39,2.39,0,0,1,.69,1.85V21c0,.27.16.59.67.5A10,10,0,0,0,12,2Z"></path>
+          </svg>
+          Войти через GitHub
+        </button>
+
+        <button class="button facebook-auth">
+            <svg
+        class="w-5"
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        height="1.1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <path
+            d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z"
+        ></path>
+        </svg>
+
+        Войти через Facebook
+        </button>
+
+        <button class="button discord-auth">
+        <svg
+            style="color: white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-discord"
+            viewBox="0 0 16 16"
+        >
+            <path
+            d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"
+            fill="white"
+            ></path>
+        </svg>
+        Войти через Discord
+        </button>
+                <button class="button apple-auth">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-twitter-x"
+            viewBox="0 0 24 24"
+        >
+            <path
+            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"
+            ></path>
+        </svg>
+        Войти через Apple
+        </button>
+
+                <button class="button x-auth">
+        <svg
+            viewBox="0 0 16 16"
+            class="bi bi-twitter-x"
+            fill="currentColor"
+            height="16"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+            ></path>
+        </svg>
+        Войти через X
+        </button>
+
+      </div>
+
+      <p class="note">Уже есть аккаунт? <a href="#" id="showLogin">Войти</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- Затемнение фона -->
+<div id="modalOverlay" class="overlay"></div>
+
+<div class="video-background">
+    <iframe 
+        id="backgroundIframe"
+        src=""
+        frameborder="0" 
+        allow="autoplay; muted; fullscreen; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<div class="page-content-wrapper">
+
+    <style>
+        /* Контейнер для фонового iframe. */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        /* --- Стили для iframe (Светлая тема по умолчанию) --- */
+        #backgroundIframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 178vh; 
+            height: 100vw;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            
+            /* 
+            Это стиль для светлой темы. 
+            Яркость 80% делает фон светлее, но не засвечивает.
+            */
+            filter: blur(12px) brightness(80%);
+            
+            opacity: 0;
+            /* Добавляем transition и для фильтра, чтобы смена яркости была плавной */
+            transition: opacity 0.8s ease-in-out, filter 0.4s ease-in-out;
+        }
+
+        /* --- Переопределение для Темной темы --- */
+        /* Этот стиль сработает, только когда на body есть класс .dark-theme */
+        .dark-theme #backgroundIframe {
+            /* Затемняем фон до 50% для темной темы */
+            filter: blur(12px) brightness(50%);
+        }
+
+        #backgroundIframe.show {
+            opacity: 1;
+        }
+
+        .page-content-wrapper {
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .page-content-wrapper main {
+            flex-grow: 1;
+        }
+
+        /* Контент поверх видео */
+        #mainpage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1; 
+        }
+
+        h2 {
+            font-size: 3rem; /* Размер текста */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Тень для текста */
+        }
+
+        #startButton {
+            margin-top: 20px; /* Отступ от текста */
+            font-size: 1.5rem; /* Размер шрифта кнопки */
+        }
+
+        #backgroundVideo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0; /* Начальная непрозрачность */
+            transition: opacity 1s ease; /* Плавный переход */
+            z-index: -1; /* Поместите видео под другие элементы */
+        }
+
+        #backgroundVideo.show {
+            opacity: 1; /* Полная непрозрачность */
+        }
+
+        #header {
+            position: fixed; /* Фиксированное положение */
+            top: -80px; /* Начальное положение выше экрана */
+            left: 0;
+            width: 100%;
+            transition: top 0.6s ease-in-out; /* Плавное выплывание */
+            display: none; /* Скрыт по умолчанию */
+            z-index: 1000; /* Поверх других элементов */
+        }
+
+        #header.show {
+            top: 0; /* Появляется сверху */
+        }
+        
+        /* Класс, который ваш JS будет добавлять для отображения iframe */
+        .video-background iframe.show {
+            opacity: 1;
+        }
+
+        /* --- Стили для Контейнера нейросети --- */
+        .page-content-wrapper {
+            position: relative;
+            z-index: 1; /* Убеждаемся, что контент выше фона */
+        }
+
+        .nn-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); /* Высота экрана минус примерная высота шапки */
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--text-color); 
+        }
+
+        .nn-welcome-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: color 0.5s ease;
+        }
+
+        .nn-welcome-text p {
+            font-size: 1.25rem;
+            color: var(--text-color-secondary, #ffffff);
+            /* Усилим тень для подзаголовка */
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-theme .nn-welcome-text p {
+            color: #f0f0f0; /* Сделаем текст параграфа светлым в темной теме */
+        }
+
+        .nn-input-bar {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .nn-input-bar textarea {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            resize: none;
+            font-size: 1rem;
+            max-height: 200px;
+            padding: 5px 15px;
+            overflow-y: auto;
+            line-height: 1.5;
+            transition: color 0.3s ease;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .nn-input-bar textarea::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nn-action-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .nn-send-button {
+            font-size: 1.3rem;
+        }
+
+        /* --- Светлая Тема --- */
+        .nn-input-bar {
+            background-color: rgba(255, 255, 255, 0.9); /* Сделаем фон полупрозрачным */
+            border: 1px solid #dee2e6;
+            -webkit-backdrop-filter: blur(5px); /* Эффект размытия для современных браузеров */
+            backdrop-filter: blur(5px);
+        }
+        .nn-input-bar textarea { color: #212529; }
+        .nn-input-bar textarea::placeholder { color: #6c757d; }
+        .nn-action-button { color: #6c757d; }
+        .nn-action-button:hover { color: #0d6efd; }
+        .nn-send-button { color: #0d6efd; }
+        .nn-send-button:hover { color: #0a58ca; }
+
+        /* --- Темная Тема --- */
+        .dark-theme .nn-input-bar {
+            background-color: rgba(44, 44, 46, 0.85); /* Полупрозрачный фон для темной темы */
+            border: 1px solid #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .dark-theme .nn-input-bar textarea { color: #f0f0f0; }
+        .dark-theme .nn-input-bar textarea::placeholder { color: #8e8e93; }
+        .dark-theme .nn-action-button { color: #8e8e93; }
+        .dark-theme .nn-action-button:hover { color: #4dabf7; }
+        .dark-theme .nn-send-button { color: #4dabf7; }
+        .dark-theme .nn-send-button:hover { color: #74c0fc; }
+
+        #typing-subtitle {
+            /* Резервируем место, чтобы строка не "прыгала" по высоте, когда пустая */
+            min-height: 1.25rem; 
+        }
+
+        @keyframes blink {
+            0%    { background-color: transparent; }
+            49%   { background-color: transparent; }
+            50%   { background-color: #ccc; }
+            99%   { background-color: #ccc; }
+            100%  { background-color: transparent; }
+        }
+
+    /* ------------------------------------------- */
+    /* --- Адаптация для мобильных устройств --- */
+    /* ------------------------------------------- */
+    @media (max-width: 768px) {
+        .nn-welcome-text h1 {
+            font-size: 2.8rem; /* Уменьшаем размер основного заголовка */
+            line-height: 1.2; /* Улучшаем межстрочный интервал, если текст перенесется */
+        }
+
+        .nn-welcome-text p {
+            font-size: 1.1rem; /* Немного уменьшаем подзаголовок */
+        }
+        
+        .nn-input-bar {
+            /* Делаем поле ввода чуть ближе к низу на мобильных */
+            bottom: 20px;
+        }
+    }
+
+    /* --- Стили для окна чата --- */
+        #chat-history {
+            width: 100%;
+            max-width: 800px;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: none; /* Изначально скрыт */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        #chat-history::-webkit-scrollbar {
+            display: none;
+        }
+        #chat-history.show {
+            display: block;
+            opacity: 1;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+        .chat-message p {
+            margin: 0;
+            padding: 10px 15px;
+            border-radius: 18px;
+            line-height: 1.5;
+        }
+        .user-message {
+            align-self: flex-end;
+            align-items: flex-end;
+        }
+        .user-message p {
+            background-color: #007bff;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        .dark-theme .user-message p {
+            background-color: #4dabf7;
+        }
+        .ai-message {
+            align-self: flex-start;
+            align-items: flex-start;
+        }
+        .ai-message p {
+            background-color: #e9ecef;
+            color: #212529;
+            border-bottom-left-radius: 4px;
+        }
+        .dark-theme .ai-message p {
+            background-color: #3a3a3c;
+            color: #f0f0f0;
+        }
+        .loading-dots span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: currentColor;
+            margin: 0 2px;
+            opacity: 0.4;
+            animation: blink 1.4s infinite both;
+        }
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        /* Используем тот же keyframes, что у вас уже есть */
+
+        #welcome-container.fade-out {
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        /* --- Стиль для центрирования приветственного блока --- */
+        #welcome-container {
+            padding-bottom: 12%;
+            justify-content: center; /* ...чтобы центрировать его дочерний элемент (.nn-welcome-text) по вертикали */
+            align-items: center; /* ...и по горизонтали */
+            width: 100%;
+        }
+
+        @media (max-width: 1400px) {
+            #welcome-container {
+                padding-bottom: 18%;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            #welcome-container {
+                padding-bottom: 23%;
+            }
+        }
+
+        @media (max-width: 800px) {
+            #welcome-container {
+                padding-bottom: 50%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            #welcome-container {
+                padding-bottom: 70%;
+            }
+        }
+
+
+
+        /* --- Стили для нового макета и сайдбара --- */
+        #main-content {
+            flex-grow: 1;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+        }
+
+        #sidebar {
+            height: 100vh;
+            width: 280px;
+            position: fixed;
+            top: 0;
+            left: -280px; /* Изначально скрыт */
+            background-color: #1c1c1e;
+            padding: 15px;
+            transition: left 0.3s ease;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+        }
+        .dark-theme #sidebar {
+            background-color: #1c1c1e;
+        }
+        body:not(.dark-theme) #sidebar {
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+
+        #sidebar.show {
+            left: 0;
+        }
+        #main-content.sidebar-open {
+            margin-left: 280px;
+        }
+
+        .sidebar-header {
+            margin-bottom: 20px;
+        }
+        .btn-sidebar-new {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+        }
+        body:not(.dark-theme) .btn-sidebar-new {
+            background-color: #fff;
+            color: #212529;
+            border: 1px solid #dee2e6;
+        }
+
+        .chat-list {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .chat-list-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            color: #f0f0f0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-list-item.active {
+            background-color: #3a3a3c;
+        }
+        .chat-list-item:hover {
+            background-color: #2c2c2e;
+        }
+        body:not(.dark-theme) .chat-list-item { color: #212529; }
+        body:not(.dark-theme) .chat-list-item.active { background-color: #e9ecef; }
+        body:not(.dark-theme) .chat-list-item:hover { background-color: #f1f1f1; }
+
+        .chat-list-item span {
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat-item-actions {
+            display: none; /* Скрыты по умолчанию */
+        }
+        .chat-list-item:hover .chat-item-actions {
+            display: block; /* Появляются при наведении */
+        }
+        .chat-item-actions button {
+            background: none;
+            border: none;
+            color: #8e8e93;
+            cursor: pointer;
+            padding: 2px 5px;
+        }
+        body:not(.dark-theme) .chat-item-actions button { color: #6c757d; }
+
+        .sidebar-toggle-btn {
+            position: absolute;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: none; /* Скрыта по умолчанию */
+        }
+        body:not(.dark-theme) .sidebar-toggle-btn {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            color: #212529;
+        }
+
+
+        /* --- ИСПРАВЛЕНИЯ СТИЛЕЙ ЧАТА И ИНПУТА --- */
+        .nn-container {
+            /* Добавляем отступ сверху под хедер */
+            padding-top: 90px; 
+            justify-content: flex-end; /* Прижимаем инпут к низу */
+        }
+
+        /* Когда чат активен, контейнер растягивается на всю высоту */
+        .nn-container.chat-active {
+            justify-content: flex-start; /* Начинаем с верха */
+            height: calc(100vh - 80px); /* Полная высота */
+        }
+
+        #chat-history {
+            flex-grow: 1; /* Занимает все доступное пространство */
+            margin-bottom: 20px; /* Отступ от поля ввода */
+        }
+
+        .nn-input-bar {
+            position: relative; /* Убираем absolute */
+            bottom: auto; /* Сбрасываем позиционирование */
+            max-width: 800px;
+            transition: max-width 0.5s ease;
+        }
+
+        /* Когда чат активен, поле ввода растягивается */
+        .nn-container.chat-active .nn-input-bar {
+            max-width: 900px; /* Делаем шире */
+        }
+
+        /* --- Стили для контекстного меню и интерактивных сообщений --- */
+        .chat-message p {
+            cursor: pointer; /* Показываем, что на сообщение можно нажать */
+            transition: background-color 0.2s ease;
+        }
+
+        /* Легкая подсветка сообщения при наведении */
+        .dark-theme .chat-message:hover p {
+            background-color: #4a4a4c;
+        }
+        body:not(.dark-theme) .chat-message:hover p {
+            background-color: #e0e0e0;
+        }
+
+        /* Стили самого меню */
+        #message-context-menu {
+            position: absolute;
+            display: none; /* Скрыто по умолчанию */
+            width: 200px;
+            background-color: #2c2c2e;
+            border: 1px solid #444;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 5px;
+            z-index: 1100;
+        }
+        body:not(.dark-theme) #message-context-menu {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+        }
+
+        #message-context-menu button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 8px 12px;
+            background: none;
+            border: none;
+            color: #f0f0f0;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+        body:not(.dark-theme) #message-context-menu button {
+            color: #212529;
+        }
+
+        #message-context-menu button:hover {
+            background-color: #3a3a3c;
+        }
+        body:not(.dark-theme) #message-context-menu button:hover {
+            background-color: #f1f1f1;
+        }
+
+        #message-context-menu button.delete-action:hover {
+            background-color: #d93025;
+            color: white;
+        }
+        body:not(.dark-theme) #message-context-menu button.delete-action:hover {
+            background-color: #dc3545;
+        }
+
+        #message-context-menu.show {
+            display: block;
+        }
+
+    </style>
+
+    <div class="page-content-wrapper">
+
+    <!-- НОВЫЙ САЙДБАР ДЛЯ ЧАТОВ (изначально скрыт) -->
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <button id="new-chat-btn" class="btn-sidebar-new">
+                <i class="fas fa-plus"></i> Новый чат
+            </button>
+        </div>
+        <div class="chat-list">
+            <!-- Сюда будут добавляться чаты из JavaScript -->
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="main-content">
+        <!-- HTML-структура интерфейса нейросети -->
+        <div class="nn-container">
+            <!-- Кнопка открытия сайдбара (появится, когда начнется чат) -->
+            <button id="sidebar-toggle" class="sidebar-toggle-btn"><i class="fas fa-bars"></i></button>
+
+            <div id="welcome-container" data-aos="fade-up">
+                <div class="nn-welcome-text">
+                    <h1>Приветствуем CrazyFlare AI</h1>
+                    <p id="typing-subtitle">
+                        <span id="typing-text"></span><span class="cursor">&nbsp;</span>
+                    </p>
+                </div>
+            </div>
+
+            <div id="chat-history"></div>
+
+            <div class="nn-input-bar" data-aos="fade-up" data-aos-delay="200">
+                <button class="nn-action-button" aria-label="Прикрепить файл"><i class="fas fa-paperclip"></i></button>
+                <textarea id="nn-input" placeholder="Введите ваш запрос здесь..." rows="1"></textarea>
+                <button id="send-button" class="nn-action-button nn-send-button" aria-label="Отправить сообщение"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="message-context-menu">
+    <button id="copy-btn"><i class="fas fa-copy"></i> Копировать</button>
+    <button id="regen-btn"><i class="fas fa-sync-alt"></i> Перегенерировать</button>
+    <button id="delete-btn" class="delete-action"><i class="fas fa-trash"></i> Удалить</button>
+</div>
+
+    <!-- Скрипт для автоматического изменения высоты поля ввода -->
+    <script>
+        const textarea = document.getElementById('nn-input');
+        if (textarea) {
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto';
+                const newHeight = Math.min(textarea.scrollHeight, 200);
+                textarea.style.height = newHeight + 'px';
+            });
+        }
+    </script>
+
+    <script>
+        const backgroundIframe = document.getElementById('backgroundIframe');
+    
+    const kinescopeVideos = [
+        // 1 //
+        'https://kinescope.io/embed/7L7W8nZoXJygFgjYvii5tC?autoplay=true&muted=true&loop=true&background=1',
+        // 2 //
+        'https://kinescope.io/embed/fmag8YRSN97uPJK5iLKKEK?autoplay=true&muted=true&loop=true&background=1',
+        // 3 //
+        'https://kinescope.io/embed/uUJG9KtEhKECqDEDPs9pHB?autoplay=true&muted=true&loop=true&background=1',
+        // 4 //
+        'https://kinescope.io/embed/vZNGRDAMHQsA56bgdYndEy?autoplay=true&muted=true&loop=true&background=1',
+        // 5 //
+        'https://kinescope.io/embed/gRzAdPfNZDkwgWPuymP9TY?autoplay=true&muted=true&loop=true&background=1',
+        // 6 //
+        'https://kinescope.io/embed/43y3HfyxFrgoTZ89US7AUV?autoplay=true&muted=true&loop=true&background=1',
+        // 7 //
+        'https://kinescope.io/embed/2V1cTauBsqfGT1ujE4WRAp?autoplay=true&muted=true&loop=true&background=1',
+        // 8 //
+        'https://kinescope.io/embed/x5LnF9Kpf1NyheWdbJMmyK?autoplay=true&muted=true&loop=true&background=1',
+        // 9 //
+        'https://kinescope.io/embed/mRYv4cuGdMkAkmD2gzYcYs?autoplay=true&muted=true&loop=true&background=1',
+        // 10 //
+        'https://kinescope.io/embed/bWTit2wJiXPkVaNt4WXgvy?autoplay=true&muted=true&loop=true&background=1',
+        // 11 //
+        'https://kinescope.io/embed/eRKxz6Jtk4eaeAkrApy4tr?autoplay=true&muted=true&loop=true&background=1',
+        // 12 //
+        'https://kinescope.io/embed/hnYjJJPgRYaqyoSCXqskmr?autoplay=true&muted=true&loop=true&background=1',
+        // 13 //
+        'https://kinescope.io/embed/7An83s3CszZDmqSf3KzHEp?autoplay=true&muted=true&loop=true&background=1',
+        // 14 //
+        'https://kinescope.io/embed/jusGzB75Je9Fqi7opYiGLj?autoplay=true&muted=true&loop=true&background=1',
+        // 15 //
+        'https://kinescope.io/embed/8CoMKvfHZvwxpYXS74LFqy?autoplay=true&muted=true&loop=true&background=1',
+        // 16 //
+        'https://kinescope.io/embed/9M2mVYmJt91JtDWUZ6nYHe?autoplay=true&muted=true&loop=true&background=1',
+        // 17 //
+        'https://kinescope.io/embed/cMN8ZCHihxGrYtBRF1rvSV?autoplay=true&muted=true&loop=true&background=1',
+        // 18 //
+        'https://kinescope.io/embed/jHNhXkF1ezh9zW7nCfrBRF?autoplay=true&muted=true&loop=true&background=1',
+        // 19 //
+        'https://kinescope.io/embed/ocbUUjfyiNjZBMWKYgj5AQ?autoplay=true&muted=true&loop=true&background=1',
+        // 20 //
+        'https://kinescope.io/embed/8Bk2TRLDd6wwBYQtwpd5Yz?autoplay=true&muted=true&loop=true&background=1',
+        // 21 //
+        'https://kinescope.io/embed/s93vnU3zJyEHSWd8ojdeRE?autoplay=true&muted=true&loop=true&background=1',
+        // 22 //
+        'https://kinescope.io/embed/7AcL9GmQRFqfPnzga4uZD7?autoplay=true&muted=true&loop=true&background=1',
+        // 23 //
+        'https://kinescope.io/embed/mSYq4eRVd2H9fQJQrw9XE8?autoplay=true&muted=true&loop=true&background=1',
+        // 24 //
+        'https://kinescope.io/embed/fTeMYjwuwXaagk13vvBxnn?autoplay=true&muted=true&loop=true&background=1',
+        // 25 //
+        'https://kinescope.io/embed/t1CU2zmfYgA3wNuwds7EDq?autoplay=true&muted=true&loop=true&background=1',
+        // 26 //
+        'https://kinescope.io/embed/kMVdhzU11F1CV1fu7qUt4K?autoplay=true&muted=true&loop=true&background=1',
+        // 27 //
+        'https://kinescope.io/embed/jxcdzTUGtHCX3QdJgtM2jC?autoplay=true&muted=true&loop=true&background=1',
+        // 28 //
+        'https://kinescope.io/embed/acfZrNEhG1p5TgSgpj3FTi?autoplay=true&muted=true&loop=true&background=1',
+        // 29 //
+        'https://kinescope.io/embed/o17wWammbqa4DMVnEqCgNs?autoplay=true&muted=true&loop=true&background=1',
+        // 30 //
+        'https://kinescope.io/embed/qCb4inht5Kz1yCTFavPHvs?autoplay=true&muted=true&loop=true&background=1',
+        // 31 //
+        'https://kinescope.io/embed/gGinEZLuy68Kk3rUPPnikp?autoplay=true&muted=true&loop=true&background=1',
+        // 32 //
+        'https://kinescope.io/embed/qrzeeqhAQrnE9xCsN7vcCB?autoplay=true&muted=true&loop=true&background=1',
+        // 33 //
+        'https://kinescope.io/embed/uG4xhKiViFC61kKQG9YY5S?autoplay=true&muted=true&loop=true&background=1',
+        // 34 //
+        'https://kinescope.io/embed/69zQQUAYpGaTfAHwUWRJa8?autoplay=true&muted=true&loop=true&background=1',
+        // 35 //
+        'https://kinescope.io/embed/xhtxZrNp6xKKT2FEKRhvxn?autoplay=true&muted=true&loop=true&background=1',
+        // 36 //
+        'https://kinescope.io/embed/mb8jDXCmcn34oxH3P2nf4y?autoplay=true&muted=true&loop=true&background=1',
+        // 37 //
+        'https://kinescope.io/embed/qxEzGM9rFEXMfKrdzzCPSG?autoplay=true&muted=true&loop=true&background=1',
+        // 38 //
+        'https://kinescope.io/embed/qsCrrZ7mHZ9jZsGDkgpAf5?autoplay=true&muted=true&loop=true&background=1',
+        // 39 //
+        'https://kinescope.io/embed/aWu6hoC2JZJsSdPTFCHjoW?autoplay=true&muted=true&loop=true&background=1',
+        // 40 //
+        'https://kinescope.io/embed/wyd6Lr4UKyeur4RK8D4yAg?autoplay=true&muted=true&loop=true&background=1',
+        // 41 //
+        'https://kinescope.io/embed/qWWSeqCfb3DDbEsSSW7ApN?autoplay=true&muted=true&loop=true&background=1',
+        // 42 //
+        'https://kinescope.io/embed/9kVfz4ooH5BuCzqkfw5p9p?autoplay=true&muted=true&loop=true&background=1',
+        // 43 //
+        'https://kinescope.io/embed/mVWRGETP2r3QsJd4vtmuAz?autoplay=true&muted=true&loop=true&background=1',
+        // 44 //
+        'https://kinescope.io/embed/rzyX39oX9LuQ1NntTxxEVu?autoplay=true&muted=true&loop=true&background=1',
+        // 45 //
+        'https://kinescope.io/embed/evM5EgBm8w3mu8C3jwETF9?autoplay=true&muted=true&loop=true&background=1',
+        // 46 //
+        'https://kinescope.io/embed/oNSpYm9AxQTkYAzHwZLCJf?autoplay=true&muted=true&loop=true&background=1',
+        // 47 //
+        'https://kinescope.io/embed/tuXRxJV8Gbonsz9exGo2vH?autoplay=true&muted=true&loop=true&background=1',
+        // 48 //
+        'https://kinescope.io/embed/gRePLY4a8MdUhUs8X9bo2r?autoplay=true&muted=true&loop=true&background=1',
+        // 49 //
+        'https://kinescope.io/embed/qkvpXrFhQPjmXXxJdQZgmg?autoplay=true&muted=true&loop=true&background=1',
+        // 50 //
+        'https://kinescope.io/embed/mre3hX76h4gKeUrsAy9H9c?autoplay=true&muted=true&loop=true&background=1',
+    ];
+
+    let currentVideoIndex = -1;
+
+    // Функция, которая будет менять видео
+    function setNextVideo() {
+        // 1. Делаем iframe прозрачным, запуская анимацию исчезновения
+        backgroundIframe.classList.remove('show');
+
+        // 2. Ждем, пока анимация исчезновения завершится
+        setTimeout(() => {
+            // 3. Выбираем новый случайный индекс, не повторяющийся с предыдущим
+            let newVideoIndex;
+            do {
+                newVideoIndex = Math.floor(Math.random() * kinescopeVideos.length);
+            } while (kinescopeVideos.length > 1 && newVideoIndex === currentVideoIndex);
+            
+            currentVideoIndex = newVideoIndex;
+            
+            // 4. Устанавливаем новый src.
+            console.log("Загружаю видео:", kinescopeVideos[currentVideoIndex]); // Для отладки
+            backgroundIframe.src = kinescopeVideos[currentVideoIndex];
+        }, 800); // Эта задержка ДОЛЖНА соответствовать времени `transition` в CSS
+    }
+
+    backgroundIframe.onload = () => {
+        // 5. Как только новое видео загрузилось, делаем iframe видимым.
+        console.log("Видео загружено, показываю."); // Для отладки
+        backgroundIframe.classList.add('show');
+    };
+
+    const initialIndex = Math.floor(Math.random() * kinescopeVideos.length);
+    currentVideoIndex = initialIndex;
+    backgroundIframe.src = kinescopeVideos[currentVideoIndex];
+
+    // Интервал для смен видео.
+    setInterval(setNextVideo, 10000); // 10 секунд
+    </script>
+    
+    <!-- // --- Скрипт для эффекта печатающегося текста --- -->
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const textElement = document.getElementById('typing-text');
+        
+        // Список фраз для анимации
+        const phrases = [
+            "Ваш новый продвинутый ИИ-ассистент.",
+            "Могу написать код на любом языке.",
+            "Помогу с домашним заданием.",
+            "Создам уникальное изображение по вашему запросу.",
+            "Напишу музыку для вашего проекта.",
+            "Объясню любую сложную тему простыми словами.",
+            "Найду ответ на любой вопрос.",
+            "Давайте создадим что-то невероятное вместе!",
+            "Готов к работе 24/7.",
+            "Просто спросите меня о чем-нибудь."
+        ];
+
+        // Настройки анимации
+        const typingDelay = 35; // Скорость печати
+        const deletingDelay = 20; // Скорость стирания
+        const pauseAtEndDelay = 4000; // Пауза в конце фразы
+        const newPhraseDelay = 100; // Пауза перед новой фразой
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // --- Логика стирания ---
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeEffect, newPhraseDelay);
+                } else {
+                    setTimeout(typeEffect, deletingDelay);
+                }
+            } else {
+                // --- Логика набора текста ---
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, pauseAtEndDelay);
+                } else {
+                    setTimeout(typeEffect, typingDelay);
+                }
+            }
+        }
+
+        // Запускаем анимацию
+        if(textElement) {
+            typeEffect();
+        }
+    });
+    </script>
+
+<!-- ======================================================= -->
+<!-- ===== ОСНОВНОЙ СКРИПТ ДЛЯ CRAZYFLARE AI (Финальная версия) ===== -->
+<!-- ======================================================= -->
+<script>
+// --- Объявление переменных для всех DOM-элементов ---
+let nnContainer, welcomeContainer, chatHistoryContainer, nnInput, sendButton,
+    sidebar, sidebarToggle, newChatBtn, chatList, mainContent, contextMenu,
+    copyBtn, regenBtn, deleteBtn;
+
+// --- Структура данных ---
+let appState = {
+    activeChatId: null,
+    chats: {}
+};
+let activeMessageInfo = null; // Для хранения информации о сообщении, на которое кликнули
+
+document.addEventListener("DOMContentLoaded", () => {
+    // --- ИНИЦИАЛИЗАЦИЯ DOM-элементов ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ ---
+    nnContainer = document.querySelector('.nn-container');
+    welcomeContainer = document.getElementById('welcome-container');
+    chatHistoryContainer = document.getElementById('chat-history');
+    nnInput = document.getElementById('nn-input');
+    sendButton = document.getElementById('send-button');
+    sidebar = document.getElementById('sidebar');
+    sidebarToggle = document.getElementById('sidebar-toggle');
+    newChatBtn = document.getElementById('new-chat-btn');
+    chatList = document.querySelector('.chat-list');
+    mainContent = document.getElementById('main-content');
+    contextMenu = document.getElementById('message-context-menu');
+    
+    copyBtn = document.getElementById('copy-btn');
+    regenBtn = document.getElementById('regen-btn');
+    deleteBtn = document.getElementById('delete-btn');
+
+    // --- Запускаем приложение ---
+    initApp();
+});
+
+
+/**
+ * Инициализация приложения
+ */
+function initApp() {
+    loadState();
+    if (appState.activeChatId && appState.chats[appState.activeChatId]) {
+        renderChat(appState.activeChatId);
+        setChatActiveUI(true);
+    } else {
+        setChatActiveUI(false);
+    }
+    renderSidebar();
+    setupEventListeners();
+}
+
+// --- Управление состоянием (localStorage) ---
+function loadState() {
+    try {
+        const savedState = localStorage.getItem('crazyFlareAppState');
+        if (savedState) {
+            appState = JSON.parse(savedState);
+        }
+    } catch (e) {
+        console.error("Failed to load or parse app state:", e);
+        // Очищаем некорректные данные, чтобы избежать ошибок в будущем
+        localStorage.removeItem('crazyFlareAppState');
+    }
+}
+
+function saveState() {
+    localStorage.setItem('crazyFlareAppState', JSON.stringify(appState));
+}
+
+// --- Рендеринг (Отображение на странице) ---
+function renderSidebar() {
+    if (!chatList) return;
+    chatList.innerHTML = '';
+    const sortedChats = Object.values(appState.chats).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+    
+    sortedChats.forEach(chat => {
+        const item = document.createElement('div');
+        item.className = 'chat-list-item';
+        item.dataset.chatId = chat.id;
+        if (chat.id === appState.activeChatId) {
+            item.classList.add('active');
+        }
+        item.innerHTML = `
+            <span>${chat.title}</span>
+            <div class="chat-item-actions">
+                <button class="rename-btn" title="Переименовать"><i class="fas fa-pen"></i></button>
+                <button class="delete-btn" title="Удалить"><i class="fas fa-trash"></i></button>
+            </div>
+        `;
+        chatList.appendChild(item);
+    });
+}
+
+function renderChat(chatId) {
+    if (!chatHistoryContainer) return;
+    chatHistoryContainer.innerHTML = '';
+    const chat = appState.chats[chatId];
+    if (chat && chat.messages) {
+        chat.messages.forEach((msg, index) => displayMessage(msg.text, msg.role, false, index));
+    }
+}
+
+function setChatActiveUI(isActive) {
+    if (isActive) {
+        if (welcomeContainer) welcomeContainer.style.display = 'none';
+        if (chatHistoryContainer) chatHistoryContainer.classList.add('show');
+        if (nnContainer) nnContainer.classList.add('chat-active');
+        if (sidebarToggle) sidebarToggle.style.display = 'block';
+    } else {
+        if (chatHistoryContainer) chatHistoryContainer.innerHTML = '';
+        if (chatHistoryContainer) chatHistoryContainer.classList.remove('show');
+        if (welcomeContainer) welcomeContainer.style.display = 'block';
+        if (nnContainer) nnContainer.classList.remove('chat-active');
+        if (sidebarToggle) sidebarToggle.style.display = 'none';
+    }
+}
+
+function displayMessage(text, role, isLoading = false, index = -1) {
+    if (!chatHistoryContainer) return null;
+    
+    const messageWrapper = document.createElement('div');
+    messageWrapper.className = `chat-message ${role}-message`;
+    messageWrapper.dataset.messageIndex = index;
+    messageWrapper.dataset.role = role;
+
+    const messageBubble = document.createElement('p');
+    
+    if (isLoading) {
+        messageBubble.innerHTML = `<div class="loading-dots"><span></span><span></span><span></span></div>`;
+    } else {
+        messageBubble.textContent = text;
+        // Прикрепляем слушатель клика прямо к каждому новому сообщению
+        messageWrapper.addEventListener('click', (event) => {
+            showContextMenu(event, messageWrapper);
+        });
+    }
+    
+    messageWrapper.appendChild(messageBubble);
+    chatHistoryContainer.appendChild(messageWrapper);
+    chatHistoryContainer.scrollTop = chatHistoryContainer.scrollHeight;
+    return messageWrapper;
+}
+
+// --- Управление контекстным меню ---
+function showContextMenu(event, messageElement) {
+    event.preventDefault();
+    event.stopPropagation(); // Останавливаем "всплытие" клика
+    
+    const messageIndex = parseInt(messageElement.dataset.messageIndex, 10);
+    const role = messageElement.dataset.role;
+
+    activeMessageInfo = { index: messageIndex, role: role };
+
+    if (regenBtn) {
+        regenBtn.style.display = (role === 'ai' && messageIndex > 0) ? 'flex' : 'none';
+    }
+    
+    if (contextMenu) {
+        contextMenu.style.top = `${event.pageY}px`;
+        contextMenu.style.left = `${event.pageX}px`;
+        contextMenu.classList.add('show');
+    }
+}
+
+function hideContextMenu() {
+    if (contextMenu) contextMenu.classList.remove('show');
+    activeMessageInfo = null;
+}
+
+
+// --- Обработчики действий ---
+function handleNewChat() {
+    appState.activeChatId = null;
+    saveState();
+    setChatActiveUI(false);
+    if (sidebar) sidebar.classList.remove('show');
+    if (mainContent) mainContent.classList.remove('sidebar-open');
+}
+
+function switchChat(chatId) {
+    if (chatId === appState.activeChatId) return;
+    appState.activeChatId = chatId;
+    saveState();
+    renderSidebar();
+    renderChat(chatId);
+    setChatActiveUI(true);
+    if (sidebar) sidebar.classList.remove('show');
+    if (mainContent) mainContent.classList.remove('sidebar-open');
+}
+
+function renameChat(chatId) {
+    const chat = appState.chats[chatId];
+    if (!chat) return;
+    const newTitle = prompt("Введите новое название для чата:", chat.title);
+    if (newTitle && newTitle.trim() !== "") {
+        chat.title = newTitle.trim();
+        saveState();
+        renderSidebar();
+    }
+}
+
+function deleteChat(chatId) {
+    if (!appState.chats[chatId] || !confirm(`Вы уверены, что хотите удалить чат "${appState.chats[chatId].title}"?`)) return;
+    delete appState.chats[chatId];
+    if (appState.activeChatId === chatId) {
+        appState.activeChatId = null;
+    }
+    saveState();
+    renderSidebar();
+    if (!appState.activeChatId) {
+        handleNewChat();
+    }
+}
+
+function deleteMessage(messageIndex) {
+    const chat = appState.chats[appState.activeChatId];
+    if (!chat || !chat.messages[messageIndex]) return;
+    
+    const messageRole = chat.messages[messageIndex].role;
+    let deleteCount = 1;
+    if (messageRole === 'user' && chat.messages[messageIndex + 1]?.role === 'ai') {
+        deleteCount = 2;
+    }
+
+    chat.messages.splice(messageIndex, deleteCount);
+    saveState();
+    renderChat(appState.activeChatId);
+}
+
+async function handleRegenerate() {
+    if (!activeMessageInfo || activeMessageInfo.role !== 'ai' || activeMessageInfo.index < 1) return;
+    
+    if (sendButton) sendButton.disabled = true;
+    const currentChat = appState.chats[appState.activeChatId];
+    const userPrompt = currentChat.messages[activeMessageInfo.index - 1].text;
+    
+    currentChat.messages.splice(activeMessageInfo.index, 1);
+    renderChat(appState.activeChatId);
+    
+    const loadingIndicator = displayMessage('', 'ai', true);
+    const aiResponse = await callGeminiAPI(userPrompt);
+
+    if (loadingIndicator) loadingIndicator.remove();
+    displayMessage(aiResponse, 'ai', false, currentChat.messages.length);
+    currentChat.messages.push({ role: 'ai', text: aiResponse });
+    
+    saveState();
+    if (sendButton) sendButton.disabled = false;
+}
+
+function handleCopy() {
+    if (!activeMessageInfo) return;
+    const chat = appState.chats[appState.activeChatId];
+    const textToCopy = chat.messages[activeMessageInfo.index].text;
+    navigator.clipboard.writeText(textToCopy).catch(err => console.error('Failed to copy text: ', err));
+}
+
+async function handleSendMessage() {
+    const prompt = nnInput.value.trim();
+    if (!prompt || (sendButton && sendButton.disabled)) return;
+
+    if (sendButton) sendButton.disabled = true;
+
+    if (!appState.activeChatId) {
+        const newChatId = `chat-${Date.now()}`;
+        appState.activeChatId = newChatId;
+        appState.chats[newChatId] = {
+            id: newChatId,
+            title: prompt.substring(0, 30) + (prompt.length > 30 ? '...' : ''),
+            messages: [],
+            timestamp: Date.now()
+        };
+        setChatActiveUI(true);
+    }
+
+    const currentChat = appState.chats[appState.activeChatId];
+    
+    displayMessage(prompt, 'user', false, currentChat.messages.length);
+    currentChat.messages.push({ role: 'user', text: prompt });
+    currentChat.timestamp = Date.now();
+    nnInput.value = '';
+    nnInput.style.height = 'auto';
+
+    const loadingIndicator = displayMessage('', 'ai', true);
+    const aiResponse = await callGeminiAPI(prompt);
+    
+    if (loadingIndicator) loadingIndicator.remove();
+    displayMessage(aiResponse, 'ai', false, currentChat.messages.length);
+    currentChat.messages.push({ role: 'ai', text: aiResponse });
+
+    saveState();
+    renderSidebar();
+    if (sendButton) sendButton.disabled = false;
+}
+
+// --- API Вызов ---
+async function callGeminiAPI(prompt) {
+    if (typeof firebase === 'undefined' || !firebase.functions) {
+        return "Ошибка: Firebase SDK не загружен.";
+    }
+    const callGemini = firebase.functions().httpsCallable('callGemini');
+    try {
+        const result = await callGemini({ prompt: prompt });
+        return result.data.text;
+    } catch (error) {
+        console.error("Firebase Function Error:", error);
+        return `Ошибка сервера: ${error.message}`;
+    }
+}
+
+// --- Назначение слушателей событий ---
+function setupEventListeners() {
+    if (!sendButton) return; 
+
+    sendButton.addEventListener('click', handleSendMessage);
+    nnInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSendMessage();
+        }
+    });
+    
+    newChatBtn.addEventListener('click', handleNewChat);
+    
+    sidebarToggle.addEventListener('click', () => {
+        if (sidebar) sidebar.classList.toggle('show');
+        if (mainContent) mainContent.classList.toggle('sidebar-open');
+    });
+
+    chatList.addEventListener('click', e => {
+        const item = e.target.closest('.chat-list-item');
+        if (!item) return;
+        const chatId = item.dataset.chatId;
+        if (e.target.closest('.rename-btn')) {
+            renameChat(chatId);
+        } else if (e.target.closest('.delete-btn')) {
+            deleteChat(chatId);
+        } else {
+            switchChat(chatId);
+        }
+    });
+
+    // Слушатель для закрытия меню по клику "мимо"
+    document.addEventListener('click', e => {
+        if (contextMenu && contextMenu.classList.contains('show') && !e.target.closest('.chat-message')) {
+            hideContextMenu();
+        }
+    });
+    
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            handleCopy();
+            hideContextMenu();
+        });
+    }
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
+            if (activeMessageInfo) deleteMessage(activeMessageInfo.index);
+            hideContextMenu();
+        });
+    }
+    if (regenBtn) {
+        regenBtn.addEventListener('click', () => {
+            handleRegenerate();
+            hideContextMenu();
+        });
+    }
+}
+</script>
+
+</div>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-info btn-square back-to-top" style="display: none;"><i class="fa fa-arrow-up"></i></a>
+    <style>.back-to-top {position: fixed;bottom: 20px;right: 20px;z-index: 9999;display: none;}</style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="/assets/js/scroll-top-button.js"></script>
+    <!-- Back to Top End -->
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/header.js"></script>
+    <script src="/assets/js/footer.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/loader.js"></script>
+    <script src="/assets/js/aos-cards.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>
+</body>
+</html>

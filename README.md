@@ -1,4 +1,4 @@
-# CrazyFire & AppHaven
+# CrazyFire
 Multiverse of Data Science
 
 ## Copyright Notice (ENGLISH)
