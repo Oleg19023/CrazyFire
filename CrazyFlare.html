@@ -1707,6 +1707,7 @@ async function callGeminiAPI(prompt) {
     }
     const callGemini = firebase.functions().httpsCallable('callGemini');
     try {
+        // ВАЖНО: Мы должны передать ОБЪЕКТ, у которого есть свойство 'prompt'
         const result = await callGemini({ prompt: prompt });
         return result.data.text;
     } catch (error) {

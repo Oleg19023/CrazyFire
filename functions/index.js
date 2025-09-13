@@ -88,53 +88,45 @@ exports.grantCoinsOnSuccessfulPayment = onDocumentCreated("customers/{userId}/pa
     }
 });
 
-// === НОВАЯ ФУНКЦИЯ ДЛЯ GEMINI AI ===
+// functions/index.js
 
-const fetch = require("node-fetch");
+const { onCall } = require("firebase-functions/v2/https");
+const { defineSecret } = require("firebase-functions/v2/params");
+const { logger } = require("firebase-functions");
+const { GoogleGenerativeAI } = require("@google/genai"); // <<< ИМПОРТИРУЕМ НОВЫЙ SDK
 
-exports.callGemini = functions.https.onCall(async (data, context) => {
-    // ИСПРАВЛЕННАЯ И БОЛЕЕ НАДЕЖНАЯ ПРОВЕРКА
-    if (!data || typeof data.prompt !== 'string' || data.prompt.trim() === '') {
-        functions.logger.warn("Function called without a valid prompt.", {data: data});
+// "Провозглашаем" наш секрет
+const geminiApiKey = defineSecret("GEMINI_KEY");
+
+// Наша единственная функция, которая будет общаться с Gemini
+exports.callGemini = onCall({ secrets: [geminiApiKey] }, async (request) => {
+    const prompt = request.data.prompt;
+
+    // Простая и надежная проверка
+    if (!prompt || typeof prompt !== 'string' || prompt.trim() === '') {
+        logger.warn("Функция вызвана без промпта.", { receivedData: request.data });
         throw new functions.https.HttpsError('invalid-argument', 'The function must be called with a non-empty "prompt" string.');
     }
 
-    const prompt = data.prompt;
-    // Безопасно получаем API ключ из конфигурации
-    const geminiApiKey = functions.config().gemini.key;
-    
-    // Указываем модель. Используем gemini-1.5-flash-latest для актуальности.
-    const geminiModel = "gemini-1.5-flash-latest";
-
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${geminiApiKey}`;
-
-    const requestBody = {
-        "contents": [{
-            "parts": [{ "text": prompt }]
-        }]
-    };
-
     try {
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(requestBody)
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            functions.logger.error("Gemini API Error:", errorData);
-            throw new functions.https.HttpsError('internal', 'Failed to call Gemini API.');
-        }
-
-        const responseData = await response.json();
-        const aiText = responseData.candidates[0].content.parts[0].text;
+        // --- НОВЫЙ СПОСОБ РАБОТЫ ЧЕРЕЗ SDK ---
         
-        // Возвращаем только текст ответа клиенту
-        return { text: aiText };
+        // 1. Инициализируем клиент, передавая ему ключ из секрета
+        const genAI = new GoogleGenerativeAI(geminiApiKey.value());
+
+        // 2. Выбираем модель
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" }); // Рекомендуется использовать 1.5-flash для большей стабильности
+
+        // 3. Генерируем контент
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        
+        logger.info("Успешно получен ответ от Gemini SDK.");
+        return { text: text };
 
     } catch (error) {
-        functions.logger.error("Error processing Gemini request:", error);
-        throw new functions.https.HttpsError('unknown', 'An unknown error occurred.');
+        logger.error("Ошибка при работе с @google/genai SDK:", error);
+        throw new functions.https.HttpsError('internal', 'Произошла ошибка при обращении к AI.');
     }
 });
