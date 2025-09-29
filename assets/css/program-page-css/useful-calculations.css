@@ -8,7 +8,7 @@ main.calculators-page {
     padding-bottom: 40px;
 }
 .page-container {
-    max-width: 1200px;
+    max-width: 2000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -45,6 +45,18 @@ main.calculators-page {
 @media (min-width: 1200px) {
     .calculators-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1600px) {
+    .calculators-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 2000px) {
+    .calculators-grid {
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
