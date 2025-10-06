@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyFire</title>
+    <meta name="description" content="Скачивай программы, играй в игры, слушай музыку на сайте CrazyFire. Всё удобно, быстро и безопасно.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CrazyFire",
+      "url": "https://crazyfire-app.web.app",
+      "logo": "https://crazyfire-app.web.app/favicon-512x512.png"
+    }
+    </script>
+    <!-- Основной favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Apple устройства -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Android устройства -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <!-- Manifest-->
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <link rel="stylesheet" href="/assets/css/program-page-css/tools-layout.css">
+    <link rel="stylesheet" href="/assets/css/loader.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X69JL6FMKQ');
+</script>
+
+
+
+<!-- Мобильный хедер-->
+<header class="mobile-header">
+    <button id="menu-toggle" class="menu-toggle-btn" aria-label="Открыть меню">
+        <i class="fas fa-bars"></i>
+    </button>
+    <h1 id="mobile-header-title" class="mobile-title">Главная</h1>
+</header>
+
+<!-- Оверлей для затемнения -->
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+<div class="tools-app-layout">
+    <!-- =========== САЙДБАР С ГЕНЕРАТОРАМИ =========== -->
+    <aside class="tools-sidebar">
+
+        <div class="tools-sidebar-header">
+            <a class="logo-link" href="/index.html">
+                <img src="/assets/images/Site-logos/4kLogo2.webp" alt="Logo" style="height: 32px;">
+                <span>CRAZYFIRE</span>
+            </a>
+            <a href="/Program-pages/Program-pages.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Назад
+            </a>
+        </div>
+        
+        <nav class="tools-sidebar-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-tool-id="home-content"><i class="fas fa-home"></i> <span>Главная</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="random-number-content"><i class="fas fa-random"></i> <span>Случайные числа</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="password-gen-content"><i class="fas fa-key"></i> <span>Генератор паролей</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="quote-gen-content"><i class="fas fa-quote-left"></i> <span>Генератор цитат</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="steam-key-content"><i class="fab fa-steam"></i> <span>Steam ключи</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="random-photo-content"><i class="fas fa-image"></i> <span>Случайные фото</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="palette-gen-content"><i class="fas fa-palette"></i> <span>Генератор палитры</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="coin-flip-content"><i class="fas fa-coins"></i> <span>Орел или Решка</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="dice-roll-content"><i class="fas fa-dice"></i> <span>Игральная Кость</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="wheel-fortune-content"><i class="fas fa-bullseye"></i> <span>Колесо фортуны</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="planet-gen-content"><i class="fas fa-globe"></i> <span>Генератор Планет</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="texture-gen-content"><i class="fas fa-swatchbook"></i> <span>Генератор Текстур</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="promo-gen-content"><i class="fas fa-ticket-alt"></i> <span>Генератор Промокодов</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="fake-data-content"><i class="fas fa-address-card"></i> <span>Фейковые Данные</span></a></li>
+                <li><a href="#" class="nav-link" data-tool-id="ascii-art-content"><i class="fas fa-terminal"></i> <span>ASCII-арт</span></a></li>                
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- =========== ОСНОВНАЯ ОБЛАСТЬ С КАРТОЧКАМИ ГЕНЕРАТОРОВ =========== -->
+    <main class="tools-main-content">
+        
+        <!-- Контейнер для Главной страницы -->
+        <div id="home-content" class="content-wrapper active">
+            <div class="tool-grid">
+                <!-- Карточки генераторов -->
+                <div class="tool-card" data-tool-id="random-number-content">
+                    <div class="card-icon"><i class="fas fa-random"></i></div>
+                    <h3>Генератор случайных чисел</h3>
+                    <p>Создайте одно или несколько случайных чисел в заданном вами диапазоне.</p>
+                </div>
+                <div class="tool-card" data-tool-id="password-gen-content">
+                    <div class="card-icon"><i class="fas fa-key"></i></div>
+                    <h3>Генератор паролей</h3>
+                    <p>Создайте надежные и безопасные пароли с настройкой длины и набора символов.</p>
+                </div>
+                <div class="tool-card" data-tool-id="quote-gen-content">
+                    <div class="card-icon"><i class="fas fa-quote-left"></i></div>
+                    <h3>Генератор цитат</h3>
+                    <p>Найдите вдохновение или мудрую мысль в случайно выбранной цитате.</p>
+                </div>
+                <div class="tool-card" data-tool-id="steam-key-content">
+                    <div class="card-icon"><i class="fab fa-steam"></i></div>
+                    <h3>Генератор Steam ключей</h3>
+                    <p>Имитируйте генерацию игровых ключей Steam для тестов или развлечения.</p>
+                </div>
+                <div class="tool-card" data-tool-id="random-photo-content">
+                    <div class="card-icon"><i class="fas fa-image"></i></div>
+                    <h3>Генератор случайных фото</h3>
+                    <p>Получите случайное изображение для вдохновения или как заполнитель (placeholder).</p>
+                </div>
+                <div class="tool-card" data-tool-id="palette-gen-content">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Генератор Палитры</h3>
+                    <p>Создайте гармоничные цветовые палитры для ваших дизайн-проектов одним кликом.</p>
+                </div>
+                <div class="tool-card" data-tool-id="coin-flip-content">
+                    <div class="card-icon"><i class="fas fa-coins"></i></div>
+                    <h3>Орел или Решка</h3>
+                    <p>Не можете принять решение? Доверьтесь случаю и подбросьте виртуальную монетку.</p>
+                </div>
+                <div class="tool-card" data-tool-id="dice-roll-content">
+                    <div class="card-icon"><i class="fas fa-dice"></i></div>
+                    <h3>Игральная Кость</h3>
+                    <p>Бросьте одну или несколько виртуальных игральных костей для ваших настольных игр.</p>
+                </div>
+                <div class="tool-card" data-tool-id="wheel-fortune-content">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Колесо фортуны</h3>
+                    <p>Введите варианты и вращайте колесо, чтобы выбрать случайного победителя или вариант.</p>
+                </div>
+                <div class="tool-card" data-tool-id="planet-gen-content">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Procedural Planet Generator</h3>
+                    <p>Создавайте уникальные, случайно сгенерированные планеты с различными ландшафтами и атмосферой.</p>
+                </div>
+                <div class="tool-card" data-tool-id="texture-gen-content">
+                    <div class="card-icon"><i class="fas fa-swatchbook"></i></div>
+                    <h3>Генератор Процедурных Текстур</h3>
+                    <p>Генерируйте бесшовные процедурные текстуры (шум, дерево, мрамор) для игр и дизайна.</p>
+                </div>
+                <div class="tool-card" data-tool-id="promo-gen-content">
+                    <div class="card-icon"><i class="fas fa-ticket-alt"></i></div>
+                    <h3>Генератор Промокодов</h3>
+                    <p>Создавайте списки уникальных промокодов для ваших маркетинговых акций и распродаж.</p>
+                </div>
+                <div class="tool-card" data-tool-id="fake-data-content">
+                    <div class="card-icon"><i class="fas fa-address-card"></i></div>
+                    <h3>Генератор Фейковых Данных</h3>
+                    <p>Получите фейковые имена, адреса и другие данные для заполнения баз и тестирования.</p>
+                </div>
+                <div class="tool-card" data-tool-id="ascii-art-content">
+                    <div class="card-icon"><i class="fas fa-terminal"></i></div>
+                    <h3>Генератор ASCII-арта</h3>
+                    <p>Преобразуйте ваши изображения в текстовую графику для публикации в соцсетях.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контейнеры с IFRAME для каждой программы -->
+
+        <div id="random-number-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://random-number-generator-218958038563.us-west1.run.app/" title="Генератор случайных чисел"></iframe>
+        </div>
+        <div id="password-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://password-generator-218958038563.us-west1.run.app/" title="Генератор паролей"></iframe>
+        </div>
+        <div id="quote-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://quote-generator-218958038563.us-west1.run.app" title="Генератор цитат"></iframe>
+        </div>
+        <div id="steam-key-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://steam-key-generator-218958038563.us-west1.run.app" title="Генератор Steam ключей"></iframe>
+        </div>
+        <div id="random-photo-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://photo-generator-218958038563.us-west1.run.app" title="Генератор случайных фото"></iframe>
+        </div>
+        <div id="palette-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://hex-palette-generator-218958038563.us-west1.run.app" title="Генератор Палитры"></iframe>
+        </div>
+        <div id="coin-flip-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://heads-or-tails-coin-flip-218958038563.us-west1.run.app" title="Орел или Решка"></iframe>
+        </div>
+        <div id="dice-roll-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://react-dice-roller-218958038563.us-west1.run.app" title="Игральная Кость"></iframe>
+        </div>
+        <div id="wheel-fortune-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://wheel-of-fortune-218958038563.us-west1.run.app" title="Колесо фортуны"></iframe>
+        </div>
+        <div id="planet-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://procedural-planet-generator-218958038563.us-west1.run.app" title="Procedural Planet Generator"></iframe>
+        </div>
+        <div id="texture-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://procedural-texture-generator-218958038563.us-west1.run.app" title="Генератор Процедурных Текстур"></iframe>
+        </div>
+        <div id="promo-gen-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://promo-code-generator-218958038563.us-west1.run.app" title="Генератор Промокодов"></iframe>
+        </div>
+        <div id="fake-data-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://fake-data-generator-218958038563.us-west1.run.app" title="Генератор Фейковых Данных"></iframe>
+        </div>
+        <div id="ascii-art-content" class="content-wrapper iframe-wrapper">
+            <iframe src="https://ascii-art-generator-218958038563.us-west1.run.app" title="Генератор ASCII-арта"></iframe>
+        </div>
+    </main>
+</div>
+    <script src="/assets/js/program-page-js/tools-app.js"></script>
+    <script src="/assets/js/loader.js"></script>
+</body>
+</html>
