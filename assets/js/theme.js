@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     const savedParticlesState = localStorage.getItem('particlesEnabled') === 'true';
 
     // Применяем сохранённую тему

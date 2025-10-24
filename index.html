@@ -39,6 +39,17 @@
     <link rel="stylesheet" href="/assets/css/theme-toggle.css">
     <link rel="stylesheet" href="/assets/css/index-page-button.css">
     <link rel="stylesheet" href="/assets/css/loader.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive-main-page.css">
+    <!-- Виджеты -->
+    <link rel="stylesheet" href="/assets/widgets/css/weather-widget.css">
+    <link rel="stylesheet" href="/assets/widgets/css/news-widget.css">
+    <link rel="stylesheet" href="/assets/widgets/css/notes-widget.css">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- AOS -->
     <!-- firebase-auth -->
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
@@ -51,6 +62,11 @@
     <!-- firebase-auth -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.0.2/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <!-- Sortable -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-X69JL6FMKQ"></script>
@@ -543,7 +559,117 @@
                 </svg>
             </button>
         </section>
+    <section id="widgetDashboard" data-aos-delay="0">
+        <div class="widget-controls">
+            <button id="hideButton" class="btn btn-secondary">Скрыть</button>
+            <button id="editButton" class="btn btn-primary">Редактировать</button>
+            <button id="resetButton" class="btn btn-danger">Сбросить настройки</button>
+        </div>
+        <!-- Виджеты -->
+        <div class="grid-container">
+          <!-- Время -->
+            <div id="widget-time" class="widget-tile size-1x1 is-link" data-href="/Program-pages/Pages/Time-pages.html">
+                <div class="widget-icons">
+                    <i class="fas fa-eye visibility-icon"></i>
+                    <i class="fas fa-expand-arrows-alt resize-icon"></i>
+                    <i class="fas fa-thumbtack pin-icon"></i>
+                </div>
+                <div class="widget-tile-content">
+                    <h4>Текущее время</h4>
+                    <p id="widgetTime" style="font-size: 2rem; font-weight: bold;">--:--:--</p>
+                </div>
+            </div>
+            <!-- Погода -->
+            <div id="widget-weather" class="widget-tile size-2x1">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content">
+                    <h4>Погода</h4>
+                    <div class="weather-content">
+                        <p id="weather-status">Запрашиваем геолокацию...</p>
+                        <div id="weather-data" class="hidden"><span id="weather-city"></span><div class="weather-main"><img id="weather-icon" src="" alt=""><span id="weather-temp"></span></div><span id="weather-desc"></span></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Новости -->
+            <div id="widget-news" class="widget-tile size-2x3">
+                <div class="widget-icons">
+                    <i class="fas fa-eye visibility-icon"></i>
+                    <i class="fas fa-expand-arrows-alt resize-icon"></i>
+                    <i class="fas fa-thumbtack pin-icon"></i>
+                </div>
+                <div class="widget-tile-content">
+                    <div id="news-carousel" class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide news-loading">
+                                <p>Загрузка новостей...</p>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- ПЛИТКИ-ЯРЛЫКИ -->
+            <div id="widget-games" class="widget-tile size-1x1 is-link" data-href="./Program-pages/Games-pages.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-gamepad"></i></div><h4>Игры</h4></div>
+            </div>
+            <div id="widget-music" class="widget-tile size-1x1 is-link" data-href="./Program-pages/Music-pages.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-music"></i></div><h4>Музыка</h4></div>
+            </div>
+            <div id="widget-apps" class="widget-tile size-1x1 is-link" data-href="./Program-pages/Platforms-pages.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-mobile-alt"></i></div><h4>Приложения</h4></div>
+            </div>
+            <div id="widget-programs" class="widget-tile size-1x1 is-link" data-href="./Program-pages/Program-pages.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-desktop"></i></div><h4>Программы</h4></div>
+            </div>
+            <div id="widget-crazyflare" class="widget-tile size-1x1 is-link" data-href="/CrazyFlare.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-robot"></i></div><h4>CrazyFlare</h4></div>
+            </div>
+            <div id="widget-store" class="widget-tile size-1x1 is-link" data-href="https://funpay.com/users/12379589/">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-shopping-cart"></i></div><h4>Магазин</h4></div>
+            </div>
+            <!-- Плитка Терминал -->
+            <div id="widget-terminal" class="widget-tile size-1x1 is-link" data-href="/AdminSettings.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-terminal"></i></div><h4>Терминал</h4></div>
+            </div>
+            <!-- Плитка Обновления -->
+            <div id="widget-updates" class="widget-tile size-1x1 is-link" data-href="/Info-pages/update-history.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-history"></i></div><h4>Обновления</h4></div>
+            </div>
+            <!-- Плитка Новости (ссылка) -->
+            <div id="widget-news-link" class="widget-tile size-1x1 is-link" data-href="/News-pages/NewsPortal-page/index.html">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content"><div class="widget-icon-large"><i class="fas fa-newspaper"></i></div><h4>Новости</h4></div>
+            </div>
+            <!-- Плитка Заметки (функциональная) -->
+            <div id="widget-notes" class="widget-tile size-2x1">
+                <div class="widget-icons"><i class="fas fa-eye visibility-icon"></i><i class="fas fa-expand-arrows-alt resize-icon"></i><i class="fas fa-thumbtack pin-icon"></i></div>
+                <div class="widget-tile-content">
+                    <h4><i class="fas fa-sticky-note" style="margin-right: 8px;"></i>Заметки</h4>
+                    <textarea id="notes-textarea" placeholder="Напишите что-нибудь..."></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
       </main>
+      </main>
+      <!-- ↓↓↓ ВСТАВЬТЕ ЭТОТ БЛОК ↓↓↓ -->
+      <div id="widgetContextMenu" class="context-menu">
+        <div class="context-menu-item" data-size="size-1x1">Размер 1x1</div>
+        <div class="context-menu-item" data-size="size-1x2">Размер 1x2</div>
+        <div class="context-menu-item" data-size="size-2x1">Размер 2x1</div>
+        <div class="context-menu-item" data-size="size-2x2">Размер 2x2</div>
+        <div class="context-menu-item" data-size="size-2x3">Размер 2x3</div>
+      </div>
+      <!-- ↑↑↑ ВСТАВЬТЕ ЭТОТ БЛОК ↑↑↑ -->
+  </div>
   </div>
 
     
@@ -558,6 +684,10 @@
     <script src="./assets/js/header.js"></script>
     <script src="./assets/js/footer.js"></script>
     <script src="/assets/js/loader.js"></script>
+
+    <script src="./assets/widgets/js/weather-widget.js"></script>
+    <script src="./assets/widgets/js/news-widget.js"></script>
+    <script src="./assets/widgets/js/notes-widget.js"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2FCOGC6uC/UOFXmfNU6LkMttIWZBbIuWVx0f5eJJyRk29IMpA91FQbrwPp3" crossorigin="anonymous"></script>

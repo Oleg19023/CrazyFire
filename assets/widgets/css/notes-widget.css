@@ -1,0 +1,76 @@
+/* --- СТИЛИ ДЛЯ ВИДЖЕТА ЗАМЕТОК --- */
+
+/* Контейнер содержимого виджета */
+#widget-notes .widget-tile-content {
+    display: flex;
+    flex-direction: column;
+    /* Выравниваем элементы по левому краю, а не по центру */
+    align-items: flex-start; 
+    justify-content: flex-start;
+    /* Используем внутренние отступы виджета */
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Заголовок "Заметки" */
+#widget-notes h4 {
+    font-size: 1rem;
+    padding: 15px 20px 10px 20px; /* Отступы для заголовка */
+    width: 100%;
+    margin: 0;
+}
+
+/* Основное поле для текста */
+#notes-textarea {
+    width: 100%;
+    /* Занимает все оставшееся место по высоте */
+    flex-grow: 1; 
+    padding: 0 20px 15px 20px; /* Отступы для текста */
+    
+    /* Убираем стандартное оформление */
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    resize: none; /* Убираем уголок для изменения размера */
+
+    font-family: inherit; /* Наследуем шрифт сайта */
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    /* Цвет текста для светлой темы */
+    color: #333;
+    pointer-events: auto !important;
+}
+
+/* --- Адаптация под темную тему --- */
+body.dark-theme #notes-textarea {
+    color: #ddd; /* Светлый цвет текста */
+}
+
+/* Стили для плейсхолдера */
+#notes-textarea::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+body.dark-theme #notes-textarea::placeholder {
+    color: #666;
+}
+
+/* Стилизация скроллбара внутри textarea */
+#notes-textarea::-webkit-scrollbar {
+    width: 8px;
+}
+#notes-textarea::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+#notes-textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+body.dark-theme #notes-textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,486 @@
+/* --- СТИЛИ ДЛЯ ПЛАВНОГО ПЕРЕКЛЮЧЕНИЯ СЕКЦИЙ --- */
+
+/* Контейнер <main> ведет себя как обычный блок */
+main#videoBackground {
+    position: relative;
+    width: 100%;
+}
+
+/* Секция "Начать" - абсолютно позиционирована и отцентрована */
+#mainpage {
+    /* Эти 4 строки - самый надежный способ центрирования */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    visibility: visible;
+}
+
+/* Секция виджетов - обычный блочный элемент */
+#widgetDashboard {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    visibility: hidden;
+    /* Убираем высоту, когда элемент не виден */
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* Когда на <main> НЕТ класса .dashboard-visible, он должен занимать всю высоту экрана */
+main:not(.dashboard-visible) {
+    min-height: 100vh;
+}
+
+
+/* --- УПРАВЛЕНИЕ ВИДИМОСТЬЮ ЧЕРЕЗ КЛАСС --- */
+
+/* Когда на <main> есть класс .dashboard-visible... */
+
+main.dashboard-visible #mainpage {
+    /* ...плавно скрываем кнопку "Начать" */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+main.dashboard-visible #widgetDashboard {
+    /* ...плавно показываем дашборд */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    /* Возвращаем ему полную высоту */
+    max-height: 10000px; /* Большое значение для любого контента */
+}
+
+
+/* --- СТИЛИ ДЛЯ СЕТКИ ВИДЖЕТОВ (остаются как были) --- */
+
+#widgetDashboard {
+    color: #000;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 70px 20px 80px 20px;
+    box-sizing: border-box;
+}
+
+.widget-controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+    gap: 10px;
+}
+
+.widget-tile {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.widget-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Размеры плиток */
+.size-1x1 { grid-column: span 1; grid-row: span 1; }
+.size-2x1 { grid-column: span 2; grid-row: span 1; }
+.size-2x2 { grid-column: span 2; grid-row: span 2; }
+.size-2x3 { grid-column: span 3; grid-row: span 3; }
+.size-3x3 { grid-column: span 3; grid-row: span 3; }
+
+
+/* --- СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ --- */
+body.dark-theme #widgetDashboard {
+    color: #fff;
+}
+
+body.dark-theme .widget-tile {
+    background-color: rgba(20, 20, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ СЕТКИ ВИДЖЕТОВ --- */
+
+#widgetDashboard {
+    color: #000;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 20px 80px 20px;
+    box-sizing: border-box;
+}
+
+.widget-controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+    gap: 10px;
+}
+
+.widget-tile {
+    position: relative; /* Необходимо для позиционирования иконок */
+    padding: 20px;
+    border-radius: 16px; /* Чуть увеличили скругление */
+    
+    /* --- Новый фон и градиентная обводка --- */
+    background-color: rgba(255, 255, 255, 0.65); /* Сделали фон чуть менее прозрачным */
+    border: 1px solid transparent;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+        linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    /* --- Новая многослойная тень для глубины --- */
+    box-shadow: 
+        0px 2px 4px rgba(0,0,0,0.03), 
+        0px 8px 16px rgba(0,0,0,0.07),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.3); /* Внутренний блик сверху */
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateZ(0);
+}
+
+.widget-tile:hover {
+    transform: translateY(-8px); /* Увеличили эффект "подъема" */
+    /* --- Более выраженная тень и свечение при наведении --- */
+    box-shadow: 
+        0px 4px 8px rgba(0,0,0,0.05), 
+        0px 12px 24px rgba(0,0,0,0.1),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.3),
+        0 0 20px rgba(100, 150, 255, 0.2); /* Голубоватое свечение */
+}
+
+/* --- Улучшенная типографика внутри плиток --- */
+.widget-tile h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+}
+.widget-tile p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Размеры плиток */
+.size-1x1 { grid-column: span 1; grid-row: span 1; }
+.size-1x2 { grid-column: span 1; grid-row: span 2; }
+.size-2x1 { grid-column: span 2; grid-row: span 1; }
+.size-2x2 { grid-column: span 2; grid-row: span 2; }
+.size-2x3 { grid-column: span 2; grid-row: span 3; }
+.size-3x3 { grid-column: span 3; grid-row: span 3; }
+
+/* --- СТИЛИ ДЛЯ ТЕМНОЙ ТЕМЫ --- */
+body.dark-theme #widgetDashboard {
+    color: #fff;
+}
+body.dark-theme .widget-tile {
+    /* --- Фон и градиентная обводка для темной темы --- */
+    background-color: rgba(28, 28, 32, 0.65);
+    background-image: 
+        linear-gradient(rgba(28, 28, 32, 0.65), rgba(28, 28, 32, 0.65)),
+        linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    
+    /* --- Тень и блик для темной темы --- */
+    box-shadow: 
+        0px 2px 4px rgba(0,0,0,0.1), 
+        0px 8px 16px rgba(0,0,0,0.2),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+body.dark-theme .widget-tile:hover {
+    box-shadow: 
+        0px 4px 8px rgba(0,0,0,0.15), 
+        0px 12px 24px rgba(0,0,0,0.25),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 25px rgba(80, 130, 255, 0.3); /* Более яркое свечение */
+}
+/* --- Типографика для темной темы --- */
+body.dark-theme .widget-tile h4 {
+    color: #f0f0f0;
+}
+body.dark-theme .widget-tile p {
+    color: #ccc;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .size-2x1, .size-2x2 {
+        grid-column: span 1;
+    }
+    #widgetDashboard {
+        padding-top: 90px;
+    }
+}
+
+/* --- СТИЛИ ДЛЯ РЕЖИМА РЕДАКТИРОВАНИЯ --- */
+.grid-container.edit-mode .widget-tile {
+    cursor: move;
+    border: 2px dashed #0d6efd;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(13, 110, 253, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); }
+}
+.widget-ghost {
+    opacity: 0.4;
+    background: #c8ebfb;
+    border: 1px dashed #0d6efd;
+}
+
+/* --- СТИЛИ ДЛЯ ИКОНОК --- */
+.widget-icons {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    display: flex;
+    gap: 12px;
+}
+/* ИСПРАВЛЕНИЕ 2: Добавляем .visibility-icon в селектор */
+.resize-icon,
+.pin-icon,
+.visibility-icon {
+    color: #aaa;
+    cursor: pointer;
+    opacity: 0; /* Скрыты по умолчанию */
+    transition: opacity 0.2s, color 0.2s, transform 0.2s;
+    font-size: 16px;
+}
+body.dark-theme .resize-icon, 
+body.dark-theme .pin-icon,
+body.dark-theme .visibility-icon {
+    color: #888;
+}
+.resize-icon:hover,
+.pin-icon:hover,
+.visibility-icon:hover {
+    transform: scale(1.2);
+    color: #333;
+}
+body.dark-theme .resize-icon:hover, 
+body.dark-theme .pin-icon:hover,
+body.dark-theme .visibility-icon:hover {
+    color: #eee;
+}
+/* ИСПРАВЛЕНИЕ 2: Добавляем .visibility-icon в селектор */
+.grid-container.edit-mode .resize-icon,
+.grid-container.edit-mode .pin-icon,
+.grid-container.edit-mode .visibility-icon {
+    opacity: 1; /* Появляются только в режиме редактирования */
+}
+.widget-tile.pinned .pin-icon {
+    color: #0d6efd;
+    opacity: 1;
+}
+body.dark-theme .widget-tile.pinned .pin-icon {
+    color: #409cff;
+}
+
+
+
+
+
+/* --- СТИЛИ ДЛЯ СКРЫТЫХ ВИДЖЕТОВ --- */
+
+/* В обычном режиме скрытые виджеты полностью невидимы */
+.widget-tile.widget-hidden {
+    display: none;
+}
+
+/* В режиме редактирования... */
+.grid-container.edit-mode .widget-tile.widget-hidden {
+    display: block; /* ...мы делаем их видимыми...*/
+    opacity: 0.5; /* ...но полупрозрачными */
+    filter: grayscale(80%); /* ...и обесцвеченными */
+    cursor: default; /* Убираем курсор-руку */
+}
+
+/* Отключаем hover-эффекты для скрытых плиток в режиме редактирования */
+.grid-container.edit-mode .widget-tile.widget-hidden:hover {
+    transform: none;
+    box-shadow: 
+        0px 2px 4px rgba(0,0,0,0.1), 
+        0px 8px 16px rgba(0,0,0,0.2),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* --- СТИЛИ ДЛЯ ИКОНКИ ГЛАЗА --- */
+.visibility-icon:hover {
+    color: #0d6efd !important; /* Синий при наведении */
+}
+
+/* Когда плитка скрыта, иконка глаза становится перечеркнутой и красной */
+.widget-hidden .visibility-icon {
+    color: #dc3545 !important; /* Красный цвет */
+}
+.widget-hidden .visibility-icon::before {
+    content: "\f070"; /* Иконка fa-eye-slash от FontAwesome */
+}
+
+/* --- СТИЛИ ДЛЯ КАСТОМНОГО КОНТЕКСТНОГО МЕНЮ --- */
+.context-menu {
+    position: absolute;
+    z-index: 1050;
+    display: none;
+    background-color: rgba(255,255,255,0.9); /* Полупрозрачность для меню */
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 5px 0;
+    min-width: 150px;
+}
+.dark-theme .context-menu {
+    background-color: rgba(40,40,40,0.85);
+    border-color: rgba(255,255,255,0.1);
+}
+.context-menu-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.dark-theme .context-menu-item {
+    color: #f0f0f0;
+}
+.context-menu-item:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+.dark-theme .context-menu-item:hover {
+    background-color: rgba(80, 130, 255, 0.2);
+}
+
+
+
+
+/* =================================================================== */
+/* --- СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ РАЗНЫХ РАЗМЕРОВ (КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ) --- */
+/* =================================================================== */
+
+/* --- Размер 1x1: УЛЬТРА-КОМПАКТНЫЙ РЕЖИМ --- */
+#widget-weather.size-1x1 .weather-main {
+    flex-direction: column; /* Иконка над температурой */
+}
+/* Скрываем всё, кроме иконки и температуры */
+#widget-weather.size-1x1 #weather-city,
+#widget-weather.size-1x1 #weather-desc {
+    display: none;
+}
+/* Уменьшаем иконку */
+#widget-weather.size-1x1 #weather-icon {
+    width: 50px;
+    height: 50px;
+}
+/* Уменьшаем температуру и убираем отступы */
+#widget-weather.size-1x1 #weather-temp {
+    font-size: 2rem;
+    margin-left: 0;
+    margin-top: 5px; /* Небольшой отступ от иконки */
+}
+
+
+/* --- Размер 2x1 (горизонтальный): иконка слева, текст справа --- */
+#widget-weather.size-2x1 .weather-main {
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+#widget-weather.size-2x1 #weather-temp {
+    margin-left: 10px;
+}
+
+
+/* --- Размер 1x2 (вертикальный): просторный вид в колонку --- */
+#widget-weather.size-1x2 .weather-main {
+    flex-direction: column;
+}
+#widget-weather.size-1x2 #weather-temp {
+    margin-left: 0;
+}
+
+
+/* --- Размер 2x2 и больше: максимальный размер и простор --- */
+#widget-weather.size-2x2 .weather-main {
+    flex-direction: row;
+}
+#widget-weather.size-2x2 #weather-temp {
+    margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+/* --- СТИЛИ ДЛЯ ПЛИТОК-ЯРЛЫКОВ --- */
+
+/* Делаем плитку-ссылку кликабельной */
+.widget-tile.is-link {
+    cursor: pointer;
+}
+
+/* Центрируем содержимое всех плиток */
+.widget-tile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    pointer-events: none; /* Важно: чтобы клики проходили "сквозь" контент к плитке */
+}
+
+/* Стили для большой иконки в центре плитки */
+.widget-icon-large {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    margin-bottom: 15px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .widget-icon-large {
+    color: #ddd;
+}
+
+.widget-tile.is-link:hover .widget-icon-large {
+    color: #0d6efd;
+}
+
+body.dark-theme .widget-tile.is-link:hover .widget-icon-large {
+    color: #409cff;
+}
+
+/* Убираем лишний отступ у заголовка в плитках-ярлыках */
+.widget-tile-content > h4 {
+    margin-bottom: 0;
+}

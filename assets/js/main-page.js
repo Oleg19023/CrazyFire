@@ -1,55 +1,193 @@
-document.getElementById('startButton').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    // --- ПОЛУЧЕНИЕ ЭЛЕМЕНТОВ ---
+    const mainContainer = document.getElementById('videoBackground');
+    const startButton = document.getElementById('startButton');
+    const hideButton = document.getElementById('hideButton');
     const header = document.getElementById('header');
+    const editButton = document.getElementById('editButton');
+    const resetButton = document.getElementById('resetButton');
+    const gridContainer = document.querySelector('.grid-container');
+    const contextMenu = document.getElementById('widgetContextMenu');
 
-    if (!header.classList.contains('show')) {
-        header.style.display = 'block'; // Показываем
-        requestAnimationFrame(() => {
-            header.classList.add('show'); // Добавляем анимацию
+    let sortableInstance = null;
+    let isEditMode = false;
+    let activeWidgetForMenu = null;
+
+    const defaultWidgetsConfig = [
+        { id: 'widget-time', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-weather', size: 'size-2x1', pinned: false, hidden: false },
+        { id: 'widget-news', size: 'size-2x3', pinned: false, hidden: false },
+        
+        { id: 'widget-crazyflare', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-games', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-music', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-apps', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-programs', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-store', size: 'size-1x1', pinned: false, hidden: false },
+
+        { id: 'widget-news-link', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-updates', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-terminal', size: 'size-1x1', pinned: false, hidden: false },
+        { id: 'widget-notes', size: 'size-2x1', pinned: false, hidden: false }
+    ];
+
+    function saveWidgetState() {
+        const widgets = [];
+        gridContainer.querySelectorAll('.widget-tile').forEach(widget => {
+            const sizeClass = Array.from(widget.classList).find(c => c.startsWith('size-'));
+            widgets.push({ 
+                id: widget.id, 
+                size: sizeClass || 'size-1x1', 
+                pinned: widget.classList.contains('pinned'),
+                hidden: widget.classList.contains('widget-hidden')
+            });
+        });
+        localStorage.setItem('widgetLayout', JSON.stringify(widgets));
+    }
+
+    function updateVisibilityIcons() {
+        gridContainer.querySelectorAll('.widget-tile').forEach(widget => {
+            const icon = widget.querySelector('.visibility-icon');
+            if (icon) {
+                if (widget.classList.contains('widget-hidden')) {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            }
         });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const greetings = [
-        'Добро пожаловать!',
-        'Привет, друг!',
-        'Здравствуйте!',
-        'Привет!',
-        'С возвращением!',
-        'Рады вас видеть!',
-        'Как дела?',
-        'Приветствую!',
-        'Счастливы вас видеть!',
-        'Привет, как поживаешь?',
-        'Хорошего дня!',
-        'Рады снова видеть вас!',
-        'Привет! Мы ждали вас!',
-        'Ну что, приступим?',
-        'Давно не виделись!',
-        'Как настроение?',
-        'Здорово, что вы здесь!',
-        'Привет, давайте начнем!',
-        'Великолепного дня!',
-        'Рады встрече!',
-        'Чувствуйте себя как дома!',
-        'Надеюсь, у вас все отлично!',
-        'Всегда рады вам!',
-        'Снова вместе!',
-        'Спасибо, что зашли!',
-        'Как приятно вас видеть!',
-        'Добрый день!',
-        'Доброго времени суток!',
-        'Отличного настроения вам!',
-        'Приветики',
-        'ʕ ᵔᴥᵔ ʔ',
-    ];    
+    function loadWidgetState() {
+        const savedLayout = localStorage.getItem('widgetLayout');
+        let config = defaultWidgetsConfig;
+        try { if (savedLayout) { config = JSON.parse(savedLayout); } } catch (e) { config = defaultWidgetsConfig; }
+        
+        config.sort((a, b) => {
+            if (a.hidden !== b.hidden) return a.hidden ? 1 : -1;
+            if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+            return 0;
+        });
 
-    // Генерация случайного индекса для приветствия
-    const randomGreetingIndex = Math.floor(Math.random() * greetings.length);
-    document.getElementById('greeting').textContent = greetings[randomGreetingIndex];
+        config.forEach(widgetConfig => {
+            const widget = document.getElementById(widgetConfig.id);
+            if (widget) {
+                widget.className = widget.className.replace(/size-\dx\d/g, '').trim();
+                widget.classList.add(widgetConfig.size);
+                widget.classList.toggle('pinned', widgetConfig.pinned);
+                widget.classList.toggle('widget-hidden', widgetConfig.hidden === true); 
+                gridContainer.appendChild(widget);
+            }
+        });
+        updateVisibilityIcons();
+    }
 
-    const backgroundIframe = document.getElementById('backgroundIframe');
+function toggleEditMode() {
+    isEditMode = !isEditMode;
+    gridContainer.classList.toggle('edit-mode', isEditMode);
+    editButton.textContent = isEditMode ? 'Сохранить' : 'Редактировать';
+    editButton.classList.toggle('btn-success', isEditMode);
     
+    resetButton.style.display = isEditMode ? 'inline-block' : 'none';
+
+    if (isEditMode) {
+        if (!sortableInstance) { 
+            sortableInstance = new Sortable(gridContainer, { 
+                animation: 150, 
+                ghostClass: 'widget-ghost', 
+                filter: '.pinned, .widget-hidden',
+                onEnd: saveWidgetState 
+            }); 
+        }
+        sortableInstance.option('disabled', false);
+    } else {
+        if (sortableInstance) sortableInstance.option('disabled', true);
+        saveWidgetState();
+    }
+}
+    
+    function resetLayoutToDefault() {
+        const isConfirmed = confirm('Вы уверены, что хотите сбросить все виджеты к виду по умолчанию? Это действие необратимо.');
+        if (isConfirmed) {
+            localStorage.removeItem('widgetLayout');
+
+            location.reload();
+        }
+    }
+
+    const showDashboard = () => { mainContainer.classList.add('dashboard-visible'); if (!header.classList.contains('show')) { header.style.display = 'block'; requestAnimationFrame(() => header.classList.add('show')); } };
+    const hideDashboard = () => { mainContainer.classList.remove('dashboard-visible'); };
+
+    // --- ПРАВИЛЬНЫЙ ПОРЯДОК ИНИЦИАЛИЗАЦИИ ---
+    resetButton.style.display = 'none'; // Скрываем кнопку сброса при загрузке
+    loadWidgetState();
+    gridContainer.querySelectorAll('.widget-tile').forEach((widget, index) => { widget.setAttribute('data-aos', 'fade-up'); widget.setAttribute('data-aos-delay', index * 100); });
+    AOS.init({ duration: 500, once: false, disable: window.innerWidth < 768 });
+    if (localStorage.getItem('dashboardActive') === 'true') { showDashboard(); } else { hideDashboard(); }
+    syncVersion();
+    
+    // --- ОБРАБОТЧИКИ КНОПОК ---
+    startButton.addEventListener('click', () => { showDashboard(); localStorage.setItem('dashboardActive', 'true'); });
+    hideButton.addEventListener('click', () => { hideDashboard(); localStorage.setItem('dashboardActive', 'false'); });
+    editButton.addEventListener('click', toggleEditMode);
+    resetButton.addEventListener('click', resetLayoutToDefault);
+    
+// --- ОБРАБОТЧИКИ КЛИКОВ ---
+    gridContainer.addEventListener('click', e => {
+        const target = e.target;
+        const widget = target.closest('.widget-tile');
+        if (!widget) return;
+
+        // --- ЛОГИКА ДЛЯ РЕЖИМА РЕДАКТИРОВАНИЯ ---
+        if (isEditMode) {
+            // Клик по иконке "глаза"
+            if (target.classList.contains('visibility-icon')) {
+                widget.classList.toggle('widget-hidden');
+                if (widget.classList.contains('widget-hidden')) { gridContainer.appendChild(widget); }
+                updateVisibilityIcons();
+                saveWidgetState();
+                return; // Прерываем выполнение, чтобы не сработал переход по ссылке
+            }
+            
+            // Клик по иконке "размер"
+            if (target.classList.contains('resize-icon')) {
+                e.preventDefault();
+                activeWidgetForMenu = widget;
+                contextMenu.style.display = 'block';
+                const iconRect = target.getBoundingClientRect();
+                contextMenu.style.left = `${iconRect.left}px`;
+                contextMenu.style.top = `${iconRect.bottom + 5}px`;
+                return; // Прерываем
+            }
+            
+            // Клик по иконке "закрепить"
+            if (target.classList.contains('pin-icon')) {
+                widget.classList.toggle('pinned');
+                if (widget.classList.contains('pinned')) { gridContainer.prepend(widget); }
+                saveWidgetState();
+                return; // Прерываем
+            }
+            // Если мы в режиме редактирования и кликнули не по иконке, ничего не делаем
+            return;
+        }
+
+        // --- ЛОГИКА ДЛЯ ОБЫЧНОГО РЕЖИМА (ПЕРЕХОД ПО ССЫЛКЕ) ---
+        if (widget.classList.contains('is-link') && widget.dataset.href) {
+            window.location.href = widget.dataset.href;
+        }
+    });
+
+    // --- ОСТАЛЬНОЙ КОД БЕЗ ИЗМЕНЕНИЙ ---
+    contextMenu.addEventListener('click', e => { if (e.target.classList.contains('context-menu-item') && activeWidgetForMenu) { const newSize = e.target.dataset.size; activeWidgetForMenu.className = activeWidgetForMenu.className.replace(/size-\dx\d/g, '').trim(); activeWidgetForMenu.classList.add(newSize); contextMenu.style.display = 'none'; saveWidgetState(); } });
+    window.addEventListener('click', (e) => { if (!e.target.classList.contains('resize-icon')) { contextMenu.style.display = 'none'; } });
+    function syncVersion() { const footerVersionEl = document.getElementById('footerVersion'); const widgetVersionEl = document.getElementById('widgetVersionText'); if (footerVersionEl && widgetVersionEl) { widgetVersionEl.innerHTML = footerVersionEl.innerHTML; } }
+    const timeWidget = document.getElementById('widgetTime');
+    if (timeWidget) { setInterval(() => { timeWidget.textContent = new Date().toLocaleTimeString('ru-RU'); }, 1000); }
+    const greetings = [ 'Добро пожаловать!', 'Привет, друг!', 'Здравствуйте!', 'Привет!', 'С возвращением!', 'Рады вас видеть!', 'Как дела?', 'Приветствую!', 'Счастливы вас видеть!', 'Привет, как поживаешь?', 'Хорошего дня!', 'Рады снова видеть вас!', 'Привет! Мы ждали вас!', 'Ну что, приступим?', 'Давно не виделись!', 'Как настроение?', 'Здорово, что вы здесь!', 'Привет, давайте начнем!', 'Великолепного дня!', 'Рады встрече!', 'Чувствуйте себя как дома!', 'Надеюсь, у вас все отлично!', 'Всегда рады вам!', 'Снова вместе!', 'Спасибо, что зашли!', 'Как приятно вас видеть!', 'Добрый день!', 'Доброго времени суток!', 'Отличного настроения вам!', 'Приветики', 'ʕ ᵔᴥᵔ ʔ', ];
+    document.getElementById('greeting').textContent = greetings[Math.floor(Math.random() * greetings.length)];
+    const backgroundIframe = document.getElementById('backgroundIframe');
     const kinescopeVideos = [
         // 1 //
         'https://kinescope.io/embed/7L7W8nZoXJygFgjYvii5tC?autoplay=true&muted=true&loop=true&background=1',
@@ -152,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 50 //
         'https://kinescope.io/embed/mre3hX76h4gKeUrsAy9H9c?autoplay=true&muted=true&loop=true&background=1',
     ];
-
     let currentVideoIndex = -1;
 
     // Функция, которая будет менять видео
@@ -189,14 +326,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Интервал для смен видео.
     setInterval(setNextVideo, 10000); // 10 секунд
 });
-
-
-
-
-
-
-
-
-
-
-

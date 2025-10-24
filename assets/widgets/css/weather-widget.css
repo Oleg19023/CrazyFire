@@ -1,0 +1,50 @@
+/* --- АДАПТИВНЫЕ СТИЛИ ДЛЯ ВИДЖЕТА ПОГОДЫ --- */
+
+/* Общие стили для контейнера данных */
+#weather-data {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.weather-content .hidden {
+    display: none;
+}
+
+#weather-city {
+    font-weight: 600;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    line-height: 1.2;
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    flex-wrap: wrap; 
+}
+
+#weather-icon {
+    width: clamp(50px, 15vw, 80px);
+    height: clamp(50px, 15vw, 80px);
+}
+
+#weather-temp {
+    font-weight: 700;
+    line-height: 1;
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+}
+
+#weather-desc {
+    text-transform: capitalize;
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    color: #666;
+}
+body.dark-theme #weather-desc {
+    color: #bbb;
+}

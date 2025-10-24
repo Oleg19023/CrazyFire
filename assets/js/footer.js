@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const footerHTML = `
-        <footer id="footer" class="footer-hidden">
+        <footer id="footer">
             <div class="footer-container">
                 <div class="footer-top">
                     <div class="footer-info">
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="/AdminSettings.html" class="btn btn-secondary admin-button" title="Настройки">
                             <i class="fa-solid fa-gear"></i>
                         </a>
-                        <a class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>3.0</b></b> </a>
+                        <a id="footerVersion" class="update-button" href="/Info-pages/update-history.html"><b>Версия <b>3.0</b></b> </a>
                         <span class="footer-separator">|</span>
                         <span id="footerDate"></span>
                         <span class="footer-separator">|</span>
